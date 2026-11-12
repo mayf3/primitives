@@ -1,0 +1,125 @@
+{
+  "domain": "design",
+  "entries": [
+    {
+      "id": "design.page-promise",
+      "title": "交代页面承诺",
+      "kind": "action",
+      "summary": "在首屏说明本页能回答或完成什么。",
+      "tags": [
+        "用途",
+        "理解",
+        "首屏"
+      ],
+      "path": "PRIMITIVES.md#page-promise"
+    },
+    {
+      "id": "design.position-progress",
+      "title": "标明位置与进度",
+      "kind": "action",
+      "summary": "显示页面类型、所属路线和当前阶段。",
+      "tags": [
+        "位置",
+        "进度",
+        "路线"
+      ],
+      "path": "PRIMITIVES.md#position-progress"
+    },
+    {
+      "id": "design.entry-outcome",
+      "title": "预告入口结果",
+      "kind": "action",
+      "summary": "让入口文案说明动作、对象及结果类型。",
+      "tags": [
+        "入口",
+        "预测",
+        "链接"
+      ],
+      "path": "PRIMITIVES.md#entry-outcome"
+    },
+    {
+      "id": "design.next-step",
+      "title": "接通下一步",
+      "kind": "action",
+      "summary": "给出当前可完成的后继动作，并保留结束和自由探索。",
+      "tags": [
+        "后继",
+        "行动",
+        "路线"
+      ],
+      "path": "PRIMITIVES.md#next-step"
+    },
+    {
+      "id": "design.prerequisites",
+      "title": "前置必要条件",
+      "kind": "action",
+      "summary": "在关键投入前展示影响现在能否开始的条件。",
+      "tags": [
+        "前提",
+        "条件",
+        "采购"
+      ],
+      "path": "PRIMITIVES.md#prerequisites"
+    },
+    {
+      "id": "design.comparable-options",
+      "title": "按共同维度比较",
+      "kind": "action",
+      "summary": "把影响选择的共同维度并列呈现。",
+      "tags": [
+        "选择",
+        "比较",
+        "维度"
+      ],
+      "path": "PRIMITIVES.md#comparable-options"
+    },
+    {
+      "id": "design.externalize-relations",
+      "title": "把抽象关系外化",
+      "kind": "action",
+      "summary": "用例子、局部图或相邻呈现显式表达关键关系。",
+      "tags": [
+        "理解",
+        "关系",
+        "表征"
+      ],
+      "path": "PRIMITIVES.md#externalize-relations"
+    },
+    {
+      "id": "design.visible-change",
+      "title": "让变化可见",
+      "kind": "action",
+      "summary": "让操作后的新状态、结果或影响可以观察。",
+      "tags": [
+        "反馈",
+        "状态",
+        "实验"
+      ],
+      "path": "PRIMITIVES.md#visible-change"
+    },
+    {
+      "id": "design.recovery-path",
+      "title": "保留恢复路径",
+      "kind": "action",
+      "summary": "保留输入与上下文，并提供返回、撤销或修复方式。",
+      "tags": [
+        "错误",
+        "恢复",
+        "控制"
+      ],
+      "path": "PRIMITIVES.md#recovery-path"
+    },
+    {
+      "id": "design.progressive-disclosure",
+      "title": "按需展开次要复杂度",
+      "kind": "action",
+      "summary": "保留当前任务必要信息，其余以明确标签按需提供。",
+      "tags": [
+        "复杂度",
+        "细节",
+        "展开"
+      ],
+      "path": "PRIMITIVES.md#progressive-disclosure"
+    }
+  ]
+}

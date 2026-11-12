@@ -1,0 +1,391 @@
+{
+  "source_import_id": "design-upload-20261113",
+  "imported_at": "2026-11-13",
+  "import_status": "imported-unchecked",
+  "note": "仅转录附录明确的URL及该行出现的引用令牌；原会话令牌不可独立解析，未明确对应者不强配。机器ID为本次整理新增。",
+  "references": [
+    {
+      "id": "design.source.01",
+      "title": "Don Norman, *Signifiers, not affordances*",
+      "source_type_reported": "作者原文 / 理论",
+      "category": "research-or-guidance",
+      "url": "https://jnd.org/signifiers-not-affordances/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 302,
+      "appendix_citation_tokens": [
+        "turn625710search0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.02",
+      "title": "Christopher Alexander et al., PatternLanguage.com",
+      "source_type_reported": "作者团队 / 模式语言",
+      "category": "research-or-guidance",
+      "url": "https://www.patternlanguage.com/aims/intro.html",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 303,
+      "appendix_citation_tokens": [
+        "turn625710search1"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.03",
+      "title": "Apple Human Interface Guidelines, Design Principles",
+      "source_type_reported": "官方设计指南",
+      "category": "research-or-guidance",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/design-principles/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 304,
+      "appendix_citation_tokens": [
+        "turn625710search2"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.04",
+      "title": "W3C, WCAG 2.2",
+      "source_type_reported": "正式标准",
+      "category": "research-or-guidance",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 305,
+      "appendix_citation_tokens": [
+        "turn625710search3"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.05",
+      "title": "Sweller, 1988, *Cognitive Load During Problem Solving*",
+      "source_type_reported": "原始研究 / 理论与实验",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1207/s15516709cog1202_4",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 306,
+      "appendix_citation_tokens": [
+        "turn572945search0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.06",
+      "title": "Chandler & Sweller, 1992, *The Split-Attention Effect*",
+      "source_type_reported": "原始实验",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1111/j.2044-8279.1992.tb01017.x",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 307,
+      "appendix_citation_tokens": [
+        "turn572945search3"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.07",
+      "title": "Cowan, 2001, *The Magical Number 4…*",
+      "source_type_reported": "学术综述 / 理论",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1017/S0140525X01003922",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 308,
+      "appendix_citation_tokens": [
+        "turn667437search0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.08",
+      "title": "Palmer, 1992, *Common Region*",
+      "source_type_reported": "原始感知研究",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1016/0010-0285(92)90014-S",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 309,
+      "appendix_citation_tokens": [
+        "turn572945search4"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.09",
+      "title": "Larkin & Simon, 1987, *Why a Diagram is (Sometimes) Worth Ten Thousand Words*",
+      "source_type_reported": "理论 / 表征分析",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1111/j.1551-6708.1987.tb00863.x",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 310,
+      "appendix_citation_tokens": [
+        "turn667437search1"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.10",
+      "title": "Cleveland & McGill, 1984, *Graphical Perception*",
+      "source_type_reported": "原始实验",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1080/01621459.1984.10478080",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 311,
+      "appendix_citation_tokens": [
+        "turn667437search4"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.11",
+      "title": "Pirolli & Card, 1999, *Information Foraging*",
+      "source_type_reported": "理论 / 模型",
+      "category": "research-or-guidance",
+      "url": "https://doi.org/10.1037/0033-295X.106.4.643",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 312,
+      "appendix_citation_tokens": [
+        "turn572945search9"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.12",
+      "title": "Shneiderman, 1983, *Direct Manipulation*",
+      "source_type_reported": "HCI 原始理论",
+      "category": "research-or-guidance",
+      "url": "https://www.cs.umd.edu/~ben/papers/Shneiderman1983Direct.pdf",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 313,
+      "appendix_citation_tokens": [
+        "turn350879search37"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.13",
+      "title": "NN/g, *Recognition and Recall*",
+      "source_type_reported": "专家综合",
+      "category": "research-or-guidance",
+      "url": "https://www.nngroup.com/articles/recognition-and-recall/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 314,
+      "appendix_citation_tokens": [
+        "turn714156search0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.14",
+      "title": "NN/g, *Progressive Disclosure*",
+      "source_type_reported": "专家指南",
+      "category": "research-or-guidance",
+      "url": "https://www.nngroup.com/articles/progressive-disclosure/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 315,
+      "appendix_citation_tokens": [
+        "turn714156search1"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.15",
+      "title": "NN/g, *Information Scent*",
+      "source_type_reported": "专家综合",
+      "category": "research-or-guidance",
+      "url": "https://www.nngroup.com/articles/information-scent/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 316,
+      "appendix_citation_tokens": [
+        "turn589359search8"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.16",
+      "title": "GOV.UK, *Structuring forms*",
+      "source_type_reported": "产品团队正式指南",
+      "category": "research-or-guidance",
+      "url": "https://www.gov.uk/service-manual/design/form-structure",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 317,
+      "appendix_citation_tokens": [
+        "turn589359search5"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.17",
+      "title": "GOV.UK Design System, *Error summary / validation*",
+      "source_type_reported": "正式设计系统",
+      "category": "research-or-guidance",
+      "url": "https://design-system.service.gov.uk/components/error-summary/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 318,
+      "appendix_citation_tokens": [
+        "turn714156search4",
+        "turn714156search5"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.18",
+      "title": "Podcast Map 首页",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 319,
+      "appendix_citation_tokens": [
+        "turn955113view0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.19",
+      "title": "Agent 问题页",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/node/agent-basics",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 320,
+      "appendix_citation_tokens": [
+        "turn399337view0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.20",
+      "title": "EP18",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/episode/ep18",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 321,
+      "appendix_citation_tokens": [
+        "turn169999view0"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.21",
+      "title": "工具选择问题页",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/node/tool-choice",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 322,
+      "appendix_citation_tokens": [
+        "turn169999view2"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.22",
+      "title": "EP47",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/episode/ep47",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 323,
+      "appendix_citation_tokens": [
+        "turn399337view1"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.23",
+      "title": "教学问题页",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://map.mayf3.com/node/teaching",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 324,
+      "appendix_citation_tokens": [
+        "turn169999view1"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.24",
+      "title": "Learning Lab",
+      "source_type_reported": "当前仅核对到加载壳",
+      "category": "product-page",
+      "url": "https://learn.mayf3.com/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 325,
+      "appendix_citation_tokens": [
+        "turn955113view2"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.25",
+      "title": "Maker Lab 首页",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://diy-lab.mayf3.com/",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 326,
+      "appendix_citation_tokens": [
+        "turn955113view3"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    },
+    {
+      "id": "design.source.26",
+      "title": "HachimoDock",
+      "source_type_reported": "当前产品观察",
+      "category": "product-page",
+      "url": "https://diy-lab.mayf3.com/projects/hachimodock/index.html",
+      "import_status": "imported-unchecked",
+      "source_import_id": "design-upload-20261113",
+      "source_line": 327,
+      "appendix_citation_tokens": [
+        "turn399337view3"
+      ],
+      "note": "从上传报告附录导入，未独立打开核对；类型沿用原报告。"
+    }
+  ],
+  "unresolved_citation_tokens": [
+    "turn268513view0",
+    "turn268513view1",
+    "turn350879search1",
+    "turn350879search2",
+    "turn399337view2",
+    "turn399337view4",
+    "turn572945search7",
+    "turn589359search1",
+    "turn589359search3",
+    "turn589359search7",
+    "turn625710search5",
+    "turn667437search7",
+    "turn819133view0",
+    "turn819133view1",
+    "turn819133view3",
+    "turn819133view4"
+  ]
+}

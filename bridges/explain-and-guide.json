@@ -1,0 +1,43 @@
+{
+  "id": "bridge.explain-and-guide",
+  "title": "从待检验判断到可理解的播客入口",
+  "example_status": "synthetic",
+  "outcome": "not-run",
+  "module_versions": {"life": "0.1.0", "writing": "0.1.0", "design": "0.1.0"},
+  "steps": [
+    {
+      "id": "frame-hypothesis",
+      "domain": "life",
+      "uses": ["life.claim", "life.activity"],
+      "input": "一个尚待验证的入口理解问题",
+      "output": "假设、约束和期望得到的观察；没有已确认的个人决策"
+    },
+    {
+      "id": "write-explanation",
+      "domain": "writing",
+      "uses": ["writing.choose-angle", "writing.connect-relations"],
+      "input": "合成材料：节目 A 解释 Agent 并有两个任务例子；摘要在站内，完整音频在外部",
+      "output": "可读说明及材料—新解释—成稿位置对应"
+    },
+    {
+      "id": "design-entry",
+      "domain": "design",
+      "uses": ["design.entry-outcome", "design.next-step"],
+      "input": "文案候选、已知目的地类型与未知条件",
+      "output": "入口与下一步的提案；实施和真人验证仍未发生"
+    },
+    {
+      "id": "review-observation",
+      "domain": "life",
+      "uses": ["life.observation", "life.evidence"],
+      "input": "未来实际产生的点击前预测与操作观察；目前为空",
+      "output": "只在有原始观察且与原判断相关时形成支持或反驳关系"
+    }
+  ],
+  "handoffs": [
+    {"from": "frame-hypothesis", "to": "write-explanation", "relation": "informs", "payload": "问题、假设、约束", "requires": "不得当作已证实事实"},
+    {"from": "write-explanation", "to": "design-entry", "relation": "informs", "payload": "说明、来源边界、目的地类型", "requires": "未知条件不能自行补足"},
+    {"from": "design-entry", "to": "review-observation", "relation": "evaluates", "payload": "未来原始观察及条件", "requires": "真实观察发生后才能支持结论，不能用部署状态代替"}
+  ],
+  "observations": []
+}

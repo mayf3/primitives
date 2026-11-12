@@ -1,0 +1,105 @@
+{
+  "domain": "life",
+  "entries": [
+    {
+      "id": "life.goal",
+      "title": "目标",
+      "kind": "object",
+      "summary": "识别长期方向，区分终态与眼前路径，并声明观察进展的依据。",
+      "tags": [
+        "人生目标",
+        "长期方向",
+        "终态",
+        "路径",
+        "指标"
+      ],
+      "path": "CONCEPTS.md#goal"
+    },
+    {
+      "id": "life.state",
+      "title": "状态",
+      "kind": "object",
+      "summary": "记录有时间边界的当前事实快照，分开现状、判断与计划。",
+      "tags": [
+        "现状",
+        "快照",
+        "指标",
+        "当前值",
+        "计划"
+      ],
+      "path": "CONCEPTS.md#state"
+    },
+    {
+      "id": "life.observation",
+      "title": "观测",
+      "kind": "object",
+      "summary": "保留可定位的事件、数据和原话，分开记录到的事实与解释。",
+      "tags": [
+        "观察",
+        "事实",
+        "原文",
+        "出处",
+        "溯源"
+      ],
+      "path": "CONCEPTS.md#observation"
+    },
+    {
+      "id": "life.claim",
+      "title": "断言",
+      "kind": "object",
+      "summary": "写清接受观察检验的判断、论证与边界，并按 Life State 五态保留证据变化。",
+      "tags": [
+        "判断",
+        "假设",
+        "论证",
+        "反证",
+        "立场",
+        "证据缺口"
+      ],
+      "path": "CONCEPTS.md#claim"
+    },
+    {
+      "id": "life.decision",
+      "title": "决策",
+      "kind": "object",
+      "summary": "依据本人明确承诺的原始记录确认决策，区分既有决定与候选建议。",
+      "tags": [
+        "承诺",
+        "决定",
+        "拍板",
+        "取舍",
+        "授权"
+      ],
+      "path": "CONCEPTS.md#decision"
+    },
+    {
+      "id": "life.activity",
+      "title": "活动",
+      "kind": "action-object",
+      "summary": "定义有目的且可执行的一步，分开预期产出、实际观察和完成状态。",
+      "tags": [
+        "行动",
+        "下一步",
+        "实验",
+        "验证",
+        "Observe",
+        "Test"
+      ],
+      "path": "CONCEPTS.md#activity"
+    },
+    {
+      "id": "life.evidence",
+      "title": "证据关系",
+      "kind": "relation",
+      "summary": "说明哪条观察在什么范围内支持或反驳判断；付出与完成不自动成为效果证明。",
+      "tags": [
+        "证据",
+        "支持",
+        "反驳",
+        "关系",
+        "独立来源"
+      ],
+      "path": "CONCEPTS.md#evidence"
+    }
+  ]
+}

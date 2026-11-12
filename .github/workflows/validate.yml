@@ -1,0 +1,15 @@
+name: Validate primitives
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check registry, domain boundaries and immutable sources
+        run: python3 tools/primitives.py validate
+      - name: Check validator regression scenarios
+        run: python3 -m unittest discover -s tests -v

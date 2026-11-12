@@ -1,0 +1,18 @@
+{
+  "imports": [
+    {
+      "id": "design-upload-20261113",
+      "kind": "user-upload",
+      "uploaded_name": "貼上的文字 (1).txt",
+      "original_date": "unknown",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/research-original.txt",
+          "upstream_path": "貼上的文字 (1).txt",
+          "sha256": "72894d69eef209b0586bb6214c464e072aee49a908ca91e86a9af476aadbd0bd"
+        }
+      ]
+    }
+  ]
+}

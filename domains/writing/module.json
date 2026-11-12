@@ -1,0 +1,10 @@
+{
+  "id": "writing",
+  "title": "写作原语",
+  "version": "0.1.0",
+  "description": "按具体创作动作使用，按需保留材料—新解释—成稿的来源与版本联系；整合候选，待效果验证。",
+  "entrypoint": "README.md",
+  "guide": "GUIDE.md",
+  "catalog": "catalog.json",
+  "depends_on": []
+}

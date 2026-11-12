@@ -1,0 +1,10 @@
+{
+  "id": "life",
+  "title": "人生原语",
+  "version": "0.1.0",
+  "description": "依据 Life State 自带定义，以五类认知对象、Activity 行动对象和 Evidence 关系检查事实、判断、承诺与下一步；独立保留 PCA V0 来源。",
+  "entrypoint": "README.md",
+  "guide": "GUIDE.md",
+  "catalog": "catalog.json",
+  "depends_on": []
+}

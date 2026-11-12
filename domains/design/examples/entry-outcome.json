@@ -1,0 +1,66 @@
+{
+  "id": "design.example.entry-outcome",
+  "example_type": "synthetic",
+  "title": "合成应用：区分站内摘要与外部收听入口",
+  "primitive_id": "design.entry-outcome",
+  "created_at": "2026-11-13",
+  "target": {
+    "type": "episode-entry-links",
+    "description": "虚构节目介绍页的两个入口，没有真实目标URL或已核验版本。"
+  },
+  "observed_problem": {
+    "evidence_type": "synthetic-scenario",
+    "description": "假设两个外观相似的入口均叫“看看更多”，分别去站内摘要和外部收听页，点击前无法从标签区分结果。",
+    "observations": []
+  },
+  "proposed_change": [
+    {
+      "target": "站内阅读入口",
+      "before": "看看更多",
+      "after": "阅读本期要点与时间轴",
+      "precondition": "目的页确实含本期摘要和时间轴。"
+    },
+    {
+      "target": "外部收听入口",
+      "before": "看看更多",
+      "after": "到音频平台听完整节目",
+      "precondition": "链接确实通向可收听的完整节目；只在真实行为需要时补充新窗口提示。"
+    }
+  ],
+  "rationale": "以动作、对象和结果类型区分入口，使点击前能够预测去向。当前没有依据要求改布局或新增页面。",
+  "expected_observable_change": "参与者能在点击前区分两个入口的目的地与所得内容，预测可与实际结果核对。",
+  "boundaries": [
+    "不得把本合成场景写成当前网站缺陷。",
+    "不预填时长或其他尚未核对的事实。",
+    "标签长度应适合界面；键盘与辅助技术需获得同等信息。"
+  ],
+  "source_refs": [
+    {
+      "source_import_id": "design-upload-20261113",
+      "source_file": "sources/research-original.txt",
+      "source_lines": [
+        85,
+        98
+      ],
+      "note": "来源路径相对于design模块根；只引用上传材料，未复核其中外部来源。"
+    }
+  ],
+  "source_status": "cited",
+  "implementation_status": "proposed",
+  "user_validation_status": "untested",
+  "implementation_evidence": [],
+  "user_observations": [],
+  "planned_checks": [
+    {
+      "kind": "user-prediction",
+      "instruction": "点击前询问两个入口分别会发生什么，记录原话；点击后对照实际目的地。",
+      "status": "not-run"
+    },
+    {
+      "kind": "technical",
+      "instruction": "另外检查键盘操作、焦点和可访问名称，不把通过技术检查等同于用户理解。",
+      "status": "not-run"
+    }
+  ],
+  "integration_note": "机器ID、场景、具体文案及检查步骤为本次整理新增；不包含真实用户结果。"
+}

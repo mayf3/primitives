@@ -1,0 +1,117 @@
+{
+  "domain": "writing",
+  "entries": [
+    {
+      "id": "writing.choose-angle",
+      "title": "选切口",
+      "kind": "action",
+      "summary": "从已有材料中选择本次值得讲的具体问题或处境，通过局部试写比较选择。",
+      "tags": [
+        "构思",
+        "切口",
+        "起草",
+        "受众",
+        "试写"
+      ],
+      "path": "ACTIONS.md#choose-angle"
+    },
+    {
+      "id": "writing.find-material",
+      "title": "找材料与标缺口",
+      "kind": "action",
+      "summary": "定位支撑具体说法的材料与范围，保留来源，明确尚缺信息。",
+      "tags": [
+        "材料",
+        "来源",
+        "证据",
+        "缺口",
+        "事实"
+      ],
+      "path": "ACTIONS.md#find-material"
+    },
+    {
+      "id": "writing.shape-middle",
+      "title": "搭中段",
+      "kind": "action",
+      "summary": "恢复各部分实际作用，调整组织和必要衔接，保留已经成立的内容。",
+      "tags": [
+        "结构",
+        "中段",
+        "论述",
+        "段落",
+        "重复"
+      ],
+      "path": "ACTIONS.md#shape-middle"
+    },
+    {
+      "id": "writing.connect-relations",
+      "title": "接关系",
+      "kind": "action",
+      "summary": "用有依据的支持、限定、对照或回应连接内容，检查先后与因果的区别。",
+      "tags": [
+        "逻辑",
+        "因果",
+        "回应",
+        "对谈",
+        "论证"
+      ],
+      "path": "ACTIONS.md#connect-relations"
+    },
+    {
+      "id": "writing.sequence-reveal",
+      "title": "调选材与揭示顺序",
+      "kind": "action",
+      "summary": "比较现有材料的选择与讲述顺序，记录信息覆盖变化和取舍。",
+      "tags": [
+        "选材",
+        "叙事",
+        "顺序",
+        "留白",
+        "比较"
+      ],
+      "path": "ACTIONS.md#sequence-reveal"
+    },
+    {
+      "id": "writing.tune-voice",
+      "title": "调声音",
+      "kind": "action",
+      "summary": "生成适合作者与媒介的局部表达，分别检查意义忠实、声音和实际可说性。",
+      "tags": [
+        "声音",
+        "口播",
+        "语感",
+        "角色",
+        "自然表达"
+      ],
+      "path": "ACTIONS.md#tune-voice"
+    },
+    {
+      "id": "writing.targeted-revision",
+      "title": "定向修补",
+      "kind": "action",
+      "summary": "锚定当前版本和具体问题，实施获得授权的修改并保护受影响内容。",
+      "tags": [
+        "修改",
+        "修补",
+        "局部",
+        "版本",
+        "锚点"
+      ],
+      "path": "ACTIONS.md#targeted-revision"
+    },
+    {
+      "id": "writing.review-and-stop",
+      "title": "回查与停笔",
+      "kind": "action",
+      "summary": "检查实际变更、前轮修复和未查范围，任务完成且无关键问题时停止。",
+      "tags": [
+        "回查",
+        "回归",
+        "停止",
+        "验证",
+        "定稿"
+      ],
+      "path": "ACTIONS.md#review-and-stop"
+    }
+  ]
+}

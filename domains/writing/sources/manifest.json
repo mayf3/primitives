@@ -1,0 +1,139 @@
+{
+  "imports": [
+    {
+      "id": "writing-pr1",
+      "kind": "git",
+      "repository": "mayf3/writing-primitives",
+      "revision": "44ed9bdc8d0d09c05648ee4d8a3223c8d087fa38",
+      "upstream_status": "draft-unmerged",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/44ed9bd/.gitignore",
+          "upstream_path": ".gitignore",
+          "sha256": "65229a2653dda533fc96e4f6fa954fe141afc847145a184215f2cd07514e367f"
+        },
+        {
+          "path": "sources/44ed9bd/CHANGELOG.md",
+          "upstream_path": "CHANGELOG.md",
+          "sha256": "5656de779410ee981fb256e35f11ba4ef496d27055de8a467021713c88c12d49"
+        },
+        {
+          "path": "sources/44ed9bd/PUBLICATION_CHECKLIST.md",
+          "upstream_path": "PUBLICATION_CHECKLIST.md",
+          "sha256": "52bb3fb8fc0dd6e87a27b424fc4934f8ef14eb7bf3252725a61d5a46a5a2fc7d"
+        },
+        {
+          "path": "sources/44ed9bd/README.md",
+          "upstream_path": "README.md",
+          "sha256": "f4e5a66ab284cb406967690567f01f61ff042b88cfb13bbde723d48bb73fcad2"
+        },
+        {
+          "path": "sources/44ed9bd/RESEARCH_BRIEF.md",
+          "upstream_path": "RESEARCH_BRIEF.md",
+          "sha256": "12c39314045f5a33986ff58019e41324f66a1764a61871dbc2ae7b09669143bd"
+        },
+        {
+          "path": "sources/44ed9bd/SKILL.md",
+          "upstream_path": "SKILL.md",
+          "sha256": "a9a77853c7b247e1d56a05c141a3b08028a94c49bf621906e7737f4a5b6f46c9"
+        },
+        {
+          "path": "sources/44ed9bd/examples/AUDIENCE_VALUE_COMPARISON.md",
+          "upstream_path": "examples/AUDIENCE_VALUE_COMPARISON.md",
+          "sha256": "0230f807eafd8c057a2747241ae84f2490dd8a488a7c7db88cbac540cb553c51"
+        },
+        {
+          "path": "sources/44ed9bd/examples/SMALL_PROBE_AND_NARRATIVE.md",
+          "upstream_path": "examples/SMALL_PROBE_AND_NARRATIVE.md",
+          "sha256": "e12953bf85ffde93f0960c496cf0a4aa1443429fdf90563084dab1c5ccedfd70"
+        },
+        {
+          "path": "sources/44ed9bd/examples/SYNTHETIC_REVIEW.md",
+          "upstream_path": "examples/SYNTHETIC_REVIEW.md",
+          "sha256": "e118ce8d85db114c4ae4a40fe6fc65277e1008fd0bbe5b2f333fff5674d8afec"
+        },
+        {
+          "path": "sources/44ed9bd/examples/model-comparison/BRIEFS.md",
+          "upstream_path": "examples/model-comparison/BRIEFS.md",
+          "sha256": "543ea4f14453a2142dcba8028455c8ef556afb78097d08f71d42c29c2bd51d6b"
+        },
+        {
+          "path": "sources/44ed9bd/examples/model-comparison/README.md",
+          "upstream_path": "examples/model-comparison/README.md",
+          "sha256": "ce5befbda3a01d0cf4c2fdaeb26e8181ff241d00eda323f5b3ef67db5b550f13"
+        },
+        {
+          "path": "sources/44ed9bd/examples/model-comparison/RECORD_TEMPLATE.md",
+          "upstream_path": "examples/model-comparison/RECORD_TEMPLATE.md",
+          "sha256": "868edbf0f98e786cae6e5f23fa7576d8cc448cd9f7fa98ac0300c0d1b0140776"
+        },
+        {
+          "path": "sources/44ed9bd/examples/voice/SYNTHETIC_VOICE_COMPARISONS.md",
+          "upstream_path": "examples/voice/SYNTHETIC_VOICE_COMPARISONS.md",
+          "sha256": "334ed04c0d906b4a85c9ce373156c36e3bc96c5422e5209972e3f8b67a01690f"
+        },
+        {
+          "path": "sources/44ed9bd/references/METHOD.md",
+          "upstream_path": "references/METHOD.md",
+          "sha256": "c8aa4a8b3151228239fc6a13e78ee8c7d221deeb6eebf0e77c8be618b5d7bd9a"
+        },
+        {
+          "path": "sources/44ed9bd/references/MIGRATION.md",
+          "upstream_path": "references/MIGRATION.md",
+          "sha256": "2279845c156fcc9deac648ab9991acebc2e407e172f9812a9b6b9dfadd9f9472"
+        },
+        {
+          "path": "sources/44ed9bd/references/RESEARCH_SEEDS.md",
+          "upstream_path": "references/RESEARCH_SEEDS.md",
+          "sha256": "453d4bf0e2f162b4336f5aa7c1a8c64f8567f346e7d69eab771ee0ed76fb3be2"
+        },
+        {
+          "path": "sources/44ed9bd/references/REVISION.md",
+          "upstream_path": "references/REVISION.md",
+          "sha256": "e2bda93151a78c7564630f1e3a5f699824eb497da9acc0da2260c27d7e8146be"
+        },
+        {
+          "path": "sources/44ed9bd/references/USAGE_AND_LESSONS.md",
+          "upstream_path": "references/USAGE_AND_LESSONS.md",
+          "sha256": "8ef46578b0257b9cfcbe2d0196c2dd14fb1862943cde61c3568237d8a005fa8b"
+        },
+        {
+          "path": "sources/44ed9bd/references/VOICE_TEXTURE.md",
+          "upstream_path": "references/VOICE_TEXTURE.md",
+          "sha256": "876ed8f5ed2356cd5c5d60ea60ad56da7e81be64d98e58e8280f46b77f84766c"
+        },
+        {
+          "path": "sources/44ed9bd/research-notes/AUDIENCE_OPEN_QUESTIONS.md",
+          "upstream_path": "research-notes/AUDIENCE_OPEN_QUESTIONS.md",
+          "sha256": "47935e6a8d1bc699088527e18afca8b737d1233c030ac7304fb62b2882a04524"
+        },
+        {
+          "path": "sources/44ed9bd/skills/natural-chinese-voice/SKILL.md",
+          "upstream_path": "skills/natural-chinese-voice/SKILL.md",
+          "sha256": "ee22ac384937b2e6b12dd624c596e510f17f520ab00f917581269304cc02e99b"
+        },
+        {
+          "path": "sources/44ed9bd/tests/AUDIENCE_CASES.md",
+          "upstream_path": "tests/AUDIENCE_CASES.md",
+          "sha256": "5fd897e3657044767f178e9008a9a554d1d1bfa90e49e1001a923c2eb752932d"
+        },
+        {
+          "path": "sources/44ed9bd/tests/CASES.md",
+          "upstream_path": "tests/CASES.md",
+          "sha256": "e9994316c9362965315ed129c2f86d9075bddb081983951ba415d8ffcb9c599a"
+        },
+        {
+          "path": "sources/44ed9bd/tests/EVALUATION.md",
+          "upstream_path": "tests/EVALUATION.md",
+          "sha256": "ebc137dae43b3d5762a2d01c5ad10f839c52e492e5d2672d373dcd8e7bc0b211"
+        },
+        {
+          "path": "sources/44ed9bd/tests/VOICE_CASES.md",
+          "upstream_path": "tests/VOICE_CASES.md",
+          "sha256": "077fb77c79f87fea66bcc6d835ebf6bc92a682136055ee2d44c8750b75ee03c5"
+        }
+      ]
+    }
+  ]
+}

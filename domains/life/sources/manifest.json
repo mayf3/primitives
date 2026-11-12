@@ -1,0 +1,54 @@
+{
+  "imports": [
+    {
+      "id": "life-state-v2",
+      "kind": "git",
+      "repository": "mayf3/personal-cognition-data",
+      "revision": "1ecfb09ec772e66ae5198581085fd12dc78c3485",
+      "upstream_status": "archived-data-snapshot",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/life-state-v2/README.md",
+          "upstream_path": "current/life/README.md",
+          "sha256": "1dea00bd324b76be68e474eeac66265ac038ca26252bd75a2d65feaae5934196"
+        },
+        {
+          "path": "sources/life-state-v2/_definitions/concept-definitions.md",
+          "upstream_path": "current/life/_definitions/concept-definitions.md",
+          "sha256": "4633a428eab40db8e870a3b98c2a1611a1b2b6401b357fbb1f95b4deabd82685"
+        }
+      ]
+    },
+    {
+      "id": "life-pca-v0",
+      "kind": "git",
+      "repository": "mayf3/personal-cognition-audit",
+      "revision": "c5e5cd953e5023fb49c09bc85823ae1427efca08",
+      "upstream_status": "main",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/pca-v0/README.md",
+          "upstream_path": "README.md",
+          "sha256": "b4b727563701cb2bec8ce8a231894e936f96213bb63eb87196e3d628dd70e8b5"
+        },
+        {
+          "path": "sources/pca-v0/DESIGN.md",
+          "upstream_path": "DESIGN.md",
+          "sha256": "241a4fb4ce158e28b967c67700a33039e3c3b17c00f32639739e02e705b2c877"
+        },
+        {
+          "path": "sources/pca-v0/PRINCIPLES.md",
+          "upstream_path": "PRINCIPLES.md",
+          "sha256": "02e7c34657c932c5171e786387a10820fd2ed614cd23557dd34a447cfa19ff96"
+        },
+        {
+          "path": "sources/pca-v0/FUTURE.md",
+          "upstream_path": "FUTURE.md",
+          "sha256": "897f397bfc71321dd8c0bec734249e2ff8ab85dec547d74539e0b65d06390fac"
+        }
+      ]
+    }
+  ]
+}
