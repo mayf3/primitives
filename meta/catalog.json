@@ -1,0 +1,17 @@
+{
+  "namespace": "meta",
+  "entries": [
+    {"id": "meta.definition", "title": "原语定义与公理类比", "kind": "definition", "summary": "相对任务、表示和成本定义原语，区分推导纪律与经验效果。", "tags": ["原语的原语", "元原语", "公理", "底层", "必要"], "path": "FRAMEWORK.md#definition"},
+    {"id": "meta.layers", "title": "分清定义、规则、组合与实现", "kind": "distinction", "summary": "区分对象、关系、动作、约束、组合、派生视图和表现形式，不统一领域本体。", "tags": ["层级", "架构", "原则", "语法", "实现", "快捷入口"], "path": "FRAMEWORK.md#layers"},
+    {"id": "meta.scope", "title": "约定任务与成本边界", "kind": "scope", "summary": "先明确任务、有效结果、默认能力和成本，才能判断基础或多余。", "tags": ["边界", "输入准备", "默认能力", "范围", "成本"], "path": "FRAMEWORK.md#scope"},
+    {"id": "meta.structure", "title": "辨认必须保留的结构", "kind": "construction", "summary": "从具体任务和相邻反例找出不能混淆的对象、关系、条件与身份。", "tags": ["结构", "语义", "关系", "不变量", "表面", "区别"], "path": "FRAMEWORK.md#structure"},
+    {"id": "meta.contract", "title": "定义责任与组合条件", "kind": "construction", "summary": "写清识别条件或输入、直接责任、产出和约束，让交接有实际依据。", "tags": ["组合", "接口", "契约", "推导", "输入输出", "责任"], "path": "FRAMEWORK.md#contract"},
+    {"id": "meta.minimality", "title": "检验最小性与独立性的主张", "kind": "criterion", "summary": "计算总使用负担，区分职责可分、相对不可删除和形式独立，识别假极简。", "tags": ["最简", "最小性", "独立性", "完备", "极简", "正交", "冗余"], "path": "FRAMEWORK.md#minimality"},
+    {"id": "meta.challenge", "title": "用反例修订候选", "kind": "construction", "summary": "通过删除重建、拆并、替换、组合和未见案例，决定保留、改写、降级或移出。", "tags": ["反例", "删除", "拆分", "合并", "验证", "未见案例"], "path": "FRAMEWORK.md#challenge"},
+    {"id": "meta.template", "title": "轻量构造卡与 Agent 任务", "kind": "template", "summary": "仅在设计或修订方法时记录必要内容，并分开定义、实施和真实使用结果。", "tags": ["模板", "本地Agent", "维护", "修订", "构造卡"], "path": "TEMPLATE.md"},
+    {"id": "meta.writing-example", "title": "写作例：从衔接回到内容关系", "kind": "example", "summary": "用固定合成材料区分先后与因果、个体与全体、观察与未来保证。", "tags": ["写作", "连接词", "因果", "材料", "声音"], "path": "EXAMPLES.md#writing"},
+    {"id": "meta.life-example", "title": "人生例：检验一个必要条件", "kind": "example", "summary": "从配齐工具的合成判断抽出可检验关系，保留观察、承诺、行动与证据分工。", "tags": ["人生", "必要条件", "工具", "判断", "证据"], "path": "EXAMPLES.md#life"},
+    {"id": "meta.design-example", "title": "交互例：入口预测与后继选择", "kind": "example", "summary": "用四种合成方案区分准确标签与合适后继，再说明如何删除重建。", "tags": ["设计", "交互", "下一步", "按钮", "PPT"], "path": "EXAMPLES.md#design"},
+    {"id": "meta.video-example", "title": "视频例：身份关系与比较分解", "kind": "example", "summary": "从 Current 与快照区分身份和派生，再检查比较是否能降为显式配方。", "tags": ["视频", "动画", "身份", "归档", "比较", "配方"], "path": "EXAMPLES.md#video"}
+  ]
+}

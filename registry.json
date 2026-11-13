@@ -2,7 +2,15 @@
   "schema_version": "1.0",
   "name": "primitives",
   "title": "原语系统",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "meta": {
+    "id": "meta",
+    "title": "原语的原语",
+    "version": "0.1.0",
+    "path": "meta",
+    "entrypoint": "README.md",
+    "catalog": "catalog.json"
+  },
   "modules": [
     {"id": "life", "path": "domains/life"},
     {"id": "writing", "path": "domains/writing"},

@@ -77,7 +77,20 @@ def load_index(root: Path):
         catalog = read_json(catalog_path)
         modules.append({**metadata, "directory": directory})
         for entry in catalog["entries"]:
-            entries.append({**entry, "domain": module["id"], "directory": directory})
+            entries.append({**entry, "scope": module["id"], "domain": module["id"], "directory": directory})
+    meta = registry.get("meta")
+    if meta is not None:
+        if not isinstance(meta, dict) or meta.get("path") != "meta":
+            raise ValueError("Invalid meta path: expected meta")
+        directory = root / meta["path"]
+        if not inside(directory, root):
+            raise ValueError("Meta directory escapes repository")
+        catalog_path = directory / meta["catalog"]
+        if not inside(catalog_path, directory):
+            raise ValueError("Catalog escapes meta directory")
+        catalog = read_json(catalog_path)
+        for entry in catalog["entries"]:
+            entries.append({**entry, "scope": "meta", "domain": None, "directory": directory})
     return registry, modules, entries
 
 
@@ -85,7 +98,7 @@ def entry_body(entry: dict) -> str:
     relative, fragment = urldefrag(entry["path"])
     target = (entry["directory"] / relative).resolve()
     if not inside(target, entry["directory"]):
-        raise ValueError(f"Entry escapes domain: {entry['id']}")
+        raise ValueError(f"Entry escapes scope: {entry['id']}")
     text = target.read_text(encoding="utf-8")
     if not fragment:
         return text.strip()
@@ -126,14 +139,32 @@ def validate(root: Path) -> tuple[list[str], dict]:
     module_ids = [m["id"] for m in modules]
     if len(module_ids) != len(set(module_ids)):
         errors.append("Duplicate module ID")
+    if "meta" in module_ids:
+        errors.append("meta is a separate scope, not a domain module")
     entry_ids = [e["id"] for e in entries]
     if len(entry_ids) != len(set(entry_ids)):
         errors.append("Duplicate catalog ID")
-    known = set(entry_ids)
+    known_domain_methods = {entry["id"] for entry in entries if entry["domain"] is not None}
     versions = {m["id"]: m.get("version") for m in modules}
     immutable: set[Path] = set()
     import_ids: set[str] = set()
     validators: list[Path] = []
+
+    meta = registry.get("meta")
+    if meta is not None:
+        directory = root / meta["path"]
+        if meta.get("id") != "meta":
+            errors.append("meta: ID must be meta")
+        for field in ("id", "title", "version", "path", "entrypoint", "catalog"):
+            if field not in meta:
+                errors.append(f"meta: missing metadata field {field}")
+        if not re.fullmatch(r"\d+\.\d+\.\d+", str(meta.get("version", ""))):
+            errors.append("meta: use an explicit version")
+        for field in ("entrypoint", "catalog"):
+            check_ref(directory, meta.get(field), directory, errors, f"meta.{field}")
+        catalog = read_json(directory / meta["catalog"])
+        if catalog.get("namespace") != "meta":
+            errors.append("meta: catalog namespace mismatch")
 
     for module in modules:
         directory = module["directory"]
@@ -187,7 +218,7 @@ def validate(root: Path) -> tuple[list[str], dict]:
         for field in ("id", "title", "kind", "summary", "tags", "path"):
             if field not in entry:
                 errors.append(f"{label}: missing catalog field {field}")
-        if not label.startswith(entry["domain"] + "."):
+        if not isinstance(label, str) or not label.startswith(entry["scope"] + "."):
             errors.append(f"{label}: wrong catalog namespace")
         if not isinstance(entry.get("tags"), list) or not all(isinstance(t, str) for t in entry.get("tags", [])):
             errors.append(f"{label}: tags must be strings")
@@ -224,16 +255,20 @@ def validate(root: Path) -> tuple[list[str], dict]:
             if record["id"] != label:
                 errors.append(f"{label}: bridge record ID mismatch")
             for name, version in record["module_versions"].items():
-                if versions.get(name) != version:
+                if name not in versions:
+                    errors.append(f"{label}: unknown bridge domain {name}")
+                elif versions[name] != version:
                     errors.append(f"{label}: review composition after {name} version changes")
             step_ids = [s["id"] for s in record["steps"]]
             if len(step_ids) != len(set(step_ids)):
                 errors.append(f"{label}: duplicate step ID")
             for step in record["steps"]:
+                if step["domain"] not in versions:
+                    errors.append(f"{label}: step domain is not a registered domain: {step['domain']}")
                 if step["domain"] not in record["module_versions"]:
                     errors.append(f"{label}: step domain version is not pinned")
                 for used in step["uses"]:
-                    if used not in known:
+                    if used not in known_domain_methods:
                         errors.append(f"{label}: unknown method reference {used}")
                     if not used.startswith(step["domain"] + "."):
                         errors.append(f"{label}: method reference belongs to another step domain")
@@ -259,14 +294,16 @@ def validate(root: Path) -> tuple[list[str], dict]:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="按领域查找原语，并检查结构和来源。")
+    parser = argparse.ArgumentParser(description="查找领域原语与元层方法，并检查结构和来源。")
     parser.add_argument("--root", type=Path, default=ROOT, help="另一个原语仓库根目录")
     sub = parser.add_subparsers(dest="command", required=True)
     listing = sub.add_parser("list", help="列出可调用条目")
-    listing.add_argument("--domain")
     searching = sub.add_parser("find", help="搜索工作索引与定义，忽略历史来源")
     searching.add_argument("query")
-    searching.add_argument("--domain")
+    for command in (listing, searching):
+        filters = command.add_mutually_exclusive_group()
+        filters.add_argument("--domain", help="仅查指定领域，不含元层")
+        filters.add_argument("--scope", help="查 meta 元层或指定领域 ID")
     showing = sub.add_parser("show", help="显示一个条目的工作定义")
     showing.add_argument("id")
     sub.add_parser("validate", help="检查结构、来源和显式组合；不验证效果")
@@ -281,12 +318,19 @@ def main(argv=None) -> int:
         print("仅通过结构与来源一致性检查；不代表真人、创作或人生判断验证。")
         return 0
     try:
-        _, modules, entries = load_index(args.root)
+        registry, modules, entries = load_index(args.root)
         domain = getattr(args, "domain", None)
-        if domain and domain not in {module["id"] for module in modules}:
+        scope = getattr(args, "scope", None)
+        domain_ids = {module["id"] for module in modules}
+        if domain and domain not in domain_ids:
             parser.error(f"未知领域：{domain}")
+        scopes = domain_ids | ({"meta"} if registry.get("meta") is not None else set())
+        if scope and scope not in scopes:
+            parser.error(f"未知检索范围：{scope}")
         if domain:
             entries = [entry for entry in entries if entry["domain"] == domain]
+        if scope:
+            entries = [entry for entry in entries if entry["scope"] == scope]
         if args.command == "find":
             entries = find_entries(entries, args.query)
         if args.command == "show":
@@ -294,13 +338,14 @@ def main(argv=None) -> int:
             if entry is None:
                 print(f"找不到条目：{args.id}", file=sys.stderr)
                 return 1
-            print(f"{entry['id']} · {entry['title']}\n来源位置：domains/{entry['domain']}/{entry['path']}\n")
+            directory = entry["directory"].resolve().relative_to(args.root.resolve()).as_posix()
+            print(f"{entry['id']} · {entry['title']}\n来源位置：{directory}/{entry['path']}\n")
             print(entry_body(entry))
             return 0
         for entry in entries:
             print(f"{entry['id']} | {entry['title']} | {entry['summary']}")
         if not entries:
-            print("没有匹配条目。请从该领域 GUIDE.md 查找适用方法。")
+            print("没有匹配条目。请从元层 README.md 或相应领域 GUIDE.md 查找适用方法。")
         return 0
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f"无法读取索引：{exc}", file=sys.stderr)
