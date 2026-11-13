@@ -1,0 +1,181 @@
+{
+  "id": "video.example.current-archive",
+  "title": "Current 持续更新，Archive 保存派生快照",
+  "version": "0.1.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_id": "video-upload-20261113",
+    "report_section": "交付七｜05:00–05:30 的未核验候选诊断；本例时序为整合时新增",
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": [
+      "仅据上传报告整理的合成分镜，不是 EP03 原视频审查或已实施改版。",
+      "计划时长属于新分镜；不能当作原视频源范围或声画对齐结果。"
+    ]
+  },
+  "semantic": {
+    "question": "继续修改的文档与用于回看的历史快照是什么关系？",
+    "understanding_goal": "能指出唯一继续编辑的 Current，以及从它派生但身份不同的两份快照。",
+    "feeling_goal": "用稳定位置与少量变化形成清晰、安心的版本感。",
+    "objects": [
+      {
+        "id": "project",
+        "label": "示例项目"
+      },
+      {
+        "id": "current",
+        "label": "Current：继续编辑"
+      },
+      {
+        "id": "archive-v1",
+        "label": "Archive v1：第一次快照"
+      },
+      {
+        "id": "archive-v2",
+        "label": "Archive v2：第二次快照"
+      }
+    ],
+    "relations": [
+      {
+        "from": "current",
+        "to": "project",
+        "type": "member-of",
+        "label": "工作文档位于项目内"
+      },
+      {
+        "from": "archive-v1",
+        "to": "project",
+        "type": "member-of",
+        "label": "历史快照位于项目内"
+      },
+      {
+        "from": "archive-v2",
+        "to": "project",
+        "type": "member-of",
+        "label": "历史快照位于项目内"
+      },
+      {
+        "from": "current",
+        "to": "archive-v1",
+        "type": "derived-copy",
+        "label": "时点一复制出的新对象"
+      },
+      {
+        "from": "current",
+        "to": "archive-v2",
+        "type": "derived-copy",
+        "label": "时点二复制出的新对象"
+      }
+    ],
+    "must_preserve": [
+      "Current 在原位更新，身份不变；Archive v1/v2 是具有各自 ID 的新副本。",
+      "制作复制动作时同时保留 Current；不能把 Current 消失变成 Archive。",
+      "这是示例版本约定，不代表所有工具或 EP03 真实工程均如此。"
+    ]
+  },
+  "presentation": {
+    "primitives": [
+      "video.focus",
+      "video.group",
+      "video.identity-preserve",
+      "video.reference-lock",
+      "video.correspond",
+      "video.hold"
+    ],
+    "planned_duration_seconds": 48,
+    "focus_schedule": [
+      {
+        "start": 0,
+        "end": 8,
+        "target": "project",
+        "action": "固定项目边界，标定 Current 的位置。"
+      },
+      {
+        "start": 8,
+        "end": 18,
+        "target": "current",
+        "action": "只改文档内部内容，标签和位置不变。"
+      },
+      {
+        "start": 18,
+        "end": 28,
+        "target": "archive-v1",
+        "action": "从 Current 复制出独立快照；Current 保持可见。"
+      },
+      {
+        "start": 28,
+        "end": 34,
+        "target": "current",
+        "action": "Current 再修改，v1 不随它更新。"
+      },
+      {
+        "start": 34,
+        "end": 40,
+        "target": "archive-v2",
+        "action": "派生另一快照，标出不同版本标签。"
+      }
+    ],
+    "holds": [
+      {
+        "start": 40,
+        "end": 48,
+        "visible": [
+          "project",
+          "current",
+          "archive-v1",
+          "archive-v2"
+        ]
+      }
+    ],
+    "end_state": [
+      "project",
+      "current",
+      "archive-v1",
+      "archive-v2"
+    ]
+  },
+  "render": {
+    "engine": "remotion",
+    "status": "proposed",
+    "implemented": false,
+    "artifacts": [],
+    "layout": "固定项目容器；Current 与 Archive 区分区域，标签和符号同时编码。",
+    "atmosphere": "复制动作轻而清楚，动后安静停留；不使用让原对象消失的变形特效。"
+  },
+  "validation": {
+    "factual": {
+      "status": "pending",
+      "checks": [
+        "真实应用前核对项目实际保存规则与目录约定。",
+        "审查动画是否错误暗示快照会持续同步或 Current 被移动消失。"
+      ],
+      "records": []
+    },
+    "accessibility": {
+      "status": "pending",
+      "checks": [
+        "实际渲染后检查手机竖持缩小下的标签可读性。",
+        "检查字幕同步、遮挡、颜色以外的辨识线索和闪烁。"
+      ],
+      "records": []
+    },
+    "viewer": {
+      "status": "untested",
+      "observations": [],
+      "understanding_tasks": [
+        "下一次要继续改论文，应打开哪一份？",
+        "修改 Current 后，Archive v1 会自动改变吗？",
+        "把快照换成照片备份，能否解释同样的派生关系？"
+      ],
+      "feeling_questions": [
+        "哪个动作帮助你感到版本有条理？",
+        "复制过程是否太慢，还是停留时间不够看清？"
+      ]
+    }
+  }
+}

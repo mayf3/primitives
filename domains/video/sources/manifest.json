@@ -1,0 +1,18 @@
+{
+  "imports": [
+    {
+      "id": "video-upload-20261113",
+      "kind": "user-upload",
+      "uploaded_name": "貼上的文字 (1)(3).txt",
+      "original_date": "unknown",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/research-original.txt",
+          "upstream_path": "貼上的文字 (1)(3).txt",
+          "sha256": "5411718474f59b8db349a78dcbfe8f8736cd961647e21803c3a82f008f54f004"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "domain": "video",
+  "entries": [
+    {
+      "id": "video.focus",
+      "title": "定焦",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "突出当前注意对象或关系，让其他信息退为支撑。",
+      "tags": ["注意", "焦点", "显著性", "节奏"],
+      "path": "PRIMITIVES.md#focus"
+    },
+    {
+      "id": "video.correspond",
+      "title": "对应",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "把话语、标签、图形或实物之间已明确的映射显式呈现。",
+      "tags": ["映射", "声画", "标签", "配对", "同步"],
+      "path": "PRIMITIVES.md#correspond"
+    },
+    {
+      "id": "video.align-compare",
+      "title": "对齐比较",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "在共同维度和条件下保持共同项稳定，显出方案差异。",
+      "tags": ["比较", "差异", "方案", "选择", "共同维度"],
+      "path": "PRIMITIVES.md#align-compare"
+    },
+    {
+      "id": "video.group",
+      "title": "编组归属",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "用有明确含义的边界表达分类、包含或作用范围。",
+      "tags": ["编组", "归属", "层级", "包含", "作用范围"],
+      "path": "PRIMITIVES.md#group"
+    },
+    {
+      "id": "video.serial-path",
+      "title": "串联路径",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "标清箭头含义，将先后、因果、输入输出或依赖变成可追踪路径。",
+      "tags": ["流程", "路径", "先后", "因果", "输入输出", "依赖"],
+      "path": "PRIMITIVES.md#serial-path"
+    },
+    {
+      "id": "video.identity-preserve",
+      "title": "保持身份",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "在同一实体变化时保留识别线索，并区分复制、派生与替换。",
+      "tags": ["身份", "状态", "变化", "连续", "复制", "派生"],
+      "path": "PRIMITIVES.md#identity-preserve"
+    },
+    {
+      "id": "video.reference-lock",
+      "title": "锁定参照",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "固定与任务有关的尺度、旧状态或锚点，让变化有比较基准。",
+      "tags": ["参照", "基准", "旧状态", "坐标", "变化量"],
+      "path": "PRIMITIVES.md#reference-lock"
+    },
+    {
+      "id": "video.scale-viewpoint",
+      "title": "改变尺度／视点",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "先定位，再改变同一对象的观察范围或方向，保留整体与局部关系。",
+      "tags": ["尺度", "视点", "整体", "局部", "空间", "定位"],
+      "path": "PRIMITIVES.md#scale-viewpoint"
+    },
+    {
+      "id": "video.hold",
+      "title": "留停成像",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "关键关系形成后暂停新增视觉事件，让结果成为可检视的稳定画面。",
+      "tags": ["停留", "静态", "结果", "节奏", "整合", "呼吸"],
+      "path": "PRIMITIVES.md#hold"
+    },
+    {
+      "id": "video.evidence-ground",
+      "title": "证据落地",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "区分解释示意与实际材料，展示可追溯依据及其支持范围。",
+      "tags": ["证据", "实录", "事实", "来源", "示意", "执行结果"],
+      "path": "PRIMITIVES.md#evidence-ground"
+    }
+  ]
+}

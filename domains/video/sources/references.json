@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "domain": "video",
+  "checked_at": "2026-11-13",
+  "timezone": "Asia/Shanghai",
+  "scope": "本轮仅补充直接打开的官方规范说明、行业指南和实现文档；未重做文献综述或观看EP03视频。",
+  "imported_report": {
+    "source_id": "video-upload-20261113",
+    "path": "research-original.txt",
+    "original_date": "unknown",
+    "citation_resolution_status": "unresolved",
+    "original_grades": "A/B/C/D 是原报告作者分级；不等于本轮独立核验，也不统一标准与效果证据。",
+    "media_accessed": false,
+    "transcript_verified": false,
+    "source_timestamps_verified": false
+  },
+  "entries": [
+    {
+      "id": "video.source.wcag-captions",
+      "title": "Understanding SC 1.2.2: Captions (Prerecorded)",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html",
+      "kind": "official-standard-explanation",
+      "standard_url": "https://www.w3.org/TR/WCAG22/",
+      "criterion": "1.2.2",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "预录同步媒体字幕要求及文本替代媒体的例外；字幕包括理解所需的说话者和非语音声音信息。",
+      "limits": "Understanding 页面为说明性材料；本次不是对具体成片或播放器的合规评估，也不验证学习效果。"
+    },
+    {
+      "id": "video.source.wcag-color",
+      "title": "Understanding SC 1.4.1: Use of Color",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+      "kind": "official-standard-explanation",
+      "standard_url": "https://www.w3.org/TR/WCAG22/",
+      "criterion": "1.4.1",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "必要信息、动作或区分不能仅由颜色表达；可通过文字、形状等额外视觉线索补足。",
+      "limits": "不能把灰度检查通过等同于全部无障碍条件通过；本条不涵盖所有对比度要求。"
+    },
+    {
+      "id": "video.source.wcag-pause",
+      "title": "Understanding SC 2.2.2: Pause, Stop, Hide",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+      "kind": "official-standard-explanation",
+      "standard_url": "https://www.w3.org/TR/WCAG22/",
+      "criterion": "2.2.2",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "自动开始、超过五秒且与其他内容并行的移动/眨动/滚动信息需要可控机制，必要活动有例外；自动更新信息另有不以五秒为前提的条件。",
+      "limits": "应对具体网页、播放器和播放触发方式判断适用性；不要求每个视频内部动作单独安装暂停按钮。"
+    },
+    {
+      "id": "video.source.wcag-flashes",
+      "title": "Understanding SC 2.3.1: Three Flashes or Below Threshold",
+      "publisher": "W3C",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html",
+      "kind": "official-standard-explanation",
+      "standard_url": "https://www.w3.org/TR/WCAG22/",
+      "criterion": "2.3.1",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "网页内容不得在任一秒内超过三次闪烁，或闪烁须低于一般闪烁与红色闪烁阈值。",
+      "limits": "不能仅凭帧率、暂停按钮、肉眼印象或动画参数判定通过；本次没有测量任何成片。"
+    },
+    {
+      "id": "video.source.ibm-motion-overview",
+      "title": "IBM Design Language — Animation: Overview",
+      "publisher": "IBM",
+      "url": "https://www.ibm.com/design/language/animation/overview/",
+      "kind": "industry-guidance",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "运动应服务既有意义；productive 与 expressive motion 是两类可配合的表达取向。",
+      "limits": "属于IBM设计经验与品牌语言，不是学习效果实验，不证明本报告十项原语的最小完备性。"
+    },
+    {
+      "id": "video.source.ibm-motion-techniques",
+      "title": "IBM Design Language — Animation: Tips and techniques",
+      "publisher": "IBM",
+      "url": "https://www.ibm.com/design/language/animation/tips-and-techniques/",
+      "kind": "industry-guidance",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "焦点交接、复杂构图降低动作复杂度、节奏与动后停留等制作建议。",
+      "limits": "具体强度、时长与审美适用性须在作品中检验；不把IBM帧率或品牌偏好作为本模块普遍门槛。"
+    },
+    {
+      "id": "video.source.remotion-sequence",
+      "title": "Sequence component",
+      "publisher": "Remotion",
+      "url": "https://www.remotion.dev/docs/sequence",
+      "kind": "implementation-documentation",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "from、durationInFrames 及子时间线的时序含义；当前页面说明不再推荐直接使用Sequence，相关组件可使用或继承时序属性。",
+      "limits": "只支持实现层；实际API须按制作项目固定版本复核，不反推录制时实现，不将组件当原语。"
+    },
+    {
+      "id": "video.source.remotion-caption",
+      "title": "Caption",
+      "publisher": "Remotion",
+      "url": "https://www.remotion.dev/docs/captions/caption",
+      "kind": "implementation-documentation",
+      "status": "page-checked",
+      "checked_at": "2026-11-13",
+      "verified_scope": "Caption 结构包含text、startMs、endMs等字幕信息，开始和结束时间用毫秒表示。",
+      "limits": "字幕数据格式本身不保证识别正确、说话者完整、同步准确或画面可读；实际项目按固定版本复核。"
+    }
+  ],
+  "verification_not_performed": [
+    "原报告全部旧会话引用的解析",
+    "Mayer等原始论文、元分析统计和效果量的独立核对",
+    "ITU/EBU及中国标准的完整核验",
+    "EP03媒体、逐字稿和六个源时间码核对",
+    "任何视频改版实施、成片审看或真实观众测试"
+  ]
+}

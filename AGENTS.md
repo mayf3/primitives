@@ -7,7 +7,8 @@
 1. 事实、判断、取舍、行动：读 `domains/life/GUIDE.md`。
 2. 构思、组织、改写、声音：读 `domains/writing/GUIDE.md`。
 3. 理解页面、比较选择、操作与反馈：读 `domains/design/GUIDE.md`。
-4. 确有多领域任务：读 `bridges/explain-and-guide.md`，只交接必要材料。
+4. 视频里的对象、关系、节奏、声画与感受：读 `domains/video/GUIDE.md`。
+5. 确有多领域任务：页面解释读 `bridges/explain-and-guide.md`；讲稿到视频与观看入口读 `bridges/script-to-video.md`。只交接必要材料。
 
 默认不要一次加载全部来源。用 `python3 tools/primitives.py find '问题词'` 或 `show <id>` 定位具体条目。
 
@@ -18,6 +19,7 @@
 - Life State 与 PCA V0 的状态、ID、Decision 规则分开，按人生模块兼容说明选用；不混写真实数据。
 - 原文、作者/编辑新解释、成品分别追溯。材料可以支持新解释，不能被新解释反向改写。
 - 来源已核对、代码已实施、真实用户已验证分别说明；静态检查不能替代效果证据。
+- 视频候选原语、分镜提案、实际渲染与观众结果分开；源媒体时间不等于计划片段时间，流程示意不等于真实执行证据。
 - 真实个人记录、线上行为数据和项目运行状态属于原系统。除非另有明确任务，不把它们搬入本方法仓库。
 
 ## 修改规则

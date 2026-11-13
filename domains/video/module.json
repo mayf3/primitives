@@ -1,0 +1,11 @@
+{
+  "id": "video",
+  "title": "视频呈现原语",
+  "version": "0.1.0",
+  "description": "按观看困难与目标感受选择呈现动作，独立维护十项候选原语、组合分镜、风格和验证；数量与效果均待真实应用检验。",
+  "entrypoint": "README.md",
+  "guide": "GUIDE.md",
+  "catalog": "catalog.json",
+  "depends_on": [],
+  "validators": ["check.py"]
+}

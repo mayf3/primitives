@@ -1,0 +1,197 @@
+{
+  "id": "video.example.decision-gate",
+  "title": "Brainstorm → 人选择 → Plan → Execute",
+  "version": "0.1.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_id": "video-upload-20261113",
+    "report_section": "交付八｜片段 B：Brainstorm → Plan → Execute",
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": [
+      "仅据上传报告整理的合成分镜，不是 EP03 原视频审查或已实施改版。",
+      "计划时长属于新分镜；不能当作原视频源范围或声画对齐结果。"
+    ]
+  },
+  "semantic": {
+    "question": "提出选项、选择方向、形成计划和执行是怎样交接的？",
+    "understanding_goal": "能重建带人确认环节的顺序，分清计划形成与真实执行成功。",
+    "feeling_goal": "从模糊逐步收敛；把唯一较明显的声画强调留给人确认。",
+    "objects": [
+      {
+        "id": "need",
+        "label": "模糊需求"
+      },
+      {
+        "id": "brainstorm",
+        "label": "Brainstorm：澄清条件"
+      },
+      {
+        "id": "options",
+        "label": "AI 提出候选"
+      },
+      {
+        "id": "human",
+        "label": "人确认方向"
+      },
+      {
+        "id": "plan",
+        "label": "Plan：新的计划文档"
+      },
+      {
+        "id": "execute",
+        "label": "Execute：开始执行"
+      }
+    ],
+    "relations": [
+      {
+        "from": "need",
+        "to": "brainstorm",
+        "type": "input-to",
+        "label": "作为澄清输入"
+      },
+      {
+        "from": "brainstorm",
+        "to": "options",
+        "type": "produces",
+        "label": "形成候选"
+      },
+      {
+        "from": "options",
+        "to": "human",
+        "type": "input-to",
+        "label": "交由人选择"
+      },
+      {
+        "from": "human",
+        "to": "plan",
+        "type": "authorizes",
+        "label": "确认后形成计划"
+      },
+      {
+        "from": "plan",
+        "to": "execute",
+        "type": "guides",
+        "label": "按计划开始执行"
+      }
+    ],
+    "must_preserve": [
+      "人确认门必须可见；AI 提出候选不等于已替人作决定。",
+      "需求澄清时可以保持同一需求身份；Plan 是派生文档，不能把选项与计划冒充同一对象。",
+      "执行开始时 Plan 仍可见；最后没有真实完成标志或成功勾选。",
+      "这是一种情境配方，不把人确认要求或具体问法宣称为所有 Agent 的固定协议。"
+    ]
+  },
+  "presentation": {
+    "primitives": [
+      "video.focus",
+      "video.group",
+      "video.align-compare",
+      "video.identity-preserve",
+      "video.serial-path",
+      "video.reference-lock",
+      "video.hold"
+    ],
+    "planned_duration_seconds": 78,
+    "focus_schedule": [
+      {
+        "start": 0,
+        "end": 12,
+        "target": "need",
+        "action": "出现一份待澄清需求，保留稳定位置。"
+      },
+      {
+        "start": 12,
+        "end": 30,
+        "target": "brainstorm",
+        "action": "补齐条件；原需求仍可定位，不整屏换位。"
+      },
+      {
+        "start": 30,
+        "end": 46,
+        "target": "options",
+        "action": "候选在共同维度下并置，不自动选中。"
+      },
+      {
+        "start": 46,
+        "end": 56,
+        "target": "human",
+        "action": "仅确认门得到一次克制的声音与局部对比强调。"
+      },
+      {
+        "start": 56,
+        "end": 67,
+        "target": "plan",
+        "action": "保留确认来源，将结果写入新文档并明确派生关系。"
+      },
+      {
+        "start": 67,
+        "end": 72,
+        "target": "execute",
+        "action": "从 Plan 指向开始执行；Plan 留作参照。"
+      }
+    ],
+    "holds": [
+      {
+        "start": 72,
+        "end": 78,
+        "visible": [
+          "human",
+          "plan",
+          "execute"
+        ]
+      }
+    ],
+    "end_state": [
+      "human",
+      "plan",
+      "execute"
+    ]
+  },
+  "render": {
+    "engine": "remotion",
+    "status": "proposed",
+    "implemented": false,
+    "artifacts": [],
+    "layout": "逐段展开有标签的方向关系；手机视图避免把全部六节点挤在一行。",
+    "atmosphere": "环境保持低频变化；人确认处一次轻微声音落点，最后以安静参照画面收束。",
+    "evidence_policy": "仅流程示意。未来有真实输出时另加证据落地段，并重新计算总时长。"
+  },
+  "validation": {
+    "factual": {
+      "status": "pending",
+      "checks": [
+        "以真实逐字稿核对 Plan 生成时点及人的职责。",
+        "核对所演示工具及版本，不能把示意箭头当成操作记录。",
+        "若追加真实结果，记录原始素材、来源范围和其能支持的具体结论。"
+      ],
+      "records": []
+    },
+    "accessibility": {
+      "status": "pending",
+      "checks": [
+        "实际渲染后检查手机竖持缩小下的标签可读性。",
+        "检查字幕同步、遮挡、颜色以外的辨识线索和闪烁。"
+      ],
+      "records": []
+    },
+    "viewer": {
+      "status": "untested",
+      "observations": [],
+      "understanding_tasks": [
+        "打乱节点后，重排 Brainstorm、人确认、Plan、Execute。",
+        "谁最终选择方向？计划在何时出现？",
+        "最后一个执行箭头能否证明真实任务已经完成？为什么？"
+      ],
+      "feeling_questions": [
+        "哪一刻最值得记住，强调是否帮到了你？",
+        "流程图是否太生硬，声音是否抢走了理解注意？"
+      ]
+    }
+  }
+}

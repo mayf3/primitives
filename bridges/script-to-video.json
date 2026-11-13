@@ -1,0 +1,47 @@
+{
+  "id": "bridge.script-to-video",
+  "title": "从讲稿到视频与观看入口",
+  "example_status": "synthetic",
+  "outcome": "not-run",
+  "module_versions": {"writing": "0.1.0", "video": "0.1.0", "design": "0.1.0"},
+  "steps": [
+    {
+      "id": "write-script",
+      "domain": "writing",
+      "uses": ["writing.choose-angle", "writing.connect-relations"],
+      "input": "合成约定：Current继续编辑，历史快照保留；没有真实节目逐字稿",
+      "output": "讲稿提案、材料位置、新增解释与尚待核对的关系"
+    },
+    {
+      "id": "present-video",
+      "domain": "video",
+      "uses": ["video.focus", "video.group", "video.identity-preserve", "video.reference-lock", "video.correspond", "video.hold"],
+      "input": "讲稿提案与语义边界",
+      "output": "48秒Current/Archive合成分镜与理解/感受检查；尚未渲染、未做观众测试"
+    },
+    {
+      "id": "guide-viewing",
+      "domain": "design",
+      "uses": ["design.entry-outcome", "design.position-progress"],
+      "input": "计划内容、预计时长和未实施状态；未来实际产物需重新核对",
+      "output": "观看入口与章节位置提案，不能使用尚未完成的可观看承诺"
+    }
+  ],
+  "handoffs": [
+    {
+      "from": "write-script",
+      "to": "present-video",
+      "relation": "informs",
+      "payload": "稿件版本、来源、新增解释、关系与未解决问题",
+      "requires": "未知关系不画成事实；同一对象与派生对象分开"
+    },
+    {
+      "from": "present-video",
+      "to": "guide-viewing",
+      "relation": "informs",
+      "payload": "内容承诺、计划/实际状态、时长、字幕与播放条件",
+      "requires": "公开完成态入口必须有实际产物；渲染不等于观众验证"
+    }
+  ],
+  "observations": []
+}

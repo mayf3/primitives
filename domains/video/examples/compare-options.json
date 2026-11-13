@@ -1,0 +1,196 @@
+{
+  "id": "video.example.compare-options",
+  "title": "先翻译、先改实验，还是先规划结构？",
+  "version": "0.1.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_id": "video-upload-20261113",
+    "report_section": "交付八｜片段 A：先翻译，还是先脑暴定方案",
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": [
+      "仅据上传报告整理的合成分镜，不是 EP03 原视频审查或已实施改版。",
+      "计划时长属于新分镜；不能当作原视频源范围或声画对齐结果。"
+    ]
+  },
+  "semantic": {
+    "question": "读完论文后，三个候选方向是可选方案，还是必须依次执行的步骤？",
+    "understanding_goal": "能按共同目标比较三个选择，并说出谁最后作出选择。",
+    "feeling_goal": "从杂乱选择中逐渐获得清楚、从容的感觉；只在人做选择时形成一次轻微强调。",
+    "objects": [
+      {
+        "id": "goal",
+        "label": "准备投稿"
+      },
+      {
+        "id": "options",
+        "label": "三个候选方向"
+      },
+      {
+        "id": "translate",
+        "label": "先逐字翻译"
+      },
+      {
+        "id": "revise",
+        "label": "先改实验"
+      },
+      {
+        "id": "structure",
+        "label": "先规划结构"
+      },
+      {
+        "id": "human",
+        "label": "人作选择"
+      }
+    ],
+    "relations": [
+      {
+        "from": "translate",
+        "to": "options",
+        "type": "member-of",
+        "label": "候选之一"
+      },
+      {
+        "from": "revise",
+        "to": "options",
+        "type": "member-of",
+        "label": "候选之一"
+      },
+      {
+        "from": "structure",
+        "to": "options",
+        "type": "member-of",
+        "label": "候选之一"
+      },
+      {
+        "from": "options",
+        "to": "goal",
+        "type": "serves",
+        "label": "面向同一目标"
+      },
+      {
+        "from": "human",
+        "to": "options",
+        "type": "chooses-among",
+        "label": "由人选择，不自动排序"
+      }
+    ],
+    "comparison_dimensions": [
+      "先改变什么",
+      "需要先确认什么",
+      "主要不确定性"
+    ],
+    "must_preserve": [
+      "三个选项使用共同尺度和相同维度；无数据支持时不标最优分数。",
+      "不在三个选项之间画步骤箭头；人选择与 AI 提供选项分开。",
+      "具体方案优劣是待核的新增解释，不作为 EP03 原话。"
+    ]
+  },
+  "presentation": {
+    "primitives": [
+      "video.focus",
+      "video.align-compare",
+      "video.group",
+      "video.reference-lock",
+      "video.hold"
+    ],
+    "planned_duration_seconds": 72,
+    "focus_schedule": [
+      {
+        "start": 0,
+        "end": 10,
+        "target": "goal",
+        "action": "先说明共同目标，背景保持稳定。"
+      },
+      {
+        "start": 10,
+        "end": 25,
+        "target": "options",
+        "action": "三个候选同尺度并置，出现后静止。"
+      },
+      {
+        "start": 25,
+        "end": 42,
+        "target": "options",
+        "action": "沿共同维度比较，保持相同项位置；差异逐项说明。"
+      },
+      {
+        "start": 42,
+        "end": 58,
+        "target": "human",
+        "action": "仅人选择的位置增强对比，选项仍留作参照。"
+      },
+      {
+        "start": 58,
+        "end": 66,
+        "target": "options",
+        "action": "回到差异总览，明确这里是选择而不是流程。"
+      }
+    ],
+    "holds": [
+      {
+        "start": 66,
+        "end": 72,
+        "visible": [
+          "goal",
+          "options",
+          "translate",
+          "revise",
+          "structure",
+          "human"
+        ]
+      }
+    ],
+    "end_state": [
+      "goal",
+      "options",
+      "translate",
+      "revise",
+      "structure",
+      "human"
+    ]
+  },
+  "render": {
+    "engine": "remotion",
+    "status": "proposed",
+    "implemented": false,
+    "artifacts": [],
+    "layout": "并列比较；手机窄屏可改为共同维度下的纵向对齐。",
+    "atmosphere": "低密度海景与固定地平线；语义解释时压低环境运动和音乐。"
+  },
+  "validation": {
+    "factual": {
+      "status": "pending",
+      "checks": [
+        "以真实逐字稿核对三个选项的名称与选择语境。",
+        "具体比较维度及优劣理由需注明新增解释和依据。"
+      ],
+      "records": []
+    },
+    "accessibility": {
+      "status": "pending",
+      "checks": [
+        "实际渲染后检查手机竖持缩小下的标签可读性。",
+        "检查字幕同步、遮挡、颜色以外的辨识线索和闪烁。"
+      ],
+      "records": []
+    },
+    "viewer": {
+      "status": "untested",
+      "observations": [],
+      "understanding_tasks": [
+        "撤图后回答：三个方向是依次执行还是可选方案？",
+        "说出两个共同比较维度，并回答谁最终作选择。"
+      ],
+      "feeling_questions": [
+        "哪个画面最有秩序感？",
+        "比较段是否太像读表，何处让你分心或疲劳？"
+      ]
+    }
+  }
+}
