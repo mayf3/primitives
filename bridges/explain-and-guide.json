@@ -3,7 +3,7 @@
   "title": "从待检验判断到可理解的播客入口",
   "example_status": "synthetic",
   "outcome": "not-run",
-  "module_versions": {"life": "0.1.0", "writing": "0.1.0", "design": "0.1.0"},
+  "module_versions": {"life": "0.1.0", "writing": "0.1.0", "design": "0.2.0"},
   "steps": [
     {
       "id": "frame-hypothesis",

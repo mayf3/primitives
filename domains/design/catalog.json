@@ -15,13 +15,17 @@
     },
     {
       "id": "design.position-progress",
-      "title": "标明位置与进度",
+      "title": "标明位置与阶段",
       "kind": "action",
-      "summary": "显示页面类型、所属路线和当前阶段。",
+      "summary": "显示页面或节点位置、路线阶段与必要的访问足迹，不把访问当成掌握。",
       "tags": [
         "位置",
         "进度",
-        "路线"
+        "阶段",
+        "路线",
+        "访问足迹",
+        "开放探索",
+        "标明位置与进度"
       ],
       "path": "PRIMITIVES.md#position-progress"
     },
@@ -41,11 +45,14 @@
       "id": "design.next-step",
       "title": "接通下一步",
       "kind": "action",
-      "summary": "给出当前可完成的后继动作，并保留结束和自由探索。",
+      "summary": "依据当前成果、目标与条件，选择并接通合适的可执行后继。",
       "tags": [
         "后继",
         "行动",
-        "路线"
+        "路线",
+        "下一步",
+        "衔接",
+        "循环"
       ],
       "path": "PRIMITIVES.md#next-step"
     },
@@ -53,11 +60,15 @@
       "id": "design.prerequisites",
       "title": "前置必要条件",
       "kind": "action",
-      "summary": "在关键投入前展示影响现在能否开始的条件。",
+      "summary": "在相关投入、输入或操作前说明必要条件及格式、单位、范围。",
       "tags": [
         "前提",
         "条件",
-        "采购"
+        "采购",
+        "格式",
+        "单位",
+        "范围",
+        "输入"
       ],
       "path": "PRIMITIVES.md#prerequisites"
     },
@@ -77,11 +88,15 @@
       "id": "design.externalize-relations",
       "title": "把抽象关系外化",
       "kind": "action",
-      "summary": "用例子、局部图或相邻呈现显式表达关键关系。",
+      "summary": "用就地对照或带语义的关系表示，组织需要一起判断的信息。",
       "tags": [
         "理解",
         "关系",
-        "表征"
+        "表征",
+        "就地对照",
+        "跨屏",
+        "符号",
+        "注释"
       ],
       "path": "PRIMITIVES.md#externalize-relations"
     },
@@ -89,11 +104,14 @@
       "id": "design.visible-change",
       "title": "让变化可见",
       "kind": "action",
-      "summary": "让操作后的新状态、结果或影响可以观察。",
+      "summary": "准确呈现已有状态与结果；任务需要时让前后差异和基线可见。",
       "tags": [
         "反馈",
         "状态",
-        "实验"
+        "实验",
+        "变化",
+        "基线",
+        "差异"
       ],
       "path": "PRIMITIVES.md#visible-change"
     },
@@ -101,11 +119,14 @@
       "id": "design.recovery-path",
       "title": "保留恢复路径",
       "kind": "action",
-      "summary": "保留输入与上下文，并提供返回、撤销或修复方式。",
+      "summary": "按故障保留有效状态并提供真实可行的恢复动作，使任务可以继续。",
       "tags": [
         "错误",
         "恢复",
-        "控制"
+        "控制",
+        "返回",
+        "撤销",
+        "重试"
       ],
       "path": "PRIMITIVES.md#recovery-path"
     },

@@ -13,6 +13,20 @@
           "sha256": "72894d69eef209b0586bb6214c464e072aee49a908ca91e86a9af476aadbd0bd"
         }
       ]
+    },
+    {
+      "id": "design-review-20261113",
+      "kind": "user-upload",
+      "uploaded_name": "貼上的文字 (1)(4).txt",
+      "original_date": "unknown",
+      "imported_at": "2026-11-13",
+      "files": [
+        {
+          "path": "sources/review-20261113-original.txt",
+          "upstream_path": "貼上的文字 (1)(4).txt",
+          "sha256": "ec386bd17bdc4ad453599fae06bb0adf0ba49481256849335f95de65b5f697aa"
+        }
+      ]
     }
   ]
 }
