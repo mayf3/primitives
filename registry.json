@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "name": "primitives",
   "title": "原语系统",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "meta": {
     "id": "meta",
     "title": "原语的原语",
@@ -12,10 +12,26 @@
     "catalog": "catalog.json"
   },
   "modules": [
-    {"id": "life", "path": "domains/life"},
-    {"id": "writing", "path": "domains/writing"},
-    {"id": "design", "path": "domains/design"},
-    {"id": "video", "path": "domains/video"}
+    {
+      "id": "life",
+      "path": "domains/life"
+    },
+    {
+      "id": "writing",
+      "path": "domains/writing"
+    },
+    {
+      "id": "design",
+      "path": "domains/design"
+    },
+    {
+      "id": "video",
+      "path": "domains/video"
+    },
+    {
+      "id": "learning",
+      "path": "domains/learning"
+    }
   ],
   "bridges": [
     {
@@ -27,6 +43,11 @@
       "id": "bridge.script-to-video",
       "path": "bridges/script-to-video.md",
       "record": "bridges/script-to-video.json"
+    },
+    {
+      "id": "bridge.learning-to-experience",
+      "path": "bridges/learning-to-experience.md",
+      "record": "bridges/learning-to-experience.json"
     }
   ]
 }

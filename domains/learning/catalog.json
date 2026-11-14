@@ -1,0 +1,14 @@
+{
+  "domain": "learning",
+  "entries": [
+    {"id": "learning.elicit-starting-model", "title": "显化当前理解", "kind": "candidate-action", "summary": "用能区分关键理解的任务取得起点回应，保留不确定，不把问过当作已经校准。", "tags": ["起点", "先修", "误解", "诊断", "预测"], "path": "PRIMITIVES.md#elicit-starting-model"},
+    {"id": "learning.relation-model", "title": "提供必要关系模型", "kind": "candidate-action", "summary": "选择后续任务需要的对象、关系和边界，用具体例子承载；呈现不等于理解。", "tags": ["概念", "是什么", "关系", "预训练", "模型"], "path": "PRIMITIVES.md#relation-model"},
+    {"id": "learning.worked-process", "title": "展示决策与过程", "kind": "candidate-action", "summary": "示范从目标与输入到结果的步骤、关键选择及其理由，留下可检查的中间状态。", "tags": ["示范", "例题", "过程", "决策"], "path": "PRIMITIVES.md#worked-process"},
+    {"id": "learning.elicit-performance", "title": "要求产生目标表现", "kind": "candidate-action", "summary": "让学习者在明确工具和帮助条件下回忆、预测、解释、操作或判断，取得与目标相符的回应。", "tags": ["练习", "生成", "检索", "操作", "表现"], "path": "PRIMITIVES.md#elicit-performance"},
+    {"id": "learning.explain-reasoning", "title": "要求说明依据", "kind": "task-profile", "summary": "产生目标表现的一种专门任务：说明结论依赖的关系、证据及适用条件，不能以复述代替。", "tags": ["解释", "依据", "自我解释", "为什么"], "path": "PRIMITIVES.md#explain-reasoning"},
+    {"id": "learning.feedback-retry", "title": "对照标准并修正", "kind": "candidate-action", "summary": "把回应与可信标准对照，指出可定位差异并提供重试机会；不凭错误结果臆测心理原因。", "tags": ["反馈", "标准", "错误", "重试", "修正"], "path": "PRIMITIVES.md#feedback-retry"},
+    {"id": "learning.fade-support", "title": "调整任务支持", "kind": "candidate-action", "summary": "有依据地减少目标相关提示或示范，记录仍保留的工具和帮助，必要时恢复支持。", "tags": ["支架", "提示", "独立", "帮助", "渐隐"], "path": "PRIMITIVES.md#fade-support"},
+    {"id": "learning.vary-conditions", "title": "改变条件再做", "kind": "candidate-action", "summary": "相对有记录的基线选择有意义的变化，说明保持项与判断标准，观察能力适用边界。", "tags": ["变式", "迁移", "条件", "泛化"], "path": "PRIMITIVES.md#vary-conditions"},
+    {"id": "learning.delayed-check", "title": "延后再检查", "kind": "candidate-action", "summary": "按保持目标安排延后的表现检查，单独记录时间、任务变化与帮助条件。", "tags": ["保持", "时间", "延迟", "间隔", "复习"], "path": "PRIMITIVES.md#delayed-check"}
+  ]
+}

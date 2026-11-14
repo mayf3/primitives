@@ -2,7 +2,7 @@
 
 ## 1. 共享什么
 
-仓库共享四件事：可定位的 ID、来源位置、版本、显式引用。共享层不定义一种通用“人生/写作/设计/视频对象”，也不统一各域的 `status` 或 `evidence`。
+仓库共享四件事：可定位的 ID、来源位置、版本、显式引用。共享层不定义一种通用领域对象，也不统一各域的 `status` 或 `evidence`。
 
 `registry.json` 列出可加载领域及组合，另用可选的 `meta` 字段登记元层。每个领域有独立 `module.json`、`catalog.json` 和工作文档；不需要运行服务器或安装第三方依赖。
 
@@ -10,7 +10,7 @@
 
 ## 2. 模块与条目
 
-`module.json` 必须提供：`id`、`title`、`version`、`description`、`entrypoint`、`guide`、`catalog`、`depends_on`。当前四个领域的 `depends_on` 均为空。
+`module.json` 必须提供：`id`、`title`、`version`、`description`、`entrypoint`、`guide`、`catalog`、`depends_on`。当前五个领域的 `depends_on` 均为空。
 
 `catalog.json` 包含 `domain` 和 `entries`。每个条目提供：`id`、`title`、`kind`、`summary`、`tags`、`path`。
 
@@ -22,7 +22,7 @@
 
 版本是模块独立的整合版本，以各自 `module.json` 为准，不要求所有模块保持同号；来源的 `v2`、`v1.1` 和原提交 SHA 另行保留。修文字但不改含义可升补丁版；改变适用边界或语义需要说明兼容影响。具体版本变化不触发外部项目自动更新。
 
-元层在 `registry.json.meta` 记录 `id`、`title`、`version`、`path`、`entrypoint`、`catalog`；`path` 固定为 `meta`，不进入 `modules`。其索引使用 `namespace: "meta"`，条目字段与工作索引相同，ID 为 `meta.<local-name>`。这些条目包括定义、检验问题、模板和例子，条目数不代表不可约元原语数量。默认检索包含元层，`--scope meta` 单独筛选；`--domain` 只接受领域 ID。元层独立版本，不要求四域引用它或同步升级。
+元层在 `registry.json.meta` 记录 `id`、`title`、`version`、`path`、`entrypoint`、`catalog`；`path` 固定为 `meta`，不进入 `modules`。其索引使用 `namespace: "meta"`，条目字段与工作索引相同，ID 为 `meta.<local-name>`。这些条目包括定义、检验问题、模板和例子，条目数不代表不可约元原语数量。默认检索包含元层，`--scope meta` 单独筛选；`--domain` 只接受领域 ID。元层独立版本，不要求各域引用它或同步升级。
 
 ## 3. 来源与新整理
 
@@ -50,7 +50,7 @@
 
 ## 5. 各域验证分别进行
 
-人生保留其事实/判断与本人确认规则。写作保留建议、采用、应用、指定范围检查的差别。设计分开维护来源核对、实施状态、用户验证状态。视频分开记录来源、语义、计划片段时间、渲染产物及观众理解和感受。共享层不提供一个覆盖各域的 `verified: true`。
+人生保留其事实/判断与本人确认规则。写作保留建议、采用、应用、指定范围检查的差别。设计分开维护来源核对、实施状态、用户验证状态。视频分开记录来源、语义、计划片段时间、渲染产物及观众理解和感受。学习区分材料、任务实现与指定条件下的表现；即使字段名相似，也不自动继承其他领域状态。共享层不提供一个覆盖各域的 `verified: true`。
 
 本仓库工具检查 JSON、ID、路径、来源哈希、模块隔离、组合引用；通过域内插件检查设计案例的状态及视频分镜的时间与记录一致性。它不确认人生记录，不评判文学或视频质量，不证明 WCAG 合规，也不模拟真实用户结果。
 

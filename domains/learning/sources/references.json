@@ -1,0 +1,363 @@
+{
+  "source_import_id": "learning-upload-20261114",
+  "imported_at": "2026-11-14",
+  "checked_at": "2026-11-14",
+  "scope": "Eight core references and one necessary supplement, independently identified for bounded claims; not a reconstruction of every citation in the uploaded report.",
+  "old_session_citations_status": "unresolved",
+  "note": "原会话引用 ID 未恢复，不与本次来源强配。以下支持边界是本轮编辑核验摘记；论文仅核对原始摘要与书目，官方网页按 verification_scope 核对。来源核对不代表原语最小性、实现正确性或真实学习效果已经验证。",
+  "references": [
+    {
+      "id": "learning.source.01",
+      "label": "L-S01",
+      "anchor": "l-s01",
+      "title": "Fostering understanding of multimedia messages through pre-training: Evidence for a two-stage theory of mental model construction",
+      "authors": [
+        "Richard E. Mayer",
+        "Amanda Mathias",
+        "Karen Wetzell"
+      ],
+      "year": 2002,
+      "category": "primary-research",
+      "url": "https://doi.org/10.1037/1076-898X.8.3.147",
+      "verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12240927/"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Original abstract and bibliographic metadata; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "在所研究的机械系统动画任务中，预先认识部件及状态有助于后续理解和迁移。"
+      ],
+      "does_not_support": [
+        "不能推出每门课程必须先完整讲理论、所有学习者必须先读同一介绍，或特定 Remotion 页面改版已经有效。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.1037/1076-898X.8.3.147",
+      "journal": "Journal of Experimental Psychology: Applied",
+      "volume": 8,
+      "issue": 3,
+      "pages": "147–154"
+    },
+    {
+      "id": "learning.source.02",
+      "label": "L-S02",
+      "anchor": "l-s02",
+      "title": "From example study to problem solving: Smooth transitions help learning",
+      "authors": [
+        "Alexander Renkl",
+        "Robert K. Atkinson",
+        "Uwe H. Maier",
+        "Richard Staley"
+      ],
+      "year": 2002,
+      "category": "primary-research",
+      "url": "https://doi.org/10.1080/00220970209599510",
+      "verified_urls": [
+        "https://asu.elsevierpure.com/en/publications/from-example-study-to-problem-solving-smooth-transitions-help-lea/"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Original abstract and bibliographic metadata on an author institution research record; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "从完整例题逐步移除解题步骤，过渡到自行解题；研究报告至少在近迁移上有益，并比较了不同移除顺序。"
+      ],
+      "does_not_support": [
+        "不能将该论文单独用作远迁移必然出现的证据，也不能推出所有任务应同时隐藏全部帮助。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.1080/00220970209599510",
+      "journal": "Journal of Experimental Education",
+      "volume": 70,
+      "issue": 4,
+      "pages": "293–315",
+      "related_references": [
+        "learning.source.09"
+      ]
+    },
+    {
+      "id": "learning.source.03",
+      "label": "L-S03",
+      "anchor": "l-s03",
+      "title": "The critical importance of retrieval for learning",
+      "authors": [
+        "Jeffrey D. Karpicke",
+        "Henry L. Roediger III"
+      ],
+      "year": 2008,
+      "category": "primary-research",
+      "url": "https://doi.org/10.1126/science.1152408",
+      "verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18276894/"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Original abstract and bibliographic metadata; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "在所研究的外语词汇任务中，首次答对后继续记忆检索可改善延迟回忆。"
+      ],
+      "does_not_support": [
+        "不能把任何点击、改参数、操作或生成都等同于检索。",
+        "不能把 Agent 产物或复制成功视为学习者能力证据，也不能推出重复阅读在所有情境均无效。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.1126/science.1152408",
+      "journal": "Science",
+      "volume": 319,
+      "issue": 5865,
+      "pages": "966–968"
+    },
+    {
+      "id": "learning.source.04",
+      "label": "L-S04",
+      "anchor": "l-s04",
+      "title": "Distributed practice in verbal recall tasks: A review and quantitative synthesis",
+      "authors": [
+        "Nicholas J. Cepeda",
+        "Harold Pashler",
+        "Edward Vul",
+        "John T. Wixted",
+        "Doug Rohrer"
+      ],
+      "year": 2006,
+      "category": "research-review",
+      "url": "https://doi.org/10.1037/0033-2909.132.3.354",
+      "verified_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16719566/"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Original abstract and bibliographic metadata; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "言语回忆研究显示练习间隔与目标保持时间共同影响保持效果；最佳间隔取决于条件。"
+      ],
+      "does_not_support": [
+        "不能推出 24–72 小时为普遍最优间隔，或结果无条件适用于完整编程项目。",
+        "同时改变测试时间与提示时，表现差异不能单独归因于时间；延迟评估本身不是间隔练习的对照实验。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.1037/0033-2909.132.3.354",
+      "journal": "Psychological Bulletin",
+      "volume": 132,
+      "issue": 3,
+      "pages": "354–380",
+      "study_summary": {
+        "articles": 184,
+        "experiments": 317,
+        "assessments": 839,
+        "task_family": "verbal recall"
+      }
+    },
+    {
+      "id": "learning.source.05",
+      "label": "L-S05",
+      "anchor": "l-s05",
+      "title": "The power of feedback",
+      "authors": [
+        "John Hattie",
+        "Helen Timperley"
+      ],
+      "year": 2007,
+      "category": "research-review",
+      "url": "https://doi.org/10.3102/003465430298487",
+      "verified_urls": [
+        "https://journals.sagepub.com/doi/10.3102/003465430298487"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Publisher original abstract and bibliographic metadata; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "反馈的效果随类型、提供方式和情境而变化，也可能产生负面影响。"
+      ],
+      "does_not_support": [
+        "不能推出即时反馈永远最佳、反馈越多越好，或本站某种反馈界面已得到实验验证。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.3102/003465430298487",
+      "journal": "Review of Educational Research",
+      "volume": 77,
+      "issue": 1,
+      "pages": "81–112"
+    },
+    {
+      "id": "learning.source.06",
+      "label": "L-S06",
+      "anchor": "l-s06",
+      "title": "Organizing instruction and study to improve student learning",
+      "authors": [
+        "Harold Pashler",
+        "Patrice M. Bain",
+        "Brian A. Bottge",
+        "Arthur Graesser",
+        "Kenneth Koedinger",
+        "Mark McDaniel",
+        "Janet Metcalfe"
+      ],
+      "year": 2007,
+      "category": "official-practice-guide",
+      "url": "https://ies.ed.gov/ncee/WWC/PracticeGuide/1/Published",
+      "verified_urls": [
+        "https://ies.ed.gov/ncee/WWC/PracticeGuide/1/Published"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Official overview, panel, recommendations and displayed evidence levels; full PDF not reviewed in this verification.",
+      "full_paper_read": null,
+      "supports": [
+        "提供分散学习、例题与解题交替、图文结合、抽象具体关联、检索测验与解释问题的分项建议。"
+      ],
+      "does_not_support": [
+        "分项证据等级不能移作九项候选原语整体的等级；课前问题、检索测验和任意交互并非同一操作。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "publisher": "Institute of Education Sciences, U.S. Department of Education",
+      "published_month": "2007-09",
+      "recommendation_levels": {
+        "space_learning_over_time": "Moderate",
+        "interleave_worked_examples_and_problem_solving": "Moderate",
+        "combine_graphics_and_verbal_descriptions": "Moderate",
+        "connect_abstract_and_concrete_representations": "Moderate",
+        "pre_questions_to_introduce_topic": "Minimal",
+        "quizzes_to_re_expose_key_content": "Strong",
+        "deep_explanatory_questions": "Strong"
+      }
+    },
+    {
+      "id": "learning.source.07",
+      "label": "L-S07",
+      "anchor": "l-s07",
+      "title": "Learn web development",
+      "authors": [
+        "MDN contributors"
+      ],
+      "year": null,
+      "category": "official-product-example",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+      "verified_urls": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Official page sections about starting points, skill tests, challenges and code examples; observed structure, not an effectiveness study.",
+      "full_paper_read": null,
+      "supports": [
+        "可借鉴按基础提供入口、区分单项练习与综合挑战、提供起始代码和重置帮助的教学组织方式。"
+      ],
+      "does_not_support": [
+        "不能由官方网站采用某结构推出复制后必然改善学习，也不能将其视为所有课程唯一顺序。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null
+    },
+    {
+      "id": "learning.source.08",
+      "label": "L-S08",
+      "anchor": "l-s08",
+      "title": "The core idea",
+      "authors": [
+        "Remotion"
+      ],
+      "year": null,
+      "category": "official-technical-documentation",
+      "url": "https://www.remotion.dev/docs/idea",
+      "verified_urls": [
+        "https://www.remotion.dev/docs/idea"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Official technical page: frame rendering, video properties and compositions; not an effectiveness study.",
+      "full_paper_read": null,
+      "supports": [
+        "说明由帧号驱动 React 画面、视频配置与 composition 的技术关系，可用于建立最低必要概念。"
+      ],
+      "does_not_support": [
+        "不能决定最佳教学顺序或任务时长，不能把网页模拟视为正式渲染，也不能反推旧版本实现。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null
+    },
+    {
+      "id": "learning.source.09",
+      "label": "L-S09",
+      "anchor": "l-s09",
+      "title": "Transitioning from studying examples to solving problems: Effects of self-explanation prompts and fading worked-out steps",
+      "authors": [
+        "Robert K. Atkinson",
+        "Alexander Renkl",
+        "Mary Margaret Merrill"
+      ],
+      "year": 2003,
+      "category": "primary-research",
+      "url": "https://doi.org/10.1037/0022-0663.95.4.774",
+      "verified_urls": [
+        "https://asu.elsevierpure.com/en/publications/transitioning-from-studying-examples-to-solving-problems-effects-/",
+        "https://eric.ed.gov/?id=EJ678596"
+      ],
+      "checked_at": "2026-11-14",
+      "verification_scope": "Original abstract and bibliographic metadata on an author institution research record; ERIC metadata cross-check; not a full-paper review.",
+      "full_paper_read": false,
+      "supports": [
+        "两个实验将渐隐与解释解题步骤底层原则的提示结合，在所测任务中报告近迁移和远迁移收益。"
+      ],
+      "does_not_support": [
+        "不能将组合收益全部归于减提示，也不能由研究中的远迁移泛化为跨任意领域的迁移保证。"
+      ],
+      "relationship_to_upload": "independently-identified-not-old-citation-resolved",
+      "old_citation_mapping": null,
+      "doi": "10.1037/0022-0663.95.4.774",
+      "journal": "Journal of Educational Psychology",
+      "volume": 95,
+      "issue": 4,
+      "pages": "774–783",
+      "role": "supplement-to-L-S02",
+      "related_references": [
+        "learning.source.02"
+      ]
+    }
+  ],
+  "unresolved_citation_tokens": [
+    "turn178016search8",
+    "turn255306view0",
+    "turn255306view1",
+    "turn274712search2",
+    "turn274712search4",
+    "turn274712search5",
+    "turn332247view0",
+    "turn332247view1",
+    "turn548492view0",
+    "turn571140view0",
+    "turn571140view1",
+    "turn571140view2",
+    "turn571140view3",
+    "turn615401search0",
+    "turn615401search10",
+    "turn615401search11",
+    "turn615401search6",
+    "turn615401search7",
+    "turn615401search9",
+    "turn619847view0",
+    "turn619847view1",
+    "turn619847view2",
+    "turn619847view3",
+    "turn619847view4",
+    "turn719615view0",
+    "turn719615view1",
+    "turn719615view2",
+    "turn821919search0",
+    "turn821919search1",
+    "turn821919search4",
+    "turn821919search7",
+    "turn893306search0",
+    "turn893306search1",
+    "turn893306search2",
+    "turn893306search4",
+    "turn893306search5",
+    "turn893306search7",
+    "turn893306search8",
+    "turn999784view0",
+    "turn999784view1",
+    "turn999784view2"
+  ]
+}

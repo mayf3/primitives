@@ -1,0 +1,20 @@
+{
+  "id": "bridge.learning-to-experience",
+  "title": "从学习目标到可用的学习体验",
+  "example_status": "synthetic",
+  "outcome": "not-run",
+  "module_versions": {"learning": "0.1.0", "design": "0.2.0"},
+  "steps": [
+    {"id": "learning-contract", "domain": "learning", "uses": ["learning.elicit-starting-model", "learning.relation-model"], "input": "目标受众、待学任务、允许工具、起点证据或明确假设", "output": "必要关系、任务与判据、帮助和范围约定；未观察的起点仍未知"},
+    {"id": "entry-and-relations", "domain": "design", "uses": ["design.page-promise", "design.entry-outcome", "design.prerequisites", "design.externalize-relations", "design.next-step"], "input": "学习约定、真实页面和可用任务", "output": "用途与先修可见、入口预期相符、关系可读、下一步可达的页面提案"},
+    {"id": "attempt-and-feedback", "domain": "learning", "uses": ["learning.worked-process", "learning.elicit-performance", "learning.explain-reasoning", "learning.feedback-retry"], "input": "任务、关系模型、示范、标准与允许帮助", "output": "带帮助条件的回应和反馈设计；实际执行前无学习者结果"},
+    {"id": "state-and-recovery", "domain": "design", "uses": ["design.visible-change", "design.recovery-path"], "input": "真实参数、回应、反馈对象和任务状态", "output": "一致的结果展示、可返回或重试的任务路径"},
+    {"id": "conditional-observation", "domain": "learning", "uses": ["learning.fade-support", "learning.vary-conditions", "learning.delayed-check"], "input": "有记录的基线任务与表现，以及本次要观察的范围", "output": "按需选择的支持、情境或时间变化；三者分别记录，不将未做任务写成通过"}
+  ],
+  "handoffs": [
+    {"from": "learning-contract", "to": "entry-and-relations", "relation": "informs", "payload": "目标、先修、必要关系、任务和判据", "acceptance": "内容有依据，未知起点没有升级为掌握"},
+    {"from": "entry-and-relations", "to": "attempt-and-feedback", "relation": "informs", "payload": "真实可达任务及其入口承诺", "acceptance": "目的地兑现入口，网页任务与本机任务区分"},
+    {"from": "attempt-and-feedback", "to": "state-and-recovery", "relation": "informs", "payload": "当前回应、反馈对象、参数与支持条件", "acceptance": "显示对应同一任务和参数，原回应不被反馈静默改写"},
+    {"from": "attempt-and-feedback", "to": "conditional-observation", "relation": "informs", "payload": "有记录的基线、帮助条件和仍未解决的问题", "acceptance": "不预设掌握，明确改变项与保持项；没有实际参与者时保持untested"}
+  ]
+}

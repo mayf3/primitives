@@ -1,0 +1,10 @@
+{
+  "id": "learning",
+  "title": "学习原语",
+  "version": "0.1.0",
+  "description": "围绕指定条件下的学习表现，提供八个候选操作与一个说明依据的专门任务入口；区分教学材料、任务支持和学习证据，数量与最小性待检验。",
+  "entrypoint": "README.md",
+  "guide": "GUIDE.md",
+  "catalog": "catalog.json",
+  "depends_on": []
+}

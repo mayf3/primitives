@@ -1,0 +1,20 @@
+{
+  "imports": [
+    {
+      "id": "learning-upload-20261114",
+      "kind": "user-upload",
+      "uploaded_name": "貼上的文字 (1)(20261114-104153).txt",
+      "original_date": "unknown",
+      "imported_at": "2026-11-14",
+      "note": "原文自述核查日期为 2026-11-14（Asia/Tokyo）；不据此推定原始写作或发布日期。按字节保存，旧会话引用原样保留。",
+      "files": [
+        {
+          "path": "sources/research-original.txt",
+          "upstream_path": "貼上的文字 (1)(20261114-104153).txt",
+          "sha256": "e2d61407c2806e4c19a331a841099d2fce9a66410a2f325b0a43968f4ace57f7",
+          "byte_length": 39631
+        }
+      ]
+    }
+  ]
+}
