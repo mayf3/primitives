@@ -133,6 +133,18 @@
           "sha256": "65a4afece75d2ab8927f5c689a16554f6f83c41b54f997362de54b861ab1cbda"
         }
       ]
+    },
+    {
+      "id": "video-viewer-friction-feedback-20261115",
+      "kind": "user-message-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/viewer-friction-feedback-20261115.json",
+          "upstream_path": "本轮用户消息，按问题摘录，非完整逐字转储",
+          "sha256": "4bc2a482bbd9cce3af5532a2afcc3887148bc6e013d23189c01d05b3ef5d2f45"
+        }
+      ]
     }
   ]
 }

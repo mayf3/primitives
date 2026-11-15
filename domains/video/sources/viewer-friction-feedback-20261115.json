@@ -1,0 +1,65 @@
+{
+  "id": "video-viewer-friction-feedback-20261115",
+  "record_type": "user-message-excerpts",
+  "received_at": "2026-11-15",
+  "source_description": "用户此轮发来的普通观众审片分析及末尾‘这个你看看怎么加到原语里’请求。以下按问题摘录，非完整逐字转储。",
+  "reviewed_version_named_by_user": "0.4.0",
+  "repository_version_before_this_revision": "0.4.1",
+  "access_and_evidence": {
+    "media_accessed_for_this_feedback": false,
+    "original_blind_test_records_received": false,
+    "timecodes": "消息中转述的待核线索",
+    "percentage_claim": "消息称约 70% 已有规则覆盖、30% 为四个盲区，未提供统计口径或原始观察记录。",
+    "effect_claim": "消息称真实观看证明原语解释力成立，作为来源作者判断保留，未采为本仓库效果结论。",
+    "incomplete_input": "输入总表的第 10 行在极小说话人标记处截断；下文盲区四另有完整说明。"
+  },
+  "existing_rule_failures_reported": [
+    {
+      "issue": "同段文字循环三遍构成假长文",
+      "time_hints": ["11:40–12:46"]
+    },
+    {
+      "issue": "海边背景镜像使角色左右瞬移",
+      "time_hints": ["18:18", "18:56", "20:20"]
+    },
+    {
+      "issue": "无信息增量的推拉跳切及句内卡片突变",
+      "time_hints": ["18:28→18:30→18:44", "06:00→06:06"]
+    },
+    {
+      "issue": "提前出现后文课名与打字机慢于原话",
+      "time_hints": ["10:46", "结尾"]
+    },
+    {
+      "issue": "空洞输入框与死鼠标、无关简笔画和碎片单句复读",
+      "time_hints": ["01:55", "02:20", "13:33", "14:26"]
+    },
+    {
+      "issue": "说话人标记迟到 11 秒、结尾天平残留上章备课卡片",
+      "time_hints": ["01:30–01:41", "22:33"]
+    }
+  ],
+  "proposed_gaps": [
+    {
+      "topic": "内部审计标签与观众文案",
+      "reported_symptoms": ["试作簿 / 操作示意", "据原录音重构", "同一份失败样张 / 教学示意"],
+      "proposal": "META_EXAMPLE、据原录音重构、重演示意归入机器元数据，不直接作为屏上副标题；用视觉语体辅助区分，极少数易误解处用操作演示画面等自然提示。"
+    },
+    {
+      "topic": "结构线框与具体学科正文",
+      "reported_symptoms": ["02:33–08:40 反复出现海风从哪里来等地理课文", "1+2+3+4=10"],
+      "proposal": "讲版式、结构、多页调度、通用工作流时，用几何结构和观点 A、配图区等短词，或真实主线主题词；不自行填入可读的无关学科知识。"
+    },
+    {
+      "topic": "空白容器滞后与人物遮挡",
+      "reported_symptoms": ["01:26、01:30、04:46 等大画板先出现 1–2 秒", "入场边界遮住人物半身"],
+      "proposal": "首个核心标题或结构图元同步出现或延后不超过 0.3 秒，禁止超过 0.5 秒空板；海景信息区与人物包围盒零交集，复杂布局整屏切到纸面，使用两种合法机位状态。"
+    },
+    {
+      "topic": "跨景别说话人识别",
+      "reported_symptoms": ["海景头顶极小音浪不易看见", "纸面大头像与海景标记规则割裂且迟到"],
+      "proposal": "社科生固定左侧暖赭色，理科生固定右侧青灰蓝色；海边用姓名气泡，纸面用同色同侧迷你头像，随发言零延迟继承。"
+    }
+  ],
+  "requested_scope": "补强既有原语的条件、STYLE 和 VALIDATION，以及相应制作规范。用户主张本轮无需增删十个候选动作及一个组合入口。"
+}
