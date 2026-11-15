@@ -23,9 +23,47 @@ def check_counts(event, turn, fail):
     fail("coverage: show all announced items or label this smaller part")
 
 
+def check_text_holds(presentation, number, fail):
+    """Only declared reading tasks need continuous exposure of their text."""
+    alignment = presentation.get("audio_alignment")
+    by_id = {}
+    if isinstance(alignment, dict) and alignment.get("status") in ("planned", "anchored"):
+        events = alignment.get("text_events")
+        for i, event in enumerate(events if isinstance(events, list) else []):
+            if not isinstance(event, dict) or "id" not in event:
+                continue
+            key = event["id"]
+            if not nonempty(key) or key in by_id:
+                fail(f"audio_alignment.text_events[{i}]: expected a unique nonempty text ID")
+                continue
+            by_id[key] = event
+
+    holds = presentation.get("holds")
+    for i, hold in enumerate(holds if isinstance(holds, list) else []):
+        if not isinstance(hold, dict) or "required_text_events" not in hold:
+            continue
+        field = f"presentation.holds[{i}].required_text_events"
+        keys = hold["required_text_events"]
+        if (not isinstance(keys, list) or not keys or not all(nonempty(k) for k in keys)
+                or len(set(keys)) != len(keys)):
+            fail(f"{field}: expected a nonempty list of distinct text IDs")
+            continue
+        for key in keys:
+            if key not in by_id:
+                fail(f"{field}: unknown text event {key!r}")
+                continue
+            event = by_id[key]
+            # Invalid interval values have their own diagnostics in check_audio/check_record.
+            appear, exit_at = event.get("start"), event.get("end")
+            start, end = hold.get("start"), hold.get("end")
+            if all(number(t) for t in (appear, exit_at, start, end)) and not appear <= start < end <= exit_at:
+                fail(f"{field}: text event {key!r} does not cover the entire hold")
+
+
 def check_audio(record, interval, number, fail):
     """interval() validates a plan-local interval and reports its own diagnostic."""
     presentation = record["presentation"]
+    check_text_holds(presentation, number, fail)
     if "audio_alignment" not in presentation:
         version = record.get("version")
         if not isinstance(version, str) or not re.fullmatch(r"0\.[1-3]\.(0|[1-9][0-9]*)", version):
@@ -94,6 +132,16 @@ def check_audio(record, interval, number, fail):
         if not nonempty(text) or role not in ("quote", "paraphrase", "preview", "recap", "example"):
             fail(f"{field}: expected display text and a known role")
             continue
+        wording = event.get("wording")
+        if "wording" in event:
+            if wording not in ("verbatim", "paraphrase"):
+                fail(f"{field}: wording must be verbatim or paraphrase")
+            elif (role == "example" or (role == "quote" and wording != "verbatim")
+                    or (role == "paraphrase" and wording != "paraphrase")):
+                fail(f"{field}: wording conflicts with role {role!r}")
+        if role == "quote" or (role in ("preview", "recap") and wording == "verbatim"):
+            if not nonempty(turn.get("text")) or text not in turn["text"]:
+                fail(f"{field}: text must occur verbatim in the attributed turn")
         origin = event.get("origin")
         if role == "example" or "origin" in event:
             if origin not in ("method-example", "editorial"):
@@ -105,8 +153,6 @@ def check_audio(record, interval, number, fail):
                 fail(f"{field}: current speech text precedes its cue or extends beyond its turn")
             if not nonempty(event.get("intent")) or event["intent"] != turn.get("intent"):
                 fail(f"{field}: current speech and display intents differ or are missing")
-            if role == "quote" and (not nonempty(turn.get("text")) or text not in turn["text"]):
-                fail(f"{field}: quote must occur verbatim in the attributed turn")
         else:
             if not nonempty(event.get("label")):
                 fail(f"{field}: preview, recap and editorial examples need a visible label")

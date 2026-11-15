@@ -1,7 +1,7 @@
 {
   "id": "video",
   "title": "视频呈现原语",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "按观看困难与目标感受选择呈现动作，独立维护十项候选动作、对齐比较组合入口与分镜、风格和验证；数量与效果均待真实应用检验。",
   "entrypoint": "README.md",
   "guide": "GUIDE.md",

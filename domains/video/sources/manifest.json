@@ -121,6 +121,18 @@
           "sha256": "b43dd2173c31b007e952e375ab84546c05b0626bc1adee47223d4dc8e12224f0"
         }
       ]
+    },
+    {
+      "id": "video-independent-review-v040-20261115",
+      "kind": "local-review",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/independent-review-v0.4.0-20261115.md",
+          "upstream_path": "视频呈现原语-v0.4.0-独立评审意见.md",
+          "sha256": "65a4afece75d2ab8927f5c689a16554f6f83c41b54f997362de54b861ab1cbda"
+        }
+      ]
     }
   ]
 }

@@ -15,7 +15,7 @@ check_audio = run_path(str(MODULE_ROOT / "audio_anchors.py"))["check_audio"]
 
 
 def number(value):
-    return type(value) in (int, float) and math.isfinite(value)
+    return type(value) is int or (type(value) is float and math.isfinite(value))
 
 
 def evidence_records(value):
@@ -132,6 +132,10 @@ def check_record(record, known_ids, location="record", *, notices=None):
         return valid
 
     # Overlapping events can share a clock, but not an individual display lane.
+    separate_axis = "event_axis_unit" in presentation
+    axis_unit = presentation.get("event_axis_unit")
+    if separate_axis and (not isinstance(axis_unit, str) or not axis_unit.strip()):
+        fail("presentation.event_axis_unit: expected a nonempty unit for the depicted intervals")
     layout = presentation.get("event_layout")
     if "event_layout" in presentation and layout not in ("lanes", "table", "aggregate"):
         fail("presentation.event_layout: expected lanes, table or aggregate")
@@ -150,12 +154,23 @@ def check_record(record, known_ids, location="record", *, notices=None):
         lanes = {}
         spans = []
         for event in events:
-            valid_interval = interval(event, "presentation.event_schedule")
+            valid_screen_interval = interval(event, "presentation.event_schedule")
             if not isinstance(event, dict):
                 continue
-            if valid_interval:
-                spans.append((event["start"], event["end"]))
             event_id = event.get("id")
+            span = None
+            if separate_axis:
+                start, end = event.get("axis_start"), event.get("axis_end")
+                if number(start) and number(end) and start < end:
+                    span = (start, end)
+                else:
+                    fail(f"presentation.event_schedule: event {event_id!r} needs finite axis_start < axis_end")
+            elif "axis_start" in event or "axis_end" in event:
+                fail(f"presentation.event_schedule: event {event_id!r} needs event_axis_unit for axis endpoints")
+            elif valid_screen_interval:
+                span = (event["start"], event["end"])
+            if span is not None:
+                spans.append(span)
             if not isinstance(event_id, str) or not event_id.strip() or event_id in event_ids:
                 fail("presentation.event_schedule: each event needs a unique nonempty ID")
             else:
@@ -166,11 +181,11 @@ def check_record(record, known_ids, location="record", *, notices=None):
                 lane = event.get("lane_id")
                 if not isinstance(lane, str) or not lane.strip():
                     fail(f"presentation.event_schedule: event {event_id!r} needs a nonempty lane_id")
-                elif valid_interval and isinstance(event_id, str):
-                    lanes.setdefault(lane.strip(), []).append((event["start"], event["end"], event_id))
+                elif span is not None and isinstance(event_id, str):
+                    lanes.setdefault(lane.strip(), []).append((*span, event_id))
 
         for lane, intervals in lanes.items():
-            last_end = -1
+            last_end = -math.inf
             last_event = None
             for start, end, event_id in sorted(intervals):
                 if start < last_end:
@@ -182,7 +197,7 @@ def check_record(record, known_ids, location="record", *, notices=None):
         if any(second[0] < first[1] for first, second in zip(spans, spans[1:])):
             version = record.get("version")
             legacy = (isinstance(version, str) and re.fullmatch(r"0\.3\.(0|[1-9][0-9]*)", version)
-                      and "event_readout" not in semantic)
+                      and "event_readout" not in semantic and not separate_axis)
             if legacy:
                 if notices is not None:
                     notices.append(f"{location}: 兼容 {version} 并发排程。迁移时按观看任务填写 semantic.event_readout "

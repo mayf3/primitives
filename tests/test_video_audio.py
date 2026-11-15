@@ -30,6 +30,7 @@ class VideoAudioScenarios(unittest.TestCase):
         self.assertIn("recap must begin", self.errors())
 
     def test_legacy_silent_and_pending(self):
+        del self.presentation["holds"][0]["required_text_events"]
         del self.presentation["audio_alignment"]
         for version in ("0.4.0", "0.10.0", "unknown"):
             self.record["version"] = version
@@ -104,6 +105,7 @@ class VideoAudioScenarios(unittest.TestCase):
         self.assertIn("unknown turn", self.errors())
 
     def test_narrated_actions_can_have_no_screen_text(self):
+        del self.presentation["holds"][0]["required_text_events"]
         self.alignment["text_events"] = []
         self.assertEqual("", self.errors())
         self.record["example_type"] = "application"
@@ -129,6 +131,72 @@ class VideoAudioScenarios(unittest.TestCase):
         self.assertIn("identify example origin", self.errors())
         sample.update(origin="editorial", text="本测试专用的项目票样")
         self.assertEqual("", self.errors())
+
+    def test_recap_and_preview_can_quote_or_paraphrase_the_attributed_speaker(self):
+        preview, recap = self.events[1], self.events[5]
+        original = recap["text"]
+        for event in (preview, recap):
+            with self.subTest(role=event["role"]):
+                event.update(wording="verbatim", text=original)
+                self.assertEqual("", self.errors())
+                event["text"] = "第三次才去看排号"
+                self.assertIn("occur verbatim", self.errors())
+                event["wording"] = "paraphrase"
+                event["text"] = "先确认排号"
+                self.assertEqual("", self.errors())
+        # A different speaker is now talking; the recap must still use its own source.
+        self.turns.append(dict(id="observer", start=15, end=20, speaker="旁观者",
+                               text="第三次看排号。", intent="质疑"))
+        recap.update(wording="verbatim", text="第三次看排号")
+        self.assertIn("occur verbatim", self.errors())
+        recap["text"] = original
+        self.assertEqual("", self.errors())
+
+    def test_wording_cannot_override_a_current_quote_or_editorial_origin(self):
+        for index, wording in ((0, "paraphrase"), (2, "verbatim"), (-1, "verbatim"), (1, "verbatm")):
+            event = self.events[index]
+            with self.subTest(role=event["role"], wording=wording):
+                event["wording"] = wording
+                self.assertIn("wording", self.errors())
+                del event["wording"]
+        self.events[0]["wording"] = "verbatim"
+        self.events[2]["wording"] = "paraphrase"
+        self.assertEqual("", self.errors())
+
+    def test_shared_reading_requires_each_event_for_the_entire_hold(self):
+        recap = self.events[5]
+        for start, end in ((17, 20), (16, 18), (15, 16)):
+            with self.subTest(start=start, end=end):
+                recap.update(start=start, end=end)
+                self.assertIn("does not cover the entire hold", self.errors())
+        recap.update(start=15, end=18)
+        self.assertEqual("", self.errors())
+        # Sequential cards are legitimate when the viewing task does not require co-reading.
+        del self.presentation["holds"][0]["required_text_events"]
+        recap.update(start=17, end=20)
+        self.assertEqual("", self.errors())
+
+    def test_reading_references_must_resolve_in_all_audio_states(self):
+        for status in ("pending", "not-applicable"):
+            self.presentation["audio_alignment"] = {"status": status, "reason": "尚无字幕"}
+            self.assertIn("unknown text event", self.errors())
+        self.record["version"] = "0.3.2"
+        del self.presentation["audio_alignment"]
+        self.assertIn("unknown text event", self.errors())
+
+    def test_text_ids_and_reading_references_are_unambiguous(self):
+        hold = self.presentation["holds"][0]
+        for refs in ([], "staff-recall", ["audience-recall", "audience-recall"], [{}]):
+            hold["required_text_events"] = refs
+            self.assertIn("distinct text IDs", self.errors())
+        hold["required_text_events"] = ["missing"]
+        self.assertIn("unknown text event", self.errors())
+        hold["required_text_events"] = ["audience-recall"]
+        self.assertEqual("", self.errors())
+        self.events[5]["id"] = self.events[4]["id"]
+        self.assertIn("unique nonempty text ID", self.errors())
+        self.events[5]["id"] = []
+        self.assertIn("unique nonempty text ID", self.errors())
 
 
 if __name__ == "__main__":

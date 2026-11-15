@@ -1,7 +1,7 @@
 {
   "id": "video.example.theatre-entry",
   "title": "小剧场为什么发两次入场提示？",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "example_type": "synthetic",
   "selected": true,
   "source": {
@@ -23,7 +23,10 @@
       {"start": 0, "end": 5, "target": "question"},
       {"start": 5, "end": 22, "target": "calls"}
     ],
-    "holds": [{"start": 17, "end": 22, "visible": ["calls"]}],
+    "holds": [
+      {"start": 15, "end": 17, "visible": ["question", "calls"], "required_text_events": ["audience-recall", "staff-recall"]},
+      {"start": 17, "end": 22, "visible": ["calls"]}
+    ],
     "audio_alignment": {
       "status": "planned",
       "turns": [
@@ -38,7 +41,8 @@
          "label": "第 1 项／共 2 项", "text": "先核对排号"},
         {"start": 12, "end": 15, "turn": "answer", "role": "paraphrase", "intent": "解法", "coverage": "all", "shown": 2,
          "text": "一，看排号。二，入座。"},
-        {"start": 15, "end": 17, "turn": "confusion", "role": "recap", "label": "回看观众的疑问", "text": "为什么还没开门？"},
+        {"id": "audience-recall", "start": 15, "end": 17, "turn": "confusion", "role": "recap", "wording": "paraphrase", "label": "回看观众的疑问", "text": "为什么还没开门？"},
+        {"id": "staff-recall", "start": 15, "end": 17, "turn": "answer", "role": "recap", "wording": "verbatim", "label": "引导员原话", "text": "第一次看票上的排号"},
         {"start": 17, "end": 22, "turn": "answer", "role": "example", "origin": "method-example", "label": "编者虚构票样", "text": "三排六座"}
       ]
     }

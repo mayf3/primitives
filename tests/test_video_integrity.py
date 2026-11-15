@@ -146,6 +146,54 @@ class VideoIntegrityScenarios(unittest.TestCase):
         ]
         self.assertEqual([], self.errors(record))
 
+    def test_same_lane_uses_depicted_intervals_instead_of_reveal_seconds(self):
+        record = json.loads((VIDEO / "examples/concurrent-replies.json").read_text(encoding="utf-8"))
+        presentation = record["presentation"]
+        presentation["event_axis_unit"] = "hours from opening"
+        a = {"id": "station-a", "target": "window-01", "lane_id": "row",
+             "start": 0, "end": 1, "axis_start": -2, "axis_end": 12}
+        b = {"id": "station-b", "target": "window-02", "lane_id": "row",
+             "start": 1, "end": 2, "axis_start": -2, "axis_end": 12}
+        presentation["event_schedule"] = [a, b]
+        self.assertTrue(any("overlap in lane" in e for e in self.errors(record)))
+        b["lane_id"] = "another-row"
+        self.assertEqual([], self.errors(record))
+        del presentation["event_layout"]
+        del record["semantic"]["event_readout"]
+        for field in ("presentation.event_layout", "semantic.event_readout"):
+            self.assertTrue(any(field in e for e in self.errors(record)))
+
+        # Both appear in the same filmed second, while the depicted hours touch.
+        b.update(lane_id="row", start=0, end=1, axis_start=12, axis_end=24)
+        self.assertEqual([], self.errors(record))
+        presentation["event_layout"] = "lanes"
+        self.assertEqual([], self.errors(record))
+        b["end"] = presentation["planned_duration_seconds"] + 1
+        self.assertTrue(any("interval must fit" in e for e in self.errors(record)))
+
+    def test_separate_event_axis_needs_unit_and_ordered_endpoints_on_every_event(self):
+        presentation = self.record["presentation"]
+        target = self.record["semantic"]["objects"][0]["id"]
+        a = {"id": "a", "target": target, "start": 1, "end": 2, "axis_start": 10, "axis_end": 11}
+        b = {"id": "b", "target": target, "start": 2, "end": 3}
+        presentation["event_schedule"] = [a, b]
+        self.assertTrue(any("event_axis_unit" in e for e in self.errors()))
+        for unit in (None, "   ", 7):
+            with self.subTest(unit=unit):
+                presentation["event_axis_unit"] = unit
+                self.assertTrue(any("event_axis_unit" in e for e in self.errors()))
+        presentation["event_axis_unit"] = "hours"
+        self.assertTrue(any("'b' needs finite axis_start < axis_end" in e for e in self.errors()))
+        b["axis_start"] = 10
+        self.assertTrue(any("'b' needs finite axis_start < axis_end" in e for e in self.errors()))
+        for first, last in [(10, 10), (12, 10), (False, 4), (float("-inf"), 3), (3, float("nan"))]:
+            with self.subTest(first=first, last=last):
+                b.update(axis_start=first, axis_end=last)
+                self.assertTrue(any("axis_start < axis_end" in e for e in self.errors()))
+        # The new opt-in cannot use a legacy exception to hide an overlap.
+        b.update(axis_start=10, axis_end=11)
+        self.assertTrue(any("overlapping events require" in e for e in self.errors()))
+
     def test_legacy_concurrent_schedule_migrates_without_rewriting_events(self):
         record = json.loads((VIDEO / "examples/concurrent-replies.json").read_text(encoding="utf-8"))
         del record["semantic"]["event_readout"]
