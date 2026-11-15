@@ -13,6 +13,114 @@
           "sha256": "5411718474f59b8db349a78dcbfe8f8736cd961647e21803c3a82f008f54f004"
         }
       ]
+    },
+    {
+      "id": "video-podcast-review-20261115",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/podcast-review-20261115.json",
+          "upstream_path": "每项原始网页与出处见该快照 entries[].url 和 entries[].section",
+          "sha256": "85c28025124bc0480fd377d609077b809e352c9bc6e7d14f34c6335b5813ec5d"
+        }
+      ]
+    },
+    {
+      "id": "video-architecture-review-20261115",
+      "kind": "user-upload",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/architecture-review-20261115-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "da581c5620e4f4269d4a394fbfefd6a816b087f294d7c0ca9087bcb392470f95"
+        }
+      ]
+    },
+    {
+      "id": "video-architecture-references-20261115",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/architecture-references-20261115.json",
+          "upstream_path": "各条目的 url 与 section",
+          "sha256": "0f13dbd06c734ad33473e15437559987a82b2d47cccf9d56566d393c8e6c8331"
+        }
+      ]
+    },
+    {
+      "id": "video-boundary-review-20261115",
+      "kind": "user-upload",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/boundary-review-20261115-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "ad491d2cc5b941c64e716f8d1725834b86dad520f5df17f84c7871f4947e663a"
+        }
+      ]
+    },
+    {
+      "id": "video-bucket-review-20261115",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/bucket-review-references-20261115.json",
+          "upstream_path": "各条目的 url 与 section，reducer 源码另列固定提交",
+          "sha256": "891da74d26890f451f88ef271e600eed7b77e565699496df548ed0f176f44fa1"
+        }
+      ]
+    },
+    {
+      "id": "video-readout-review-20261115",
+      "kind": "user-upload",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/readout-review-20261115-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "70577a321fa33828a638fc3fc4faa0c2243c9b16f37f2f10409efdc9c230be18"
+        }
+      ]
+    },
+    {
+      "id": "video-narration-review-20261115",
+      "kind": "user-upload",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/narration-review-20261115-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "3cb1b0bdcd7fe112200993c509d8b5ca09dae2d7610348acb21ac5244a6d826f"
+        }
+      ]
+    },
+    {
+      "id": "video-online-normalizer-20261115",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/online-normalizer-references-20261115.json",
+          "upstream_path": "各条目的 url 与 section",
+          "sha256": "22419280c96854b6b0f181d297fa7d103140e035be10cc90c2a0c2605c1cd9e9"
+        }
+      ]
+    },
+    {
+      "id": "video-narration-references-20261115",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-15",
+      "files": [
+        {
+          "path": "sources/narration-references-20261115.json",
+          "upstream_path": "各条目的 url 与 section",
+          "sha256": "b43dd2173c31b007e952e375ab84546c05b0626bc1adee47223d4dc8e12224f0"
+        }
+      ]
     }
   ]
 }

@@ -7,7 +7,7 @@
       "kind": "action",
       "status": "candidate",
       "summary": "突出当前注意对象或关系，让其他信息退为支撑。",
-      "tags": ["注意", "焦点", "显著性", "节奏"],
+      "tags": ["注意", "焦点", "显著性", "节奏", "高亮", "信息过载", "文字瀑布流"],
       "path": "PRIMITIVES.md#focus"
     },
     {
@@ -16,16 +16,17 @@
       "kind": "action",
       "status": "candidate",
       "summary": "把话语、标签、图形或实物之间已明确的映射显式呈现。",
-      "tags": ["映射", "声画", "标签", "配对", "同步"],
+      "tags": ["映射", "声画", "标签", "配对", "同步", "说话人", "声画对应", "话轮", "引语", "预告", "头像去重", "双头像", "字幕断句", "字幕清洗", "字幕", "Clean Verbatim"],
       "path": "PRIMITIVES.md#correspond"
     },
     {
       "id": "video.align-compare",
       "title": "对齐比较",
-      "kind": "action",
+      "kind": "composite",
       "status": "candidate",
-      "summary": "在共同维度和条件下保持共同项稳定，显出方案差异。",
-      "tags": ["比较", "差异", "方案", "选择", "共同维度"],
+      "components": ["video.reference-lock", "video.correspond", "video.focus"],
+      "summary": "给定可比条件后，锁定参照、对应字段、突出差异的组合入口。",
+      "tags": ["比较", "差异", "方案", "选择", "共同维度", "编码对称"],
       "path": "PRIMITIVES.md#align-compare"
     },
     {
@@ -34,7 +35,7 @@
       "kind": "action",
       "status": "candidate",
       "summary": "用有明确含义的边界表达分类、包含或作用范围。",
-      "tags": ["编组", "归属", "层级", "包含", "作用范围"],
+      "tags": ["编组", "归属", "层级", "包含", "作用范围", "连续区间", "阈值"],
       "path": "PRIMITIVES.md#group"
     },
     {
@@ -52,7 +53,7 @@
       "kind": "action",
       "status": "candidate",
       "summary": "在同一实体变化时保留识别线索，并区分复制、派生与替换。",
-      "tags": ["身份", "状态", "变化", "连续", "复制", "派生"],
+      "tags": ["身份", "状态", "变化", "连续", "复制", "派生", "Fork", "分支", "写作原语", "抽骨架", "写审分离"],
       "path": "PRIMITIVES.md#identity-preserve"
     },
     {
@@ -60,8 +61,8 @@
       "title": "锁定参照",
       "kind": "action",
       "status": "candidate",
-      "summary": "固定与任务有关的尺度、旧状态或锚点，让变化有比较基准。",
-      "tags": ["参照", "基准", "旧状态", "坐标", "变化量"],
+      "summary": "固定与任务有关的尺度、旧状态或锚点，供不同对象或同一对象的前后状态比较。",
+      "tags": ["参照", "基准", "旧状态", "坐标", "变化量", "阈值", "临界值"],
       "path": "PRIMITIVES.md#reference-lock"
     },
     {
@@ -69,7 +70,7 @@
       "title": "改变尺度／视点",
       "kind": "action",
       "status": "candidate",
-      "summary": "先定位，再改变同一对象的观察范围或方向，保留整体与局部关系。",
+      "summary": "先定位，再通过改变范围或方向揭示先前看不清的细节、整体或空间关系。",
       "tags": ["尺度", "视点", "整体", "局部", "空间", "定位"],
       "path": "PRIMITIVES.md#scale-viewpoint"
     },
@@ -79,7 +80,7 @@
       "kind": "action",
       "status": "candidate",
       "summary": "关键关系形成后暂停新增视觉事件，让结果成为可检视的稳定画面。",
-      "tags": ["停留", "静态", "结果", "节奏", "整合", "呼吸"],
+      "tags": ["停留", "静态", "结果", "节奏", "整合", "呼吸", "屏保效应", "截图", "Prompt", "倍速", "改写模板"],
       "path": "PRIMITIVES.md#hold"
     },
     {
@@ -87,9 +88,18 @@
       "title": "证据落地",
       "kind": "action",
       "status": "candidate",
-      "summary": "区分解释示意与实际材料，展示可追溯依据及其支持范围。",
-      "tags": ["证据", "实录", "事实", "来源", "示意", "执行结果"],
+      "summary": "指出可追溯材料中能支持某个具体主张的观察点与适用范围。",
+      "tags": ["证据", "实录", "事实", "来源", "示意", "执行结果", "只能看不能改", "视觉具体性", "占位横线", "微缩 UI", "可编辑", "负向主张", "观察边界"],
       "path": "PRIMITIVES.md#evidence-ground"
+    },
+    {
+      "id": "video.temporal-relations",
+      "title": "呈现时间关系",
+      "kind": "action",
+      "status": "candidate",
+      "summary": "在共同时间参照上呈现活动区间的重叠或单位时间内的进展差异。",
+      "tags": ["时间关系", "并发", "并行", "重叠", "相对速率", "异步", "积压", "速率差", "串行", "吞吐量", "泳道", "同起同止"],
+      "path": "PRIMITIVES.md#temporal-relations"
     }
   ]
 }

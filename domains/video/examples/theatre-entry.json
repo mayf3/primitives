@@ -1,0 +1,54 @@
+{
+  "id": "video.example.theatre-entry",
+  "title": "小剧场为什么发两次入场提示？",
+  "version": "0.4.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_status": "report-only", "media_accessed": false, "source_range_seconds": null,
+    "transcript_anchor": null, "evidence_assets": [], "checks": [],
+    "limitations": ["设想一间排练剧场的入座演练。下面两段话均为本例新拟的台词，尚无录音，也不描述实际剧场规则。"]
+  },
+  "semantic": {
+    "question": "第一次响铃的人为什么还没有入座？",
+    "understanding_goal": "指出困惑由谁提出，并区分两次提示各自要求观众做什么。",
+    "feeling_goal": "能从起初的犹豫过渡到明白自己下一步该做什么。",
+    "objects": [{"id": "question", "label": "观众的疑问"}, {"id": "calls", "label": "剧场的两个提示"}],
+    "relations": [{"from": "calls", "to": "question", "type": "answers", "label": "分开两次提示解释困惑"}]
+  },
+  "presentation": {
+    "planned_duration_seconds": 22,
+    "primitives": ["video.correspond", "video.hold"],
+    "focus_schedule": [
+      {"start": 0, "end": 5, "target": "question"},
+      {"start": 5, "end": 22, "target": "calls"}
+    ],
+    "holds": [{"start": 17, "end": 22, "visible": ["calls"]}],
+    "audio_alignment": {
+      "status": "planned",
+      "turns": [
+        {"id": "confusion", "start": 0, "end": 5, "speaker": "观众", "intent": "困惑", "text": "我听见铃声就找座位，可门还没开。"},
+        {"id": "answer", "start": 5, "end": 15, "cue": 8, "speaker": "引导员", "intent": "解法", "total": 2,
+         "text": "你听到的是哪一次？这里分两次提示。第一次看票上的排号，第二次才入座。"}
+      ],
+      "text_events": [
+        {"start": 0, "end": 5, "turn": "confusion", "role": "quote", "intent": "困惑", "text": "我听见铃声就找座位"},
+        {"start": 5, "end": 8, "turn": "answer", "role": "preview", "label": "接下来", "text": "响铃后先做哪一步？"},
+        {"start": 8, "end": 12, "turn": "answer", "role": "paraphrase", "intent": "解法", "coverage": "part", "shown": 1,
+         "label": "第 1 项／共 2 项", "text": "先核对排号"},
+        {"start": 12, "end": 15, "turn": "answer", "role": "paraphrase", "intent": "解法", "coverage": "all", "shown": 2,
+         "text": "一，看排号。二，入座。"},
+        {"start": 15, "end": 17, "turn": "confusion", "role": "recap", "label": "回看观众的疑问", "text": "为什么还没开门？"},
+        {"start": 17, "end": 22, "turn": "answer", "role": "example", "origin": "method-example", "label": "编者虚构票样", "text": "三排六座"}
+      ]
+    }
+  },
+  "render": {"status": "proposed", "implemented": false, "artifacts": []},
+  "validation": {
+    "factual": {"status": "pending", "checks": ["若改用真实原声，逐个核对说话者、短语入点与源位置。"], "records": []},
+    "accessibility": {"status": "pending", "checks": ["静音查看分期数、回指归属与票样标签。"], "records": []},
+    "viewer": {"status": "untested", "observations": [],
+      "understanding_tasks": ["两声提示各做什么？哪句话来自观众，座位号是谁举的例子？"],
+      "feeling_questions": ["从哪个提示起，你有把握判断下一步？"]}
+  }
+}

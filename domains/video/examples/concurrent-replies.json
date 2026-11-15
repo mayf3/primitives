@@ -1,0 +1,75 @@
+{
+  "id": "video.example.concurrent-replies",
+  "title": "四窗同在、四窗并发与回复积压",
+  "version": "0.4.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": ["用户反馈提供四窗情境。以下均为合成事件及片段局部秒数，未采集软件生成或人的阅读数据。"]
+  },
+  "semantic": {
+    "question": "四个窗口同时打开，什么时候算同时在写？来不及读又如何判断？",
+    "understanding_goal": "从静态泳道逐一指出四路生成与一次阅读的起止，认出同起同止的两条独立回复，再解释观察窗内的积压。",
+    "event_readout": "individual",
+    "feeling_goal": "能看出回复在堆积，末帧有从容读清一段的机会。",
+    "objects": [
+      {"id": "window-01", "label": "教学目标"},
+      {"id": "window-02", "label": "案例讨论"},
+      {"id": "window-03", "label": "课堂练习"},
+      {"id": "window-04", "label": "讲稿备注"},
+      {"id": "reader", "label": "读者的书签"},
+      {"id": "queue", "label": "已写完且尚未读完的段落"}
+    ],
+    "relations": [
+      {"from": "queue", "to": "reader", "type": "awaits-reading", "label": "新段生成完毕后计入，读完移出"}
+    ],
+    "assumptions": [
+      "五项事件共用一把局部秒尺。每个窗口写完同一工作量的一段；这里只计算完成事件，不计滚动像素。",
+      "第 2 秒已有一段写完未读。示意读者一次读一段，读完用 6 秒。实际节目未测定这些工时。"
+    ],
+    "observation_window": {
+      "start": 2, "end": 8, "counting_rule": "统计完成时刻 t 满足 start < t ≤ end 的事件",
+      "unit": "段", "initial_unfinished": 1, "produced": 4, "read": 1, "final_unfinished": 4
+    }
+  },
+  "presentation": {
+    "primitives": ["video.group", "video.temporal-relations", "video.focus", "video.hold"],
+    "planned_duration_seconds": 11,
+    "audio_alignment": {"status": "not-applicable", "reason": "本合成片段只演示生成与阅读区间，没有待绑定的叙述音轨。"},
+    "event_layout": "lanes",
+    "event_schedule": [
+      {"id": "write-01", "target": "window-01", "start": 2, "end": 5, "lane_id": "window-01"},
+      {"id": "write-02", "target": "window-02", "start": 3, "end": 6, "lane_id": "window-02"},
+      {"id": "write-03", "target": "window-03", "start": 4, "end": 7, "lane_id": "window-03"},
+      {"id": "write-04", "target": "window-04", "start": 4, "end": 7, "lane_id": "window-04"},
+      {"id": "read-initial", "target": "reader", "start": 2, "end": 8, "lane_id": "reader"}
+    ],
+    "focus_schedule": [
+      {"start": 0, "end": 2, "target": "window-01", "action": "指出要读的第一段。"},
+      {"start": 2, "end": 4, "target": "reader", "action": "书签沿第一段移动。"},
+      {"start": 4, "end": 11, "target": "queue", "action": "新段完成时计入清单，读完一段后留住余额。同一秒尺下保留四条带窗口号的生成轨和一条阅读轨，静止时仍能数出两条同起同止的回复。"}
+    ],
+    "holds": [{"start": 8, "end": 11, "visible": ["window-01", "window-02", "window-03", "window-04", "reader", "queue"]}],
+    "end_state": ["window-01", "window-02", "window-03", "window-04", "reader", "queue"]
+  },
+  "render": {"status": "proposed", "implemented": false, "artifacts": []},
+  "validation": {
+    "factual": {"status": "pending", "checks": ["逐行核对五项事件的起止、四路生成的共同交集和起末余额。把窗口 03、04 的两个完成事件分别计数。", "接入节目时核实原声能支持的定性主张；如声称真实生成或阅读速率，需另取相应计时材料。"], "records": []},
+    "accessibility": {"status": "pending", "checks": ["按目标播放尺寸检查五行的名称、起末刻度和清单余额。只看静态末帧也能区分 03、04，无须凭色块深浅计数。"], "records": []},
+    "viewer": {
+      "status": "untested", "observations": [],
+      "understanding_tasks": [
+        "只看静态末帧，逐一写出四窗生成及读者阅读的起止。哪些独立事件同起同止？",
+        "四窗何时在同一局部秒内生成？观察窗内各完成多少，最后有几段待处理？",
+        "按原顺序把四个三秒生成事件首尾相接，首个仍在第 2 秒开始。保持阅读事件不动，指出还剩几个并发区间，并重算第 8 秒的余额。"
+      ],
+      "feeling_questions": ["在哪一拍感到要处理的事变多？停下来后能从哪里重新读起？"]
+    }
+  }
+}

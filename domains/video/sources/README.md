@@ -1,6 +1,6 @@
 # 视频领域来源与边界
 
-本领域的输入是用户上传的《视频呈现原语：从理解、审美到可验证制作系统的研究报告》。整合日期为 **2026-11-13（北京时间）**；原报告写作日期未知。
+本领域最初整合了用户上传的《视频呈现原语：从理解、审美到可验证制作系统的研究报告》。整合日期为 **2026-11-13（北京时间）**，原报告写作日期未知。**2026-11-15** 另存了[视频化播客评审的一手资料](#podcast-review)。
 
 ## 原文与工作文档分开
 
@@ -40,6 +40,47 @@
 | [Remotion：Caption](https://www.remotion.dev/docs/captions/caption) | 字幕文本与毫秒时间字段 | 支持实现记录；数据结构存在不等于字幕正确、同步或完整 |
 
 Remotion 本次页面已说明不再推荐直接使用 `<Sequence>`，其时序属性可由相关组件使用或继承。这里保留对时序概念的引用，不锁定唯一组件写法；实际制作按项目所固定版本复核 API。当前网页不用于反推 EP03 录制时的实现。
+
+<a id="podcast-review"></a>
+
+## 视频化播客评审的一手资料 · 2026-11-15
+
+下表便于按制作问题查原文。每份来源的章节、英文短摘、可支持的判断、本仓库的转用与限制均收入[固定摘录快照](podcast-review-20261115.json)，其 SHA-256 登记在[导入清单](manifest.json)。
+
+| 生产中要判别什么 | 查哪份来源 | 能用到什么范围 |
+|---|---|---|
+| 提示该落在何处、何时出现 | [Boucheix 与 Lowe 的眼动实验](https://doi.org/10.1016/j.learninstruc.2009.02.015) | 钢琴机构动画里，提示与相关部件及事件同步，帮助定位与理解 |
+| 变化前后能否追踪到同一对象 | [Heer 与 Robertson 的图表研究](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/InfoVis2007-DynaVis.pdf) | 统计图形转场设计与识别实验，尤其适合检查复杂转场的中间状态 |
+| 运动有无用途 | [3Blue1Brown 作者答疑](https://www.3blue1brown.com/about/) | 数学动画作者的创作经验 |
+| 什么材料能让观众看到依据 | [Vox 制片人 Sam Ellis 的采访](https://www.storybench.org/how-vox-explained-chinas-belt-and-road-initiative/) | 一条地图解释视频中寻找资料与视觉证据的经过 |
+| 如何识别重演的边界 | [BBC 旧版编辑指南 §3.4.18](https://downloads.bbc.co.uk/guidelines/editorialguidelines/pdfs/Section_03_Accuracy.pdf) | 纪实重演的证据要求与标识方式 |
+| 留存曲线究竟测到了什么 | [YouTube Help 的峰谷说明](https://support.google.com/youtube/answer/9314415?hl=en) | 重看、分享、跳过与退出等行为；原因需结合片段另查 |
+| 如何清洗字幕并保住原意 | [W3C WAI 转录指南](https://www.w3.org/WAI/media/av/transcribing/) | 听辨原话、选择有意义的声音、在短语边界切分 |
+| 如何比较简中字幕的密度 | [Netflix 简中定时字幕指南](https://partnerhelp.netflixstudios.com/hc/en-us/articles/215986007-Chinese-Simplified-Timed-Text-Style-Guide) | Netflix 普通字幕与听障字幕各有交付条件 |
+| 分支从哪条消息产生 | [OpenAI 网页端分支发布说明](https://help.openai.com/en/articles/6825453-chatgpt-release-notes) | 2025-09-04 发布时的网页版入口和动作；节目所录版本仍待核实 |
+
+本次两段用户反馈另供案例线索，包括节目时码、候选字幕修字、三层节奏与动画试值。九份外部资料的计数限于上表。实际镜头、原声、字幕和观众反应需回到相应制作项目核对。
+
+<a id="architecture-review"></a>
+## 0.3.0 结构评审与核查
+
+[外部 Agent 评审原文](architecture-review-20261115-original.txt)以 0.2.0 为对象。附件末尾的四处手术与正文的七项架构是两种提案；其中的源片效果、实测性能和一致率都没有附独立观察记录。附件中带前缀的锚点来自合并评审稿，域内工作文件使用自己的短锚点。
+
+本次另存[六份资料的核对范围](architecture-references-20261115.json)，记录采样算法、图表转场、文字和非文字对比、可访问字幕、冗余文字研究。既有九份资料保持原日期。具体采纳、收窄和仍待观察的问题见[六项评审处置](../REVISIONS.md)。
+
+<a id="boundary-review"></a>
+## 0.3.1 制作边界复审
+
+[第二轮评审原件](boundary-review-20261115-original.txt)记录四个反例和一份多卡训练分镜。收到的附件逐字保存，四项改动、原提案中需要纠正的技术条件与编辑后的关键帧见[处置记录](../REVISIONS.md#boundary-review)。
+
+[六份训练资料的固定摘录](bucket-review-references-20261115.json)登记了 PyTorch 调优指南、2.9 API、带历史版本限制的设计说明、v2.9.0 归约器的固定源码、DDP 原论文和 Profiler 说明。它们用于确认可以在何种配置下累积、何时可以按桶重叠。算例的十格与八格来自作者给定的理想排程，尚无对应训练测量。
+
+<a id="narration-and-readout-reviews"></a>
+## 0.4.0 两份独立评审与复核材料
+
+[评审一原件](readout-review-20261115-original.txt)讨论重叠排程的布局豁免、连续阈值和分块归一化。[评审二原件](narration-review-20261115-original.txt)讨论原声与屏幕文字的绑定、提前揭示和示例误用。两份附件均评审 0.3.1，当前修订接在 0.3.2 之后。附件中对于具体成片错误、研究公理与硬件收益的说法，需依各自来源判定。
+
+[算法与实现资料](online-normalizer-references-20261115.json)按原文核对数学量及实现范围。[两篇认知研究](narration-references-20261115.json)各附作者全文定位、研究任务与应用限制。组织讲解用的“预告／回顾”和“总数／分期”来自这次编辑决策。此前已归档的短关键词冗余实验仍按原核对范围使用。[具体处理](../REVISIONS.md#audiovisual-and-readout)
 
 ## 下次怎样补证据
 

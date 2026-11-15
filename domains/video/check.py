@@ -5,9 +5,13 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
+import re
+from runpy import run_path
 import sys
 
 MODULE_ROOT = Path(__file__).resolve().parent
+# The repository checker and standalone tests also load this file by path.
+check_audio = run_path(str(MODULE_ROOT / "audio_anchors.py"))["check_audio"]
 
 
 def number(value):
@@ -24,7 +28,7 @@ def evidence_records(value):
     )
 
 
-def check_record(record, known_ids, location="record"):
+def check_record(record, known_ids, location="record", *, notices=None):
     errors = []
 
     def fail(message):
@@ -127,6 +131,68 @@ def check_record(record, known_ids, location="record"):
             fail(f"{label}: interval must fit planned_duration_seconds")
         return valid
 
+    # Overlapping events can share a clock, but not an individual display lane.
+    layout = presentation.get("event_layout")
+    if "event_layout" in presentation and layout not in ("lanes", "table", "aggregate"):
+        fail("presentation.event_layout: expected lanes, table or aggregate")
+    readout = semantic.get("event_readout")
+    if "event_readout" in semantic and readout not in ("individual", "aggregate"):
+        fail("semantic.event_readout: expected individual or aggregate")
+    if layout == "aggregate" and readout == "individual":
+        fail("presentation.event_layout: aggregate cannot show individual event endpoints; choose lanes or table")
+    elif layout == "aggregate" and notices is not None:
+        notices.append(f"{location}: aggregate 只呈现汇总量；从末帧恢复单个事件起止须用 lanes 或 table。")
+    events = presentation.get("event_schedule", [])
+    if not isinstance(events, list):
+        fail("presentation.event_schedule: expected an array")
+    else:
+        event_ids = set()
+        lanes = {}
+        spans = []
+        for event in events:
+            valid_interval = interval(event, "presentation.event_schedule")
+            if not isinstance(event, dict):
+                continue
+            if valid_interval:
+                spans.append((event["start"], event["end"]))
+            event_id = event.get("id")
+            if not isinstance(event_id, str) or not event_id.strip() or event_id in event_ids:
+                fail("presentation.event_schedule: each event needs a unique nonempty ID")
+            else:
+                event_ids.add(event_id)
+            if event.get("target") not in object_ids:
+                fail("presentation.event_schedule: unknown event target")
+            if layout == "lanes":
+                lane = event.get("lane_id")
+                if not isinstance(lane, str) or not lane.strip():
+                    fail(f"presentation.event_schedule: event {event_id!r} needs a nonempty lane_id")
+                elif valid_interval and isinstance(event_id, str):
+                    lanes.setdefault(lane.strip(), []).append((event["start"], event["end"], event_id))
+
+        for lane, intervals in lanes.items():
+            last_end = -1
+            last_event = None
+            for start, end, event_id in sorted(intervals):
+                if start < last_end:
+                    fail(f"presentation.event_schedule: events {last_event!r} and {event_id!r} overlap in lane {lane!r}")
+                if end > last_end:
+                    last_end, last_event = end, event_id
+
+        spans.sort()
+        if any(second[0] < first[1] for first, second in zip(spans, spans[1:])):
+            version = record.get("version")
+            legacy = (isinstance(version, str) and re.fullmatch(r"0\.3\.(0|[1-9][0-9]*)", version)
+                      and "event_readout" not in semantic)
+            if legacy:
+                if notices is not None:
+                    notices.append(f"{location}: 兼容 {version} 并发排程。迁移时按观看任务填写 semantic.event_readout "
+                                   "与 presentation.event_layout，再将 version 更新为 0.4.0。")
+            else:
+                if "event_layout" not in presentation:
+                    fail("presentation.event_layout: overlapping events require lanes, table or aggregate")
+                if "event_readout" not in semantic:
+                    fail("semantic.event_readout: overlapping events require individual or aggregate")
+
     focus = presentation.get("focus_schedule")
     previous_end = 0
     if not isinstance(focus, list) or not focus:
@@ -151,6 +217,8 @@ def check_record(record, known_ids, location="record"):
                 visible = item.get("visible")
                 if not isinstance(visible, list) or not visible or any(x not in object_ids for x in visible):
                     fail("presentation.holds: unknown or empty visible objects")
+
+    check_audio(record, interval, number, fail)
 
     if render.get("status") not in {"proposed", "implemented", "regressed", "retired"}:
         fail("render.status: unknown implementation state")
@@ -201,16 +269,26 @@ def check_record(record, known_ids, location="record"):
 
 def main():
     errors = []
+    notices = []
     paths = sorted((MODULE_ROOT / "examples").glob("*.json"))
     try:
         catalog = json.loads((MODULE_ROOT / "catalog.json").read_text(encoding="utf-8"))
-        known_ids = {entry["id"] for entry in catalog["entries"]}
+        entries = catalog["entries"]
+        known_ids = {entry["id"] for entry in entries}
+        action_ids = {entry["id"] for entry in entries if entry["kind"] == "action"}
+        for entry in entries:
+            if entry["kind"] == "composite":
+                components = entry.get("components")
+                if not isinstance(components, list) or not components or not all(
+                    isinstance(part, str) and part in action_ids for part in components
+                ):
+                    errors.append(f"{entry['id']}: expand components into known action IDs")
         if not paths:
             errors.append("video: no example plans found")
         seen = set()
         for path in paths:
             record = json.loads(path.read_text(encoding="utf-8"))
-            errors.extend(check_record(record, known_ids, str(path.relative_to(MODULE_ROOT))))
+            errors.extend(check_record(record, known_ids, str(path.relative_to(MODULE_ROOT)), notices=notices))
             identifier = record.get("id") if isinstance(record, dict) else None
             if isinstance(identifier, str):
                 if identifier in seen:
@@ -222,6 +300,8 @@ def main():
         for error in errors:
             print(f"ERROR {error}", file=sys.stderr)
         return 1
+    for notice in notices:
+        print(f"NOTE {notice}")
     print(f"PASS video: {len(paths)} plans; IDs, timing and evidence-state consistency only, not viewer validation.")
     return 0
 

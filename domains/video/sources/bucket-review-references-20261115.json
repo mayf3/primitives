@@ -1,0 +1,76 @@
+{
+  "snapshot_id": "video-bucket-review-20261115",
+  "checked_at": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "scope": "DDP 四帧分镜的事实复核。excerpt 为所列位置的一手短摘；source_scope 为转述；editorial_application 为本仓库推论。时间格子是另行构造的示意数据。",
+  "entries": [
+    {
+      "id": "video.source.ddp-tuning",
+      "title": "Performance Tuning Guide",
+      "creator": "PyTorch Tutorials",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/tuning_guide.html",
+      "section": "Skip unnecessary all-reduce if training with DistributedDataParallel and gradient accumulation",
+      "excerpt": "executes gradient all-reduce after every backward pass",
+      "source_scope": "通常每次反向传播都同步梯度。分 N 次累积时，示例让前 N−1 次使用 no_sync，最后一次按默认方式同步。桶通信可与反向计算重叠。",
+      "editorial_application": "画第一批前先亮明策略。默认梯度同步也适用于第一个 micro-batch；前几批推迟梯度同步需要显式条件。",
+      "limits": "教程概括同步频率。具体发起时机可以在反向传播中按桶发生；与整次 backward 返回时刻应分开读。"
+    },
+    {
+      "id": "video.source.ddp-nosync-29",
+      "title": "DistributedDataParallel",
+      "creator": "PyTorch 2.9 API documentation",
+      "url": "https://docs.pytorch.org/docs/2.9/generated/torch.nn.parallel.DistributedDataParallel.html",
+      "section": "no_sync() 示例和 Warning；构造参数 broadcast_buffers；join() 关于非 DDP collectives 的说明",
+      "excerpt": "The forward pass should be included inside the context manager, or else gradients will still be synchronized.",
+      "source_scope": "no_sync 的范围包含对应前向与反向，退出后的首个正常前反向同步累积梯度。文档另列模块缓冲区广播及模型中 SyncBatchNorm 等集合通信。",
+      "editorial_application": "图中明确写“本轮暂缓 DDP 梯度归约”，分开讨论缓冲区、模型或用户代码的其他通信。",
+      "limits": "这项 API 无法证明任意模型的整个网络链路静默。训练端设置、版本和真实活动均需另核。"
+    },
+    {
+      "id": "video.source.ddp-design-note",
+      "title": "Distributed Data Parallel",
+      "creator": "PyTorch，2.9 文档收录的 DDP 设计说明",
+      "url": "https://docs.pytorch.org/docs/2.9/notes/ddp.html",
+      "section": "Internal Design / Backward Pass 及其后关于跨进程顺序的说明",
+      "excerpt": "in the bucket index order instead of actual bucket ready order",
+      "source_scope": "设计说明区分参数梯度就绪、桶内梯度就绪、按相同桶序异步发起 all-reduce，以及等待归约完成。",
+      "editorial_application": "画出就绪和发起两个时刻。若先序桶尚未就绪，即使后序桶已齐也不能任意插队。",
+      "limits": "页面自述设计基于 v1.4。固定版本 reducer 代码另核常规路径；特殊钩子与其他训练系统不在案例范围。"
+    },
+    {
+      "id": "video.source.ddp-reducer-29",
+      "title": "reducer.cpp, Reducer::mark_bucket_ready",
+      "creator": "PyTorch v2.9.0 source",
+      "upstream_path": "torch/csrc/distributed/c10d/reducer.cpp",
+      "revision": "0fabc3ba44823f257e70ce397d989c8de5e362c1",
+      "url": "https://github.com/pytorch/pytorch/blob/0fabc3ba44823f257e70ce397d989c8de5e362c1/torch/csrc/distributed/c10d/reducer.cpp#L1028-L1051",
+      "section": "lines 1028–1051",
+      "excerpt": "Buckets are reduced in sequence.",
+      "source_scope": "该函数在 bucket_index 大于 next_bucket_ 时返回，并从下一个应处理的桶顺序推进，仅处理已就绪的桶，还会检查是否跳过归约。",
+      "editorial_application": "为合成例指定 A 先于 B，两桶参数梯度均参与归约。",
+      "limits": "本段固定代码支持归约发起顺序的解释；其执行本身没有被本仓库跟踪，更不能给出设备时间或实际加速率。"
+    },
+    {
+      "id": "video.source.ddp-li-2020",
+      "title": "PyTorch Distributed: Experiences on Accelerating Data Parallel Training",
+      "creator": "Shen Li 等，Proceedings of the VLDB Endowment，2020",
+      "url": "https://www.vldb.org/pvldb/vol13/p3005-li.pdf",
+      "section": "§3.2.4 Gradient Accumulation",
+      "excerpt": "Instead of launching AllReduce in every iteration",
+      "source_scope": "作者说明将一个大批拆成多个 micro-batch，本地累积相应参数的梯度，按选定边界做全局梯度同步。",
+      "editorial_application": "在同一参数标签下显示各次贡献；微批计数与梯度数值分开。逻辑身份无需绑定固定显存地址。",
+      "limits": "论文讨论的设计与其基准实验不提供本分镜的实测数据。某分量的梯度可以为负或为零，处理步数不足以确定其幅值。"
+    },
+    {
+      "id": "video.source.pytorch-profiler-recipe",
+      "title": "PyTorch Profiler",
+      "creator": "PyTorch Tutorials",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html",
+      "section": "§3 Using profiler to analyze execution time；§5 Using tracing functionality",
+      "excerpt": "on-device CUDA kernels",
+      "source_scope": "Profiler 可采集 CPU 操作和设备 CUDA kernel，CUDA 模式也会显示发生在主机上的 runtime 事件；时间轴能检查各自的起止与对应关系。",
+      "editorial_application": "判断设备计算与集合通信是否重叠，应找同一 rank、设备、步次的通信和计算 kernel，必要时借主机事件定位调用来源。",
+      "limits": "CPU 算子范围可能包住异步提交和等待。单 rank、单步的设备重叠也不能推得整个集群训练的墙钟提速。"
+    }
+  ]
+}

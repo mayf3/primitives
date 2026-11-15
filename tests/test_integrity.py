@@ -69,6 +69,15 @@ class IntegrityScenarios(unittest.TestCase):
         errors, _ = primitives.validate(self.root)
         self.assertTrue(any("expected a file" in e for e in errors), errors)
 
+    def test_video_composite_cannot_expand_to_an_unknown_action(self):
+        path = "domains/video/catalog.json"
+        catalog = primitives.read_json(self.root / path)
+        recipe = next(entry for entry in catalog["entries"] if entry["kind"] == "composite")
+        recipe["components"].append("video.unknown-action")
+        self.write_json(path, catalog)
+        errors, _ = primitives.validate(self.root)
+        self.assertTrue(any("expand components into known action IDs" in e for e in errors), errors)
+
     def test_design_record_missing_id_does_not_disappear_from_checks(self):
         path = "domains/design/examples/entry-outcome.json"
         record = primitives.read_json(self.root / path)

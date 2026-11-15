@@ -1,7 +1,7 @@
 {
   "id": "video.example.compare-options",
   "title": "先翻译、先改实验，还是先规划结构？",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "example_type": "synthetic",
   "selected": true,
   "source": {
@@ -111,7 +111,7 @@
         "start": 10,
         "end": 25,
         "target": "options",
-        "action": "三个候选同尺度并置，出现后静止。"
+        "action": "在同一选择目标下列出候选，先看清各自的名称。"
       },
       {
         "start": 25,
@@ -160,7 +160,7 @@
     "status": "proposed",
     "implemented": false,
     "artifacts": [],
-    "layout": "并列比较；手机窄屏可改为共同维度下的纵向对齐。",
+    "layout": "并列比较。窄屏可同槽先后呈现各候选，始终显示相同字段、条件与单位，附上已看方案的简记；末帧保留可回看的差异。没有可比依据的项写待核。",
     "atmosphere": "低密度海景与固定地平线；语义解释时压低环境运动和音乐。"
   },
   "validation": {

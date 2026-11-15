@@ -4,6 +4,38 @@
   "checked_at": "2026-11-13",
   "timezone": "Asia/Shanghai",
   "scope": "本轮仅补充直接打开的官方规范说明、行业指南和实现文档；未重做文献综述或观看EP03视频。",
+  "supplementary_snapshots": [
+    {
+      "source_id": "video-podcast-review-20261115",
+      "path": "podcast-review-20261115.json",
+      "checked_at": "2026-11-15",
+      "scope": "独立打开九份资料，按章节记录一手短摘、原文范围、编辑应用和限制。历史报告与 11 月 13 日记录的核对状态单列。"
+    },
+    {
+      "source_id": "video-architecture-references-20261115",
+      "path": "architecture-references-20261115.json",
+      "checked_at": "2026-11-15",
+      "scope": "结构评审的事实纠正、图表分阶段、字幕冗余与对比度适用范围。"
+    },
+    {
+      "source_id": "video-bucket-review-20261115",
+      "path": "bucket-review-references-20261115.json",
+      "checked_at": "2026-11-15",
+      "scope": "DDP 默认同步与 no_sync 作用域、归约桶的就绪和发起次序、区分 CPU 提交与设备执行。六份一手资料不含本项目的训练测量。"
+    },
+    {
+      "source_id": "video-online-normalizer-20261115",
+      "path": "online-normalizer-references-20261115.json",
+      "checked_at": "2026-11-15",
+      "scope": "单遍归一化、浮点误差、实测条件与 CPU/GPU 时间线解释，具体范围见各条目。"
+    },
+    {
+      "source_id": "video-narration-references-20261115",
+      "path": "narration-references-20261115.json",
+      "checked_at": "2026-11-15",
+      "scope": "两项经典研究系列各自的材料、任务与适用边界。"
+    }
+  ],
   "imported_report": {
     "source_id": "video-upload-20261113",
     "path": "research-original.txt",

@@ -1,0 +1,117 @@
+{
+  "snapshot_id": "video-podcast-review-20261115",
+  "checked_at": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "scope": "视频化播客原语修订采用的九份一手资料短摘。excerpt 是所列位置的原文片段，source_scope 是来源内容的中文转述，editorial_application 是本仓库的应用判断。",
+  "entries": [
+    {
+      "id": "video.source.boucheix-lowe",
+      "title": "An eye tracking comparison of external pointing cues and internal continuous cues in learning with complex animations",
+      "creator": "Jean-Michel Boucheix、Richard K. Lowe",
+      "kind": "两项眼动与理解实验，Learning and Instruction 20（2010）123–135",
+      "url": "https://lead.ube.fr/wp-content/uploads/2023/09/000191-an-eye-tracking-comparison-of-external-pointing-cues-and-internal-continuous-cues-in-learning-with-complex-animations.pdf",
+      "doi": "10.1016/j.learninstruc.2009.02.015",
+      "section": "Abstract，p. 123；Experiments 1 and 2",
+      "excerpt": "being spatially and temporally coordinated with onsets of animation events",
+      "source_scope": "在钢琴机械动画中，沿部件传播的着色提示组比箭头组或无提示组更关注相关部位，理解得分也更高。第二项实验中，同步提示组的理解优于错时提示组。",
+      "editorial_application": "鼠标点击时在被选对象上显出选框；讲到转折词时就在原句内点亮，再把焦点交给下一处。",
+      "limits": "实验任务是理解特定机械系统；没有测量播客留存、字幕可读性或品牌风格效果。"
+    },
+    {
+      "id": "video.source.heer-robertson",
+      "title": "Animated Transitions in Statistical Data Graphics",
+      "creator": "Jeffrey Heer、George G. Robertson",
+      "kind": "图表设计研究与两项受控实验，InfoVis 2007",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/InfoVis2007-DynaVis.pdf",
+      "section": "§3.2.1 Congruence；§3.2.2 Apprehension",
+      "excerpt": "Use staging for complex transitions.",
+      "source_scope": "作者建议对象的视觉连续性应符合其语义身份，复杂变化可以拆成可跟踪的阶段。实验测量的是受试者识别统计图形变化的表现。",
+      "editorial_application": "提取长段落时，先保留原词位置、再重排为节点。分支演示保留父消息位置，并给派生的新窗口独立标识。",
+      "limits": "建议与实验结果各有范围。论文没有逐项证实每个设计建议，也没有给出长视频的切镜频率。"
+    },
+    {
+      "id": "video.source.3blue1brown-purpose",
+      "title": "About | 3Blue1Brown",
+      "creator": "Grant Sanderson / 3Blue1Brown",
+      "kind": "创作者公开答疑",
+      "url": "https://www.3blue1brown.com/about/",
+      "section": "FAQ，面向数学视频作者的建议，Avoid pointless animations",
+      "excerpt": "Every movement on the screen should be deliberate, with an identifiable purpose.",
+      "source_scope": "作者谈数学动画时提醒，文字和公式仅仅在屏幕上移动，也可能没有明确目的。",
+      "editorial_application": "对停留段问清下一拍要指向哪个词、对象或关系；如果观众需要读完整张便签，可以保住稳定画面。",
+      "limits": "这是作者的创作经验。页面没有定义 4/12/45 秒法则、流失比例或播客效果。"
+    },
+    {
+      "id": "video.source.vox-ellis",
+      "title": "How Vox explained China’s Belt and Road Initiative",
+      "creator": "Sam Ellis（Vox 制片人，受访者）/ Storybench",
+      "kind": "制作当事人采访",
+      "url": "https://www.storybench.org/how-vox-explained-chinas-belt-and-road-initiative/",
+      "section": "关于 research and reporting 的问答，描述寻找解释和图像证据、使用港口铁路数据的过程",
+      "excerpt": "The other thing I’m looking for is visual evidence of this.",
+      "source_scope": "Ellis 描述了向专家了解议题，再寻找港口、铁路等数据来支撑地图呈现的制作过程。",
+      "editorial_application": "要说明文字不能逐字编辑，可找原文件及一次实际点击的选区反馈。手绘界面可以解释这种差别，另行标注为示意。",
+      "limits": "这段采访记载一名制片人对一条视频的实践，没有提出适用于 Vox 全部作品的动画铁律。"
+    },
+    {
+      "id": "video.source.bbc-reconstructions",
+      "title": "BBC Editorial Guidelines — Section 03: Accuracy",
+      "creator": "BBC",
+      "kind": "编辑指南旧版官方 PDF",
+      "url": "https://downloads.bbc.co.uk/guidelines/editorialguidelines/pdfs/Section_03_Accuracy.pdf",
+      "section": "§3.4.18 Reconstructions，PDF p. 8",
+      "excerpt": "It should also be obvious to the audience where a reconstruction begins and ends.",
+      "source_scope": "在纪实节目中重演真实事件通常需要相当且可核验的材料，观众应能识别重演及其起止。",
+      "editorial_application": "复现特定操作时交代所依据的材料，在进入和退出时标清重演范围。仅为解释机制而设计的界面标为示意。",
+      "limits": "此处保留旧版条款及其原有编号。该条适用于纪实重演，无法用作任一产品版本或功能的证明。"
+    },
+    {
+      "id": "video.source.youtube-retention",
+      "title": "Measure key moments for audience retention",
+      "creator": "YouTube Help",
+      "kind": "平台指标说明",
+      "url": "https://support.google.com/youtube/answer/9314415?hl=en",
+      "section": "Spikes；Dips",
+      "excerpt": "Spikes are moments in your video that were rewatched or shared.",
+      "source_scope": "峰值可能来自重看或分享，包括因为没看懂而回看。下降段对应观众跳过该段或停止观看。",
+      "editorial_application": "把长静止、信息改变和需要读完的时段分别标记。若有实际留存曲线，可据峰谷回看该处，再查观众能否正确复述。",
+      "limits": "平台指标描述观看行为。单条曲线难以识别原因，也不能推出特定静止秒数导致多少观众流失。"
+    },
+    {
+      "id": "video.source.wai-transcribing",
+      "title": "Transcribing Audio to Text",
+      "creator": "W3C Web Accessibility Initiative",
+      "kind": "WAI 媒体制作实践指南",
+      "url": "https://www.w3.org/WAI/media/av/transcribing/",
+      "section": "What to Transcribe / Transcribe Accurately and Honestly；More on Captions",
+      "excerpt": "Transcribe what is said accurately.",
+      "source_scope": "准确转录实际发言。一般网页内容可略无实义碎词，证词等须逐字记录。必要的说话者与非语音信息应保留，语句跨条时在逻辑短语处断开。",
+      "editorial_application": "先用原声核疑词、否定和角色归属，再删无义重复。真实口误若需说明，勘误与同步字幕分开。",
+      "limits": "这是制作建议；ASR、润色稿和画面推测都不足以确定实际说法。页面没有规定中文播客的统一字数。"
+    },
+    {
+      "id": "video.source.netflix-zh-hans",
+      "title": "Chinese (Simplified) Timed Text Style Guide",
+      "creator": "Netflix Partner Help Center",
+      "kind": "平台简体中文定时字幕交付指南",
+      "url": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215986007-Chinese-Simplified-Timed-Text-Style-Guide",
+      "section": "§1 Character Limitation；§5 Dual Speakers；§10 Line Treatment；§14 Reading Speed Limits；§19 SDH",
+      "excerpt": "Character limit can be increased to 18 characters per line, as needed.",
+      "source_scope": "一般简中字幕每行限 16 字、最多两行；双人同条时一人一行。普通成人／儿童节目阅读速度上限为 9／7 字每秒；听障字幕（SDH）按需每行可到 18 字，成人／儿童上限为 11／9 字每秒，按情境标注说话者与音效。",
+      "editorial_application": "选择交付类型后，用显示字数和实际曝光秒数检查字幕，结合断句、同屏卡片和目标尺寸复看。短答可单独成行。",
+      "limits": "这些上限针对 Netflix 简中交付。其他平台可作为比较样本；不能据此承诺所有观众在 1.5 秒读完任意长度。"
+    },
+    {
+      "id": "video.source.chatgpt-branch-web-20250904",
+      "title": "ChatGPT release notes",
+      "creator": "OpenAI",
+      "kind": "产品历史发布说明",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "section": "September 4, 2025 / Branch conversations on web",
+      "excerpt": "select Branch in new chat to start a separate conversation from that point.",
+      "source_scope": "该次网页端发布说明给出的入口是在消息上悬停、点开 ⋯ 更多操作，再从这条消息创建独立对话；原对话保留。",
+      "editorial_application": "把连接线接在所选消息上；演示菜单打开、选中分支项、新对话出现，并保持父对话位置。",
+      "limits": "只支持此日期所描述的 ChatGPT 网页端操作。节目里所用产品、客户端、录制时版本、菜单译名和精确图标仍需其实际材料核对。"
+    }
+  ]
+}

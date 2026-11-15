@@ -1,0 +1,27 @@
+{
+  "snapshot_id": "video-narration-references-20261115",
+  "checked_at": "2026-11-15",
+  "scope": "直接打开作者上传的两篇原论文。按论文任务记录结果，再区分方法仓库的编辑应用。",
+  "entries": [
+    {
+      "title": "Animations Need Narrations: An Experimental Test of a Dual-Coding Hypothesis",
+      "creator": "Richard E. Mayer、Richard B. Anderson (1991)",
+      "url": "https://doi.org/10.1037/0022-0663.83.4.484",
+      "accessed_copy": "https://www.researchgate.net/profile/Richard-Mayer-4/publication/232454397_Animations_Need_Narrations_An_Experimental_Test_of_a_Dual-Coding_Hypothesis/links/577997d808aeb9427e2c0092/Animations-Need-Narrations-An-Experimental-Test-of-a-Dual-Coding-Hypothesis.pdf",
+      "section": "摘要、Experiment 1、Experiment 2",
+      "source_scope": "在讲自行车打气筒原理的实验里，对应口述与动画同步呈现的组比先播口述后播动画的组有更好的问题解决表现。",
+      "editorial_application": "在语义转折处对听相关说明和视觉对象。",
+      "limits": "没有比较所有体裁的预告、逐字呈现或通用三秒阈值。"
+    },
+    {
+      "title": "How Seductive Details Do Their Damage: A Theory of Cognitive Interest in Science Learning",
+      "creator": "Shannon F. Harp、Richard E. Mayer (1998)",
+      "url": "https://doi.org/10.1037/0022-0663.90.3.414",
+      "accessed_copy": "https://www.researchgate.net/profile/Richard-Mayer-4/publication/232595492_How_Seductive_Details_Do_Their_Damage_A_Theory_of_Cognitive_Interest_in_Science_Learning/links/57799b8408ae4645d611f204/How-Seductive-Details-Do-Their-Damage-A-Theory-of-Cognitive-Interest-in-Science-Learning.pdf",
+      "section": "四项实验、General Discussion",
+      "source_scope": "在大学生阅读闪电形成的图文材料中，加入有趣但与解释目标无关的细节，影响了主旨回忆和问题解决。",
+      "editorial_application": "检查推近后显眼的示例细节是否服务当前观看问题。",
+      "limits": "同题材也可能无关。研究未检验“异题材类比一律有害”、节目题材哈希或观众留存。"
+    }
+  ]
+}

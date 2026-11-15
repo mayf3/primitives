@@ -1,7 +1,7 @@
 {
   "id": "video.example.decision-gate",
   "title": "Brainstorm → 人选择 → Plan → Execute",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "example_type": "synthetic",
   "selected": true,
   "source": {
@@ -91,7 +91,6 @@
     "primitives": [
       "video.focus",
       "video.group",
-      "video.align-compare",
       "video.identity-preserve",
       "video.serial-path",
       "video.reference-lock",
@@ -115,7 +114,7 @@
         "start": 30,
         "end": 46,
         "target": "options",
-        "action": "候选在共同维度下并置，不自动选中。"
+        "action": "同列展示候选并标明都待选择，交代确认权属于人。"
       },
       {
         "start": 46,

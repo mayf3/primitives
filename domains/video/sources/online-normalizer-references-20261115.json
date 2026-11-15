@@ -1,0 +1,52 @@
+{
+  "snapshot_id": "video-online-normalizer-20261115",
+  "checked_at": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "scope": "分块归一化分镜与相邻 DDP 时间轨勘误。一手材料的原文位置、短摘、支持范围与编辑转用分别记录。分镜中的具体得分是评审的合成输入。",
+  "entries": [
+    {
+      "id": "video.source.milakov-gimelshein-2018",
+      "title": "Online normalizer calculation for softmax",
+      "creator": "Maxim Milakov、Natalia Gimelshein，arXiv:1805.02867v2（2018）",
+      "url": "https://arxiv.org/pdf/1805.02867v2",
+      "section": "§2 算法 2；§3 算法 3 与定理 1；§3.1 式 (4)；§5.1 图 1、2",
+      "excerpt": "one load for the normalizer calculation",
+      "source_scope": "算法 3 的第一循环合求最大值和稳定分母，第二循环计算各元素的概率。式 (4) 将两块的指数和各自换算到两块中的较大最大值后相加。论文在 Tesla V100 上分别测了 Softmax 和 TopK 组合。",
+      "editorial_application": "让两块各自带上 (m,d) 与缩放因子；交换块顺序检验读者是否理解取 max 的必要性。在最终截图保留同输入、同序、同基准的对照。",
+      "limits": "一遍完成归一化统计量的合并。实际 HBM 流量、某次内核时间或端到端收益需要对应条件下的证据。"
+    },
+    {
+      "id": "video.source.dao-flashattention",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "creator": "Tri Dao 等，2022",
+      "url": "https://arxiv.org/pdf/2205.14135",
+      "section": "§3.1，算法 1 及定理 1",
+      "excerpt": "the output O and the softmax normalization statistics",
+      "source_scope": "算法同时处理每行的最大值、指数和以及带值矩阵 V 的注意力输出；定理 1 给出结果 O = softmax(QKᵀ)V。",
+      "editorial_application": "单列本例的标量分母；若要讲加权分子，必须再有各位置的值向量以及相应的累积关系。",
+      "limits": "四个得分没有给出值向量。本分镜不足以推出 FlashAttention 的 I/O 复杂度或具体实现。"
+    },
+    {
+      "id": "video.source.pytorch-numerical-accuracy-29",
+      "title": "Numerical accuracy",
+      "creator": "PyTorch 2.9 documentation",
+      "url": "https://docs.pytorch.org/docs/2.9/notes/numerical_accuracy.html",
+      "section": "开篇浮点数精度与运算顺序说明",
+      "excerpt": "the order of the operations affects the results",
+      "source_scope": "有限精度浮点运算会受操作顺序影响，代数等价的计算可以有不同的舍入结果。",
+      "editorial_application": "分别标出符号恒等和近似显示的小数。检验具体实现需给数据类型及误差口径。",
+      "limits": "一般数值语义不能替代本例某种精度、芯片或内核的误差实测。"
+    },
+    {
+      "id": "video.source.pytorch-cuda-streams-29",
+      "title": "CUDA semantics",
+      "creator": "PyTorch 2.9 documentation",
+      "url": "https://docs.pytorch.org/docs/2.9/notes/cuda.html",
+      "section": "CUDA streams",
+      "excerpt": "Operations inside each stream are serialized in the order they are created",
+      "source_scope": "同一 CUDA stream 的操作有顺序；不同 stream 的操作在依赖允许时可能并发。",
+      "editorial_application": "复查 DDP 实测图时，先按 rank、设备和步次找出可比的 GPU 事件，再在有关的不同 stream 上读时间交集。",
+      "limits": "分属不同 stream 只提供并发的可能性，具体交集需设备时间戳。"
+    }
+  ]
+}
