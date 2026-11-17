@@ -145,6 +145,30 @@
           "sha256": "4bc2a482bbd9cce3af5532a2afcc3887148bc6e013d23189c01d05b3ef5d2f45"
         }
       ]
+    },
+    {
+      "id": "video-narrative-review-20261118",
+      "kind": "user-upload",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/narrative-review-20261118-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "1153cebaafa90ff284ef68cd6cf28abdc274ced1cd09fc191cc87d9d2af777aa"
+        }
+      ]
+    },
+    {
+      "id": "video-narrative-references-20261118",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/narrative-references-20261118.json",
+          "upstream_path": "各条目的 url、accessed_copy 与 section",
+          "sha256": "c4debf60c6815ab737951bb5e588ab943e2bb1f2069ae9ba8e43a4287bb6163e"
+        }
+      ]
     }
   ]
 }

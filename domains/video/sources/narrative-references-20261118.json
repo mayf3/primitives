@@ -1,0 +1,77 @@
+{
+  "snapshot_id": "video-narrative-references-20261118",
+  "checked_at": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "本轮直接复核四份一手材料的相关章节，区分研究任务、作者经验与本仓库制作试值。未核验报告中的节目版本、评分、观众体验或工作室归因。",
+  "entries": [
+    {
+      "id": "reading-ahead",
+      "title": "Audiovisual (a)synchrony: Reading ahead as a mechanism for L2 vocabulary processing and learning benefits of reading while listening",
+      "creator": "Jonathan Malone; Bronson Hui",
+      "published_online": "2026-05-12",
+      "publication": "Studies in Second Language Acquisition, 48(2), 350–372",
+      "doi": "10.1017/S0272263126101703",
+      "url": "https://www.cambridge.org/core/journals/studies-in-second-language-acquisition/article/audiovisual-asynchrony/E9478ADE37908019FAF84A262200E2C4",
+      "accessed_copy": "https://www.cambridge.org/core/product/E9478ADE37908019FAF84A262200E2C4/core-reader",
+      "section": "Method / Participants; Eye-tracking data cleaning and readahead coding; Reading ahead predicting vocabulary learning (RQ2), Tables 8–9",
+      "excerpt": "The readahead variable was then coded dichotomously",
+      "source_scope": "阅读并听故事的二语学习任务，60 人参加、59 人完整数据进入分析。依首次阅读相对于目标词发音的位置编码提前阅读，作为模型预测变量。提前阅读显著预测词义回忆，词义识别与词形识别未见同样显著结果。",
+      "editorial_application": "比较同步出现与候选预备时机，检查可读对象和答案揭示的先后。",
+      "limits": "观测到的词语阅读先后不等于操纵任意图形锚点提前量。未据此证明提前 200–400 毫秒最优，也未提供 −300ms 通用规则。"
+    },
+    {
+      "id": "redundancy",
+      "title": "Revising the Redundancy Principle in Multimedia Learning",
+      "creator": "Richard E. Mayer; Cheryl I. Johnson (2008)",
+      "url": "https://doi.org/10.1037/0022-0663.100.2.380",
+      "accessed_copy": "https://www.researchgate.net/profile/Cheryl-Johnson-22/publication/232540768_Revising_the_Redundancy_Principle_in_Multimedia_Learning/links/631a4ff2071ea12e361ae26e/Revising-the-Redundancy-Principle-in-Multimedia-Learning.pdf?origin=publication_detail",
+      "section": "Abstract; Experiments 1–2",
+      "excerpt": "short redundant phrases within the diagram",
+      "source_scope": "两项课件实验在图中对应位置加入少量重复关键词，回忆表现改善，迁移测验未见同样优势。",
+      "editorial_application": "保留帮助定位的关键词，检查同拍是否存在独立长文的阅读竞争。",
+      "limits": "未验证完整字幕、中文长对谈、静音或听障观看的删减条件，不能据此强制隐藏字幕。此前来源快照另保留原核查日期。"
+    },
+    {
+      "id": "accessible-captions",
+      "title": "Captions/Subtitles",
+      "creator": "W3C Web Accessibility Initiative",
+      "url": "https://www.w3.org/WAI/media/av/captions/",
+      "section": "Introduction",
+      "excerpt": "They are displayed within the media player and are synchronized with the audio.",
+      "source_scope": "字幕为理解所需的语音及非语音声音提供同步文本，供无法听到音频及其他需要文本的观众使用。",
+      "editorial_application": "逐项核对卡片是否真正承担完整同步字幕，再决定是否同位呈现。",
+      "limits": "概括短词和图形不能自动替代所需声音信息，网页说明也不构成对本片的合规或效果验收。"
+    },
+    {
+      "id": "sanderson-advice",
+      "title": "About / FAQs",
+      "creator": "Grant Sanderson, 3Blue1Brown",
+      "url": "https://www.3blue1brown.com/about/",
+      "section": "FAQs / advice for making educational videos; Know your genre; Never start with definitions; Avoid pointless animations",
+      "excerpts": [
+        "Never start with definitions.",
+        "Every movement on the screen should be deliberate, with an identifiable purpose."
+      ],
+      "source_scope": "作者强调数学解释中教学顺序与逻辑顺序可不同，视觉运动应有可指认用途，且不同讲解体裁的风格和节奏有别。",
+      "editorial_application": "将先给问题或实例、再给术语作为可选编排，逐项核对运动服务的主张。",
+      "limits": "作者经验未建立所有视频禁用定义、必须形变、禁止切镜或固定提前毫秒数的普遍规律。"
+    }
+  ],
+  "existing_snapshot_reused": [
+    {
+      "path": "podcast-review-20261115.json",
+      "entry": "video.source.boucheix-lowe",
+      "use": "沿用机械动画提示与对象及事件协调的原核对范围。",
+      "limits": "未把该实验推导为运动对象数量的认知加分或负荷翻倍函数。"
+    }
+  ],
+  "unverified_report_claims": [
+    "字幕占 30 分、每十汉字 15 分、运动 40 分、颜色 25 分、85 分拦截",
+    "两个运动元素令认知负荷翻倍",
+    "字幕消耗 50% 视觉算力",
+    "音效使吸引力变化一半，沉浸提升一个数量级",
+    "普适的四分钟峰值、十五秒好奇心缺口或三十秒强制退出白板",
+    "所有频道或工作室均采用所述硬性规则",
+    "八轮节目打磨已清零错误，当前版本评分 90 分"
+  ]
+}
