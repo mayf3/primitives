@@ -241,6 +241,30 @@
           "sha256": "c96be430b21225b40a7d261f6a645b2d4c06548e85a6a1e529fb6dd7e264ae20"
         }
       ]
+    },
+    {
+      "id": "video-operator-boundary-review-20261118",
+      "kind": "user-upload",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/operator-boundary-review-20261118-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "858152c08f1d289e23b7b56d248f0983bcdc91921b6b2e111cb2df6fc9626ee1"
+        }
+      ]
+    },
+    {
+      "id": "video-operator-boundary-references-20261118",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/operator-boundary-references-20261118.json",
+          "upstream_path": "各条目的 url、related_urls、section 与核查范围",
+          "sha256": "fac3f1b7282d190a394e3a21b49397fa886b9ea06a4750e56ceae093a48e597a"
+        }
+      ]
     }
   ]
 }

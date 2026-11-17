@@ -1,0 +1,71 @@
+{
+  "snapshot_id": "video-operator-boundary-references-20261118",
+  "checked_at": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "选录本轮实际打开的四项一手资料，核查离散递推、样本流与缺失、均值置信区间和区间重叠的解释边界。没有核查成片或观众效果；形式化认知模型、固定搜索时间与完备性仍是附件提案。",
+  "entries": [
+    {
+      "id": "mit-rowell-discrete-stability",
+      "title": "2.161 Signal Processing—Continuous and Discrete, Lecture 14",
+      "creator": "D. Rowell, Massachusetts Institute of Technology (Fall 2008)",
+      "url": "https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/22567058e652a3b2ce90ca62d8c5310f_lecture_14.pdf",
+      "section": "Section 3, Introduction to z-plane Stability Criteria, printed pp.14–4 to 14–5 (PDF pages 5–6)",
+      "source_scope": "作者课程讲义以因果线性时不变系统 y[n]=a y[n−1]+f[n] 和脉冲响应 a^n 区分衰减、交替与增长。",
+      "editorial_application": "循环连接与状态演化分开；若只用 x[n+1]=k x[n] 作合成例，写明一阶、离散、无外加输入、固定实数k和初值，再推导轨迹。",
+      "limits": "不能把 |k|<1 命名为所有系统的负反馈条件，也不能从反馈正负、拓扑环或动画圈数判稳定。边界k=±1的齐次轨迹与有输入系统的BIBO稳定不同，不照搬讲义中的 marginally stable 用语作为二者等价。"
+    },
+    {
+      "id": "consort-2025-participant-flow",
+      "title": "CONSORT 2025 explanation and elaboration: updated guideline for reporting randomised trials",
+      "creator": "Sally Hopewell, An-Wen Chan, Gary S Collins and co-authors (2025)",
+      "doi": "10.1136/bmj-2024-081124",
+      "url": "https://www.consort-spirit.org/item-22a-randomized",
+      "related_urls": [
+        "https://www.consort-spirit.org/item22b-lossesandexclusions",
+        "https://www.consort-spirit.org/item21c-missingdata"
+      ],
+      "provenance_url": "https://www.consort-spirit.org/published-e-es",
+      "section": "Items 22a and 22b, Explanation; Item 21c, Explanation",
+      "source_scope": "指南作者网站的正式分条版。分别报告分配、实际接受、分析、失访和排除的人数及原因，缺失处理须交代假设。",
+      "editorial_application": "转用为样本集合与观测状态的区分：已知个案不自动代表总体，未展示、失访和失败分别保留；分母未知就标未知。",
+      "limits": "原适用对象是随机试验报告；通用视频里的空间呈现方法是本仓库编辑转用，不是观众理解效果实验，也不要求每个说明性例子都虚构一个总体。"
+    },
+    {
+      "id": "nist-mean-confidence-limits",
+      "title": "NIST/SEMATECH e-Handbook of Statistical Methods, 1.3.5.2 Confidence Limits for the Mean",
+      "creator": "NIST/SEMATECH",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm",
+      "section": "Purpose: Interval Estimate for Mean; Definition: Confidence Interval",
+      "source_scope": "官方统计手册解释均值区间估计、重复抽样覆盖率及样本量/离散程度对区间宽度的影响。",
+      "editorial_application": "保留影响比较的区间，同时声明它表示原始观测范围、分位区间、均值置信区间还是其他量；写明样本与条件。",
+      "limits": "均值置信区间不表示个体观测的取值范围；不能把一个95%区间说成有95%数据落在其中。该页并非所有区间算法的通用配方。"
+    },
+    {
+      "id": "cumming-finch-2005-inference-by-eye",
+      "title": "Inference by Eye: Confidence Intervals and How to Read Pictures of Data",
+      "creator": "Geoff Cumming and Sue Finch (2005)",
+      "doi": "10.1037/0003-066X.60.2.170",
+      "url": "https://courses.media.mit.edu/2010spring/mas964/Week3/cumming2005.pdf",
+      "section": "Printed pp.173–177 (independent and paired groups, Rules 4–5); p.179 (limitations)",
+      "source_scope": "原论文全文，由MIT课程托管；分析误差棒推断及独立组/配对设计的区别。",
+      "editorial_application": "不从两段区间是否重叠直接宣告显著或不显著；按问题和设计解释差值及其不确定性。",
+      "limits": "论文的独立组近似规则有样本量、误差棒长度及分布条件，不能通用于任意区间。配对数据不能用两根单独均值CI的重叠代替差值推断；未以该文证明视频呈现效果。"
+    }
+  ],
+  "access_limits": [
+    {
+      "provider": "BMJ article HTML/full/PDF for DOI 10.1136/bmj-2024-081124",
+      "status": "HTTP-403",
+      "use": "未称成功读取BMJ正文；PMC初次打开返回全文元信息，后续目标定位遇到reCAPTCHA，未据此宣称目标段已核。实际读取CONSORT作者官网的22a、22b、21c分条正文。"
+    }
+  ],
+  "unverified_or_narrowed_claims": [
+    "人类理解成功的充要条件是信念与作者关系零误差同构",
+    "工作记忆固定k个图元且超载总会静默丢弃旧块",
+    "搜索耗时恒为1.5至2.2秒，提前框选使其归零",
+    "没有画出分母时，任何观众都自动将总体数当成样本数并估计100%有效",
+    "任意反馈环的稳定性都由单个k的大小与正负决定，或持续震荡必须由时滞产生",
+    "补齐五个边界即可证明十二入口完备并保证任意跳看无误读",
+    "有限样本中的速度精度共变即可证明理论不可兼得的边界或最优前沿"
+  ]
+}

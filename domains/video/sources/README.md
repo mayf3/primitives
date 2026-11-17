@@ -1,5 +1,19 @@
 # 视频领域来源与边界
 
+<a id="operator-boundaries"></a>
+## 0.6.2 状态、次序与推断边界 · 2026-11-18
+
+[本轮评审原件](operator-boundary-review-20261118-original.txt)逐字保存用户附件；其认知状态模型和“完备、零误差”判断属于评审主张，未转成仓库事实。[四项一手资料核查](operator-boundary-references-20261118.json)记录实际读取的位置、采用范围与访问限制；具体改写见[修订说明](../REVISIONS.md#operator-boundaries)。
+
+| 实际核查的材料 | 支持到哪里 | 本仓库的转用边界 |
+|---|---|---|
+| [MIT Rowell 离散系统讲义](https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/22567058e652a3b2ce90ca62d8c5310f_lecture_14.pdf)，§3，印刷页 14–4 至 14–5 | 在给定一阶递推与输入条件下，系数影响衰减、交替与增长 | 只用于区别连接与状态轨迹；不把标量规则、齐次响应有界或反馈正负套成任意系统的稳定性判断 |
+| [CONSORT 2025 条目 22a](https://www.consort-spirit.org/item-22a-randomized)、[22b](https://www.consort-spirit.org/item22b-lossesandexclusions)及[21c](https://www.consort-spirit.org/item21c-missingdata)作者官网解释 | 分配、接受、分析、失访、排除及缺失处理的口径应明确 | 原对象是随机试验报告；转用为视频中样本范围与未知结果的区别，不把所有视频都要求成试验报告 |
+| [NIST 均值置信限](https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm)，§1.3.5.2 | 均值区间估计、重复抽样覆盖率与样本条件 | 均值置信区间不是个体波动范围；图上保留区间还须说明它表示什么 |
+| [Cumming 与 Finch 原论文](https://courses.media.mit.edu/2010spring/mas964/Week3/cumming2005.pdf)，2005，印刷页 173–177、179 | 独立组与配对设计下，误差棒解读有不同前提；两均值区间重叠不能直接代替差值推断 | 不把论文内的条件近似变成通用显著性法则；未据此宣称视频理解效果 |
+
+瞬态证据预定位、首呈角色持续、样本范围可辨和联合指标的排法，是本仓库据任务条件提出的制作约束；这些来源没有证明观众必将分母看成分子、搜索时间会降为零，或某组呈现动作足够保证理解。固定工作记忆槽数、零误差同构与十二入口穷尽认知结构的说法未获本轮支持。[合成反例](../PATTERNS.md#boundary-cases)中所有数字、记录与秒数为编辑设定，不是所引文献的实验数据。
+
 本领域最初整合了用户上传的《视频呈现原语：从理解、审美到可验证制作系统的研究报告》。整合日期为 **2026-11-13（北京时间）**，原报告写作日期未知。**2026-11-15** 另存了[视频化播客评审的一手资料](#podcast-review)。
 
 ## 原文与工作文档分开
