@@ -107,6 +107,15 @@ Remotion 本次页面已说明不再推荐直接使用 `<Sequence>`，其时序�
 
 已有[机械动画提示研究](podcast-review-20261115.json)用于复核提示与对象及事件的对应，未用于建立“两个运动元素负荷翻倍”的计分公式。原报告中的 85 分拦截、字幕消耗 50% 视觉算力、音效改变一半吸引力及沉浸提升一个数量级，本轮均未获得对应的可核实依据。Dan Koe／Keyframe、各频道统一节奏时钟等归因未全面核查，工作文档仅吸收可说明条件的制作选择。
 
+<a id="mental-model-review"></a>
+## 0.5.0 组块、联动与观看方式的评审
+
+2026-11-18 收到的[评审附件](mental-model-review-20261118-original.txt)逐字保存。新增 `video.chunk` 候选组合及五张卡的条件修订来自本次编辑判断。附件所述神经科学机制、频道惯例与自动认知收益分别按证据范围处理。[删替与处置](../REVISIONS.md#mental-model-review)
+
+本轮直接复核三份一手来源，短摘与定位保存为[固定核查记录](mental-model-references-20261118.json)。Cowan 讨论特定条件下的组块容量，不能直接限制屏幕元素数量。Victor 展示具体状态与抽象总体的双向探索，未测出代入某个固定数字最快。Heer 与 Robertson 要求转场中间态尽量语义有效，也讨论错误因果印象和时间成本。它们用于提出有条件的制作与验证方法。[Cowan 原文](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/44023F1147D4A1D44BDC0AD226838496/S0140525X01003922a.pdf/the-magical-number-4-in-short-term-memory-a-reconsideration-of-mental-storage-capacity.pdf) · [Victor 作者文章](https://worrydream.com/LadderOfAbstraction/) · [图表转场论文](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/InfoVis2007-DynaVis.pdf)
+
+声画微时差沿用[此前同步研究](narration-references-20261115.json)与[阅读先后核查](narrative-references-20261118.json)，本轮未重新打开这两份原文。它们未确立本附件的两个毫秒区间或必漏前三词的结论。条件化的预备与命名时序继续作为试播方案，连续层与暂停层的分工属于本次编辑约定，实际可用性仍需指定版本的观看记录。
+
 ## 下次怎样补证据
 
 若要把某条效果主张从“报告转述”提升为独立核对，新增可解析的原始论文或正式材料记录，写清被支持的具体主张、研究对象、任务条件和反例；不要仅凭找到同名论文就标为全部核实。若要提高某张原语卡的实际可信度，记录指定视频版本、实施差异、理解任务及感受问题，并保留不支持预期的结果。

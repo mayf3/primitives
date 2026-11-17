@@ -1,0 +1,116 @@
+{
+  "id": "video.example.chunked-process",
+  "title": "把三步番茄准备收为一个整体，再按问题展开",
+  "version": "0.5.0",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_id": "video-mental-model-review-20261118",
+    "report_section": "封装收拢与第12项候选的删替检验；番茄流程、顺序与时序为本轮新构造",
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": [
+      "这是方法库的合成流程，不是任何节目原话、真实烹饪操作或已完成制作。",
+      "烫皮、去皮、切丁为本例预先约定的三个步骤，不提供通用食谱、工时或火候结论。",
+      "所有秒数从新片段起点计算，尚未渲染或做观众测试。"
+    ]
+  },
+  "semantic": {
+    "question": "已经解释的三步如何作为一个整体接入下一层，内部顺序再次重要时怎样找回？",
+    "understanding_goal": "能将具名代理认回原来的三个步骤，指出它在下一层路径中的位置，并在问及内部先后时回到同一展开结构。",
+    "feeling_goal": "从展开到收拢保持清楚的层次感，需要回看时仍有来处可循。",
+    "objects": [
+      {"id": "prep-model", "label": "本例番茄预处理的展开结构"},
+      {"id": "blanch", "label": "步骤1 烫皮"},
+      {"id": "peel", "label": "步骤2 去皮"},
+      {"id": "dice", "label": "步骤3 切丁"},
+      {"id": "prep-token", "label": "番茄预处理 具名代理"},
+      {"id": "tomato-input", "label": "整只番茄 本例输入"},
+      {"id": "tomato-output", "label": "切丁番茄 本例输出"},
+      {"id": "cook-stage", "label": "下锅 下一层步骤"}
+    ],
+    "relations": [
+      {"from": "blanch", "to": "prep-model", "type": "member-of", "label": "本例预处理的第一步"},
+      {"from": "peel", "to": "prep-model", "type": "member-of", "label": "本例预处理的第二步"},
+      {"from": "dice", "to": "prep-model", "type": "member-of", "label": "本例预处理的第三步"},
+      {"from": "blanch", "to": "peel", "type": "precedes", "label": "本例步骤先后"},
+      {"from": "peel", "to": "dice", "type": "precedes", "label": "本例步骤先后"},
+      {"from": "prep-token", "to": "prep-model", "type": "represents", "label": "收拢表示指代这一展开结构，并非新增一次预处理"},
+      {"from": "tomato-input", "to": "prep-model", "type": "input-to", "label": "本例约定的流程输入"},
+      {"from": "prep-model", "to": "tomato-output", "type": "outputs", "label": "本例约定的流程输出"},
+      {"from": "prep-token", "to": "cook-stage", "type": "precedes", "label": "下一层流程中，预处理整体之后接下锅"}
+    ],
+    "must_preserve": [
+      "上游已给定三步及顺序、整体短名、整只番茄输入和切丁番茄输出；本例不另推去籽、调味、工时或烹饪成功。",
+      "后续任务先只问整体接哪一步；问到切丁与去皮先后时，内部顺序重新成为必需内容，须恢复展开表示。",
+      "prep-model 与 prep-token 是同一子流程的两种表示；三个成员及关系在记录中继续保留，不因收拢而删除。",
+      "具名代理有独立的表示标识，通过 represents 关系指回结构，不继承任一内部步骤的ID，也不冒充新的实际执行实例。",
+      "在原位置原尺寸完成收起与恢复即可；缩放、连续变形和交互式展开均非本例前提。",
+      "流程示意只说明顺序与归属，不构成已完成真实烹饪或已改善观众工作记忆的证据。"
+    ]
+  },
+  "presentation": {
+    "primitives": ["video.chunk", "video.serial-path", "video.hold"],
+    "planned_duration_seconds": 42,
+    "audio_alignment": {
+      "status": "not-applicable",
+      "reason": "本合成分镜为无旁白流程演示，用屏上步骤名、具名代理及问题组织观察，没有待绑定的叙述音轨。"
+    },
+    "focus_schedule": [
+      {"start": 0, "end": 8, "target": "prep-model", "action": "展开三步及其输入输出，用具名边界和顺序箭头交代本例约定，分别保留成员标识。"},
+      {"start": 8, "end": 14, "target": "prep-token", "action": "在原位置收起内部图元，显示番茄预处理短名，用已建立的整体边界与来处线索将代理认回展开结构；输入输出继续可见。"},
+      {"start": 19, "end": 27, "target": "cook-stage", "action": "在下一层路径中连接具名整体与下锅步骤，明确箭头表示本例流程先后，不播放实际执行完成状态。"},
+      {"start": 27, "end": 35, "target": "prep-model", "action": "屏上提出切丁在去皮之前还是之后的问题，从同一代理恢复原组三步，保持成员、顺序、名称与输入输出；代理署名继续指回结构。"}
+    ],
+    "holds": [
+      {"start": 14, "end": 19, "visible": ["prep-token", "tomato-input", "tomato-output"]},
+      {"start": 35, "end": 42, "visible": ["prep-model", "blanch", "peel", "dice", "prep-token", "tomato-input", "tomato-output", "cook-stage"]}
+    ],
+    "end_state": ["prep-model", "blanch", "peel", "dice", "prep-token", "tomato-input", "tomato-output", "cook-stage"]
+  },
+  "render": {
+    "status": "proposed",
+    "implemented": false,
+    "artifacts": [],
+    "layout": "展开与收拢共用一个稳定位置。恢复展开后，代理署名与来源引线表示同一子流程的两种视图，下一层接点另留位置；需检查观众是否误数为两次执行。",
+    "atmosphere": "减少无关运动，靠名称与可追认边界完成层次交接；不使用成功音效或真实操作完成标记。"
+  },
+  "validation": {
+    "factual": {
+      "status": "pending",
+      "checks": [
+        "核对实际分镜是否保留预定的三个成员、顺序、短名和输入输出，没有在收拢时换成新的流程。",
+        "检查下一层引用与再次展开是否仍指向同一结构，未把表示关系画成复制或实际执行结果。",
+        "若后续改问工时、并行或其他内部条件，先补齐依据再决定能否继续使用当前代理。"
+      ],
+      "records": []
+    },
+    "accessibility": {
+      "status": "pending",
+      "checks": [
+        "实际渲染后按目标播放尺寸核对步骤名、代理短名、输入输出和恢复展开的问题是否清晰可读。",
+        "在起点、收拢态、下一层接入与恢复展开处检查定位线索和箭头含义，不依赖颜色或缩放辨别。",
+        "无旁白版本核对屏上文字与观察时间；若接入音轨，重新登记话轮与文字事件，并对听对应版本。"
+      ],
+      "records": []
+    },
+    "viewer": {
+      "status": "untested",
+      "observations": [],
+      "understanding_tasks": [
+        "只看具名代理，指出它代表哪三个步骤，输入与输出各是什么。",
+        "指出这个整体在下一层接到哪一步；画面中有两次预处理，还是同一子流程的两种表示？",
+        "问到切丁与去皮先后时，找到应回看的展开结构，并按本例给定顺序作答。",
+        "把问题改成准备总用时，说明目前还缺哪些材料，哪些内部条件不能靠短名补出。"
+      ],
+      "feeling_questions": [
+        "从展开到整体再回到展开，哪一处能帮你认回原来的结构？",
+        "与一直展开三步相比，收拢后是更从容还是需要更多回看？"
+      ]
+    }
+  }
+}

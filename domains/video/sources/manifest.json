@@ -169,6 +169,30 @@
           "sha256": "c4debf60c6815ab737951bb5e588ab943e2bb1f2069ae9ba8e43a4287bb6163e"
         }
       ]
+    },
+    {
+      "id": "video-mental-model-review-20261118",
+      "kind": "user-upload",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/mental-model-review-20261118-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "764f56015dc1bf0a983cb5533eabca9a334d86fd679be714b2736bad249ff539"
+        }
+      ]
+    },
+    {
+      "id": "video-mental-model-references-20261118",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/mental-model-references-20261118.json",
+          "upstream_path": "各条目的 url 与 section",
+          "sha256": "03929e5aefe6521e93395e88aab5a1ee6ac0cb75d5bae7da16980f1c7441046b"
+        }
+      ]
     }
   ]
 }

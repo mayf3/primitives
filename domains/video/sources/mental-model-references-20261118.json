@@ -1,0 +1,65 @@
+{
+  "snapshot_id": "video-mental-model-references-20261118",
+  "checked_at": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "本轮直接打开三份一手材料核查组块容量、抽象层级往返和动画语义。声画时差仅沿用旧核查范围，未新建固定阈值或心理测量。",
+  "entries": [
+    {
+      "id": "cowan-capacity",
+      "title": "The magical number 4 in short-term memory: A reconsideration of mental storage capacity",
+      "creator": "Nelson Cowan (2001)",
+      "doi": "10.1017/S0140525X01003922",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/44023F1147D4A1D44BDC0AD226838496/S0140525X01003922a.pdf/the-magical-number-4-in-short-term-memory-a-reconsideration-of-mental-storage-capacity.pdf",
+      "section": "Abstract; sections 1, 1.1, 2",
+      "excerpt": "A single, central capacity limit averaging about four chunks is implicated along with other, noncapacity-limited sources.",
+      "source_scope": "综合证据提出容量模型的 target article。在限制复述、重新组块及其他补充来源等条件下讨论平均约四块的容量估计，正文亦用三至五块群体平均范围。组块单位及条件需先确定。",
+      "editorial_application": "把已经解释并可追认的结构收为具名整体，检查能否用于后续任务。",
+      "limits": "不能直接转换为视频同屏三至四个元素的硬上限，画面封装也不证明观众形成了一个心理组块或释放固定容量。"
+    },
+    {
+      "id": "victor-abstraction",
+      "title": "Up and Down the Ladder of Abstraction: A Systematic Approach to Interactive Visualization",
+      "creator": "Bret Victor (2011-10)",
+      "url": "https://worrydream.com/LadderOfAbstraction/",
+      "section": "Controlling the Algorithm; Abstracting Over Time; Stepping Back Down; Appendix: Symbolic Abstraction",
+      "excerpt": "Every point on a visual abstraction typically corresponds to a particular concrete state.",
+      "source_scope": "作者交互示范在具体状态、时间与参数范围的总体表示之间往返。以转向率零和其他取值检查行为，强调完整轨迹可以显示实时播放难辨的模式。",
+      "editorial_application": "固定规则与条件，选可解释的实例或边界，并能从总体表示返回具体状态。",
+      "limits": "这是方法示范，未测定代入零或一是最快理解方式。抽象往返也不等于把复杂图压成标签；视频可用剪辑与静态对照安排，不能声称已经提供交互。"
+    },
+    {
+      "id": "heer-robertson-motion",
+      "title": "Animated Transitions in Statistical Data Graphics",
+      "creator": "Jeffrey Heer; George G. Robertson (2007)",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/InfoVis2007-DynaVis.pdf",
+      "section": "Sections 2, 3.2.1, 3.2.2",
+      "excerpts": [
+        "incorrect interpretations of causality may mislead more than inform.",
+        "Animation is no guarantee of improved performance"
+      ],
+      "source_scope": "讨论图形转场的语义一致性、有效中间态、共同变化线索及时间与错误之间的权衡。两项实验检验变化识别。旧快照已有此来源，本轮重新打开相关段落。",
+      "editorial_application": "连续共变给出规则、变量、范围和固定条件，插值及实际时延分别说明。",
+      "limits": "同步运动引出的因果印象不证明真实因果关系。本文不能支持 MT/V5 零成本计算、必须连续运动或无需标签必然理解。"
+    }
+  ],
+  "reused_prior_checks": [
+    {
+      "snapshot": "narration-references-20261115.json",
+      "entry": "Animations Need Narrations: An Experimental Test of a Dual-Coding Hypothesis",
+      "use": "保留打气筒动画中同步与先后整段呈现的原实验范围，本轮未重开。"
+    },
+    {
+      "snapshot": "narrative-references-20261118.json",
+      "entry": "reading-ahead",
+      "use": "前轮核查为第二语言阅读先后关系的观察编码，本轮不重写为操纵图形微时差的实验。"
+    }
+  ],
+  "unverified_or_narrowed_claims": [
+    "视觉工作记忆固定只能维持三至四个屏上语义块",
+    "人类只有预测失败时才会深度编码",
+    "连续运动由 MT/V5 零成本建立无须标签的函数理解",
+    "画面先行 150–300ms 与话语先行 200–400ms 是通用铁律",
+    "容器晚于话语时观众必漏听前三个词",
+    "一秒看见高亮与原件外观就能确认材料真实可靠"
+  ]
+}
