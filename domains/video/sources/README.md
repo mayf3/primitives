@@ -121,3 +121,19 @@ Remotion 本次页面已说明不再推荐直接使用 `<Sequence>`，其时序�
 若要把某条效果主张从“报告转述”提升为独立核对，新增可解析的原始论文或正式材料记录，写清被支持的具体主张、研究对象、任务条件和反例；不要仅凭找到同名论文就标为全部核实。若要提高某张原语卡的实际可信度，记录指定视频版本、实施差异、理解任务及感受问题，并保留不支持预期的结果。
 
 来源补充可以改变方法取舍，但不能反向修改已有原文。所有效果判断都要指明范围，不能从一次网页核对或结构检查产生通用的 `verified: true`。
+
+<a id="sensory-review"></a>
+## 0.6.0 感知通道与作品级审阅 · 2026-11-18
+
+[本轮附件](sensory-review-20261118-original.txt)逐字保存，原文件名与 SHA-256 登入清单。它对 v0.5.0 提出边界反例与作品级评价建议；其中频道评价、采用比例、阅读成本倍数和传播推断均非本仓库已核实的观看或统计结果。工作文档保留有条件的制作方法，具体取舍见[修订记录](../REVISIONS.md#sensory-review)。
+
+另存[四项一手资料核查](sensory-references-20261118.json)，记录本轮实际读取的位置与可用范围：
+
+| 来源 | 采用范围与限制 |
+|---|---|
+| [W3C：预录纯音频与纯视频，SC 1.2.1](https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html) | 区分媒体类型与替代访问。声音重要不使同步视频变成纯音频；等效必要信息不等于复制所有听觉体验。 |
+| [W3C：预录字幕，SC 1.2.2](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html) | 字幕承担对白、说话者及理解所需的声音信息，不能由概括卡替代。本轮重新核查；这是官方解释页，不是完整交付验收。 |
+| [Netflix：字幕通则](https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements) | 核第 4 节断行、第 5 节位置。中文转用语义切分思路，不沿用全部英文词类规则、平台时值或行数作为普遍标准。 |
+| [Walker 与 Nees：Theory of Sonification](https://sites.lafayette.edu/neesm/files/2011/10/WalkerNeesTheSonificationHandbook-chapter2.pdf) | 核 §2.5.3、§2.6 的映射、方向、尺度、并发表现、上下文和评价。属于作者综述，未逐一复核所引实验，不支持听觉普遍更快。 |
+
+BBC 官方字幕资料读取受限，未以镜像冒充已核官网。问题锚点、双向封装、离片复述及三面作品审阅属于本轮编辑构造，仍待实际样片与明确受众检验。旧来源快照及其日期、哈希、核查范围保持不变。

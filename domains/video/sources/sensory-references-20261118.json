@@ -1,0 +1,63 @@
+{
+  "snapshot_id": "video-sensory-references-20261118",
+  "checked_at": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "本轮实际打开四项一手资料，窄查媒体替代访问、字幕职责与断行、听觉编码条件；没有核验附件列举频道的作品、全人类感知规律或传播排名。",
+  "entries": [
+    {
+      "id": "w3c-audio-video-only",
+      "title": "Understanding SC 1.2.1: Audio-only and Video-only (Prerecorded)",
+      "creator": "W3C WAI",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html",
+      "section": "Success Criterion; Intent; Key Terms: audio-only, alternative for time-based media",
+      "source_scope": "官方解释页面，按媒体类型说明预录纯音频、纯视频的替代访问。",
+      "editorial_application": "区分原材料听辨任务与提供等效必要信息的替代访问任务；不因声音为本体而免做替代访问。",
+      "limits": "文字不等于复制全部声学体验。带同步视觉的视频不能仅因声音重要就套用纯音频类别；完整合规须按实际媒体与交付检查。"
+    },
+    {
+      "id": "w3c-captions",
+      "title": "Understanding SC 1.2.2: Captions (Prerecorded)",
+      "creator": "W3C WAI",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html",
+      "section": "Success Criterion; Intent; Key Terms: captions, Note 4",
+      "source_scope": "官方解释页面，预录同步媒体字幕包括理解所需对白、说话人及有意义的非言语声音；字幕避免遮挡相关视觉信息。",
+      "editorial_application": "屏上概括卡与字幕各有任务；反讽、音乐与声音事件不能只查话语字面。",
+      "limits": "减少重复阅读不构成删去必要字幕的理由；字幕信息完整不证明已重现音色鉴别体验。本轮重新打开此页，旧快照保持原样。"
+    },
+    {
+      "id": "netflix-line-treatment",
+      "title": "Timed Text Style Guide: General Requirements",
+      "creator": "Netflix",
+      "url": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements",
+      "section": "Opening scope; 4. Line Treatment; 5. Positioning",
+      "source_scope": "平台字幕交付指南，断行考虑语法单位，避免拆分姓名、修饰关系以及动词与否定等，位置避免与屏上内容冲突。",
+      "editorial_application": "采用语义断行的检查思路，中文再核专名、数值单位及否定条件。",
+      "limits": "这是交付指导而非效果实验；英语分词、固定两行和平台时值不直接套成所有中文视频标准，不能支持阅读成本恰好翻倍。"
+    },
+    {
+      "id": "walker-nees-sonification",
+      "title": "Theory of Sonification, The Sonification Handbook, Chapter 2",
+      "creator": "Bruce N. Walker; Michael A. Nees (2011)",
+      "url": "https://sites.lafayette.edu/neesm/files/2011/10/WalkerNeesTheSonificationHandbook-chapter2.pdf",
+      "section": "2.5.3: Mapping, Polarity, Scaling, Concurrent presentation, Context (printed pp.24–26; PDF indices 17–19); 2.6 (printed p.27 onward; PDF index 20 onward)",
+      "source_scope": "作者托管的方法综述，讨论数据与声学维度、映射方向、尺度、并发表现、上下文与评价。",
+      "editorial_application": "听觉编码给清映射和参照；趋势与精确读数分别检验，设备、并发掩蔽、个体差异和任务表现分别记录。",
+      "limits": "没有全面复核本章引用实验，不能推出听觉普遍快于视觉、零成本或无需训练。声音编码也不能自动成为实测声音。"
+    }
+  ],
+  "access_limits": [
+    {
+      "status": "robots-denied",
+      "use": "BBC 官方字幕资料未能读取，不以镜像声称已核官网；断行采用实际读到的 Netflix 原站。",
+      "provider": "BBC 官方字幕指南"
+    }
+  ],
+  "unverified_or_narrowed_claims": [
+    "九成顶级自媒体使用先整体后拆解",
+    "机械断行使理解成本恰好翻倍",
+    "日常参照对所有人都熟悉且必然更易懂",
+    "人耳在所有并发任务中快于视觉",
+    "三层评审可直接区分殿堂级或现象级作品",
+    "可复述总结帧必然带来转发或长期记忆"
+  ]
+}

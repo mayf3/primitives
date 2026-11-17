@@ -193,6 +193,30 @@
           "sha256": "03929e5aefe6521e93395e88aab5a1ee6ac0cb75d5bae7da16980f1c7441046b"
         }
       ]
+    },
+    {
+      "id": "video-sensory-review-20261118",
+      "kind": "user-upload",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/sensory-review-20261118-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "92367cf722631eb0d7d402907c0db376489818d091f68d025dc94d789353a358"
+        }
+      ]
+    },
+    {
+      "id": "video-sensory-references-20261118",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/sensory-references-20261118.json",
+          "upstream_path": "各条目的 url、section 与核查范围",
+          "sha256": "80960af9e1d7acc5bbe2774eb469dd91184146110f4c76a0bce0b5530a647d1c"
+        }
+      ]
     }
   ]
 }
