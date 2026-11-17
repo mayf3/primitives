@@ -1,0 +1,205 @@
+{
+  "id": "video.example.corrected-assumption",
+  "title": "总和相同为什么不足以判断平均数",
+  "version": "0.6.1",
+  "example_type": "synthetic",
+  "selected": true,
+  "source": {
+    "source_id": "video-sequence-review-20261118",
+    "report_section": "旧预期失效与更正；平均数数字、话语和排程为本轮编辑构造",
+    "source_status": "report-only",
+    "media_accessed": false,
+    "source_range_seconds": null,
+    "transcript_anchor": null,
+    "evidence_assets": [],
+    "checks": [],
+    "limitations": [
+      "这是合成数学解释，不是实测节目、观众普遍误解或实验结果。",
+      "两组非空样本与规则为已给输入；计划秒数属于新分镜，尚未渲染或做观众测试。",
+      "假设的被反驳状态属于片内语义，不改变本记录的制作、来源或验证状态。"
+    ]
+  },
+  "semantic": {
+    "question": "总和相同能否保证平均数相同？旧假设被反驳后应保留什么结论？",
+    "understanding_goal": "指出人数是不可省略的条件，区分不总成立与永不成立，并能认出H的示例归属、失效理由和当前规则。",
+    "feeling_goal": "更正过程清楚且有来处，收束时能分辨旧说法与当前可用结论。",
+    "objects": [
+      {
+        "id": "rule",
+        "label": "非空样本的算术平均数＝总和÷人数"
+      },
+      {
+        "id": "hypothesis-h",
+        "label": "示例假设H：只要总和相同，平均数就相同"
+      },
+      {
+        "id": "group-a",
+        "label": "A：[2,4]；总和6，人数2，平均数3"
+      },
+      {
+        "id": "group-b",
+        "label": "B：[1,2,3]；总和6，人数3，平均数2"
+      },
+      {
+        "id": "counterexample",
+        "label": "同为总和6，6÷2＝3，6÷3＝2，平均数不同"
+      },
+      {
+        "id": "refutation",
+        "label": "H已被本例反驳：忽略了人数"
+      },
+      {
+        "id": "conclusion",
+        "label": "总和相同不保证均值相同；本例总和6，还需人数"
+      }
+    ],
+    "relations": [
+      {
+        "from": "group-a",
+        "to": "counterexample",
+        "type": "input-to",
+        "label": "本例给定样本A及其计算"
+      },
+      {
+        "from": "group-b",
+        "to": "counterexample",
+        "type": "input-to",
+        "label": "本例给定样本B及其计算"
+      },
+      {
+        "from": "counterexample",
+        "to": "hypothesis-h",
+        "type": "refutes",
+        "label": "反例推翻只凭总和相同就保证平均相同的全称判断"
+      },
+      {
+        "from": "refutation",
+        "to": "hypothesis-h",
+        "type": "annotates",
+        "label": "保留同一假设的身份，另标已反驳及原因"
+      },
+      {
+        "from": "rule",
+        "to": "conclusion",
+        "type": "supports",
+        "label": "非空样本下人数参与平均数计算"
+      }
+    ],
+    "must_preserve": [
+      "H是编辑构造的待检验示例，不声称作者接受或观众共同持有。",
+      "每个数代表一人的得分；A和B的成员、人数、总和不因更正而改变，所比的是非空样本的算术平均数。",
+      "反例不支持总和相同的组永远均值不同；同人数同总和可以有同均值。",
+      "本例总和为6、人数未知时保留均值不能确定，不标成已证明均值不同；非空样本总和为0时均值确定为0，不能把未知人数一概说成未知均值。",
+      "原假设身份及原文留在记录；更正标识与理由不等于替换原文或篡改来源。",
+      "最后画面可只保留H的简短失效说明，不强迫重新显示整句错误内容；重要状态不用颜色独自表达。",
+      "原理已能纸上计算不代表成片可读、观众已理解或错误记忆已消除。"
+    ]
+  },
+  "presentation": {
+    "primitives": [
+      "video.align-compare",
+      "video.identity-preserve",
+      "video.evidence-ground",
+      "video.hold"
+    ],
+    "planned_duration_seconds": 48,
+    "audio_alignment": {
+      "status": "not-applicable",
+      "reason": "无旁白合成数学分镜，通过屏上问题、样本、计算与状态说明组织核对；不是已绑定的原声音轨。"
+    },
+    "focus_schedule": [
+      {
+        "start": 0,
+        "end": 6,
+        "target": "rule",
+        "action": "先交代非空样本的平均数规则，提出只看总和是否足够。"
+      },
+      {
+        "start": 6,
+        "end": 12,
+        "target": "hypothesis-h",
+        "action": "显示H并同时带待检验的示例假设标识；不呈现为作者当前结论。"
+      },
+      {
+        "start": 12,
+        "end": 24,
+        "target": "counterexample",
+        "action": "按同一字段列出A、B成员、总和、人数、平均数，将计算指回给定样本。"
+      },
+      {
+        "start": 24,
+        "end": 30,
+        "target": "refutation",
+        "action": "保留H身份，明确已被本例反驳及忽略人数的断裂处；标记只是报告已有反例。"
+      },
+      {
+        "start": 30,
+        "end": 40,
+        "target": "rule",
+        "action": "用正确规则重解两组，旧H只留带原因的简短回顾标识，当前结论回到主位。"
+      }
+    ],
+    "holds": [
+      {
+        "start": 40,
+        "end": 48,
+        "visible": [
+          "rule",
+          "group-a",
+          "group-b",
+          "counterexample",
+          "refutation",
+          "conclusion"
+        ]
+      }
+    ],
+    "end_state": [
+      "rule",
+      "group-a",
+      "group-b",
+      "counterexample",
+      "refutation",
+      "conclusion"
+    ]
+  },
+  "render": {
+    "status": "proposed",
+    "implemented": false,
+    "artifacts": [],
+    "layout": "两组在固定字段下比较；H的归属与状态可辨，更正不靠一闪而过的叉；总结保留正确规则、非空条件与反例理由。",
+    "atmosphere": "让观众核对人数造成的差异，不用胜利音效或惊吓动画冒充证明。"
+  },
+  "validation": {
+    "factual": {
+      "status": "pending",
+      "checks": [
+        "复算两组总和6、人数2与3、平均数3与2，检查成片未换数字。",
+        "H原文与身份保持，更正针对全称充分条件，没有扩大成永不相同。",
+        "最终画面及切片明确当前规则、非空条件、旧H状态与原因；无证据处保留未知。"
+      ],
+      "records": []
+    },
+    "accessibility": {
+      "status": "pending",
+      "checks": [
+        "在目标尺寸与速度核对成员、除法、否定、人数与状态均可读；必要区别不只依靠颜色。",
+        "独立导出末帧核对不会只留下错误H或无说明红叉；若增加音轨与字幕，重新检查更正归属和时间。"
+      ],
+      "records": []
+    },
+    "viewer": {
+      "status": "untested",
+      "observations": [],
+      "understanding_tasks": [
+        "指出原假设是谁提出、哪一个反例推翻了什么、现在采用哪个规则。",
+        "换C=[1,5]与A比较，解释为什么同均值不恢复H的全称保证。",
+        "只给本例总和6而不给人数时，说明哪些还不能判断；再问非空样本总和为0时能否判断均值。",
+        "按事先约定的延迟再述，记录间隔及期间接触，不把一次答对当消除误记。"
+      ],
+      "feeling_questions": [
+        "更正发生在哪一步，哪一处帮助你分清旧假设与当前结论？",
+        "计算和解释中哪里重复过多，哪里还缺判断依据？"
+      ]
+    }
+  }
+}

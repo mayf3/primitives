@@ -217,6 +217,30 @@
           "sha256": "80960af9e1d7acc5bbe2774eb469dd91184146110f4c76a0bce0b5530a647d1c"
         }
       ]
+    },
+    {
+      "id": "video-sequence-review-20261118",
+      "kind": "user-upload",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/sequence-review-20261118-original.txt",
+          "upstream_path": "貼上的文字.txt",
+          "sha256": "5897167425725cbfb9c2753aa86dfab2febd701ac99880f1dc544216ab4345eb"
+        }
+      ]
+    },
+    {
+      "id": "video-sequence-references-20261118",
+      "kind": "web-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/sequence-references-20261118.json",
+          "upstream_path": "各条目的 url、provenance_url、section 与核查范围",
+          "sha256": "c96be430b21225b40a7d261f6a645b2d4c06548e85a6a1e529fb6dd7e264ae20"
+        }
+      ]
     }
   ]
 }

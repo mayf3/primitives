@@ -137,3 +137,18 @@ Remotion 本次页面已说明不再推荐直接使用 `<Sequence>`，其时序�
 | [Walker 与 Nees：Theory of Sonification](https://sites.lafayette.edu/neesm/files/2011/10/WalkerNeesTheSonificationHandbook-chapter2.pdf) | 核 §2.5.3、§2.6 的映射、方向、尺度、并发表现、上下文和评价。属于作者综述，未逐一复核所引实验，不支持听觉普遍更快。 |
 
 BBC 官方字幕资料读取受限，未以镜像冒充已核官网。问题锚点、双向封装、离片复述及三面作品审阅属于本轮编辑构造，仍待实际样片与明确受众检验。旧来源快照及其日期、哈希、核查范围保持不变。
+
+<a id="sequence-review"></a>
+## 0.6.1 通道补充、更正与连续观看 · 2026-11-18
+
+[附件原文](sequence-review-20261118-original.txt)逐字保留，其完备性判断、固定节律、认知压缩比、刺激频段与生理效果均不是本仓库已核事实。更新细化制作与审片任务，不把十二个入口认证为零失误语法。[采用与边界](../REVISIONS.md#sequence-review)
+
+[本轮三份原件的核查记录](sequence-references-20261118.json)保存实际读取位置、版本与应用范围：
+
+| 原件 | 所核内容与限制 |
+|---|---|
+| [The Debunking Handbook 2020](https://skepticalscience.com/docs/DebunkingHandbook2020.pdf) | 核持续影响、反噬及更正建议章节；作者共识手册，未逐篇复核转引实验。支持明确配对旧说法、更正与依据，不支持画叉就消除误记或更正普遍反噬。 |
+| [EBU Tech 3342 v4，2023-11](https://tech.ebu.ch/docs/tech/tech3342.pdf) | 核 LRA 定义、算法范围与短片局限；描述宏观响度变化，不衡量生理舒适、压缩失真或疲劳。 |
+| [EBU R 128 v5，2023-11](https://tech.ebu.ch/docs/r/r128.pdf) | 核节目响度、LRA、真峰值及不足一分钟节目测 LRA 的限制；广播建议不直接成为所有网络视频的电平目标，未给齿音或审美的万能阈值。 |
+
+手册在 GMU 的 PDF 读取返回 526，实际采用共同作者 John Cook 在[发布页](https://skepticalscience.com/debunking-handbook-2020-downloads-translations.html)链接的下载原件。未将未成功读取的位置写作核查证据。布局与帧时间检查属于本轮制作提案，没有新核帧率 API 或执行媒体分析；实际结果仍由目标成片提供。

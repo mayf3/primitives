@@ -1,0 +1,58 @@
+{
+  "snapshot_id": "video-sequence-references-20261118",
+  "checked_at": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "实际读取三份原件，核查更正与持续影响的边界、响度变化和测量条件；没有检验附件指称的成片、受众、固定节律或生理效果。本轮未另核帧率实现资料。",
+  "entries": [
+    {
+      "id": "debunking-handbook-2020",
+      "title": "The Debunking Handbook 2020",
+      "creator": "Stephan Lewandowsky, John Cook and co-authors (2020)",
+      "doi": "10.17910/b7.1182",
+      "url": "https://skepticalscience.com/docs/DebunkingHandbook2020.pdf",
+      "provenance_url": "https://skepticalscience.com/debunking-handbook-2020-downloads-translations.html",
+      "section": "Printed pp.4,6: continued influence; pp.9–11: backfire; pp.12–13: Debunk often and do it properly",
+      "source_scope": "作者共识手册。读取共同作者 John Cook 发布并链接的下载原件；未逐篇复核所引实验。",
+      "editorial_application": "按需引入有归属的旧说法，明确配对更正与依据，说明断裂处及有证据的替代解释；检验更正后仍保留了哪些误解。",
+      "limits": "持续影响不等于更正必然反噬，手册指出 backfire 并不普遍。不能推出三天后必记错、画叉必消除错误记忆，或无依据也应补一个替代原因。"
+    },
+    {
+      "id": "ebu-lra",
+      "title": "EBU Tech 3342: Loudness Range: A Measure to Supplement EBU R 128 Loudness Normalization",
+      "creator": "European Broadcasting Union",
+      "version": "4 (2023-11)",
+      "url": "https://tech.ebu.ch/docs/tech/tech3342.pdf",
+      "section": "Sections 1–3.1, printed pp.4–5; revision history p.2",
+      "source_scope": "技术测量说明。LRA以LU描述宏观时间尺度上的响度变化，基于经门限处理的短时响度分布及百分位差。",
+      "editorial_application": "记录测量时段和方法，将LRA、峰值、节目响度和实际听感分别检查。",
+      "limits": "LRA不是压缩失真、疲劳或舒适评分，不等同峰均比。极短节目和孤立话语也可能出现误导性高值；不能用大小单独判定好坏。"
+    },
+    {
+      "id": "ebu-r128",
+      "title": "EBU R 128: Loudness Normalisation and Permitted Maximum Level of Audio Signals",
+      "creator": "European Broadcasting Union",
+      "version": "5 (2023-11)",
+      "url": "https://tech.ebu.ch/docs/r/r128.pdf",
+      "section": "Printed p.3 overview; p.4 clauses l,n and footnote 2; pp.4–5 Definitions",
+      "source_scope": "广播响度建议，区分节目响度LUFS、响度变化LRA和最大真峰值。脚注不建议对不足一分钟节目采用LRA，原因是数据点不足。",
+      "editorial_application": "用明确的测量对象和交付条件定位技术问题，不据短句LRA诊断整部视频的动态或疲劳。",
+      "limits": "广播目标不直接成为所有网络视频标准；没有给齿音统一频段、固定EQ或极致享受判据。"
+    }
+  ],
+  "access_limits": [
+    {
+      "provider": "GMU / climatechangecommunication.org 的 Debunking Handbook PDF",
+      "status": "HTTP-526",
+      "use": "未作为成功读取位置；实际采用作者发布的 Skeptical Science 下载版。"
+    }
+  ],
+  "unverified_or_narrowed_claims": [
+    "十二项候选原语已经理论闭环并保证单拍零失误",
+    "90秒密集内容后15秒留白使工作记忆清零",
+    "连续五拍重复必定疲劳，第三分钟必定流失",
+    "同一频段均衡或统一物理阻尼适合所有视听作品",
+    "认知压缩比或每秒信息增益已有通用可测指标",
+    "显式划叉即可杜绝持续影响，或更正必然导致反噬",
+    "双层终审能揪出一切问题并保证极致享受"
+  ]
+}
