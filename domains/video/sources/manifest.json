@@ -265,6 +265,30 @@
           "sha256": "fac3f1b7282d190a394e3a21b49397fa886b9ea06a4750e56ceae093a48e597a"
         }
       ]
+    },
+    {
+      "id": "video-review-workflow-feedback-20261118",
+      "kind": "user-message-excerpts",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/review-workflow-feedback-20261118.json",
+          "upstream_path": "本轮用户消息，按问题摘录，非完整逐字转储",
+          "sha256": "81daee9daf1e4939acee329d3988a5e74ade9a44207f4bb4fb38ca5b4d1ec499"
+        }
+      ]
+    },
+    {
+      "id": "video-b3r2-pilot-20261118",
+      "kind": "local-review",
+      "imported_at": "2026-11-18",
+      "files": [
+        {
+          "path": "sources/b3r2-pilot-20261118.json",
+          "upstream_path": "boke/recording44-video-v2.3/reviews/primitives-v063-b3r2-20261118/audit-record.json",
+          "sha256": "fe16cd05932b72848a9fd6e862b53b7ba9bb41d0c477974aa61e4d940b92f80a"
+        }
+      ]
     }
   ]
 }

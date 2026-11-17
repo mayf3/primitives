@@ -1,0 +1,150 @@
+{
+  "snapshot_id": "video-b3r2-pilot-20261118",
+  "kind": "limited-artifact-review",
+  "checked_at": "2026-11-18",
+  "method_version": "0.6.3",
+  "asset": {
+    "filename": "EP57｜晴空海盐 B3R2｜感知修订候审.mp4",
+    "sha256": "7b5b7fbc2bf7ce61d59a7d8d09d70c0cce182414c0a5ccf503859721fb8b9f71",
+    "measured_duration_seconds": 1625.8,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "fps": 30
+  },
+  "review_range_seconds": [
+    1251.5,
+    1430.0
+  ],
+  "caption_sha256": "4c46391294921e0c86369b56ea1661c44d72ff36cae1da0d1c20576dbeb5ff19",
+  "scope": "用户指定B3R2候审版；核对输入，阅读匹配字幕及制作说明，通过接触表与原尺寸图查看51个不同时间点。不是完整连续视听，不是观众实验。原始媒体与详细记录保留在视频项目。",
+  "viewed_frame_seconds": [
+    1252,
+    1254.5,
+    1255.0,
+    1255.5,
+    1256.0,
+    1256.5,
+    1257.0,
+    1257.4,
+    1260,
+    1262,
+    1264,
+    1266,
+    1268,
+    1270,
+    1276,
+    1288,
+    1300,
+    1312,
+    1324,
+    1332,
+    1333.0,
+    1333.5,
+    1334.0,
+    1335.0,
+    1336,
+    1337.0,
+    1337.5,
+    1338,
+    1340,
+    1342,
+    1344,
+    1346,
+    1348,
+    1349.8,
+    1350,
+    1352,
+    1354,
+    1356,
+    1358,
+    1360,
+    1362,
+    1364,
+    1366,
+    1368,
+    1370,
+    1372,
+    1384,
+    1396,
+    1408,
+    1420,
+    1429
+  ],
+  "findings": [
+    {
+      "time_seconds": [
+        1334,
+        1336
+      ],
+      "observed": "前一话轮的三项结构仍叠在新写作窗口；字幕和人物标识已进入下一位的提问。",
+      "inference": "截帧或跳入可能误认当前操作角色，尚无真人误读结果。",
+      "existing_rules": [
+        "video.correspond",
+        "video.identity-preserve",
+        "video.hold"
+      ],
+      "proposed_response": "换入提问时退出旧结构或明确其回顾归属，再按提问进程展开；不新增原语。"
+    },
+    {
+      "time_seconds": [
+        1254.5,
+        1257.4
+      ],
+      "observed": "1254.5未见卡，1255已可辨术语及三项；匹配SRT在1257.3首次出现该术语。",
+      "inference": "相对字幕至少提前2.3秒；未对听，不认领实际旁白错位或必然剧透。",
+      "existing_rules": [
+        "video.correspond"
+      ],
+      "proposed_response": "核对原声及预告意图后再决定入场。"
+    },
+    {
+      "time_seconds": [
+        1349.8,
+        1350
+      ],
+      "observed": "引导词单占一行，后句在第二行。",
+      "inference": "字幕语义断行可优化，未证明漏字或要求删除原声。",
+      "existing_rules": [
+        "video.correspond",
+        "video.hold"
+      ],
+      "proposed_response": "按完整语义轻清洗或重分行，再核同步。"
+    }
+  ],
+  "positive_observations": [
+    "演示材料有可见性质提示",
+    "原稿与审稿副本可区分",
+    "收束保留有疑点回原文的限定"
+  ],
+  "non_failures": [
+    "局部空卡旁已有观察问题，不判整板空白",
+    "分析与隐喻时人物退出不自动判错误",
+    "本段未发现已证实的条件删列或源速率夸大，不要求每遍找出错误"
+  ],
+  "pass_results": {
+    "1": "input and scope checked in part; factual/audio gaps remain",
+    "2": "sampled decoded frames reviewed; role handoff risk found",
+    "3": "sampled timing only; normal-speed audiovisual review pending",
+    "4": "editorial crop/entry-risk review; audience behavior untested"
+  },
+  "pending": [
+    "正常速度连续视听",
+    "实际音轨与字幕对听",
+    "目标手机观看",
+    "真人理解与跳看检查",
+    "建议修改后的复查"
+  ],
+  "method_use_cost": {
+    "per_pass_elapsed_seconds": null,
+    "reason": "并行且交错执行，未分遍计时；不能据此声称节时或降低认知负荷。"
+  },
+  "production_change_applied": false,
+  "provenance": {
+    "project_record": "boke/recording44-video-v2.3/reviews/primitives-v063-b3r2-20261118/audit-record.json",
+    "record_sha256": "59641f1e3e2728031af87e6d3c682ba3039768bbb768f71a8da6ca191f194e6e",
+    "report_filename": "B3R2-四遍审片试用.html",
+    "report_sha256": "e53d2aab05d2f3acdf2805cbf1ba37fba4a638a9acba49fc9de2a06033251fa0"
+  }
+}
