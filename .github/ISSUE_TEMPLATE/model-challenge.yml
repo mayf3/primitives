@@ -1,0 +1,36 @@
+name: 原语模型或实现遇到问题
+description: 从实际现象出发，由 Agent 补充反例、模型定位、实现对应和原任务验收。
+title: "[模型挑战] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        你只需说明现象和原本期待，不必先懂 Lean 或定位数学问题。
+        Agent 会补充版本、最小反例、模型与代码对应，以及验收证据。
+        公开内容只放可公开的最小复现；私有材料保留在原系统。
+  - type: textarea
+    id: expected_task
+    attributes:
+      label: 原本想完成什么，怎样算完成？
+      placeholder: 例如：执行结束后应该得到什么结果，哪些情况不能被算作成功。
+    validations:
+      required: true
+  - type: textarea
+    id: observed_problem
+    attributes:
+      label: 实际出现了什么？
+      placeholder: 描述失败、误判、无法表达的新情况，或与原本期待的差异。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 可查看的材料或复现入口（可选）
+      description: 可填代码、提交、产物或已去敏的输入；暂时不知道也可以先提交。
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        处理方式见 [模型反馈闭环](https://github.com/mayf3/primitives/blob/main/MODEL_FEEDBACK.md)。
+        模型证明、实现对齐和原任务验收分别记录，部分 PR 合并不会自动代表原任务完成。
