@@ -43,4 +43,6 @@
 
 运行 `python3 tools/primitives.py validate`。修改检索或校验工具时，再运行 `python3 -m unittest discover -s tests -v`。检查失败应修具体问题；检查通过不宣称创作或用户效果得到验证。
 
+数学模型与证明放在各域的 `lean/`，目录、源清单和验证规则见 [LEAN.md](LEAN.md)。修改 Lean、其配置或绑定样例后，运行根 `python3 tools/verify_lean.py`；只做局部开发可 `--domain <id>`，单域回执不能冒充全仓结果。域内源码只导入自身、参数化 `PrimitiveCore` 或固定工具链随附库，不共享业务状态。不用 `sorry`、自定义公理或不可审计的元编程填补待证结论。
+
 提交只包含相关改动。保存上游来源时记录固定提交 SHA、原路径、文件哈希和原有提案状态；不把未合并 PR 写成已合并。

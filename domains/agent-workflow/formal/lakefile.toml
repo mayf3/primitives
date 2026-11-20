@@ -1,9 +1,0 @@
-name = "agent_workflow"
-version = "0.2.0"
-defaultTargets = ["AgentWorkflow"]
-
-[leanOptions]
-warningAsError = true
-
-[[lean_lib]]
-name = "AgentWorkflow"

@@ -1,7 +1,7 @@
 {
   "id": "agent-workflow",
   "title": "Agent Workflow 原语",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "弱 Agent 的可组合执行方法：固定原目标、持久责任、身份、可观测性、可信核验、后继交接、未知对账和治理恢复；附有限示例、后续评审语义与 Lean 条件证明。",
   "entrypoint": "README.md",
   "guide": "GUIDE.md",

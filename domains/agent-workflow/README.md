@@ -2,7 +2,7 @@
 
 **把复杂目标拆成可检验的小工作；由持久工作流负责接单、交接、失败治理与恢复，不要求每个 Agent 理解整个系统。**
 
-版本 **0.2.0**（2026-11-20）。本模块是**公开的、平台无关的候选方法与抽象数学模型**。0.1.0 来自较早 v1.1 概念稿；本版补入后续评审中的信息集、全后继进展、状态充分性及不可信报告边界，并用 Lean 证明明确限定的切片。完整较新源稿同步和生产精化仍待完成；不复制私有运行记录。模型、合成反例与条件证明不是对生产系统的正确性认证。
+版本 **0.3.0**（2026-11-20）。本模块是**公开的、平台无关的候选方法与抽象数学模型**。0.1.0 来自较早 v1.1 概念稿；0.2.0 补入后续评审中的信息集、全后继进展、状态充分性及不可信报告边界，并用 Lean 证明明确限定的切片。0.3.0 将证据与进展统一为关系观测，并从初态归纳推出逐边界真值包含。完整较新源稿同步和生产精化仍待完成；不复制私有运行记录。模型、合成反例与条件证明不是对生产系统的正确性认证。
 
 ## 从问题进入
 
@@ -12,7 +12,7 @@
 | 哪些方法可以组合、复用、拆并？ | [候选原语](PRIMITIVES.md) | 八个候选和相邻反例 |
 | 责任、执行、证据、外部效果怎样严格定义？ | [数学模型](FORMAL_MODEL.md) | 状态机、安全、活性、可达性 |
 | 不确定性、马尔可夫相关条件、谄媚风险如何进入模型？ | [后续评审与形式化](FORMALIZATION.md) | 补充定义、已证明结论及剩余前提 |
-| 哪些结论实际经过 Lean 检查？ | [Lean 工程](formal/README.md) | 固定工具链、37 个定理、公理审计与回执 |
+| 哪些结论实际经过 Lean 检查？ | [Lean 工程](lean/README.md) | 统一构建、42 个定理声明、公理审计与回执 |
 | 为什么 PASS 后还可能停住？ | [合成反例](EXAMPLES.md) | 11 类不含私有数据的历史同构反例 |
 | 如何检验真假无人值守？ | [验证与边界](VALIDATION.md) | S1–S3、L1–L2 测试矩阵 |
 | 来源和限制是什么？ | [来源说明](sources/README.md) | 原始来源类型与外部参考 |
@@ -50,4 +50,4 @@
     python3 tools/primitives.py list --domain agent-workflow
     python3 tools/primitives.py show agent-workflow.reconcile-unknown
     python3 domains/agent-workflow/model_check.py
-    python3 domains/agent-workflow/formal/verify.py
+    python3 tools/verify_lean.py --domain agent-workflow

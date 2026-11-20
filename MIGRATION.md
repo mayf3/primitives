@@ -138,13 +138,25 @@ PCA V0 只有五种图节点，Activity 只通过产生的 Observation 进入认
 
 ## Agent Workflow 后续评审与 Lean 切片 · 模块 0.2.0
 
-2026-11-20 以 main `826dfcce33e81e6ce0e8de1b6ff76b48cfa8526d` 为基线，按 [Issue #3](https://github.com/mayf3/primitives/issues/3) 补入较晚评审的语义差额。0.1.0 未完整同步 v2.4 与后续复验，本次明确修正来源和范围说明；新增 [后续评审说明](domains/agent-workflow/FORMALIZATION.md) 与 [Lean 工程](domains/agent-workflow/formal/README.md)。原八项原语、旧 Python 示例、其他领域、来源快照、桥接与注册表版本保持原状。
+2026-11-20 以 main `826dfcce33e81e6ce0e8de1b6ff76b48cfa8526d` 为基线，按 [Issue #3](https://github.com/mayf3/primitives/issues/3) 补入较晚评审的语义差额。0.1.0 未完整同步 v2.4 与后续复验，本次明确修正来源和范围说明；新增 [后续评审说明](domains/agent-workflow/FORMALIZATION.md) 与 [Lean 工程](domains/agent-workflow/lean/README.md)。原八项原语、旧 Python 示例、其他领域、来源快照、桥接与注册表版本保持原状。
 
 Lean 4.19.0 只依赖随附 Init/Std，实际证明固定策略的有限秩条件进展、belief 真值保留、状态压缩的精确关系表达与可靠验收门对任意报告的不变量；另给遗漏在途历史、共同误判、丢失证据 soundness 的反模型，以及完整恢复证书与验收门正控。
 
 独立审阅修复有限前缀、实际执行/观察关联及中间状态覆盖的初稿缺口；集成审计修复声明漏审和构建期间源哈希绑定问题。验证结果：
 
-- 干净 Lean 构建与 37 个定理的传递公理审计通过，仅使用标准 `propext`、`Classical.choice`、`Quot.sound` 或无公理。具体命令、源文件 SHA-256 和前提范围见 [回执](domains/agent-workflow/formal/verification.json)。
+- 干净 Lean 构建与 37 个定理的传递公理审计通过，仅使用标准 `propext`、`Classical.choice`、`Quot.sound` 或无公理。具体命令、源文件 SHA-256 和前提范围见 [当时的回执](https://github.com/mayf3/primitives/blob/6b307df4c36759e40dc82c08c4975589e1356eca/domains/agent-workflow/formal/verification.json)。
+
+## 领域内 Lean 与统一验证 · 注册表 0.6.0
+
+2026-11-20 在已合并的 Agent Workflow Lean 基础上，将 `formal/` 改为 `lean/`，由根固定工具链、Lake 配置、完整源码清单、审计和 CI。六个正式领域各有与其原语描述对应的形式化切片，通用查询保真／契约组合位于 `meta/lean/`。游戏候选没有因此成为正式领域。
+
+Agent Workflow 升至 0.3.0：观察从函数推广为关系，宏执行显式覆盖实际报告；逐边界真值包含从合同字段变成从初态归纳得到的定理。此接口变化只涉及公开数学模型，未更改生产运行协议。其余领域和元层增加证明说明，原有方法含义及 ID 保持不变，按补丁版升级。
+
+三份桥接记录重新核对现有 `uses`、输入输出和候选／未实测状态后，更新相应 `module_versions`；不把模型证明转换成桥接实现或用户效果证据。58 份固定来源快照保持原字节。
+
+新增 [Lean 规范](LEAN.md)、[统一验证工具](tools/verify_lean.py) 与 CI 的独立 Lean 任务。源码新增漏审、未证明公理、跨域导入、适配器输入遗漏、路径穿越及单域覆盖全仓回执都有拒绝检查。前后 SHA-256 一致只表示两次取样相同，不声称能检测恶意的中途修改后恢复。
+
+最终证明数量、每条传递公理和实际命令以当前 [全仓回执](lean-verification.json) 为准。所有结论限于声明的模型和假设；真实实现精化、阅读/学习效果与全局原语最小性仍未证明。
 - 审计负控 6 项全部拒收：未支持的 private / attribute / 缩进声明、新模块、漏登记审计项、证明空洞。负控以各次非零退出码核对，未将旧成功文件当新结果。
 - `python3 tools/primitives.py validate` 通过；Agent Workflow 原有限模型 6 项测试通过。共享工具未改，不把这些有限测试提升为完整活性证明。
 

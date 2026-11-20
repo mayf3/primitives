@@ -3,7 +3,7 @@
   "title": "从学习目标到可用的学习体验",
   "example_status": "synthetic",
   "outcome": "not-run",
-  "module_versions": {"learning": "0.1.0", "design": "0.2.0"},
+  "module_versions": {"learning": "0.1.1", "design": "0.2.1"},
   "steps": [
     {"id": "learning-contract", "domain": "learning", "uses": ["learning.elicit-starting-model", "learning.relation-model"], "input": "目标受众、待学任务、允许工具、起点证据或明确假设", "output": "必要关系、任务与判据、帮助和范围约定；未观察的起点仍未知"},
     {"id": "entry-and-relations", "domain": "design", "uses": ["design.page-promise", "design.entry-outcome", "design.prerequisites", "design.externalize-relations", "design.next-step"], "input": "学习约定、真实页面和可用任务", "output": "用途与先修可见、入口预期相符、关系可读、下一步可达的页面提案"},

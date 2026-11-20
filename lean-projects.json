@@ -1,0 +1,13 @@
+{
+  "schema": "primitives-lean-projects/v1",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "projects": [
+    {"domain": "meta", "library": "PrimitiveCore", "directory": "meta/lean", "modules": ["PrimitiveCore", "PrimitiveCore.Abstraction", "PrimitiveCore.Contracts"]},
+    {"domain": "agent-workflow", "library": "AgentWorkflow", "directory": "domains/agent-workflow/lean", "modules": ["AgentWorkflow", "AgentWorkflow.Progress", "AgentWorkflow.Evidence"]},
+    {"domain": "design", "library": "Design", "directory": "domains/design/lean", "modules": ["Design", "Design.Disclosure"]},
+    {"domain": "learning", "library": "Learning", "directory": "domains/learning/lean", "modules": ["Learning", "Learning.Identifiability"]},
+    {"domain": "video", "library": "Video", "directory": "domains/video/lean", "modules": ["Video", "Video.Temporal"], "checks": [{"script": "domains/video/lean/check_example.py", "inputs": ["domains/video/examples/concurrent-replies.json"]}]},
+    {"domain": "life", "library": "Life", "directory": "domains/life/lean", "modules": ["Life", "Life.Commitments"]},
+    {"domain": "writing", "library": "Writing", "directory": "domains/writing/lean", "modules": ["Writing", "Writing.Revision"]}
+  ]
+}

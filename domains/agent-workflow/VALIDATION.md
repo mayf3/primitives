@@ -50,7 +50,7 @@
 
 可运行 [有限检查器](model_check.py) 会枚举一个精简的 A→B 串行模型，并对丢后继、伪 PASS、盲重发、失去消费者、无对账入口给出可复查的反例。它**不**复现真实生产数据或任何内部审阅结果中的状态/边计数。
 
-该检查器检查局部死锁及存在接受态，没有枚举所有非目标无限循环，不能把它的 `ok` 当作完整 L1/L2。新增 [Lean 工程](formal/README.md) 检查固定策略的全后继有限秩条件定理，范围及外部前提见 [后续评审](FORMALIZATION.md)。两种工具各按自身范围记录结果，不互相升级。
+该检查器检查局部死锁及存在接受态，没有枚举所有非目标无限循环，不能把它的 `ok` 当作完整 L1/L2。新增 [Lean 工程](lean/README.md) 检查固定策略的全后继有限秩条件定理，范围及外部前提见 [后续评审](FORMALIZATION.md)。两种工具各按自身范围记录结果，不互相升级。
 
     python3 domains/agent-workflow/model_check.py
     python3 tools/primitives.py validate

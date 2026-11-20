@@ -16,7 +16,7 @@ class IntegrityScenarios(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name) / "repo"
-        shutil.copytree(ROOT, self.root, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+        shutil.copytree(ROOT, self.root, ignore=shutil.ignore_patterns(".git", ".lake", "__pycache__"))
 
     def tearDown(self):
         self.temp.cleanup()

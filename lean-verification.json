@@ -1,0 +1,362 @@
+{
+  "schema": "primitives-lean-verification/v1",
+  "status": "PASS_CONDITIONAL_MODEL_PROOFS",
+  "selection": "all",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "dependencies": "Pinned Lean Init/Std only; no external packages",
+  "source_sha256": {
+    "domains/agent-workflow/lean/AgentWorkflow/Evidence.lean": "b924b4921ea8ae9171dacdc675920d600bc371a99720ba1b05b4208f89e30759",
+    "domains/agent-workflow/lean/AgentWorkflow/Progress.lean": "eec13488221a84cf9fbcae7689240d150203776a896f4cadb668ac0f42c55a38",
+    "domains/agent-workflow/lean/AgentWorkflow.lean": "c8d9e73803155612d73a718cd33d0e4a717b82b293910015b45c0b101beb63ef",
+    "domains/design/lean/Design/Disclosure.lean": "25f99287edc8d86d97d30203befad89d2c37899f1af6487bcbae7d1e62ee9789",
+    "domains/design/lean/Design.lean": "bacecb862dc737183f95af70ceedf5ece903194c5ff0b2ed42ac9c4bac812a3f",
+    "domains/learning/lean/Learning/Identifiability.lean": "5d3473611828d4128d1cd376b904ff8cd4a42708e3c379362974fdb8e6428c10",
+    "domains/learning/lean/Learning.lean": "3c68217714ea68364663b4a6e7fa701e2867536731d14ec4c41a2c3f355f0007",
+    "domains/life/lean/Life/Commitments.lean": "773896440aff98a68d9ebbfcb0375a5ad7e3efaa34b074ae826e11fa04a9f16b",
+    "domains/life/lean/Life.lean": "ef2c1de4f2dcc004ae731e6766f9db9263d8021cd6d9668a09bf83d5c1e771c9",
+    "domains/video/examples/concurrent-replies.json": "2594c3a78c67dfa013822b5192a4ce41682015f0c699dca0e36febb8fa57a297",
+    "domains/video/lean/Video/Temporal.lean": "a24c61bcca5f4b671ac18bc6c19c30b2136df798297613ad31e2441b712ef698",
+    "domains/video/lean/Video.lean": "617cdc8e3d42841fea7bfcb9f4a9baeb7c30fd50738bc68a39edbc23fb8138a1",
+    "domains/video/lean/check_example.py": "ae7e2c0adc6280cc9a2dc62649366391b2595cc211d3ec80c7047e4ad4fb8082",
+    "domains/writing/lean/Writing/Revision.lean": "d0dea6913ddfe41644d27a3bd7072ed582c966fffd835bab0fd35783858461fe",
+    "domains/writing/lean/Writing.lean": "30daeb6c10ee864ac70cf9243ab5994ebe641be115adadf5d370ee4bb366f705",
+    "lake-manifest.json": "00d6cf90b0de4a988e7c2ebc39e675fa69aa73c11553a343ef483cbe6a2edab8",
+    "lakefile.toml": "2662a7222d6f535a57f9ab05088c651e2b28069066f6ac3db98f1f4138bd8b5d",
+    "lean-projects.json": "219b4c61946a485a3dc9e6709fa042d0218e1298e6a9ebd8db553742abdcbcb5",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "meta/lean/PrimitiveCore/Abstraction.lean": "e9dd5a196a2f7c1749aa1f5e251639ed9fa199cfd6fdbb5cfe1970fd7f02c12a",
+    "meta/lean/PrimitiveCore/Contracts.lean": "28a30d31f90e4e3642e8c06ff156ceddf031f84011680ed2ebe21e7a41a28945",
+    "meta/lean/PrimitiveCore.lean": "c87886e5b7f4d464327786408b019ffcf8f8b500f2944b19a9d4d6cc66b8183c",
+    "registry.json": "ab38b872204f563fc8be636170536eb1abb0b78f9449e63d915f31e3aa2060e8",
+    "tools/verify_lean.py": "7c497d9eefd8d697a43ebad2a067a16c174965b05294e2f98cbd47e6481f19e7"
+  },
+  "input_hashes_match_before_after": true,
+  "generated_axiom_audit_sha256": "98e2017714e16d6f1ed650c33357b2d65a19efc6148dfd5af9f1a846f8f41d27",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "clean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "PrimitiveCore",
+        "AgentWorkflow",
+        "Design",
+        "Learning",
+        "Video",
+        "Life",
+        "Writing"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        ".lake/verification/AxiomAudit.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "domains/video/lean/check_example.py",
+        "--lake",
+        "lake"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "theorems_audited": 101,
+  "domains": {
+    "meta": {
+      "library": "PrimitiveCore",
+      "directory": "meta/lean",
+      "theorems_audited": 6
+    },
+    "agent-workflow": {
+      "library": "AgentWorkflow",
+      "directory": "domains/agent-workflow/lean",
+      "theorems_audited": 42
+    },
+    "design": {
+      "library": "Design",
+      "directory": "domains/design/lean",
+      "theorems_audited": 9
+    },
+    "learning": {
+      "library": "Learning",
+      "directory": "domains/learning/lean",
+      "theorems_audited": 8
+    },
+    "video": {
+      "library": "Video",
+      "directory": "domains/video/lean",
+      "theorems_audited": 18
+    },
+    "life": {
+      "library": "Life",
+      "directory": "domains/life/lean",
+      "theorems_audited": 10
+    },
+    "writing": {
+      "library": "Writing",
+      "directory": "domains/writing/lean",
+      "theorems_audited": 8
+    }
+  },
+  "theorem_axioms": {
+    "AgentWorkflow.Evidence.acceptance_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.claimed_applied_keeps_absent_possible": [],
+    "AgentWorkflow.Evidence.claimed_applied_keeps_applied_possible": [],
+    "AgentWorkflow.Evidence.consensus_does_not_imply_truth": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.enabled_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.equality_evidence_is_sound": [],
+    "AgentWorkflow.Evidence.gate_step_preserves_truth": [],
+    "AgentWorkflow.Evidence.no_exact_node_only_enabled_relation": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.node_only_loses_enabled_actions": [],
+    "AgentWorkflow.Evidence.node_only_loses_future_behavior": [],
+    "AgentWorkflow.Evidence.post_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.reports_cannot_bypass_sound_gate": [],
+    "AgentWorkflow.Evidence.shared_wrong_has_consensus": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.shared_wrong_is_not_complete": [],
+    "AgentWorkflow.Evidence.sound_gate_can_close_true_goal": [],
+    "AgentWorkflow.Evidence.sufficient_iff_exact_relational_quotient": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.trace_contains_actual": [],
+    "AgentWorkflow.Evidence.unsound_gate_can_close_false_goal": [],
+    "AgentWorkflow.Evidence.update_contains_actual": [],
+    "AgentWorkflow.Progress.MacroRealization.follows_policy": [],
+    "AgentWorkflow.Progress.MacroRealization.possibleAtBoundary": [],
+    "AgentWorkflow.Progress.belief_policy_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.belief_prefix_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.certified_successor": [],
+    "AgentWorkflow.Progress.deceptive_only_no_progress_certificate": [],
+    "AgentWorkflow.Progress.deceptive_reports_do_not_establish_acceptance": [],
+    "AgentWorkflow.Progress.deceptive_reports_keep_absent_possible": [],
+    "AgentWorkflow.Progress.maximal_endpoint_is_target": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.observed_post_iff_evidence_update": [],
+    "AgentWorkflow.Progress.original_key_has_one_observed_successor": [],
+    "AgentWorkflow.Progress.reaches_in_initial_rank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.reaches_within": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.realized_internal_prefix_safe": [],
+    "AgentWorkflow.Progress.realized_policy_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.recovered_meets_original_acceptance": [],
+    "AgentWorkflow.Progress.replay_all_one_step_runs_finish": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.replay_has_finite_observation": [],
+    "AgentWorkflow.Progress.replay_rank_zero_iff_target": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.replay_successor_is_target": [],
+    "AgentWorkflow.Progress.replay_target_iff_no_absent": [],
+    "AgentWorkflow.Progress.run_stays_in_region": [],
+    "AgentWorkflow.Progress.target_persists": [],
+    "Design.Disclosure.changing_hidden_detail_preserves_view": [],
+    "Design.Disclosure.collapsed_page_hides_only_detail": [],
+    "Design.Disclosure.expanded_page_shows_detail": [],
+    "Design.Disclosure.merged_indicator_cannot_recover_action": [
+      "Classical.choice"
+    ],
+    "Design.Disclosure.merged_indicator_cannot_support_correct_policy": [],
+    "Design.Disclosure.merged_indicator_has_conflicting_actions": [],
+    "Design.Disclosure.rendering_preserves_required_distinction": [],
+    "Design.Disclosure.rendering_recovers_next_action": [],
+    "Design.Disclosure.toggling_detail_preserves_action": [],
+    "Learning.Identifiability.adding_questions_preserves_distinguishability": [
+      "propext"
+    ],
+    "Learning.Identifiability.distinguishes_iff_injective_signature": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Learning.Identifiability.one_variation_still_does_not_distinguish": [
+      "propext"
+    ],
+    "Learning.Identifiability.practiced_question_does_not_distinguish": [
+      "propext"
+    ],
+    "Learning.Identifiability.query_recoverable_iff_constant_on_signature": [
+      "Classical.choice"
+    ],
+    "Learning.Identifiability.same_answers_prevent_identification": [],
+    "Learning.Identifiability.signature_eq_iff_same_answers": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Learning.Identifiability.three_questions_distinguish_declared_models": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Life.Commitments.commitment_does_not_support_another_version": [
+      "propext"
+    ],
+    "Life.Commitments.empty_supported": [
+      "propext"
+    ],
+    "Life.Commitments.every_recorded_decision_has_commitment": [
+      "propext"
+    ],
+    "Life.Commitments.known_commitment_can_be_adopted": [
+      "propext"
+    ],
+    "Life.Commitments.repost_preserves_root_sources": [
+      "propext"
+    ],
+    "Life.Commitments.run_preserves_support": [
+      "propext"
+    ],
+    "Life.Commitments.step_preserves_support": [
+      "propext"
+    ],
+    "Life.Commitments.suggestion_alone_cannot_create_decision": [
+      "propext"
+    ],
+    "Life.Commitments.unguarded_adoption_breaks_support": [
+      "propext"
+    ],
+    "Life.Commitments.unsupported_adoption_is_unchanged": [
+      "propext"
+    ],
+    "PrimitiveCore.Abstraction.collision_prevents_query_factorization": [
+      "Classical.choice"
+    ],
+    "PrimitiveCore.Abstraction.constant_observation_loses_boolean_query": [
+      "Classical.choice"
+    ],
+    "PrimitiveCore.Abstraction.disjoint_good_actions_prevent_policy": [],
+    "PrimitiveCore.Abstraction.fiberConstant_iff_factorsThrough": [
+      "Classical.choice"
+    ],
+    "PrimitiveCore.Contracts.hoare_sequence": [],
+    "PrimitiveCore.Contracts.trace_preserves_invariant": [],
+    "Video.Temporal.affine_completed_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_contains_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_duration": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_duration_order_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_duration_ratio": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_le_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_lt_iff": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_overlap_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.affine_valid_iff": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.first_reader_completion_count": [],
+    "Video.Temporal.four_window_remaining": [],
+    "Video.Temporal.four_writers_common_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.four_writers_completion_count": [],
+    "Video.Temporal.independent_alignment_forges_overlap": [],
+    "Video.Temporal.nonlinear_map_reverses_duration_order": [],
+    "Video.Temporal.overlap_iff_endpoints": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.queue_balance": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Video.Temporal.square_time_increases_on_nonnegative": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Writing.Revision.deleting_required_information_is_not_faithful": [],
+    "Writing.Revision.entails_transitive": [],
+    "Writing.Revision.one_person_cannot_be_upgraded_to_everyone": [],
+    "Writing.Revision.reordered_facts_preserve_meaning": [],
+    "Writing.Revision.repeated_revisions_preserve_faithfulness": [],
+    "Writing.Revision.revision_preserves_faithfulness": [],
+    "Writing.Revision.supported_draft_has_a_world": [],
+    "Writing.Revision.unchanged_supported_meaning_is_faithful": []
+  },
+  "scope": {
+    "conditional_model_theorems": true,
+    "independent_kernel_implementation": false,
+    "production_implementation_refinement": "NOT_PROVED",
+    "empirical_user_or_learning_effect": "NOT_TESTED",
+    "primitive_global_minimality": "NOT_PROVED"
+  }
+}
