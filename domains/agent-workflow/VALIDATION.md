@@ -30,7 +30,7 @@
 
 | 轴 | 建议值 | 验证口径 |
 |---|---|---|
-| `model_status` | proposed / bounded_checked / independently_reviewed | 形式定义、有限检查或独立审阅，与生产无关 |
+| `model_status` | proposed / bounded_checked / conditional_lean_proved / independently_reviewed | 绑定准确命题与前提；有限检查、条件证明、审阅与生产分别判断 |
 | `implementation_status` | proposed / sandbox_tested / installed | 固定源码、隔离实跑、安装哈希 |
 | `operational_status` | not_observed / assisted / natural_partial / natural_e2e | 触发来源与完整业务回执 |
 | `acceptance_status` | unknown / partial / failed / passed | 原目标当前可判定的证据 |
@@ -49,6 +49,8 @@
 6. **无权威读回**：保留 UNKNOWN 可以安全，但不得在没有可区分事实时承诺 L2 必达。
 
 可运行 [有限检查器](model_check.py) 会枚举一个精简的 A→B 串行模型，并对丢后继、伪 PASS、盲重发、失去消费者、无对账入口给出可复查的反例。它**不**复现真实生产数据或任何内部审阅结果中的状态/边计数。
+
+该检查器检查局部死锁及存在接受态，没有枚举所有非目标无限循环，不能把它的 `ok` 当作完整 L1/L2。新增 [Lean 工程](formal/README.md) 检查固定策略的全后继有限秩条件定理，范围及外部前提见 [后续评审](FORMALIZATION.md)。两种工具各按自身范围记录结果，不互相升级。
 
     python3 domains/agent-workflow/model_check.py
     python3 tools/primitives.py validate

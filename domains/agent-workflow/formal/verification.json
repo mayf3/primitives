@@ -1,0 +1,142 @@
+{
+  "schema": "agent-workflow-lean-verification/v1",
+  "status": "PASS_CONDITIONAL_FORMAL_SLICE",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "dependencies": "Lean 4.19.0 bundled Init/Std only; no external packages",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "clean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "AxiomAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "lakefile.toml": "4c0a3cc924a14da2493913466bffa4b536ca8b1d117d452dff2da06c8899b5f2",
+    "lake-manifest.json": "3de5a2265d8df6f5d820550de1c98377a17ba4475e6b36c17519d81d004742f0",
+    "AgentWorkflow.lean": "c8d9e73803155612d73a718cd33d0e4a717b82b293910015b45c0b101beb63ef",
+    "AxiomAudit.lean": "1e77d27c27c038068fd40f637ab8863db2bb319bf34af62d6609879403c9980c",
+    "verify.py": "4de0437b43dc70a51ea06708d444a532fcfd8bc80b28dc027402a5e793a756c2",
+    "AgentWorkflow/Progress.lean": "061c7b9ba95b3b137b2fd925bdc555eb153c04a6f7127ac82b6d9b091e2c80c4",
+    "AgentWorkflow/Evidence.lean": "b924b4921ea8ae9171dacdc675920d600bc371a99720ba1b05b4208f89e30759"
+  },
+  "input_hashes_unchanged_during_verification": true,
+  "theorems_audited": 37,
+  "allowed_standard_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "theorem_axioms": {
+    "AgentWorkflow.Evidence.acceptance_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.claimed_applied_keeps_absent_possible": [],
+    "AgentWorkflow.Evidence.claimed_applied_keeps_applied_possible": [],
+    "AgentWorkflow.Evidence.consensus_does_not_imply_truth": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.enabled_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.equality_evidence_is_sound": [],
+    "AgentWorkflow.Evidence.gate_step_preserves_truth": [],
+    "AgentWorkflow.Evidence.no_exact_node_only_enabled_relation": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.node_only_loses_enabled_actions": [],
+    "AgentWorkflow.Evidence.node_only_loses_future_behavior": [],
+    "AgentWorkflow.Evidence.post_factorization_iff": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.reports_cannot_bypass_sound_gate": [],
+    "AgentWorkflow.Evidence.shared_wrong_has_consensus": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.shared_wrong_is_not_complete": [],
+    "AgentWorkflow.Evidence.sound_gate_can_close_true_goal": [],
+    "AgentWorkflow.Evidence.sufficient_iff_exact_relational_quotient": [
+      "propext"
+    ],
+    "AgentWorkflow.Evidence.trace_contains_actual": [],
+    "AgentWorkflow.Evidence.unsound_gate_can_close_false_goal": [],
+    "AgentWorkflow.Evidence.update_contains_actual": [],
+    "AgentWorkflow.Progress.MacroRealization.follows_policy": [],
+    "AgentWorkflow.Progress.belief_policy_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.belief_prefix_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.certified_successor": [],
+    "AgentWorkflow.Progress.maximal_endpoint_is_target": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.original_key_has_one_observed_successor": [],
+    "AgentWorkflow.Progress.reaches_in_initial_rank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.reaches_within": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.realized_internal_prefix_safe": [],
+    "AgentWorkflow.Progress.realized_policy_reaches_original_acceptance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.recovered_meets_original_acceptance": [],
+    "AgentWorkflow.Progress.replay_all_one_step_runs_finish": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.replay_has_finite_observation": [],
+    "AgentWorkflow.Progress.replay_rank_zero_iff_target": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.Progress.replay_successor_is_target": [],
+    "AgentWorkflow.Progress.replay_target_iff_no_absent": [],
+    "AgentWorkflow.Progress.run_stays_in_region": [],
+    "AgentWorkflow.Progress.target_persists": []
+  },
+  "scope": {
+    "conditional_model_theorems": true,
+    "independent_kernel_implementation": false,
+    "implementation_refinement": "NOT_PROVED",
+    "production_verification": "NOT_PERFORMED",
+    "probabilistic_retry_theorem": "NOT_FORMALIZED",
+    "complete_later_model_migration": "NOT_COMPLETED"
+  }
+}

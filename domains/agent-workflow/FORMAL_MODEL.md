@@ -1,8 +1,8 @@
 # 数学模型：带部分可观测性与外部效果的无人值守工作流
 
-**0.1.0 · 2026-11-20 · 抽象规范 / 待证性质**
+**0.2.0 · 2026-11-20 · 抽象规范 / 部分条件定理已形式化**
 
-这是平台无关的形式定义，不是 TLA+、Lean 或 Coq 已验证定理，也不是对某项生产部署的合格认证。它将“控制位置发生转移”与“用户原目标真的完成”分离；先明示假设，再检验有无违反它们的真实轨迹。
+这是平台无关的形式定义，将“控制位置发生转移”与“用户原目标真的完成”分离。较早模型保留在本文；后续评审要求的非空信息集、宏步全后继降秩、状态压缩充分性及不可信报告，见 [FORMALIZATION.md](FORMALIZATION.md)。本版 [Lean 工程](formal/README.md) 已证明明确列出的条件命题；没有证明本页全部性质或任何生产部署满足它们。
 
 ## 1. 状态机及其可见世界
 
@@ -159,4 +159,4 @@ W_{i+1}=W_i\cup\{s\in Safe\mid \exists u\in U(s),\;\varnothing\neq Post(s,u)\sub
 
 ## 10. 来源与适用范围
 
-此文是对一份内部独立审阅 v1.1（2026-11-15）的公开、去敏抽象重写，来源说明见 [sources/README.md](sources/README.md)。关键术语与形式工具可参见 [Turing 原文](https://cs.stanford.edu/people/trevisan/cs172-07/turing36.pdf)、[安全与活性](https://lamport.azurewebsites.net/pubs/lamport-actions.pdf)、[可达性博弈讲义](https://finkbeiner.groups.cispa.de/teaching/automata-games-verification-15/downloads/notes.pdf) 和 [事务发件箱参考](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html)。这些资料不等于已经证明此领域模型。
+本文基础是内部独立审阅 v1.1（2026-11-15）的公开、去敏抽象重写；0.2.0 的后续评审补充与证明范围另列于 [FORMALIZATION.md](FORMALIZATION.md)，来源说明见 [sources/README.md](sources/README.md)。关键术语与形式工具可参见 [Turing 原文](https://cs.stanford.edu/people/trevisan/cs172-07/turing36.pdf)、[安全与活性](https://lamport.azurewebsites.net/pubs/lamport-actions.pdf)、[可达性博弈讲义](https://finkbeiner.groups.cispa.de/teaching/automata-games-verification-15/downloads/notes.pdf) 和 [事务发件箱参考](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html)。这些资料不等于已经证明此领域模型。
