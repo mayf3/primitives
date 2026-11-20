@@ -3,7 +3,7 @@
   "title": "从讲稿到视频与观看入口",
   "example_status": "synthetic",
   "outcome": "not-run",
-  "module_versions": {"writing": "0.1.1", "video": "0.6.4", "design": "0.2.1"},
+  "module_versions": {"writing": "0.1.2", "video": "0.6.4", "design": "0.2.1"},
   "steps": [
     {
       "id": "write-script",

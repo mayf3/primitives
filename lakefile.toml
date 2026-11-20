@@ -1,5 +1,5 @@
 name = "primitives"
-version = "0.6.0"
+version = "0.6.1"
 defaultTargets = ["PrimitiveCore", "AgentWorkflow", "Design", "Learning", "Video", "Life", "Writing"]
 
 [leanOptions]

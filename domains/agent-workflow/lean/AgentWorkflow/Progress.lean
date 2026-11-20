@@ -143,16 +143,19 @@ def BeliefTarget (m : ObservationProtocol World Action Observation)
     (b : Belief World) : Prop :=
   ∀ w, b.possible w → m.acceptance w ∧ m.safe w
 
-/-- Every allowed execution must actually return a world-observation pair in
-finite time, and that pair must satisfy `finish` and `emits`. Existence of a
-possible report without an actual finite return would not meet this contract.
+/-- Every allowed execution must return a world-observation pair in finite
+time, and EVERY returned pair must satisfy `finish` and `emits`. Merely finding
+one valid later return must not hide an invalid earlier terminal response.
 The world component describes the hidden outcome, not an extra visible report.
+The contract does not assume that reports are truthful: `emits` may include
+false reports. Nor does it fix the first-return time or require stable outputs.
 -/
 def TerminatingObservation (m : ObservationProtocol World Action Observation)
     (b : Belief World) (a : Action) : Prop :=
   ∀ w, b.possible w → ∀ execution,
     m.execution w a execution →
-    ∃ tick w' o, execution tick = some (w', o) ∧
+    (∃ tick result, execution tick = some result) ∧
+    ∀ tick w' o, execution tick = some (w', o) →
       m.finish w a w' ∧ m.emits w' o
 
 /-- Obligations a fixed observation-based policy must discharge on its winning
@@ -191,7 +194,9 @@ theorem certified_successor (c : BeliefCertificate m) (b : Belief World)
     ∃ b', BeliefNext m c.policy b b' := by
   obtain ⟨w, hw⟩ := b.nonempty
   obtain ⟨execution, he⟩ := c.executionsExist b hregion hnot w hw
-  obtain ⟨tick, w', o, _, hf, ho⟩ := c.terminates b hregion hnot w hw execution he
+  obtain ⟨returns, returnedPairsSound⟩ := c.terminates b hregion hnot w hw execution he
+  obtain ⟨tick, ⟨w', o⟩, returned⟩ := returns
+  obtain ⟨hf, ho⟩ := returnedPairsSound tick w' o returned
   let b' : Belief World :=
     { possible := ObservedPost m b (c.policy b) o
       nonempty := ⟨w', ho, w, hw, hf⟩ }
@@ -332,7 +337,10 @@ def replayProtocol : ObservationProtocol ReplayWorld Unit Unit where
   emits := fun _ _ => True
   finish := fun _ _ w' => w' = .applied
   visits := fun _ _ _ => True
-  execution := fun _ _ execution => execution 0 = some (.applied, ())
+  execution := fun _ _ execution =>
+    execution 0 = some (.applied, ()) ∧
+    ∀ tick world observation,
+      execution tick = some (world, observation) → world = .applied
 
 def ambiguous : Belief ReplayWorld :=
   { possible := fun _ => True, nonempty := ⟨.absent, trivial⟩ }
@@ -357,7 +365,9 @@ theorem recovered_meets_original_acceptance : BeliefTarget replayProtocol recove
 
 theorem replay_has_finite_observation : TerminatingObservation replayProtocol ambiguous () := by
   intro w _ execution he
-  exact ⟨0, .applied, (), he, rfl, trivial⟩
+  refine ⟨⟨0, (.applied, ()), he.1⟩, ?_⟩
+  intro tick world observation returned
+  exact ⟨he.2 tick world observation returned, trivial⟩
 
 theorem replay_target_iff_no_absent (b : Belief ReplayWorld) :
     BeliefTarget replayProtocol b ↔ ¬ b.possible .absent := by
@@ -399,10 +409,15 @@ noncomputable def replayCertificate : BeliefCertificate replayProtocol where
   legal := by intros; trivial
   executionsExist := by
     intro b _ _ w _
-    exact ⟨fun _ => some (.applied, ()), rfl⟩
+    refine ⟨fun _ => some (.applied, ()), rfl, ?_⟩
+    intro tick world observation returned
+    cases returned
+    rfl
   terminates := by
     intro b _ _ w _ execution he
-    exact ⟨0, .applied, (), he, rfl, trivial⟩
+    refine ⟨⟨0, (.applied, ()), he.1⟩, ?_⟩
+    intro tick world observation returned
+    exact ⟨he.2 tick world observation returned, trivial⟩
   prefixesSafe := by intros; trivial
   regionClosed := by intros; trivial
   zeroTarget := by
@@ -431,6 +446,37 @@ theorem replay_all_one_step_runs_finish (run : Nat → Belief ReplayWorld)
   change replayRank (run 0) ≤ 1
   rw [hstart]
   simp [replayRank, ambiguous]
+
+/-! ## A later valid return cannot excuse an earlier invalid return
+
+The previous existence-only contract could choose tick 1 and ignore the invalid
+terminal result at tick 0. The strengthened contract rejects this execution.
+This is a protocol-specification regression, not a refutation of the concrete
+realization theorem: that theorem also required an independently valid finish.
+-/
+
+def lateValidReturnProtocol : ObservationProtocol ReplayWorld Unit Unit :=
+  { replayProtocol with
+    execution := fun _ _ execution => execution 1 = some (.applied, ()) }
+
+def earlyInvalidReturn (tick : Nat) : Option (ReplayWorld × Unit) :=
+  if tick = 0 then some (.absent, ()) else some (.applied, ())
+
+theorem late_valid_return_cannot_hide_early_invalid :
+    (∀ w, ambiguous.possible w → ∀ execution,
+      lateValidReturnProtocol.execution w () execution →
+      ∃ tick w' o, execution tick = some (w', o) ∧
+        lateValidReturnProtocol.finish w () w' ∧
+        lateValidReturnProtocol.emits w' o) ∧
+    ¬ TerminatingObservation lateValidReturnProtocol ambiguous () := by
+  constructor
+  · intro w _ execution allowed
+    exact ⟨1, .applied, (), allowed, rfl, trivial⟩
+  · intro contract
+    have returnedPairsSound :=
+      (contract .absent trivial earlyInvalidReturn (by rfl)).2
+    have impossible := (returnedPairsSound 0 .absent () rfl).1
+    cases impossible
 
 /-! ## Non-vacuous bridge witness with persistently false reports
 
