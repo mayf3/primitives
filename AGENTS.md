@@ -11,7 +11,8 @@
 3. 理解页面、比较选择、操作与反馈：读 `domains/design/GUIDE.md`。
 4. 视频里的对象、关系、节奏、声画与感受：读 `domains/video/GUIDE.md`。
 5. 学习目标、概念、练习、反馈与表现证据：读 `domains/learning/GUIDE.md`。
-6. 确有多领域任务：页面解释读 `bridges/explain-and-guide.md`；讲稿到视频与观看入口读 `bridges/script-to-video.md`；学习体验读 `bridges/learning-to-experience.md`。只交接必要材料。
+6. Agent、工作流、治理、原任务、效果未知、人工门：读 `domains/agent-workflow/GUIDE.md`。
+7. 确有多领域任务：页面解释读 `bridges/explain-and-guide.md`；讲稿到视频与观看入口读 `bridges/script-to-video.md`；学习体验读 `bridges/learning-to-experience.md`。只交接必要材料。
 
 默认不要一次加载全部来源。用 `python3 tools/primitives.py find '问题词'` 或 `show <id>` 定位具体条目。
 
