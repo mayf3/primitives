@@ -1,0 +1,114 @@
+{
+  "domain": "agent-workflow",
+  "entries": [
+    {
+      "id": "agent-workflow.freeze-goal",
+      "title": "固定原目标与验收",
+      "kind": "candidate-action",
+      "summary": "将业务目标、固定原验收、允许范围及取消权绑定；不因技术 PASS 或时效自行降标。",
+      "tags": [
+        "原目标",
+        "验收标准",
+        "授权",
+        "持续有效"
+      ],
+      "path": "PRIMITIVES.md#freeze-goal"
+    },
+    {
+      "id": "agent-workflow.scope-node",
+      "title": "将任务缩小为可验单步",
+      "kind": "candidate-action",
+      "summary": "给低能力执行者明确当前输入、单步产出、工具、独立判据和失败出口。",
+      "tags": [
+        "弱Agent",
+        "拆分",
+        "任务包",
+        "小节点"
+      ],
+      "path": "PRIMITIVES.md#scope-node"
+    },
+    {
+      "id": "agent-workflow.bind-identity",
+      "title": "绑定业务、流程与尝试身份",
+      "kind": "candidate-action",
+      "summary": "区分业务键、instance/visit/sv与attempt/generation，防旧回执、错任务和相同载荷串账。",
+      "tags": [
+        "身份",
+        "幂等",
+        "visit",
+        "版本",
+        "attempt"
+      ],
+      "path": "PRIMITIVES.md#bind-identity"
+    },
+    {
+      "id": "agent-workflow.persist-obligation",
+      "title": "保存可发现的未完成责任",
+      "kind": "candidate-action",
+      "summary": "义务必须持久并能由合法的实际消费者发现；仅有文件名或定时器不够。",
+      "tags": [
+        "责任不丢失",
+        "持久化",
+        "发现",
+        "接单",
+        "S1"
+      ],
+      "path": "PRIMITIVES.md#persist-obligation"
+    },
+    {
+      "id": "agent-workflow.observe-effect",
+      "title": "区分实际效果与可见证据",
+      "kind": "candidate-action",
+      "summary": "分开记录外部世界W与可信可见证据K；响应丢失不能推导未执行。",
+      "tags": [
+        "证据",
+        "世界状态",
+        "UNKNOWN",
+        "观测"
+      ],
+      "path": "PRIMITIVES.md#observe-effect"
+    },
+    {
+      "id": "agent-workflow.verify-handoff",
+      "title": "核验结果并建立真实后继",
+      "kind": "candidate-action",
+      "summary": "按原标准消费结果，同一权威提交持久建立后继；CONSUMED不等于GREEN。",
+      "tags": [
+        "核验",
+        "后继",
+        "交接",
+        "S2",
+        "责任连续"
+      ],
+      "path": "PRIMITIVES.md#verify-handoff"
+    },
+    {
+      "id": "agent-workflow.reconcile-unknown",
+      "title": "对账未知效果而非盲重试",
+      "kind": "candidate-action",
+      "summary": "原键、权威读回与效果去重；不可判时保留UNKNOWN和补证责任。",
+      "tags": [
+        "响应丢失",
+        "对账",
+        "幂等",
+        "S3",
+        "UNKNOWN"
+      ],
+      "path": "PRIMITIVES.md#reconcile-unknown"
+    },
+    {
+      "id": "agent-workflow.govern-resume",
+      "title": "治理修复并恢复原任务",
+      "kind": "candidate-action",
+      "summary": "达到退回或尝试上限后自动分类治理、独立验收与恢复，必要人类门另列。",
+      "tags": [
+        "人工门",
+        "诊断",
+        "治理",
+        "恢复",
+        "活性"
+      ],
+      "path": "PRIMITIVES.md#govern-resume"
+    }
+  ]
+}

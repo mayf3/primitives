@@ -1,6 +1,6 @@
 # 原语系统
 
-**在同一个仓库里维护人生、写作、设计、视频、学习五套可复用方法，并用“原语的原语”指导方法本身的设计与修订。按当前问题进入，需要协作时再连接。**
+**在同一个仓库里维护人生、写作、设计、视频、学习、Agent Workflow 六套可复用方法，并用“原语的原语”指导方法本身的设计与修订。按当前问题进入，需要协作时再连接。**
 
 这里的“整合”意味着：一起查找、保留来源、明确版本、能组合使用；每个领域继续拥有自己的对象、动作、状态和判断标准。仓库承载方法与合成案例，个人记录和各项目的运行数据留在原系统。
 
@@ -15,12 +15,13 @@
 | 视频里不知道看哪里、关系难懂，或想让节奏与画面更有表现力？ | [视频使用指南](domains/video/GUIDE.md) | 选择呈现动作、组织分镜，分别检验理解与感受 |
 | 学习者不知道工具是什么，只能照做，或换个条件就不会？ | [学习使用指南](domains/learning/GUIDE.md) | 从目标与起点选择概念、示范、练习及反馈，记录指定条件下的表现 |
 | 要把课程目标变成清楚可用的学习网站？ | [学习体验交接](bridges/learning-to-experience.md) | 区分学习与界面责任；[Remotion 首条样板](bridges/remotion-learning-pilot.md)给出有限实施方案 |
+| Agent 工作流卡在人工门、重复退回或执行失败以后没人继续？ | [Agent Workflow 原语](domains/agent-workflow/README.md) | 任务/效果/尝试分离、责任连续、真实验收、治理恢复的数学模型与有限反例 |
 | 一件事同时涉及判断、表达与页面交互？ | [跨领域组合示例](bridges/explain-and-guide.md) | 看三个领域怎样交接材料，而不互相替代判断 |
 | 要把讲稿做成视频，并提供清楚的观看入口？ | [讲稿到视频的交接](bridges/script-to-video.md) | 区分讲稿事实、视频呈现、发布入口及各自验证 |
 
 只改一句话时，直接进入写作。只改入口文案时，直接进入设计。只处理片段的对象、关系、节奏和声画时，直接进入视频。判断学什么、怎样练和怎样知道表现如何时，进入学习。无需先阅读全部系统，也无需为一次小任务填写完整记录。
 
-## 五个独立领域
+## 六个独立领域
 
 | 领域 | 本次默认内容 | 保持独立的部分 |
 |---|---|---|
@@ -29,20 +30,21 @@
 | [设计与交互](domains/design/README.md) | 十个候选动作、四个组合模式、版本评审、使用例子和验证办法 | 页面语义、交互、无障碍，以及来源/实施/用户验证三条状态轴 |
 | [视频呈现](domains/video/README.md) | 十个候选动作、对齐比较组合、知识播客分镜与两条评价线 | 时间、对象身份与参照、声画表达；来源、实施及观众理解与感受分别记录 |
 | [学习](domains/learning/README.md) | 八个候选操作、一个说明依据的专门任务，以及过程组合与研究审阅 | 目标表现、允许工具与帮助、情境和时间；资料、实现与真实学习者观察分别记录 |
+| [Agent Workflow](domains/agent-workflow/README.md) | 八个候选执行与治理操作、抽象状态机、五项性质及有限检查 | 责任、attempt、业务效果和合法权限分开；不对其他领域宣称验收或替代其状态语义 |
 
 这不是把所有东西都改造成同一种对象。人生的 Activity 可以使用一个设计动作；设计原语本身仍是一种可复用方法。作者采用一句改写，也不会自动使某个人生判断得到证实。
 
 ## 仓库怎样组织
 
 - `meta/`：原语的构造方法、完整框架、编写时的四域推导、轻量模板与来源说明。它是方法维护层，不注册为领域。
-- `domains/life/`、`domains/writing/`、`domains/design/`、`domains/video/`、`domains/learning/`：各自的入口、方法、索引、案例和只读来源快照。
+- `domains/life/`、`domains/writing/`、`domains/design/`、`domains/video/`、`domains/learning/`、`domains/agent-workflow/`：各自的入口、方法、索引、合成案例和来源说明；只有实际导入的来源才保留固定快照。
 - [shared/CONTRACT.md](shared/CONTRACT.md)：只约定 ID、路径、版本、来源与显式引用。
 - `bridges/`：需要多领域配合时的交接说明与可检查例子。
 - [registry.json](registry.json)：元层、领域和组合的机器入口。
 - [tools/primitives.py](tools/primitives.py)：离线检索和结构检查，使用 Python 标准库。
 - [MIGRATION.md](MIGRATION.md)：从哪里来、整合了什么、什么仍有差异。
 
-五个领域的 `depends_on` 都为空。一个领域的使用指南不会要求读完另一个领域。跨域依赖集中写在 `bridges/`，检验时显式检查。
+六个领域的 `depends_on` 都为空。一个领域的使用指南不会要求读完另一个领域。跨域依赖集中写在 `bridges/`，检验时显式检查。
 
 ## 人和 Agent 都能使用
 
@@ -55,6 +57,8 @@ python3 tools/primitives.py show meta.minimality
 python3 tools/primitives.py list --domain design
 python3 tools/primitives.py list --domain video
 python3 tools/primitives.py list --domain learning
+python3 tools/primitives.py list --domain agent-workflow
+python3 tools/primitives.py show agent-workflow.reconcile-unknown
 python3 tools/primitives.py find '下一步'
 python3 tools/primitives.py find '保持身份' --domain video
 python3 tools/primitives.py show design.entry-outcome
@@ -68,7 +72,7 @@ python3 -m unittest discover -s tests -v
 
 ## 本次来源与状态
 
-更新日期：**2026-11-18**。注册表版本为 `0.4.0`。视频模块为 `0.6.3`，设计模块为 `0.2.0`，元层、人生、写作和学习模块为 `0.1.0`。各层独立版本，不覆盖上游版本号。
+更新日期：**2026-11-20**。注册表版本为 `0.5.0`。视频模块为 `0.6.3`，设计模块为 `0.2.0`，元层、人生、写作、学习和 Agent Workflow 模块为 `0.1.0`。各层独立版本，不覆盖上游版本号。
 
 - 元层：以四域工作定义的固定提交为基线，新编构造方法和推导案例，并查阅 SICP 与 Parnas 原始文献。区分相对最小性、职责分工与数学独立性；没有证明当前集合最少或完成真实使用验证。详见[来源与边界](meta/SOURCES.md)。
 - 人生：Life State 自带定义来自 `personal-cognition-data` 的固定提交；PCA V0 文档来自 `personal-cognition-audit` 的固定提交。两者差异在[人生兼容说明](domains/life/COMPATIBILITY.md)中保留。没有迁移真实人生记录。
@@ -76,6 +80,7 @@ python3 -m unittest discover -s tests -v
 - 设计：原研究与后续结构评审分别逐字保留，0.2.0 收紧动作边界并增加任务终点接续模式。原有 ID 仍可调用；十项尚未证明最简。原研究的网页观察和会话引用保持原有边界，方法更新不代表重新核验网站或完成真人测试。
 - 视频：上传研究及评审附件原文逐字保留，0.4.2 的观看摩擦反馈另存为消息摘录。分镜为合成设计，未取得原视频、未渲染或进行观众测试；旧会话引用未还原，少量官方来源复核单独记录。源素材时间与新片段计划时间分开。0.2.0 根据长对谈审片意见与一手资料细化五张原语卡，新增[知识播客制作配方](domains/video/PODCAST-PATTERNS.md)。0.3.0 收录呈现时间关系，重分对齐比较的职责并保持旧 ID 可用。0.3.1 修订静态泳道、比较读数、字幕与缺失证据的验收。0.3.2 用展馆时刻表检查动作的跨题材适用条件。0.4.0 新增声画分镜检查、逐事件读数约束与连续阈值例子。0.4.1 细化图内时间、回顾引语和共同读时的验收。0.4.2 补清观众文案、结构示意、容器入场、人物避让及跨景别识别。0.4.3 增补声画预备、可追认变化、音频读时交接与重点段落检查。0.5.0 新增封装收拢组合，并补入共变、预期基线及连续观看／暂停核验条件。0.6.0 修正静音适用范围、补齐双向拆合与检索编号，并新增感知及作品级复述检查。0.6.1 补齐通道条件、旧主张更正和连续观看四类复核。0.6.2 补清首呈角色、观察次序、样本分母、循环走势与带波动的联合比较。0.6.3 收拢三处跨卡条件，新增四遍审片入口并暂缓扩写。[最新修订](domains/video/REVISIONS.md#review-workflow)
 - 学习：上传研究逐字保留，八个候选操作加一个专门任务保留九个地址；不接受已证最简、已通过未见案例测试的过强声称。另核对八项核心来源和一项补充研究，论文核验范围以摘要与书目为主。Remotion 方案基于固定源码，只是待实施样板，真实学习者仍未测试。
+- Agent Workflow：从私有独立审阅 v1.1 抽出公共数学定义与八个候选原语，不公开原始会话、实例、凭据和私有证据。S1–S3/L1–L2 为待证性质；合成两步模型的有限检查、五个错误变体与来源边界见[本域](domains/agent-workflow/README.md)。测试通过不表示生产无人值守成立。
 
 每个领域的 `sources/manifest.json` 记录导入文件的 SHA-256。来源快照保持不变，后续改进写在工作文档中。历史 `SKILL.md` 只作为来源保存，不会自动安装、触发或覆盖当前指南。
 
