@@ -1,0 +1,34 @@
+name = "primitives"
+version = "0.6.0"
+defaultTargets = ["PrimitiveCore", "AgentWorkflow", "Design", "Learning", "Video", "Life", "Writing"]
+
+[leanOptions]
+warningAsError = true
+
+[[lean_lib]]
+name = "PrimitiveCore"
+srcDir = "meta/lean"
+
+[[lean_lib]]
+name = "AgentWorkflow"
+srcDir = "domains/agent-workflow/lean"
+
+[[lean_lib]]
+name = "Design"
+srcDir = "domains/design/lean"
+
+[[lean_lib]]
+name = "Learning"
+srcDir = "domains/learning/lean"
+
+[[lean_lib]]
+name = "Video"
+srcDir = "domains/video/lean"
+
+[[lean_lib]]
+name = "Life"
+srcDir = "domains/life/lean"
+
+[[lean_lib]]
+name = "Writing"
+srcDir = "domains/writing/lean"

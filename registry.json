@@ -2,11 +2,11 @@
   "schema_version": "1.0",
   "name": "primitives",
   "title": "原语系统",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "meta": {
     "id": "meta",
     "title": "原语的原语",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "path": "meta",
     "entrypoint": "README.md",
     "catalog": "catalog.json"

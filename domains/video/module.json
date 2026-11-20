@@ -1,7 +1,7 @@
 {
   "id": "video",
   "title": "视频呈现原语",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "按观看与听辨任务选择呈现动作，独立维护十项候选动作、对齐比较与封装收拢两个组合入口；作品级审阅另查受众、问题、通达与复述，效果待实际检验。",
   "entrypoint": "README.md",
   "guide": "GUIDE.md",

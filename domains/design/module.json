@@ -1,7 +1,7 @@
 {
   "id": "design",
   "title": "设计与交互原语",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "从具体理解或操作困难出发，提供十个候选动作与四个组合模式；明确动作边界、保留稳定引用，分别记录来源、实施与用户验证。",
   "entrypoint": "README.md",
   "guide": "GUIDE.md",

@@ -1,4 +1,4 @@
-import Std
+import AgentWorkflow.Evidence
 
 /-!
 # Conditional progress for an observation-based recovery policy
@@ -97,22 +97,40 @@ structure Belief (World : Type) where
   possible : World → Prop
   nonempty : ∃ w, possible w
 
-/-- A macro execution reports a possible final world at a finite clock tick.
-The predicate `execution` designates the allowed concrete micro executions.
-Its adequacy for a real program/environment must be justified separately.
+/-- A macro execution returns a final world and a received observation.
+`emits` is relational: a world may produce several observations, including
+false reports. No truthful or deterministic observation function is assumed.
+The world component is a semantic trace annotation, not an assertion that the
+acting agent sees the hidden world; its policy receives only the belief.
+The adequacy of `execution`, `finish` and `emits` for a real program and its
+environment must be justified separately.
 -/
 structure ObservationProtocol (World Action Observation : Type) where
   legal : World → Action → Prop
   safe : World → Prop
   acceptance : World → Prop
-  observe : World → Observation
+  emits : World → Observation → Prop
   finish : World → Action → World → Prop
   visits : World → Action → World → Prop
-  execution : World → Action → (Nat → Option World) → Prop
+  execution : World → Action → (Nat → Option (World × Observation)) → Prop
 
 def ObservedPost (m : ObservationProtocol World Action Observation)
     (b : Belief World) (a : Action) (o : Observation) (w' : World) : Prop :=
-  m.observe w' = o ∧ ∃ w, b.possible w ∧ m.finish w a w'
+  m.emits w' o ∧ ∃ w, b.possible w ∧ m.finish w a w'
+
+/-- Progress and evidence use exactly the same set-valued update, including
+every deceptive observation admitted by the declared emission relation.
+-/
+theorem observed_post_iff_evidence_update
+    (m : ObservationProtocol World Action Observation)
+    (b : Belief World) (a : Action) (o : Observation) (w' : World) :
+    ObservedPost m b a o w' ↔
+      AgentWorkflow.Evidence.update m.finish m.emits b.possible a o w' := by
+  constructor
+  · rintro ⟨emitted, before, possible, finished⟩
+    exact ⟨before, possible, finished, emitted⟩
+  · rintro ⟨before, possible, finished, emitted⟩
+    exact ⟨emitted, before, possible, finished⟩
 
 /-- The *same* policy action is used for every world in the current belief.
 The complete successor belief is selected by the received observation.
@@ -125,14 +143,17 @@ def BeliefTarget (m : ObservationProtocol World Action Observation)
     (b : Belief World) : Prop :=
   ∀ w, b.possible w → m.acceptance w ∧ m.safe w
 
-/-- This is an explicit universal termination premise, not a conclusion from
-having at least one terminating outcome. It ranges over all allowed runs.
+/-- Every allowed execution must actually return a world-observation pair in
+finite time, and that pair must satisfy `finish` and `emits`. Existence of a
+possible report without an actual finite return would not meet this contract.
+The world component describes the hidden outcome, not an extra visible report.
 -/
 def TerminatingObservation (m : ObservationProtocol World Action Observation)
     (b : Belief World) (a : Action) : Prop :=
   ∀ w, b.possible w → ∀ execution,
     m.execution w a execution →
-    ∃ tick w', execution tick = some w' ∧ m.finish w a w'
+    ∃ tick w' o, execution tick = some (w', o) ∧
+      m.finish w a w' ∧ m.emits w' o
 
 /-- Obligations a fixed observation-based policy must discharge on its winning
 region. This package does NOT assert that an LLM, API or deployment satisfies
@@ -170,11 +191,11 @@ theorem certified_successor (c : BeliefCertificate m) (b : Belief World)
     ∃ b', BeliefNext m c.policy b b' := by
   obtain ⟨w, hw⟩ := b.nonempty
   obtain ⟨execution, he⟩ := c.executionsExist b hregion hnot w hw
-  obtain ⟨tick, w', _, hf⟩ := c.terminates b hregion hnot w hw execution he
+  obtain ⟨tick, w', o, _, hf, ho⟩ := c.terminates b hregion hnot w hw execution he
   let b' : Belief World :=
-    { possible := ObservedPost m b (c.policy b) (m.observe w')
-      nonempty := ⟨w', rfl, w, hw, hf⟩ }
-  exact ⟨b', m.observe w', fun _ => Iff.rfl⟩
+    { possible := ObservedPost m b (c.policy b) o
+      nonempty := ⟨w', ho, w, hw, hf⟩ }
+  exact ⟨b', o, fun _ => Iff.rfl⟩
 
 def BeliefCertificate.toRanked (c : BeliefCertificate m) : RankedSystem (Belief World) where
   region := c.region
@@ -210,9 +231,11 @@ theorem belief_policy_reaches_original_acceptance (c : BeliefCertificate m)
   reaches_in_initial_rank c.toRanked run hregion hsteps
 
 /-- A refinement witness supplies ordered finite return times, execution of
-the actual fixed policy, complete observation updates, and coverage of every
-concrete intermediate state by the protocol's `visits` relation. These are
-implementation proof obligations, not properties obtained from rank descent.
+the actual fixed policy, the received reports and their model coverage,
+complete observation updates, and coverage of concrete intermediate states.
+Only the initial world must be supplied as possible. The theorem
+`MacroRealization.possibleAtBoundary` derives all later containment facts.
+These local refinement obligations still need implementation evidence.
 -/
 structure MacroRealization (m : ObservationProtocol World Action Observation)
     (policy : Belief World → Action)
@@ -220,28 +243,49 @@ structure MacroRealization (m : ObservationProtocol World Action Observation)
   boundary : Nat → Nat
   startsAtZero : boundary 0 = 0
   advances : ∀ n, boundary n < boundary (n + 1)
-  possibleAtBoundary : ∀ n, (abstractRun n).possible (concrete (boundary n))
-  output : Nat → Nat → Option World
+  initiallyPossible : (abstractRun 0).possible (concrete 0)
+  observation : Nat → Observation
+  output : Nat → Nat → Option (World × Observation)
   executesPolicy : ∀ n,
     m.execution (concrete (boundary n)) (policy (abstractRun n)) (output n)
   returnsAtBoundary : ∀ n,
-    output n (boundary (n + 1) - boundary n) = some (concrete (boundary (n + 1)))
+    output n (boundary (n + 1) - boundary n) =
+      some (concrete (boundary (n + 1)), observation n)
   realizesFinish : ∀ n,
     m.finish (concrete (boundary n)) (policy (abstractRun n))
       (concrete (boundary (n + 1)))
+  realizesObservation : ∀ n,
+    m.emits (concrete (boundary (n + 1))) (observation n)
   prefixCoverage : ∀ n tick, tick ≤ boundary (n + 1) - boundary n →
     m.visits (concrete (boundary n)) (policy (abstractRun n))
       (concrete (boundary n + tick))
   updatesFromObservation : ∀ n w',
     (abstractRun (n + 1)).possible w' ↔
       ObservedPost m (abstractRun n) (policy (abstractRun n))
-        (m.observe (concrete (boundary (n + 1)))) w'
+        (observation n) w'
+
+/-- All boundary truth-containment facts follow from the initial inclusion,
+actual transition/report coverage and exact evidence update. They are no
+longer assumed independently at every boundary. A false report is allowed;
+only omission of that actual report from `emits` breaks the premise.
+-/
+theorem MacroRealization.possibleAtBoundary
+    (r : MacroRealization m policy concrete abstractRun) :
+    ∀ n, (abstractRun n).possible (concrete (r.boundary n)) := by
+  intro n
+  induction n with
+  | zero => simpa only [r.startsAtZero] using r.initiallyPossible
+  | succ n ih =>
+      apply (r.updatesFromObservation n _).mpr
+      apply (observed_post_iff_evidence_update m _ _ _ _).mpr
+      exact AgentWorkflow.Evidence.update_contains_actual ih
+        (r.realizesFinish n) (r.realizesObservation n)
 
 theorem MacroRealization.follows_policy
     (r : MacroRealization m policy concrete abstractRun) :
     ∀ n, BeliefNext m policy (abstractRun n) (abstractRun (n + 1)) := by
   intro n
-  exact ⟨m.observe (concrete (r.boundary (n + 1))), r.updatesFromObservation n⟩
+  exact ⟨r.observation n, r.updatesFromObservation n⟩
 
 /-- Conditional bridge to a concrete trace. No upper bound on `boundary n`
 (wall-clock time) is claimed, and the refinement witness is a premise.
@@ -285,10 +329,10 @@ def replayProtocol : ObservationProtocol ReplayWorld Unit Unit where
   legal := fun _ _ => True
   safe := fun _ => True
   acceptance := fun w => w = .applied
-  observe := fun _ => ()
+  emits := fun _ _ => True
   finish := fun _ _ w' => w' = .applied
   visits := fun _ _ _ => True
-  execution := fun _ _ execution => execution 0 = some .applied
+  execution := fun _ _ execution => execution 0 = some (.applied, ())
 
 def ambiguous : Belief ReplayWorld :=
   { possible := fun _ => True, nonempty := ⟨.absent, trivial⟩ }
@@ -302,7 +346,7 @@ theorem original_key_has_one_observed_successor :
   intro w
   constructor
   · intro hw
-    exact ⟨rfl, .absent, trivial, hw⟩
+    exact ⟨trivial, .absent, trivial, hw⟩
   · intro h
     obtain ⟨_, _, _, hw⟩ := h
     exact hw
@@ -313,7 +357,7 @@ theorem recovered_meets_original_acceptance : BeliefTarget replayProtocol recove
 
 theorem replay_has_finite_observation : TerminatingObservation replayProtocol ambiguous () := by
   intro w _ execution he
-  exact ⟨0, .applied, he, rfl⟩
+  exact ⟨0, .applied, (), he, rfl, trivial⟩
 
 theorem replay_target_iff_no_absent (b : Belief ReplayWorld) :
     BeliefTarget replayProtocol b ↔ ¬ b.possible .absent := by
@@ -355,10 +399,10 @@ noncomputable def replayCertificate : BeliefCertificate replayProtocol where
   legal := by intros; trivial
   executionsExist := by
     intro b _ _ w _
-    exact ⟨fun _ => some .applied, rfl⟩
+    exact ⟨fun _ => some (.applied, ()), rfl⟩
   terminates := by
     intro b _ _ w _ execution he
-    exact ⟨0, .applied, he, rfl⟩
+    exact ⟨0, .applied, (), he, rfl, trivial⟩
   prefixesSafe := by intros; trivial
   regionClosed := by intros; trivial
   zeroTarget := by
@@ -387,6 +431,82 @@ theorem replay_all_one_step_runs_finish (run : Nat → Belief ReplayWorld)
   change replayRank (run 0) ≤ 1
   rw [hstart]
   simp [replayRank, ambiguous]
+
+/-! ## Non-vacuous bridge witness with persistently false reports
+
+The actual effect remains absent while every received report claims success.
+Both reports are allowed in either world, so this is not a deterministic or
+truthful-observation example in disguise. Complete updates preserve both
+worlds. It inhabits `MacroRealization` but cannot inhabit a progress certificate
+whose region includes this unchanged ambiguous belief.
+-/
+
+def deceptiveProtocol : ObservationProtocol
+    AgentWorkflow.Evidence.EffectWorld Unit AgentWorkflow.Evidence.EffectReport where
+  legal := fun _ _ => True
+  safe := fun _ => True
+  acceptance := fun world => world = .applied
+  emits := AgentWorkflow.Evidence.untrustedEmission
+  finish := AgentWorkflow.Evidence.identityStep
+  visits := fun _ _ _ => True
+  execution := fun world _ execution => execution 0 = some (world, .claimsApplied)
+
+def deceptiveBelief : Belief AgentWorkflow.Evidence.EffectWorld :=
+  { possible := fun _ => True, nonempty := ⟨.absent, trivial⟩ }
+
+/-- The new refinement interface is inhabited even when reports are always
+false. Only initial containment is supplied; later containment is proved.
+-/
+def deceptiveRealization : MacroRealization deceptiveProtocol (fun _ => ())
+    (fun _ => AgentWorkflow.Evidence.EffectWorld.absent) (fun _ => deceptiveBelief) where
+  boundary := fun n => n
+  startsAtZero := rfl
+  advances := Nat.lt_succ_self
+  initiallyPossible := trivial
+  observation := fun _ => .claimsApplied
+  output := fun _ _ => some (.absent, .claimsApplied)
+  executesPolicy := by intro n; rfl
+  returnsAtBoundary := by intro n; rfl
+  realizesFinish := by intro n; rfl
+  realizesObservation := by intro n; trivial
+  prefixCoverage := by intros; trivial
+  updatesFromObservation := by
+    intro n world
+    constructor
+    · intro _
+      exact ⟨trivial, world, trivial, rfl⟩
+    · intro _
+      trivial
+
+theorem deceptive_reports_keep_absent_possible (n : Nat) :
+    (deceptiveBelief).possible AgentWorkflow.Evidence.EffectWorld.absent :=
+  deceptiveRealization.possibleAtBoundary n
+
+theorem deceptive_reports_do_not_establish_acceptance :
+    ¬ BeliefTarget deceptiveProtocol deceptiveBelief := by
+  intro accepted
+  have impossible := (accepted .absent trivial).1
+  cases impossible
+
+/-- Mere repetition of false success reports cannot satisfy the full progress
+contract: the allowed unchanged false belief would have to decrease its own
+natural-number rank. This rules out a vacuous claim of progress for this model.
+-/
+theorem deceptive_only_no_progress_certificate :
+    ¬ ∃ c : BeliefCertificate deceptiveProtocol, c.region deceptiveBelief := by
+  rintro ⟨c, inRegion⟩
+  have unchanged : BeliefNext deceptiveProtocol c.policy deceptiveBelief
+      deceptiveBelief := by
+    refine ⟨.claimsApplied, ?_⟩
+    intro world
+    constructor
+    · intro _
+      exact ⟨trivial, world, trivial, rfl⟩
+    · intro _
+      trivial
+  have impossible := c.decreases inRegion
+    deceptive_reports_do_not_establish_acceptance unchanged
+  exact Nat.lt_irrefl _ impossible
 
 
 end AgentWorkflow.Progress

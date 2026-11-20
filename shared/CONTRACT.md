@@ -10,7 +10,7 @@
 
 ## 2. 模块与条目
 
-`module.json` 必须提供：`id`、`title`、`version`、`description`、`entrypoint`、`guide`、`catalog`、`depends_on`。当前五个领域的 `depends_on` 均为空。
+`module.json` 必须提供：`id`、`title`、`version`、`description`、`entrypoint`、`guide`、`catalog`、`depends_on`。当前六个领域的 `depends_on` 均为空。
 
 `catalog.json` 包含 `domain` 和 `entries`。每个条目提供：`id`、`title`、`kind`、`summary`、`tags`、`path`。
 
@@ -57,3 +57,11 @@
 ## 6. 增加新领域
 
 创建自己的 `domains/<id>/`，写独立使用指南及领域定义，提供模块和条目索引，记录来源，再加入 `registry.json`。只有真实需要协作时才新增组合。以实际输入与可用方法为依据，不为了占位先发明新领域的原语内容。
+
+## 7. 数学证明的目录与复用
+
+原语描述继续留在各域工作文档，形式化切片放在 `domains/<id>/lean/`，并在本域说明对应的原语、前提、命题及效果边界。`meta/lean/` 只提供类型参数化的数学定理；各域可以导入这些定理并传入自己的解释，不因此继承其他领域的对象、状态或验证标准。
+
+工具链、Lake 配置和源码清单在根统一管理，详见 [Lean 规范](../LEAN.md)。领域方法的 `depends_on` 保持独立；数学库依赖通过 Lean import 与 `lean-projects.json` 显式检查，禁止领域间直接导入业务模型。共享层仍不定义公共业务本体或通用 `verified` 状态。
+
+形式证明、实际程序符合模型、真实用户效果分别登记。新领域若尚未形式化，应明确报告缺口，不能为了满足验证入口编造一个现实效果定理。

@@ -11,5 +11,29 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check registry, domain boundaries and immutable sources
         run: python3 tools/primitives.py validate
+      - name: Check complete Lean source and domain ownership inventory
+        run: python3 tools/verify_lean.py --check-layout
       - name: Check validator regression scenarios
         run: python3 -m unittest discover -s tests -v
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the toolchain pinned in lean-toolchain
+        uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
+        with:
+          auto-config: "false"
+          build: "false"
+          test: "false"
+          lint: "false"
+          use-github-cache: "false"
+          use-mathlib-cache: "false"
+      - name: Clean build, audit every theorem and verify the video example
+        run: python3 tools/verify_lean.py --output .lake/verification/ci-all.json
+      - name: Upload the source-bound verification receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-verification
+          path: .lake/verification/ci-all.json
+          include-hidden-files: true
+          if-no-files-found: error
