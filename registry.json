@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "name": "primitives",
   "title": "原语系统",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "meta": {
     "id": "meta",
     "title": "原语的原语",

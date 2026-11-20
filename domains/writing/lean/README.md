@@ -1,14 +1,16 @@
 # 写作原语的形式化切片
 
-**Lean 4.19.0 · writing 0.1.1 · 2026-11-20**
+**Lean 4.19.0 · writing 0.1.2 · 2026-11-20**
 
 对应[定向修补](../ACTIONS.md#targeted-revision)、[揭示顺序](../ACTIONS.md#sequence-reveal)与[事实修订约束](../TRACE_AND_REVISION.md)。源码：[Writing/Revision.lean](Writing/Revision.lean)。
 
 ## 精确范围
 
-`Meaning World := World → Prop` 把已明确解释的事实表达成可能世界上的谓词。`Faithful evidence required draft` 同时要求：证据蕴含草稿、草稿蕴含任务要求保留的内容。第二项防止靠删空内容满足第一项。
+`Meaning World := World → Prop` 把已明确解释的事实表达成可能世界上的谓词。`Faithful evidence required draft` 同时要求：证据蕴含草稿、草稿蕴含任务要求保留的内容。第二项只保护 `required` 实际表达出的必要信息；调用者必须准确写出这些要求。若 `required` 是恒真命题（`fun _ => True`），即使证据可满足，删空成恒真草稿也会通过。本模型不会自动判断任务必须保留什么。
 
 本轮 `Revision required before after` 限于**保守弱化或等义改写**：旧稿蕴含新稿，新稿保留任务必要信息。它不覆盖所有创作修改；从原材料补充旧稿没有写出的事实、纠正原稿错误、改变解释或自由虚构，都需另定义操作及授权条件。
+
+`Revision` 的两项条件是调用者需针对具体修改提交的契约证明。下面的保持定理说明合格修改可以组合；它不自动判定一段自然语言编辑是否合格，也不替调用者证明新稿保留了哪些必要信息。
 
 | 定理 | 保证 |
 |---|---|

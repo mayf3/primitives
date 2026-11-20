@@ -24,48 +24,108 @@ ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 INSTALL_OVERRIDES = {"LEAN_SYSROOT", "LEAN", "LAKE_HOME", "LAKE_OVERRIDE_LEAN",
                      "LEAN_GITHASH", "ELAN_TOOLCHAIN", "LEAN_PATH", "LEAN_SRC_PATH"}
 IDENTIFIER = r"[A-Za-z_][A-Za-z_0-9]*(?:\.[A-Za-z_][A-Za-z_0-9]*)*"
+COMPILED_AUDIT_PREFIX = "PRIMITIVES_COMPILED_AUDIT "
 
 
 def code_only(source: str) -> str:
-    """Mask nested comments and strings while preserving newlines and offsets."""
-    out: list[str] = []
-    i, depth, quoted = 0, 0, False
+    """Mask literal payloads/comments, never code between character literals.
+
+    This is a restricted source-style check, not a complete Lean parser. Lean
+    4.19's identifier and character rules are in Init/Meta.lean and
+    Lean/Parser/Basic.lean. Raw strings are rejected rather than approximated.
+    The independent compiled-environment audit below is the coverage backstop.
+    """
+    out = list(source)
+
+    def mask(start: int, stop: int) -> None:
+        out[start:stop] = ["\n" if c == "\n" else " " for c in source[start:stop]]
+
+    def letter_like(c: str) -> bool:
+        n = ord(c)
+        return ((0x3B1 <= n <= 0x3C9 and n != 0x3BB)
+                or (0x391 <= n <= 0x3A9 and n not in (0x3A0, 0x3A3))
+                or any(a <= n <= b for a, b in
+                       ((0x3CA, 0x3FB), (0x1F00, 0x1FFE),
+                        (0x2100, 0x214F), (0x1D49C, 0x1D59F))))
+
+    def id_first(c: str) -> bool:
+        return c == "_" or "a" <= c <= "z" or "A" <= c <= "Z" or letter_like(c)
+
+    def id_rest(c: str) -> bool:
+        n = ord(c)
+        return (id_first(c) or "0" <= c <= "9" or c in "'!?"
+                or any(a <= n <= b for a, b in
+                       ((0x2080, 0x2089), (0x2090, 0x209C), (0x1D62, 0x1D6A)))
+                or n == 0x2C7C)
+
+    def escaped_end(start: int, in_string: bool) -> int:
+        if start + 1 >= len(source):
+            raise ValueError("Unterminated Lean literal escape")
+        escaped = source[start + 1]
+        if escaped in "\\\"'rnt" or (in_string and escaped == "\n"):
+            return start + 2
+        digits = {"x": 2, "u": 4}.get(escaped)
+        if digits and re.fullmatch(r"[0-9A-Fa-f]{%d}" % digits,
+                                   source[start + 2:start + 2 + digits]):
+            return start + 2 + digits
+        raise ValueError("Unsupported Lean literal escape")
+
+    i = 0
     while i < len(source):
         pair, char = source[i:i + 2], source[i]
-        if depth:
-            if pair in ("/-", "-/"):
-                depth += 1 if pair == "/-" else -1
-                out.extend("  ")
-                i += 2
-                continue
-            out.append("\n" if char == "\n" else " ")
-        elif quoted:
-            if char == "\\":
-                out.extend("  ")
-                i += 2
-                continue
-            if char == '"':
-                quoted = False
-            out.append("\n" if char == "\n" else " ")
-        elif pair == "/-":
-            depth = 1
-            out.extend("  ")
+        if pair == "/-":
+            start, depth = i, 1
             i += 2
-            continue
+            while i < len(source) and depth:
+                pair = source[i:i + 2]
+                if pair in ("/-", "-/"):
+                    depth += 1 if pair == "/-" else -1
+                    i += 2
+                else:
+                    i += 1
+            if depth:
+                raise ValueError("Unterminated Lean comment")
+            mask(start, i)
         elif pair == "--":
             end = source.find("\n", i)
             end = len(source) if end < 0 else end
-            out.extend(" " * (end - i))
+            mask(i, end)
             i = end
-            continue
+        elif char == "«":
+            end = source.find("»", i + 1)
+            if end < 0:
+                raise ValueError("Unterminated Lean identifier escape")
+            # Keep delimiters so a quoted import/declaration cannot disappear.
+            mask(i + 1, end)
+            i = end + 1
+        elif char == "r" and re.match(r'r#*"', source[i:]):
+            raise ValueError("Raw Lean strings are outside the restricted source style")
+        elif id_first(char):
+            # In x', x'' and α', apostrophes are part of the identifier.
+            i += 1
+            while i < len(source) and id_rest(source[i]):
+                i += 1
+        elif char == "'":
+            start = i
+            i += 1
+            if i >= len(source):
+                raise ValueError("Unterminated Lean character literal")
+            i = escaped_end(i, False) if source[i] == "\\" else i + 1
+            if i >= len(source) or source[i] != "'":
+                raise ValueError("Unsupported Lean character literal")
+            i += 1
+            mask(start, i)
         elif char == '"':
-            quoted = True
-            out.append(" ")
+            start = i
+            i += 1
+            while i < len(source) and source[i] != '"':
+                i = escaped_end(i, True) if source[i] == "\\" else i + 1
+            if i >= len(source):
+                raise ValueError("Unterminated Lean string")
+            i += 1
+            mask(start, i)
         else:
-            out.append(char)
-        i += 1
-    if depth or quoted:
-        raise ValueError("Unterminated Lean comment or string")
+            i += 1
     return "".join(out)
 
 
@@ -220,6 +280,115 @@ def parse_axioms(output: str, expected: list[str]) -> dict[str, list[str]]:
     return dict(sorted(axioms.items()))
 
 
+def audit_source(projects: list[dict], names: list[str]) -> str:
+    """Audit declarations from the loaded kernel environment, not just regexes.
+
+    The generated module is trusted verifier code. Repository proof modules
+    cannot import Lean or run this metaprogramming themselves. Module ownership
+    includes private declarations and compiler-generated logical helpers.
+    Lean also exports unsafe code-generation helpers; its safety metadata
+    distinguishes those from logic, without guessing from their names.
+    """
+    modules = [module for project in projects for module in project["modules"]]
+    header = ["import Lean", *(f"import {p['library']}" for p in projects),
+              *(f"#print axioms {name}" for name in names)]
+    compiled = '''
+open Lean in
+run_elab do
+  let env ← getEnv
+  let modules : List String := MODULE_LIST
+  let present := modules.filter fun module =>
+    env.header.moduleNames.any fun name => name.toString == module
+  let mut declarations : Array Json := #[]
+  let mut unsafeNames : Array Json := #[]
+  let mut partialNames : Array Json := #[]
+  for (name, info) in env.constants do
+    if let some index := env.getModuleIdxFor? name then
+      let owner := env.header.moduleNames[index]!
+      if modules.contains owner.toString then
+        if info.isUnsafe || info.isPartial then
+          if info.isTheorem then
+            throwError "Cannot exclude a theorem from the compiled audit: {name}"
+          if info.isUnsafe then
+            unsafeNames := unsafeNames.push (Json.str name.toString)
+          else
+            partialNames := partialNames.push (Json.str name.toString)
+          continue
+        let kind := match info with
+          | .axiomInfo _ => "axiom"
+          | .thmInfo _ => "theorem"
+          | .defnInfo _ => "definition"
+          | .opaqueInfo _ => "opaque"
+          | .quotInfo _ => "quotient"
+          | .inductInfo _ => "inductive"
+          | .ctorInfo _ => "constructor"
+          | .recInfo _ => "recursor"
+        let axioms ← collectAxioms name
+        declarations := declarations.push (Json.mkObj [
+          ("name", Json.str name.toString),
+          ("module", Json.str owner.toString),
+          ("kind", Json.str kind),
+          ("axioms", Json.arr (axioms.map fun axiomName => Json.str axiomName.toString))])
+  IO.println ("AUDIT_PREFIX" ++ (Json.mkObj [
+    ("schema", Json.str "primitives-compiled-audit/v1"),
+    ("modules", Json.arr (present.toArray.map Json.str)),
+    ("excluded_unsafe", Json.arr unsafeNames),
+    ("excluded_partial", Json.arr partialNames),
+    ("declarations", Json.arr declarations)]).compress)
+'''
+    return "\n".join(header) + "\n" + compiled.replace(
+        "MODULE_LIST", json.dumps(modules)).replace("AUDIT_PREFIX", COMPILED_AUDIT_PREFIX)
+
+
+def parse_compiled_audit(output: str, projects: list[dict],
+                         expected: list[str]) -> tuple[dict[str, dict], list[str], list[str]]:
+    lines = [line[len(COMPILED_AUDIT_PREFIX):] for line in output.splitlines()
+             if line.startswith(COMPILED_AUDIT_PREFIX)]
+    if len(lines) != 1:
+        raise ValueError("Missing or duplicate compiled-environment audit")
+    payload = json.loads(lines[0])
+    modules = {module for project in projects for module in project["modules"]}
+    if (not isinstance(payload, dict)
+            or payload.get("schema") != "primitives-compiled-audit/v1"
+            or not isinstance(payload.get("modules"), list)
+            or any(not isinstance(module, str) for module in payload["modules"])
+            or len(payload["modules"]) != len(modules)
+            or set(payload["modules"]) != modules
+            or not isinstance(payload.get("declarations"), list)):
+        raise ValueError("Incomplete compiled module inventory")
+    kinds = {"axiom", "theorem", "definition", "opaque", "quotient", "inductive",
+             "constructor", "recursor"}
+    declarations = {}
+    for record in payload["declarations"]:
+        if (not isinstance(record, dict) or set(record) != {"name", "module", "kind", "axioms"}
+                or not isinstance(record["name"], str) or not record["name"]
+                or record["name"] in declarations or not isinstance(record["module"], str)
+                or record["module"] not in modules or not isinstance(record["kind"], str)
+                or record["kind"] not in kinds or not isinstance(record["axioms"], list)
+                or any(not isinstance(axiom, str) for axiom in record["axioms"])):
+            raise ValueError("Malformed or duplicate compiled declaration")
+        if record["kind"] == "axiom":
+            raise ValueError(f"Repository-defined compiled axiom: {record['name']}")
+        bad = sorted(set(record["axioms"]) - ALLOWED_AXIOMS)
+        if bad:
+            raise ValueError(f"Unapproved compiled transitive axioms: {record['name']}: {bad}")
+        declarations[record["name"]] = {"module": record["module"], "kind": record["kind"],
+                                         "axioms": sorted(set(record["axioms"]))}
+    missing = [name for name in expected if declarations.get(name, {}).get("kind") != "theorem"]
+    if missing:
+        raise ValueError(f"Explicit theorems missing from compiled environment: {missing}")
+    exclusions = []
+    seen = set(declarations)
+    for category in ("unsafe", "partial"):
+        excluded = payload.get(f"excluded_{category}")
+        if (not isinstance(excluded, list) or any(not isinstance(name, str) for name in excluded)
+                or len(set(excluded)) != len(excluded) or set(excluded) & seen):
+            raise ValueError(f"Malformed {category} compiler-declaration inventory")
+        exclusions.append(sorted(excluded))
+        seen.update(excluded)
+    return dict(sorted(declarations.items())), *exclusions
+
+
 def execute(command: list[str], env: dict[str, str]) -> subprocess.CompletedProcess[str]:
     result = subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, timeout=180)
@@ -274,11 +443,14 @@ def main() -> int:
     temp.mkdir(parents=True, exist_ok=True)
     audit = temp / "AxiomAudit.lean"
     names = [name for p in selected for name in inventory[p["domain"]]]
-    audit.write_text("\n".join([*(f"import {p['library']}" for p in selected),
-                               *(f"#print axioms {name}" for name in names)]) + "\n")
+    audit.write_text(audit_source(selected, names))
     audit_hash = hashlib.sha256(audit.read_bytes()).hexdigest()
     command = ["lake", "env", "lean", "-DwarningAsError=true", str(audit.relative_to(ROOT))]
-    axioms = parse_axioms(execute(command, env).stdout, names)
+    audit_output = execute(command, env).stdout
+    axioms = parse_axioms(audit_output, names)
+    compiled, excluded_unsafe, excluded_partial = parse_compiled_audit(audit_output, selected, names)
+    if any(compiled[name]["axioms"] != deps for name, deps in axioms.items()):
+        raise RuntimeError("Source-name and compiled-environment axiom audits disagree")
     if hashlib.sha256(audit.read_bytes()).hexdigest() != audit_hash:
         raise RuntimeError("Generated axiom audit changed during verification")
     commands.append({"command": command, "exit_code": 0})
@@ -295,15 +467,21 @@ def main() -> int:
         "status": "PASS_CONDITIONAL_MODEL_PROOFS",
         "selection": args.domain or "all",
         "lean_version": version,
-        "dependencies": "Pinned Lean Init/Std only; no external packages",
+        "dependencies": "Pinned Lean distribution: Init/Std model dependencies and Lean audit tooling; no external packages",
         "source_sha256": hashes,
         "input_hashes_match_before_after": True,
         "generated_axiom_audit_sha256": audit_hash,
         "commands": commands,
         "theorems_audited": len(names),
+        "compiled_declarations_audited": len(compiled),
+        "compiled_theorems_audited": sum(d["kind"] == "theorem" for d in compiled.values()),
+        "compiled_audit_scope": "Every safe logical declaration in the registered modules",
+        "unsafe_compiler_declarations_excluded": excluded_unsafe,
+        "partial_compiler_declarations_excluded": excluded_partial,
         "domains": {p["domain"]: {"library": p["library"], "directory": p["directory"],
                     "theorems_audited": len(inventory[p["domain"]])} for p in selected},
         "theorem_axioms": axioms,
+        "compiled_declarations": compiled,
         "scope": {"conditional_model_theorems": True, "independent_kernel_implementation": False,
                   "production_implementation_refinement": "NOT_PROVED",
                   "empirical_user_or_learning_effect": "NOT_TESTED",
@@ -315,6 +493,8 @@ def main() -> int:
     temporary.replace(output)
     print(json.dumps({"status": report["status"], "selection": report["selection"],
                       "theorems_audited": len(names), "domains": report["domains"],
+                      "compiled_declarations_audited": report["compiled_declarations_audited"],
+                      "compiled_theorems_audited": report["compiled_theorems_audited"],
                       "receipt": str(output.relative_to(ROOT)) if output.is_relative_to(ROOT) else str(output)},
                      ensure_ascii=False))
     return 0

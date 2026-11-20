@@ -13,11 +13,17 @@ abbrev Meaning (World : Type) := World → Prop
 def Entails (before after : Meaning World) : Prop :=
   ∀ world, before world → after world
 
-/-- Both sides matter: do not add unsupported facts, and do not satisfy that
-condition merely by deleting information required by the writing task. -/
+/-- Both sides matter: do not add unsupported facts, and preserve what the
+caller actually encodes in `required`. The caller must state the task's required
+information accurately. If `required` is constantly `True`, a constantly `True`
+draft passes even with satisfiable evidence; this contract cannot prevent such
+information deletion or discover the required information itself. -/
 def Faithful (evidence required draft : Meaning World) : Prop :=
   Entails evidence draft ∧ Entails draft required
 
+/-- A caller-supplied contract for a particular conservative edit. Both
+implications must be established for that edit. Preservation theorems compose
+these certificates; they do not automatically certify arbitrary edits. -/
 def Revision (required before after : Meaning World) : Prop :=
   Entails before after ∧ Entails after required
 

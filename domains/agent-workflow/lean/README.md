@@ -1,6 +1,6 @@
 # Lean 形式化切片
 
-**Lean 4.19.0 · Agent Workflow 0.3.0 · 2026-11-20**
+**Lean 4.19.0 · Agent Workflow 0.3.1 · 2026-11-20**
 
 本工程将 [后续评审说明](../FORMALIZATION.md) 中的三组命题交给 Lean 内核检查：固定策略的条件进展、历史压缩与不确定性、任意不可信报告与验收门。它不导入私有运行数据，也没有对接生产系统。
 
@@ -27,7 +27,7 @@ lake build AgentWorkflow
 
 统一验证会核对编译器版本、编译证明并审计所有本地 `theorem` 的传递公理。只使用此工具链随附的 `Init` / `Std`，没有 Mathlib 或其他外部包。缺工具、编译错误、警告、未审计声明或不允许的公理都不能登记为通过。为防止静默漏审，声明使用单一显式命名空间与受限格式；新增模块或改变声明形式时，必须同步检查统一审计的覆盖。
 
-当前本域有 **42 个定理声明**：原有 37 个声明保留用途，新增更新等价、边界真值归纳和三个错误报告检查。数量包含辅助引理、正控与反例，不等于 42 项生产保障。以统一脚本产生的当前回执为实际核验依据；回执需绑定工具链、命令、退出码、输入文件 SHA-256 及各定理依赖。审计脚本不会把跳过检查登记为 PASS。
+当前本域有 **43 个定理声明**：原有 37 个声明保留用途，0.3.0 新增更新等价、边界真值归纳和三个错误报告检查，0.3.1 新增早期非法返回的反例。数量包含辅助引理、正控与反例，不等于 43 项生产保障。以统一脚本产生的当前回执为实际核验依据；回执需绑定工具链、命令、退出码、输入文件 SHA-256 及各定理依赖。审计脚本不会把跳过检查登记为 PASS。
 
 单域命令把回执写入根目录下的 `.lake/verification/agent-workflow.json`；全仓命令产生根目录的 `lean-verification.json`。单域结果不会覆盖全仓回执，也不能代表其他领域已核验。
 
@@ -43,6 +43,7 @@ lake build AgentWorkflow
 | 从初态推出所有边界的真实世界包含 | `MacroRealization.possibleAtBoundary` | 只假设初态包含；逐步实际转移、报告覆盖及完整更新由实现提供 |
 | 真实轨迹的条件提升 | `MacroRealization.follows_policy`、`realized_policy_reaches_original_acceptance`、`realized_internal_prefix_safe` | 需给出实际策略执行、返回、信息更新与中间状态覆盖的精化见证 |
 | 进展正控 | `replayCertificate`、`replay_all_one_step_runs_finish` | 完整双世界原键恢复证书；理想化服务，不是生产幂等实现 |
+| 返回合同反例 | `late_valid_return_cannot_hide_early_invalid` | 先返回非法结果、后返回合法结果的执行满足旧存在性条件，但不满足所有返回均合法的新合同 |
 | 持续假报告的桥接实例与进展反例 | `deceptiveRealization`、`deceptive_reports_keep_absent_possible`、`deceptive_only_no_progress_certificate` | 真实效果始终缺失但报告全称成功；真实世界不被滤掉，且不能为不变假信念构造降秩证书 |
 | 不确定性与真值保留 | `update_contains_actual`、`trace_contains_actual` | 初态包含真实世界，实际转移/报告全部被关系模型涵盖 |
 | 状态摘要的精确关系表达 | `sufficient_iff_exact_relational_quotient` | enabled / 后继支持集 / 原验收兼容的充要条件；不涉及概率核 |
@@ -63,6 +64,16 @@ lake build AgentWorkflow
 
 `deceptiveRealization` 是这个新接口的具体实例：真实效果一直缺失，收到的报告却一直是“已生效”，完整更新仍保留真实世界。对应反例同时证明，这个不变且未达目标的信息集不能属于任何全后继严格降秩的证书区域。因此桥接既允许假报告，也不会把重复假报告误证成进展。
 
+## 0.3.1 加强返回合同
+
+独立复核发现，旧 `TerminatingObservation` 对每条执行仅要求存在一个满足 `finish` 与 `emits` 的返回时刻。它允许第 0 tick 返回非法 `absent`，第 1 tick 返回合法 `applied`，然后只选择后者满足合同。这样不能保证普通接口实际消费的首次终结响应合法。
+
+新合同同时要求：**每条允许执行在有限 tick 内有返回，而且每个 `some (World, Observation)` 返回都满足 `finish` 与 `emits`。** 它不再容许后来的合法返回掩盖先前非法返回。`late_valid_return_cannot_hide_early_invalid` 对同一反模型证明旧存在性条件成立、新合同不成立；完整原键恢复证书仍有具体实例。
+
+这里的合法表示符合所声明的转移与报告关系，**不等于报告内容真实**：`emits` 仍可以允许错误或诱导性报告。该修订没有新增首个返回时刻、输出稳定性或墙钟时间上界的保证，也没有改变宏边界计数约定。
+
+这修复的是返回合同过弱的问题，不是 Lean 推导错误。具体轨迹提升原本还独立要求 `realizesFinish` 与 `realizesObservation`，因此旧模型也不能把该非法首次返回当作有效边界来证明实际成功。真实程序与协议之间的精化义务仍然保留。
+
 ## 公理与可信边界
 
 本地证明没有 `sorry`、`admit`、自定义 `axiom` 或 `native_decide`。允许的传递公理仅为 Lean 标准的 `propext`、`Classical.choice`、`Quot.sound`；无依赖的定理在回执中记为 `[]`。审计覆盖所有本地 `theorem` 声明，其引用的定义和证书会被传递检查。
@@ -73,7 +84,7 @@ lake build AgentWorkflow
 
 - 初始信息集确实包含真实世界，实际转移和报告通道的覆盖完整性。
 - 实际选择的动作与被证明策略一致，且角色只用合法观察。
-- 所允许环境中的宏执行有限返回世界与实际收到的报告；真实调度公平性另证。
+- 所允许环境中的宏执行有限返回世界与实际收到的报告，且所有返回均符合转移与报告关系；真实调度公平性另证。
 - 中间状态被 `visits` 覆盖，旧消息和迟到效果没有遗漏。
 - 证据语义绑定、核验器可靠性与关闭入口完整性。
 - 真实状态压缩满足关系兼容性；概率、观察分布与公平性商另证。
