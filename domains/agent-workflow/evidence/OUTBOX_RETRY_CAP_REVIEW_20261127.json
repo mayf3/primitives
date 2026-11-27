@@ -1,0 +1,98 @@
+{
+  "schema": "svc-workflow-review/independent-outbox-v1",
+  "reviewer": "/root/wake_implementation",
+  "reviewer_independence": "Reviewer authored the separate SVC Wake repair, not this Outbox model or its gate.",
+  "status": "PASS_WITH_DECLARED_MODEL_BOUNDARIES",
+  "base_head": "9500d8e24730fdbce334b8fdcde71830838c21f4",
+  "candidate_branch": "fix/outbox-retry-cap-20261127",
+  "candidate_binding": "Uncommitted candidate bound by exact file hashes; no merge is claimed.",
+  "source_sha256": {
+    "domains/agent-workflow/lean/AgentWorkflow/Outbox.lean": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+    "domains/agent-workflow/lean/README.md": "82ef5b7561c55b84a663351a35f998a43f6741bd3626c87581e6e830f5c5eb37",
+    "domains/agent-workflow/FORMALIZATION.md": "0cb24a2228950c0bdda8aa849ee883cf85dda02ca41b77b04ff98eb61b36adf9",
+    "domains/agent-workflow/OUTBOX_RETRY_CAP_FEEDBACK.md": "e1e89819b930ef8874e6d43c9c9aa09ec98d629d9b8a4f0874aea494a65456e2",
+    "lean-verification.json": "211452db51dd1c508673b58fa5c5b21d5d882c876110ae59ed2e2fc995bad25a"
+  },
+  "source_hashes_stable_during_review": true,
+  "semantic_checks": [
+    "Ordinary retry now has complementary below-cap pending and at-cap kick dead-letter branches; enabled/claim/owner conditions remain.",
+    "retry_has_successor proves non-vacuity for every enabled owned claimed row, including at and above cap.",
+    "Initial zero-count kick satisfies KickBounded; every automatic Step preserves it; Trace induction proves arbitrary finite length attempts <= 12 and live count < 12.",
+    "Permanent rejection consumes one failure and is kick-only; UNKNOWN remains distinct from successful settle.",
+    "Both durable channels retain unrestricted retry responsibility; no Step can dead-letter them.",
+    "Event key/channel preservation and no automatic transitions from terminal rows match the bounded model.",
+    "Runtime mapping checked at SVC c50ab2ac98decceaa26138a282c34dd92ede0ddc: deliver_claimed passes Some(12) only for kick; mark_attempt_failed increments and caps in one UPDATE; success mark_delivered does not increment failure count.",
+    "Operator requeue, rollback, payload preservation, fairness, HTTP parsing, PostgreSQL lock scheduling and whole-program refinement remain explicit obligations."
+  ],
+  "findings": [],
+  "independent_execution": {
+    "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+    "commands": [
+      {
+        "cwd": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/current",
+        "command": [
+          "/workspace/scratch/3be81c9e4efa/tools/lean-4.19.0-linux/bin/lean",
+          "-DwarningAsError=true",
+          "-o",
+          "AgentWorkflow/Outbox.olean",
+          "AgentWorkflow/Outbox.lean"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/current/Outbox.log"
+      },
+      {
+        "cwd": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/current",
+        "command": [
+          "/workspace/scratch/3be81c9e4efa/tools/lean-4.19.0-linux/bin/lean",
+          "-DwarningAsError=true",
+          "-o",
+          "Audit.olean",
+          "Audit.lean"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/current/Audit.log"
+      },
+      {
+        "cwd": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/baseline",
+        "command": [
+          "/workspace/scratch/3be81c9e4efa/tools/lean-4.19.0-linux/bin/lean",
+          "-DwarningAsError=true",
+          "-o",
+          "AgentWorkflow/Outbox.olean",
+          "AgentWorkflow/Outbox.lean"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/baseline/Outbox.log"
+      },
+      {
+        "cwd": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/baseline",
+        "command": [
+          "/workspace/scratch/3be81c9e4efa/tools/lean-4.19.0-linux/bin/lean",
+          "-DwarningAsError=true",
+          "-o",
+          "Witness.olean",
+          "Witness.lean"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/scratch/3be81c9e4efa/outbox-independent-check/baseline/Witness.log"
+      }
+    ],
+    "explicit_theorems_audited": 26,
+    "baseline_counterexample_compiled": true,
+    "candidate_rejects_same_pending_at_twelve": true,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_kernel_implementation": false
+  },
+  "upstream_gate_receipt_checked": {
+    "status": "PASS_CONDITIONAL_MODEL_PROOFS",
+    "selection": "all",
+    "theorems_audited": 134,
+    "source_hash_matches": true,
+    "independently_reran_full_repository_gate": false
+  },
+  "product_acceptance": "Not claimed. SVC PostgreSQL evidence is recorded separately by root; no production validation performed by this reviewer."
+}

@@ -163,3 +163,9 @@ Lean 检查的是这些定义与前提下的推导。把未验证的环境条件
 - [svc-workflow #140](https://github.com/mayf3/svc-workflow/issues/140)
 
 复现：`python3 tools/verify_lean.py --domain agent-workflow`。本轮 pinned Lean 4.19.0 CI 已于 2026-11-27 运行通过：workflow run `45917271049`，状态 `PASS_CONDITIONAL_MODEL_PROOFS`；Agent Workflow 共审计 56 个定理声明（原有 43 个 + 本轮新增 13 个）。回执 artifact 随该 workflow 上传。该结果仅证明模型中的条件命题，不证明消费项目代码精化。
+
+## 9. 2026-11-27：普通 Outbox 重试上限补齐（0.3.3-pilot）
+
+对 SVC 仓库的进一步审阅发现：0.3.2 的 UNKNOWN 分支已有 kick cap，而普通 `Step.retry` 仍可从 claimed/11 返回 pending/12。实际 SVC 普通 retry 代码已有上限，问题属于抽象遗漏。当前把普通 retry 分为 below-cap pending 和 at-cap dead-letter，并补任意有限自动轨迹的归纳预算不变量、终态无自动出边、耐久通道不受 kick cap 丢弃，以及正常送达和边界正例。
+
+本域现有 75 条定理；本轮本地单域验证通过，旧 workflow run 只证明旧 56 条对应版本。精确提交、反例、实现映射、当前验证结果和明确范围见 [Outbox 上限反馈记录](OUTBOX_RETRY_CAP_FEEDBACK.md) 与 [Lean 入口](lean/README.md)。此项不改变 SVC 运行时代码，不代表生产验收或一般业务 UNKNOWN 重投许可。
