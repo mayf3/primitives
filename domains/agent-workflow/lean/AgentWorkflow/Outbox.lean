@@ -49,21 +49,25 @@ inductive Step (enabled : Channel → Bool) : Row → Command → Row → Prop w
       Step enabled row (.claim worker)
         { row with status := .claimed, claimant := some worker }
   | settle {row : Row} {worker : Nat}
+      (channelEnabled : enabled row.channel = true)
       (claimed : row.status = .claimed)
       (owner : row.claimant = some worker) :
       Step enabled row (.settle worker)
         { row with status := .delivered, claimant := none }
   | retry {row : Row} {worker : Nat}
+      (channelEnabled : enabled row.channel = true)
       (claimed : row.status = .claimed)
       (owner : row.claimant = some worker) :
       Step enabled row (.retry worker)
         { row with status := .pending, claimant := none, attempts := row.attempts + 1 }
   | unknown {row : Row} {worker : Nat}
+      (channelEnabled : enabled row.channel = true)
       (claimed : row.status = .claimed)
       (owner : row.claimant = some worker) :
       Step enabled row (.unknown worker)
         { row with status := .pending, claimant := none, attempts := row.attempts + 1 }
   | deadLetter {row : Row} {worker : Nat}
+      (channelEnabled : enabled row.channel = true)
       (channel : row.channel = .executionKick)
       (claimed : row.status = .claimed)
       (owner : row.claimant = some worker) :
@@ -93,10 +97,10 @@ theorem dead_letter_is_kick_only {enabled : Channel → Bool}
     before.channel = .executionKick := by
   cases step with
   | claim _ _ _ => cases dead
-  | settle _ _ => cases dead
-  | retry _ _ => cases dead
-  | unknown _ _ => cases dead
-  | deadLetter channel _ _ => exact channel
+  | settle _ _ _ => cases dead
+  | retry _ _ _ => cases dead
+  | unknown _ _ _ => cases dead
+  | deadLetter _ channel _ _ => exact channel
 
 /-- UNKNOWN returns to pending retry responsibility, never delivered. -/
 theorem unknown_returns_to_pending {enabled : Channel → Bool}
@@ -104,7 +108,7 @@ theorem unknown_returns_to_pending {enabled : Channel → Bool}
     (step : Step enabled before (.unknown worker) after) :
     after.status = .pending ∧ after.claimant = none := by
   cases step with
-  | unknown _ _ => exact ⟨rfl, rfl⟩
+  | unknown _ _ _ => exact ⟨rfl, rfl⟩
 
 /-- A claimed row cannot be claimed by a second worker before release. -/
 theorem claimed_row_cannot_be_claimed_again {enabled : Channel → Bool}
