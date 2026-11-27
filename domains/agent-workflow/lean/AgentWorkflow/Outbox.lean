@@ -132,8 +132,8 @@ theorem unknown_below_cap_returns_to_pending {enabled : Channel → Bool}
     after.status = .pending ∧ after.claimant = none := by
   cases step with
   | unknownRetry _ _ _ _ => exact ⟨rfl, rfl⟩
-  | unknownKickDeadLetter _ _ _ _ atCap =>
-      exact False.elim (Nat.not_lt_of_ge atCap (belowKickCap rfl))
+  | unknownKickDeadLetter _ isKick _ _ atCap =>
+      exact False.elim (Nat.not_lt_of_ge atCap (belowKickCap isKick))
   | _ => contradiction
 
 /-- At the retry cap, a kick UNKNOWN becomes dead-lettered rather than
