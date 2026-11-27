@@ -21,7 +21,9 @@
         "AgentWorkflow.Progress",
         "AgentWorkflow.Evidence",
         "AgentWorkflow.ExecutionRecovery",
-        "AgentWorkflow.Outbox"
+        "AgentWorkflow.Outbox",
+        "AgentWorkflow.DueFeedHandoff",
+        "AgentWorkflow.OriginalObligation"
       ]
     },
     {
