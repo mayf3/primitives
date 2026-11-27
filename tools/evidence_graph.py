@@ -518,10 +518,21 @@ def compile_graph(proj: Project) -> dict:
             and e["to"] in proj.nodes
             for ev in proj.evaluations)
         if has_any_proof_receipt:
-            violations.append({
-                "kind": "prop_proof_stale", "node": nid,
-                "detail": "PROP 的证明回执存在但已 STALE/FAILED/UNKNOWN——需重新验证",
-            })
+            # 回执存在：STALE/FAILED → 证据失效违规；全 UNKNOWN（如回执缺
+            # executed_at）→ 不硬违规，coverage 如实报 UNKNOWN（§3.7 不得
+            # 伪装 PASS，也不得把元数据缺口误判为未证明义务）
+            failing = [
+                ev for e in proj.edges if e["from"] == nid
+                and e["rel"] == "PROVED_BY" and e["to"] in proj.nodes
+                for ev in proj.evaluations
+                if any(t.get("node") == e["to"] for t in ev["targets"])
+                and ev["freshness"] in ("STALE", "FAILED")
+            ]
+            if failing:
+                violations.append({
+                    "kind": "prop_proof_stale", "node": nid,
+                    "detail": "PROP 的证明回执存在但已 STALE/FAILED——需重新验证",
+                })
         else:
             violations.append({
                 "kind": "prop_unproven_and_not_deferred", "node": nid,
@@ -652,10 +663,15 @@ def coverage_report(proj: Project, graph: dict) -> dict:
         deferred = node.get("attributes", {}).get("obligation_status") == "DEFERRED"
         proof_edges = [e["to"] for e in graph["edges"]
                        if e["from"] == node["id"] and e["rel"] == "PROVED_BY"]
+        # 证据语义：PROVED_BY 边存在但目标零回执 → UNPROVEN（无任何证据）；
+        # 有回执但元数据不足 → UNKNOWN（如实报告，不伪装 PASS 也不误判义务）
         states = set()
+        has_any = False
         for t in proof_edges:
             evs = receipts_by_target.get(t, [])
-            states |= {ev["freshness"] for ev in evs} if evs else {"UNKNOWN"}
+            if evs:
+                has_any = True
+                states |= {ev["freshness"] for ev in evs}
         if deferred:
             state = "DEFERRED"
         elif "CURRENT" in states:
@@ -664,6 +680,8 @@ def coverage_report(proj: Project, graph: dict) -> dict:
             state = "STALE"
         elif "FAILED" in states:
             state = "FAILED"
+        elif has_any and "UNKNOWN" in states:
+            state = "UNKNOWN"
         else:
             state = "UNPROVEN"
         prop_rows.append({"prop": node["id"], "state": state,
