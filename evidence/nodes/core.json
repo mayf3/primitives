@@ -1,0 +1,138 @@
+{
+  "schema": "evidence-nodes/v1",
+  "nodes": [
+    {
+      "id": "REQ-PRIMITIVES-SELF",
+      "type": "REQ",
+      "source": {
+        "path": "AGENTS.md",
+        "anchor": {
+          "kind": "heading",
+          "value": "## 开发原则：以数学模型为中心"
+        }
+      },
+      "evidence_status": "DOCUMENTED"
+    },
+    {
+      "id": "MODEL-PRIMITIVECORE",
+      "type": "MODEL",
+      "source": {
+        "path": "meta/lean/PrimitiveCore.lean",
+        "anchor": {
+          "kind": "contains",
+          "value": "PrimitiveCore"
+        }
+      },
+      "evidence_status": "DOCUMENTED"
+    },
+    {
+      "id": "LEAN-ABSTRACTION",
+      "type": "LEAN",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Abstraction.lean",
+        "anchor": {
+          "kind": "contains",
+          "value": "theorem fiberConstant_iff_factorsThrough"
+        }
+      },
+      "evidence_status": "DOCUMENTED"
+    },
+    {
+      "id": "LEAN-CONTRACTS",
+      "type": "LEAN",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Contracts.lean",
+        "anchor": {
+          "kind": "contains",
+          "value": "theorem hoare_sequence"
+        }
+      },
+      "evidence_status": "DOCUMENTED"
+    },
+    {
+      "id": "LEAN-REFINEMENT",
+      "type": "LEAN",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Refinement.lean",
+        "anchor": {
+          "kind": "regex",
+          "value": "theorem|def "
+        }
+      },
+      "evidence_status": "NOT_PROVEN"
+    },
+    {
+      "id": "PROP-ABSTRACTION-FIBER",
+      "type": "PROP",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Abstraction.lean",
+        "anchor": {
+          "kind": "contains",
+          "value": "theorem fiberConstant_iff_factorsThrough"
+        }
+      },
+      "evidence_status": "DOCUMENTED_CLAIM"
+    },
+    {
+      "id": "PROP-CONTRACTS-HOARE",
+      "type": "PROP",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Contracts.lean",
+        "anchor": {
+          "kind": "contains",
+          "value": "theorem hoare_sequence"
+        }
+      },
+      "evidence_status": "DOCUMENTED_CLAIM"
+    },
+    {
+      "id": "PROP-REFINEMENT-COMPOSITION",
+      "type": "PROP",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Refinement.lean",
+        "anchor": {
+          "kind": "regex",
+          "value": "theorem|def "
+        }
+      },
+      "attributes": {
+        "obligation_status": "DEFERRED"
+      },
+      "evidence_status": "DEFERRED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "REQ-PRIMITIVES-SELF",
+      "rel": "DEFINES",
+      "to": "MODEL-PRIMITIVECORE",
+      "source": {
+        "path": "AGENTS.md"
+      }
+    },
+    {
+      "from": "PROP-ABSTRACTION-FIBER",
+      "rel": "PROVED_BY",
+      "to": "LEAN-ABSTRACTION",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Abstraction.lean"
+      }
+    },
+    {
+      "from": "PROP-CONTRACTS-HOARE",
+      "rel": "PROVED_BY",
+      "to": "LEAN-CONTRACTS",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Contracts.lean"
+      }
+    },
+    {
+      "from": "PROP-REFINEMENT-COMPOSITION",
+      "rel": "PROVED_BY",
+      "to": "LEAN-REFINEMENT",
+      "source": {
+        "path": "meta/lean/PrimitiveCore/Refinement.lean"
+      }
+    }
+  ]
+}

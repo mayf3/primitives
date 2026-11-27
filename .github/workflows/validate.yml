@@ -37,3 +37,23 @@ jobs:
           path: .lake/verification/ci-all.json
           include-hidden-files: true
           if-no-files-found: error
+
+  evidence-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evidence Graph Compiler unit tests (positive + negative controls)
+        run: python3 -m unittest tools.test_evidence_graph -v
+      - name: Build primitives own evidence graph
+        run: python3 tools/evidence_graph.py build --project .
+      - name: Validate graph (policy gates)
+        run: python3 tools/evidence_graph.py validate --project .
+      - name: Determinism check (byte-identical rebuild)
+        run: |
+          python3 tools/evidence_graph.py build --project .
+          sha256sum .evidence/evidence-graph.json > /tmp/h1
+          python3 tools/evidence_graph.py build --project .
+          sha256sum .evidence/evidence-graph.json > /tmp/h2
+          diff /tmp/h1 /tmp/h2
+      - name: Coverage summary (honest gaps must be visible, not fatal)
+        run: python3 tools/evidence_graph.py coverage --project .

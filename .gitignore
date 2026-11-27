@@ -8,3 +8,4 @@ data/
 runtime/
 .local/
 .lake/
+.evidence/

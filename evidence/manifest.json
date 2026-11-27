@@ -1,0 +1,30 @@
+{
+  "schema": "evidence-graph-manifest/v1",
+  "project": "primitives",
+  "repository": "mayf3/primitives",
+  "outputs": ".evidence",
+  "environment_scope": {
+    "os": "any"
+  },
+  "policy": {
+    "fail_on": [
+      "duplicate_id",
+      "dangling_required_ref",
+      "req_without_model",
+      "prop_unproven_and_not_deferred",
+      "transition_without_map",
+      "dangling_code_mapping"
+    ],
+    "fail_on_stale": true
+  },
+  "node_sources": [
+    {
+      "path": "evidence/nodes/core.json"
+    }
+  ],
+  "receipt_sources": [
+    {
+      "path": "evidence/receipts/lean.json"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "evidence-receipts/v1",
+  "receipts": [
+    {
+      "schema": "evidence-receipts/v1",
+      "evidence_id": "EV-LEAN-PRIMITIVECORE",
+      "evidence_type": "PROVEN",
+      "targets": [
+        {
+          "node": "LEAN-ABSTRACTION"
+        },
+        {
+          "node": "LEAN-CONTRACTS"
+        }
+      ],
+      "bindings": [
+        {
+          "kind": "verification-manifest",
+          "path": "lean-verification.json",
+          "content_hash": "d606e0c961d9ad28d24a1b5f16f7618088c8c71c63f622c9c382da4742ba8f9a"
+        },
+        {
+          "kind": "lean-source",
+          "path": "meta/lean/PrimitiveCore/Abstraction.lean",
+          "content_hash": "e9dd5a196a2f7c1749aa1f5e251639ed9fa199cfd6fdbb5cfe1970fd7f02c12a"
+        },
+        {
+          "kind": "lean-source",
+          "path": "meta/lean/PrimitiveCore/Contracts.lean",
+          "content_hash": "28a30d31f90e4e3642e8c06ff156ceddf031f84011680ed2ebe21e7a41a28945"
+        }
+      ],
+      "verifier_file": "tools/verify_lean.py",
+      "verifier_revision": "d89e8bf67143f091c7a24fd03fb2359c6c7858b6aaeff3b4cc1d823ae8fc0e11",
+      "toolchain": "Lean (version 4.19.0, arm64-apple-darwin23.6.0, commit 6caaee842e94, Release)",
+      "command": "python3 tools/verify_lean.py",
+      "exit_code": 0,
+      "result": "PASS",
+      "limitations": "lean-verification.json 未记录执行时间戳 → freshness 停留 UNKNOWN（如实报告）；Refinement.lean 不在该次验证清单（source_sha256 无此文件、0 条编译声明）→ 其 PROP 显式 DEFERRED",
+      "environment_scope": {
+        "os": "any"
+      }
+    }
+  ]
+}
