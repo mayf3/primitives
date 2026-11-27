@@ -37,3 +37,45 @@ jobs:
           path: .lake/verification/ci-all.json
           include-hidden-files: true
           if-no-files-found: error
+  evidence-graph-fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch read-only consumer source at the fixture pins
+        run: |
+          python3 - <<'PY'
+          from collections import defaultdict
+          import json, os, re, subprocess
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "fixture-repositories"
+          pins = defaultdict(set)
+          for descriptor in Path("docs/evidence-graph-fixtures").glob("*/fixture.json"):
+              for material in json.loads(descriptor.read_text())["materials"]:
+                  repo, revision = material["repo"], material["revision"]
+                  if repo not in {"primitives", "svc-workflow", "dsh-agent-core"} or not re.fullmatch("[0-9a-f]{40}", revision):
+                      raise SystemExit("unexpected fixture source")
+                  pins[repo].add(revision)
+          for repo, revisions in pins.items():
+              local = root / repo
+              local.mkdir(parents=True)
+              subprocess.run(["git", "init", "--bare", "-q", str(local)], check=True)
+              for revision in sorted(revisions):
+                  subprocess.run(["git", "-C", str(local), "fetch", "--no-tags", "--depth=1", "--quiet",
+                                  f"https://github.com/mayf3/{repo}.git", revision], check=True, timeout=120)
+          PY
+      - name: Compile three real Workflow fixtures and detect deliberate evidence drift
+        run: |
+          python3 tools/evidence_graph_fixture_check.py \
+            --repositories "$RUNNER_TEMP/fixture-repositories" \
+            --output "$RUNNER_TEMP/evidence-graph-results"
+      - name: Upload complete graph, coverage, stale and negative-control receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-graph-fixtures
+          path: ${{ runner.temp }}/evidence-graph-results
+          include-hidden-files: true
+          if-no-files-found: error

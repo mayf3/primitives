@@ -1,0 +1,4125 @@
+{
+  "schema_version": "evidence-receipt/v1",
+  "fixture": "SVC Outbox, exact main and independent unmerged PR tracks",
+  "materials": [
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/outbox-pr141/regression-receipt.json",
+      "target": "materials/pg/regression-receipt.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/outbox-pr141/source-manifest.json",
+      "target": "materials/pg/source-manifest.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/outbox-pr141/outbox.log",
+      "target": "materials/pg/outbox.txt"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/outbox-final-head-review.json",
+      "target": "materials/pg/outbox-final-head-review.json"
+    },
+    {
+      "repo": "primitives",
+      "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+      "path": "domains/agent-workflow/OUTBOX_RETRY_CAP_FEEDBACK.md",
+      "target": "materials/draft/OUTBOX_RETRY_CAP_FEEDBACK.md"
+    },
+    {
+      "repo": "primitives",
+      "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+      "path": "domains/agent-workflow/evidence/OUTBOX_RETRY_CAP_REVIEW_20261127.json",
+      "target": "materials/draft/OUTBOX_RETRY_CAP_REVIEW_20261127.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "docs/specs/SVC_WORKFLOW_EXECUTION_CONTROL_V3.md",
+      "target": "materials/main/spec.md"
+    },
+    {
+      "repo": "primitives",
+      "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+      "path": "domains/agent-workflow/lean/AgentWorkflow/Outbox.lean",
+      "target": "materials/main/Outbox.lean"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "src/store/postgres/outbox.rs",
+      "target": "materials/main/outbox.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "src/forum_sync.rs",
+      "target": "materials/main/forum_sync.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "tests/48_outbox_three_channels.rs",
+      "target": "materials/main/48_outbox_three_channels.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "migrations/0032_outbox_dead_letter.sql",
+      "target": "materials/main/0032_outbox_dead_letter.sql"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "docs/specs/SVC_WORKFLOW_EXECUTION_CONTROL_V3.md",
+      "target": "materials/pr141-pr13-draft/spec.md"
+    },
+    {
+      "repo": "primitives",
+      "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+      "path": "domains/agent-workflow/lean/AgentWorkflow/Outbox.lean",
+      "target": "materials/pr141-pr13-draft/Outbox.lean"
+    },
+    {
+      "repo": "primitives",
+      "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+      "path": "lean-verification.json",
+      "target": "materials/pr141-pr13-draft/lean-verification.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "src/store/postgres/outbox.rs",
+      "target": "materials/pr141-pr13-draft/outbox.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "src/forum_sync.rs",
+      "target": "materials/pr141-pr13-draft/forum_sync.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "tests/48_outbox_three_channels.rs",
+      "target": "materials/pr141-pr13-draft/48_outbox_three_channels.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "migrations/0032_outbox_dead_letter.sql",
+      "target": "materials/pr141-pr13-draft/0032_outbox_dead_letter.sql"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "path": "docs/reports/MODEL_CENTERED_PILOT_OUTBOX_V1.md",
+      "target": "materials/pr141-pr13-draft/mapping-report.md"
+    }
+  ],
+  "files": [
+    "main-lean-ci-all.json"
+  ],
+  "nodes": [
+    {
+      "id": "OUTBOX.MAIN.SPEC",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "SVC_WORKFLOW_EXECUTION_CONTROL_V3"
+      },
+      "track": "main",
+      "authority_state": "accepted"
+    },
+    {
+      "id": "OUTBOX.MAIN.DELTA3",
+      "kind": "DEC",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 3"
+      },
+      "track": "main",
+      "authority_state": "accepted"
+    },
+    {
+      "id": "OUTBOX.MAIN.MODEL",
+      "kind": "MODEL",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "Row"
+      },
+      "track": "main",
+      "authority_state": "main",
+      "reason": "Per-row, bounded semantics only. No external or PostgreSQL refinement claim."
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.001",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-001"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Kick-only environment does not consume Forum facts."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.001",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-001"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.001"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.001": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-001",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "kick_only_delivers_without_any_forum_dependency"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.002",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Concurrent workers deliver each event exactly once in the criterion scope."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.002",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.002"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.002": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-002",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "concurrent_workers_never_double_deliver"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.003",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "401/403 stay retryable without a successful delivery."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.003",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.003"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.003": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-003",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "kick_401_and_403_are_auth_failures_never_delivered"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.004",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Kick cap, retained payload, controlled requeue and due exclusion."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.004",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.004"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.004": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-004",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "kick_dead_letters_at_the_retry_cap_and_recovers_via_requeue"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.005",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Permanent rejection dead-letters with unchanged payload."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.005",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.005"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.005": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-005",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "kick_400_dead_letters_immediately_with_payload_retained"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.006",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Forum outage does not stall Kick in the same pass."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.006",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.006"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.006": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-006",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "forum_api_outage_does_not_block_kick_channel"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.007",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Legacy environment and flag precedence are preserved."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.007",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.007"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.007": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.008",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-008"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "UNKNOWN is not delivered; retry keeps the stable request identity."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.008",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-008"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.008"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.008": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-008",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "transport_unknown_result_schedules_retry_and_carries_stable_request_id"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.009",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "A one-connection pool supports concurrent progress."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.009",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.009"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.009": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-009",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "concurrent_workers_on_a_one_connection_pool_deliver_both_kinds"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.010",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "Per-instance Forum order survives concurrent workers and backoff."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.010",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.010"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.010": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-010",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/48_outbox_three_channels.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "3328d6710e80cc404d28fc902cd7983c6747752ed3a7da7bbe60b6adffb252c7",
+        "symbol": "backed_off_first_forum_event_blocks_later_events_across_passes"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.REQ.DELTA5",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "main",
+      "critical": true,
+      "label": "An unrecognized outbox kind remains visible and untouched."
+    },
+    {
+      "id": "OUTBOX.MAIN.AC.DELTA5",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "OUTBOX.MAIN.REQ.DELTA5"
+      ],
+      "bindings": {
+        "OUTBOX.MAIN.REQ.DELTA5": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-007",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "legacy_forum_master_switch_nesting_still_enables_kick_and_wake"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.TEST-DELTA5",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "unsupported_kind_stays_pending_and_retryable"
+      },
+      "track": "main",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.ROW",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "OutboxRow"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.CLAIM",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "claim_row"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.SETTLE",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_delivered"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.RETRY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.DEAD-LETTER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_dead_lettered"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.FORUM-ORDER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "next_pending_batch"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.CHANNEL",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "run_loop"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.KICK",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "deliver_kick"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.CLASSIFY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "deliver_claimed"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.ENV",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/forum_sync.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "OutboxReconcilerConfig"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.CODE.SCHEMA",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/0032_outbox_dead_letter.sql",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a984f6995086e82de0c4cc4083a41144d47ed2f9e320cf355c04348a922acd17",
+        "symbol": "dead_lettered_at"
+      },
+      "track": "main"
+    },
+    {
+      "id": "OUTBOX.MAIN.STATE.ROW",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "Row"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.ROW",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "OutboxRow"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.CLAIM",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "claim"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.CLAIM",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "claim_row"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.SETTLE",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "settle"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.SETTLE",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_delivered"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.RETRY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "retry"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.RETRY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.UNKNOWN-RETRY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "unknownRetry"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.UNKNOWN-RETRY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.UNKNOWN-CAP",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "unknownKickDeadLetter"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.UNKNOWN-CAP",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.TRANSITION.PERMANENT-DEAD-LETTER",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "deadLetter"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.MAP.PERMANENT-DEAD-LETTER",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/main/outbox.rs",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_dead_lettered"
+      },
+      "track": "main",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.DISABLED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "disabled_channel_has_no_transition"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.DISABLED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.disabled_channel_has_no_transition"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.disabled_channel_has_no_transition"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.CLAIM",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "claimed_row_cannot_be_claimed_again"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.CLAIM",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.claimed_row_cannot_be_claimed_again"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.claimed_row_cannot_be_claimed_again"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.KEY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "step_preserves_event_key"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.KEY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.step_preserves_event_key"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.step_preserves_event_key"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.KICK-ONLY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "dead_letter_is_kick_only"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.KICK-ONLY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.dead_letter_is_kick_only"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.dead_letter_is_kick_only"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.UNKNOWN-NOT-DELIVERED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "unknown_not_delivered"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.UNKNOWN-NOT-DELIVERED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.unknown_not_delivered"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.unknown_not_delivered"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.UNKNOWN-RETRY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "unknown_below_cap_returns_to_pending"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.UNKNOWN-RETRY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.unknown_below_cap_returns_to_pending"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.unknown_below_cap_returns_to_pending"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.UNKNOWN-CAP",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "kick_unknown_at_cap_dead_letters"
+      },
+      "track": "main",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.MAIN.THM.UNKNOWN-CAP",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/main/Outbox.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
+        "symbol": "AgentWorkflow.Outbox.kick_unknown_at_cap_dead_letters"
+      },
+      "track": "main",
+      "qualified_name": "AgentWorkflow.Outbox.kick_unknown_at_cap_dead_letters"
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.EXTERNAL-DELIVERY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "The abstract exclusive claim does not imply exactly-once remote effects. Preserve the acceptance wording and separately retain Delta 3's at-least-once transport boundary."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.AUTH-CLASS",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "The model does not classify HTTP statuses or authentication failures."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.REQUEUE",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "Manual requeue, original payload retention and SQL due exclusion are outside the row relation."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.PAYLOAD",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "The abstract row has no payload or HTTP rejection classification."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.ISOLATION",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "A per-row transition does not prove cross-channel fairness or scheduling."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.ENV",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "Channel enablement is an input predicate; the model does not describe configuration precedence."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.POOL",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "A finite abstract claim does not validate actual pool and connection interactions."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.FORUM-ORDER",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "One abstract row cannot state a two-row anti-overtaking theorem."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.UNKNOWN-KIND",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "The typed model has no unknown channel kind to check downgrade semantics."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROP.ORDINARY-CAP",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "Concrete Rust/SQL implements the cap. Main Outbox.Step.retry nevertheless allows claimed/11 -> pending/12. Draft #13 has a separate proof and is not main evidence."
+    },
+    {
+      "id": "OUTBOX.MAIN.LEAN.AUDIT",
+      "kind": "LEAN",
+      "coordinate": {
+        "path": "main-lean-ci-all.json",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "ee5122591d2e8cf2a4c27071c0420ae32fdc9ff66388f672b7a16bf4c2c9f69d"
+      },
+      "track": "main",
+      "evidence_state": "PASS",
+      "bindings": {
+        "OUTBOX.MAIN.MODEL": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.DISABLED": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.CLAIM": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.KEY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.KICK-ONLY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.UNKNOWN-NOT-DELIVERED": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.UNKNOWN-RETRY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        },
+        "OUTBOX.MAIN.THM.UNKNOWN-CAP": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698"
+        }
+      },
+      "origin": "https://github.com/mayf3/primitives/actions/runs/46080833058",
+      "reason": "Lean 4.19.0 compiled theorem and axiom audit for these exact model bytes, with claim limited to the formal model."
+    },
+    {
+      "id": "OUTBOX.MAIN.REFINEMENT.SQL",
+      "kind": "REFINEMENT",
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "reason": "No proof of initial correspondence, step simulation, or observation mapping from PostgreSQL rows and transactions to this Lean model."
+    },
+    {
+      "id": "OUTBOX.MAIN.ASM.PG-LOCKS",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "An isolated run does not establish the production PostgreSQL transaction/lock environment."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROBE.PG-LOCKS",
+      "kind": "PROBE",
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "reason": "An isolated run does not establish the production PostgreSQL transaction/lock environment."
+    },
+    {
+      "id": "OUTBOX.MAIN.ASM.REMOTE-IDEMPOTENCE",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "Stable event_key does not show that a remote effect is applied at most once after an ACK loss."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROBE.REMOTE-IDEMPOTENCE",
+      "kind": "PROBE",
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "reason": "Stable event_key does not show that a remote effect is applied at most once after an ACK loss."
+    },
+    {
+      "id": "OUTBOX.MAIN.ASM.SERVICE-FAIRNESS",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/main/spec.md",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "main",
+      "critical": true,
+      "reason": "No scope-bound runtime probe measures sustained scheduling/fairness."
+    },
+    {
+      "id": "OUTBOX.MAIN.PROBE.SERVICE-FAIRNESS",
+      "kind": "PROBE",
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "reason": "No scope-bound runtime probe measures sustained scheduling/fairness."
+    },
+    {
+      "id": "OUTBOX.MAIN.TEST.PG",
+      "kind": "TEST",
+      "track": "main",
+      "evidence_state": "UNKNOWN",
+      "reason": "No 23-test receipt at this exact main commit. The #141 run is deliberately a separate track."
+    },
+    {
+      "id": "OUTBOX.DRAFT.SPEC",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "SVC_WORKFLOW_EXECUTION_CONTROL_V3"
+      },
+      "track": "candidate",
+      "authority_state": "accepted"
+    },
+    {
+      "id": "OUTBOX.DRAFT.DELTA3",
+      "kind": "DEC",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 3"
+      },
+      "track": "candidate",
+      "authority_state": "accepted"
+    },
+    {
+      "id": "OUTBOX.DRAFT.MODEL",
+      "kind": "MODEL",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "Row"
+      },
+      "track": "candidate",
+      "authority_state": "draft",
+      "reason": "Per-row, bounded semantics only. No external or PostgreSQL refinement claim."
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.001",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-001"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Kick-only environment does not consume Forum facts."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.001",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-001"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.001"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.001": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-001",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "kick_only_delivers_without_any_forum_dependency"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.002",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Concurrent workers deliver each event exactly once in the criterion scope."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.002",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.002"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.002": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-002",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "concurrent_workers_never_double_deliver"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.003",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "401/403 stay retryable without a successful delivery."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.003",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.003"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.003": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-003",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "kick_401_and_403_are_auth_failures_never_delivered"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.004",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Kick cap, retained payload, controlled requeue and due exclusion."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.004",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.004"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.004": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-004",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "kick_dead_letters_at_the_retry_cap_and_recovers_via_requeue"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.005",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Permanent rejection dead-letters with unchanged payload."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.005",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.005"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.005": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-005",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "kick_400_dead_letters_immediately_with_payload_retained"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.006",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Forum outage does not stall Kick in the same pass."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.006",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.006"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.006": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-006",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "forum_api_outage_does_not_block_kick_channel"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.007",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Legacy environment and flag precedence are preserved."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.007",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.007"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.007": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.008",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-008"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "UNKNOWN is not delivered; retry keeps the stable request identity."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.008",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-008"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.008"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.008": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-008",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "transport_unknown_result_schedules_retry_and_carries_stable_request_id"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.009",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "A one-connection pool supports concurrent progress."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.009",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.009"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.009": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-009",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "concurrent_workers_on_a_one_connection_pool_deliver_both_kinds"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.010",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "Per-instance Forum order survives concurrent workers and backoff."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.010",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.010"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.010": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-010",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "backed_off_first_forum_event_blocks_later_events_across_passes"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.REQ.DELTA5",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "candidate",
+      "critical": true,
+      "label": "An unrecognized outbox kind remains visible and untouched."
+    },
+    {
+      "id": "OUTBOX.DRAFT.AC.DELTA5",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "spec_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "requirement_ids": [
+        "OUTBOX.DRAFT.REQ.DELTA5"
+      ],
+      "bindings": {
+        "OUTBOX.DRAFT.REQ.DELTA5": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201"
+        }
+      },
+      "reason": "This is the accepted criterion declaration. No independent final acceptance at this coordinate was provided."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-UNKNOWN-CAP",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/48_outbox_three_channels.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9",
+        "symbol": "kick_unknown_at_retry_cap_dead_letters_with_payload_retained"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-007",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "legacy_forum_master_switch_nesting_still_enables_kick_and_wake"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.TEST-DELTA5",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "unsupported_kind_stays_pending_and_retryable"
+      },
+      "track": "candidate",
+      "role": "test-definition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.ROW",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "OutboxRow"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.CLAIM",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "claim_row"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.SETTLE",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_delivered"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.RETRY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.DEAD-LETTER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_dead_lettered"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.FORUM-ORDER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "next_pending_batch"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.CHANNEL",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "run_loop"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.KICK",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "deliver_kick"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "deliver_claimed"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.ENV",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/forum_sync.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254",
+        "symbol": "OutboxReconcilerConfig"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.SCHEMA",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/0032_outbox_dead_letter.sql",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a984f6995086e82de0c4cc4083a41144d47ed2f9e320cf355c04348a922acd17",
+        "symbol": "dead_lettered_at"
+      },
+      "track": "candidate"
+    },
+    {
+      "id": "OUTBOX.DRAFT.STATE.ROW",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "Row"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.ROW",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "OutboxRow"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.CLAIM",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "claim"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.CLAIM",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "claim_row"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.SETTLE",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "settle"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.SETTLE",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_delivered"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.RETRY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "retry"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.RETRY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-RETRY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "unknownRetry"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.UNKNOWN-RETRY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-CAP",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "unknownKickDeadLetter"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.UNKNOWN-CAP",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.PERMANENT-DEAD-LETTER",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "deadLetter"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.PERMANENT-DEAD-LETTER",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_dead_lettered"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRANSITION.ORDINARY-CAP",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "retryKickDeadLetter"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.MAP.ORDINARY-CAP",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/outbox.rs",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b",
+        "symbol": "mark_attempt_failed"
+      },
+      "track": "candidate",
+      "reason": "Source mapping only; this is not an implementation refinement proof."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.DISABLED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "disabled_channel_has_no_transition"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.DISABLED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.disabled_channel_has_no_transition"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.disabled_channel_has_no_transition"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.CLAIM",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "claimed_row_cannot_be_claimed_again"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.CLAIM",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.claimed_row_cannot_be_claimed_again"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.claimed_row_cannot_be_claimed_again"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.KEY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "step_preserves_event_key"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.KEY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.step_preserves_event_key"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.step_preserves_event_key"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.KICK-ONLY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "dead_letter_is_kick_only"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.KICK-ONLY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.dead_letter_is_kick_only"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.dead_letter_is_kick_only"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.UNKNOWN-NOT-DELIVERED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "unknown_not_delivered"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.UNKNOWN-NOT-DELIVERED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.unknown_not_delivered"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.unknown_not_delivered"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.UNKNOWN-RETRY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "unknown_below_cap_returns_to_pending"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.UNKNOWN-RETRY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.unknown_below_cap_returns_to_pending"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.unknown_below_cap_returns_to_pending"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.UNKNOWN-CAP",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "kick_unknown_at_cap_dead_letters"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.UNKNOWN-CAP",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.kick_unknown_at_cap_dead_letters"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.kick_unknown_at_cap_dead_letters"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.ORDINARY-CAP",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "kick_retry_at_cap_dead_letters"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.ORDINARY-CAP",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.kick_retry_at_cap_dead_letters"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.kick_retry_at_cap_dead_letters"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.TRACE-CAP",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "reachable_kick_respects_cap"
+      },
+      "track": "candidate",
+      "critical": true
+    },
+    {
+      "id": "OUTBOX.DRAFT.THM.TRACE-CAP",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/Outbox.lean",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7",
+        "symbol": "AgentWorkflow.Outbox.reachable_kick_respects_cap"
+      },
+      "track": "candidate",
+      "qualified_name": "AgentWorkflow.Outbox.reachable_kick_respects_cap"
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.EXTERNAL-DELIVERY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-002"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "The abstract exclusive claim does not imply exactly-once remote effects. Preserve the acceptance wording and separately retain Delta 3's at-least-once transport boundary."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.AUTH-CLASS",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-003"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "The model does not classify HTTP statuses or authentication failures."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.REQUEUE",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-004"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "Manual requeue, original payload retention and SQL due exclusion are outside the row relation."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.PAYLOAD",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-005"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "The abstract row has no payload or HTTP rejection classification."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.ISOLATION",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-006"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "A per-row transition does not prove cross-channel fairness or scheduling."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.ENV",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-007"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "Channel enablement is an input predicate; the model does not describe configuration precedence."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.POOL",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-009"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "A finite abstract claim does not validate actual pool and connection interactions."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.FORUM-ORDER",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "ACC-P0B-010"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "One abstract row cannot state a two-row anti-overtaking theorem."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROP.UNKNOWN-KIND",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "Delta 5"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "The typed model has no unknown channel kind to check downgrade semantics."
+    },
+    {
+      "id": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "kind": "LEAN",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/lean-verification.json",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "211452db51dd1c508673b58fa5c5b21d5d882c876110ae59ed2e2fc995bad25a"
+      },
+      "track": "candidate",
+      "evidence_state": "PASS",
+      "bindings": {
+        "OUTBOX.DRAFT.MODEL": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.DISABLED": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.CLAIM": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.KEY": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.KICK-ONLY": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.UNKNOWN-NOT-DELIVERED": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.UNKNOWN-RETRY": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.UNKNOWN-CAP": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.ORDINARY-CAP": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        },
+        "OUTBOX.DRAFT.THM.TRACE-CAP": {
+          "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+          "sha256": "d166fc5c9d25c0afab1fd6e58752129683870987436a0069f014775819cf06f7"
+        }
+      },
+      "origin": "https://github.com/mayf3/primitives/pull/13",
+      "reason": "Lean 4.19.0 compiled theorem and axiom audit for these exact model bytes, with claim limited to the formal model."
+    },
+    {
+      "id": "OUTBOX.DRAFT.REFINEMENT.SQL",
+      "kind": "REFINEMENT",
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "reason": "No proof of initial correspondence, step simulation, or observation mapping from PostgreSQL rows and transactions to this Lean model."
+    },
+    {
+      "id": "OUTBOX.DRAFT.ASM.PG-LOCKS",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "An isolated run does not establish the production PostgreSQL transaction/lock environment."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROBE.PG-LOCKS",
+      "kind": "PROBE",
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "reason": "An isolated run does not establish the production PostgreSQL transaction/lock environment."
+    },
+    {
+      "id": "OUTBOX.DRAFT.ASM.REMOTE-IDEMPOTENCE",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "Stable event_key does not show that a remote effect is applied at most once after an ACK loss."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROBE.REMOTE-IDEMPOTENCE",
+      "kind": "PROBE",
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "reason": "Stable event_key does not show that a remote effect is applied at most once after an ACK loss."
+    },
+    {
+      "id": "OUTBOX.DRAFT.ASM.SERVICE-FAIRNESS",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/spec.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "symbol": "CTR-SWEC-002"
+      },
+      "track": "candidate",
+      "critical": true,
+      "reason": "No scope-bound runtime probe measures sustained scheduling/fairness."
+    },
+    {
+      "id": "OUTBOX.DRAFT.PROBE.SERVICE-FAIRNESS",
+      "kind": "PROBE",
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "reason": "No scope-bound runtime probe measures sustained scheduling/fairness."
+    },
+    {
+      "id": "OUTBOX.DRAFT.SPEC.MAPPING-REPORT",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/pr141-pr13-draft/mapping-report.md",
+        "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+        "sha256": "831b3adb1e3354b0879beaf88786cf99123f71fb1ac2c21797cb6e58e735b3c2",
+        "symbol": "Implementation mapping details"
+      },
+      "track": "candidate",
+      "authority_state": "source-mapping-only"
+    },
+    {
+      "id": "OUTBOX.DRAFT.TEST.PG",
+      "kind": "TEST",
+      "coordinate": {
+        "path": "materials/pg/regression-receipt.json",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "sha256": "ae3e59f37ce38f770b8ee0121774f0bd099cbfbd5aee5ef2c0d4e790d095a323"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "observed_result": "PASS_LOCAL_PG_REGRESSIONS",
+      "observed_counts": {
+        "passed": 23,
+        "failed": 0,
+        "ignored": 0
+      },
+      "observed_test_revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+      "receipt_status": "PASS_LOCAL_PG_REGRESSIONS",
+      "reason": "Exact PR #141 PostgreSQL command exited 0, with 23 passing tests. Its native receipt has no Lean/model revision binding or refinement assertion. It is not main, proof, environment freshness or original acceptance.",
+      "bindings": {
+        "OUTBOX.DRAFT.CODE.ROW": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "a2dbb2523c11d8b9bf46f5e202cc8f382b39927199f259765c2f7557579bbb2b"
+        },
+        "OUTBOX.DRAFT.CODE.CLASSIFY": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "048fdad638ff993099293a37413a4f4093005f53ff110d8bb430e45acd03d254"
+        },
+        "OUTBOX.DRAFT.CODE.TEST-UNKNOWN-CAP": {
+          "revision": "6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6",
+          "sha256": "1afd60330e4f5c594c547e4d3cf121f9bdd02a1f3633cde776be92256979d9e9"
+        }
+      }
+    },
+    {
+      "id": "OUTBOX.DRAFT.TRACE.PG-LOG",
+      "kind": "TRACE",
+      "coordinate": {
+        "path": "materials/pg/outbox.txt",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "sha256": "4f1d7ddc899522951a390163e63b960a8f69b8ba9b8ee6cbefdd0a9fc7960e62",
+        "symbol": "kick_unknown_at_retry_cap_dead_letters_with_payload_retained"
+      },
+      "track": "candidate",
+      "evidence_state": "UNKNOWN",
+      "reason": "Original Cargo output is archived; it is not a model-trace/v1 trace."
+    },
+    {
+      "id": "OUTBOX.DRAFT.CODE.PG-MANIFEST",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pg/source-manifest.json",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "sha256": "8609c0f3ffb3c2bd2a121fb74d110dde978512c19f3b6a46f319a80bbacf4154",
+        "symbol": "tests/48_outbox_three_channels.rs"
+      },
+      "track": "candidate",
+      "role": "concrete-run-input-manifest"
+    },
+    {
+      "id": "OUTBOX.DRAFT.SPEC.DRAFT-REVIEW",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/pg/outbox-final-head-review.json",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "sha256": "5875cc5f22a63c078259364f8038ca3c07c1c811078bf73e49fa11dac8b66d1a"
+      },
+      "track": "candidate",
+      "authority_state": "independent-draft-evidence"
+    },
+    {
+      "id": "OUTBOX.DRAFT.SPEC.DRAFT-FEEDBACK",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/draft/OUTBOX_RETRY_CAP_FEEDBACK.md",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "00e7851cbaa9ce7a016cdca2ad706793bf723a85ff99847b82ab5532d5eefe38"
+      },
+      "track": "candidate",
+      "authority_state": "draft-model-analysis"
+    },
+    {
+      "id": "OUTBOX.DRAFT.SPEC.DRAFT-PRIOR-REVIEW",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/draft/OUTBOX_RETRY_CAP_REVIEW_20261127.json",
+        "revision": "6a0386588c767aaa998ff7552ee7364451c73da0",
+        "sha256": "c139e326590dc36bb84ae998be50e7de932f1747b05dbb757f8dada46d87e9d5"
+      },
+      "track": "candidate",
+      "authority_state": "earlier-review-by-exact-source-hash"
+    }
+  ],
+  "links": [
+    {
+      "from": "OUTBOX.DRAFT.ASM.PG-LOCKS",
+      "to": "OUTBOX.DRAFT.PROBE.PG-LOCKS",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.ASM.REMOTE-IDEMPOTENCE",
+      "to": "OUTBOX.DRAFT.PROBE.REMOTE-IDEMPOTENCE",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.ASM.SERVICE-FAIRNESS",
+      "to": "OUTBOX.DRAFT.PROBE.SERVICE-FAIRNESS",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.DELTA3",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.SPEC.DRAFT-REVIEW",
+      "relation": "bound-by-final-draft-review"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.CLAIM",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.DISABLED",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.KEY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.KICK-ONLY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.ORDINARY-CAP",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.TRACE-CAP",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-CAP",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-NOT-DELIVERED",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.LEAN.AUDIT",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-RETRY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.CLAIM",
+      "to": "OUTBOX.DRAFT.CODE.CLAIM",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.ORDINARY-CAP",
+      "to": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.ORDINARY-CAP",
+      "to": "OUTBOX.DRAFT.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.DRAFT.CODE.DEAD-LETTER",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.RETRY",
+      "to": "OUTBOX.DRAFT.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.ROW",
+      "to": "OUTBOX.DRAFT.CODE.ROW",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.SETTLE",
+      "to": "OUTBOX.DRAFT.CODE.SETTLE",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.UNKNOWN-CAP",
+      "to": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.UNKNOWN-CAP",
+      "to": "OUTBOX.DRAFT.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.UNKNOWN-RETRY",
+      "to": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MAP.UNKNOWN-RETRY",
+      "to": "OUTBOX.DRAFT.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.ASM.PG-LOCKS",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.ASM.REMOTE-IDEMPOTENCE",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.ASM.SERVICE-FAIRNESS",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.CLAIM",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.DISABLED",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.KEY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.KICK-ONLY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.ORDINARY-CAP",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.TRACE-CAP",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-CAP",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-NOT-DELIVERED",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-RETRY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.SPEC.MAPPING-REPORT",
+      "relation": "described-in"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.STATE.ROW",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.CLAIM",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.ORDINARY-CAP",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.PERMANENT-DEAD-LETTER",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.RETRY",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.SETTLE",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-CAP",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.MODEL",
+      "to": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-RETRY",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.CLAIM",
+      "to": "OUTBOX.DRAFT.THM.CLAIM",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.DISABLED",
+      "to": "OUTBOX.DRAFT.THM.DISABLED",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.KEY",
+      "to": "OUTBOX.DRAFT.THM.KEY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.KICK-ONLY",
+      "to": "OUTBOX.DRAFT.THM.KICK-ONLY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.ORDINARY-CAP",
+      "to": "OUTBOX.DRAFT.THM.ORDINARY-CAP",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.TRACE-CAP",
+      "to": "OUTBOX.DRAFT.THM.TRACE-CAP",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.UNKNOWN-CAP",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-CAP",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.UNKNOWN-NOT-DELIVERED",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-NOT-DELIVERED",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.PROP.UNKNOWN-RETRY",
+      "to": "OUTBOX.DRAFT.THM.UNKNOWN-RETRY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REFINEMENT.SQL",
+      "to": "OUTBOX.DRAFT.CODE.CLAIM",
+      "relation": "refines-code"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REFINEMENT.SQL",
+      "to": "OUTBOX.DRAFT.CODE.ROW",
+      "relation": "refines-code"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REFINEMENT.SQL",
+      "to": "OUTBOX.DRAFT.MAP.CLAIM",
+      "relation": "links-refinement-mapping"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REFINEMENT.SQL",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "refines-model"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.001",
+      "to": "OUTBOX.DRAFT.AC.001",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.001",
+      "to": "OUTBOX.DRAFT.CODE.TEST-001",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.001",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.001",
+      "to": "OUTBOX.DRAFT.PROP.DISABLED",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.001",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.AC.002",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.CODE.TEST-002",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.PROP.CLAIM",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.PROP.EXTERNAL-DELIVERY",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.002",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.003",
+      "to": "OUTBOX.DRAFT.AC.003",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.003",
+      "to": "OUTBOX.DRAFT.CODE.TEST-003",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.003",
+      "to": "OUTBOX.DRAFT.PROP.AUTH-CLASS",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.003",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.AC.004",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.CODE.TEST-004",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.CODE.TEST-UNKNOWN-CAP",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.PROP.KICK-ONLY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.PROP.ORDINARY-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.PROP.REQUEUE",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.PROP.TRACE-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.004",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.AC.005",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.CODE.TEST-005",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.PROP.KICK-ONLY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.PROP.PAYLOAD",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.005",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.006",
+      "to": "OUTBOX.DRAFT.AC.006",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.006",
+      "to": "OUTBOX.DRAFT.CODE.TEST-006",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.006",
+      "to": "OUTBOX.DRAFT.PROP.ISOLATION",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.006",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.007",
+      "to": "OUTBOX.DRAFT.AC.007",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.007",
+      "to": "OUTBOX.DRAFT.CODE.TEST-007",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.007",
+      "to": "OUTBOX.DRAFT.PROP.ENV",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.007",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.AC.008",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.CODE.TEST-008",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.PROP.KEY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-NOT-DELIVERED",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-RETRY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.008",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.009",
+      "to": "OUTBOX.DRAFT.AC.009",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.009",
+      "to": "OUTBOX.DRAFT.CODE.TEST-009",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.009",
+      "to": "OUTBOX.DRAFT.PROP.POOL",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.009",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.010",
+      "to": "OUTBOX.DRAFT.AC.010",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.010",
+      "to": "OUTBOX.DRAFT.CODE.TEST-010",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.010",
+      "to": "OUTBOX.DRAFT.PROP.FORUM-ORDER",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.010",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.DELTA5",
+      "to": "OUTBOX.DRAFT.AC.DELTA5",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.DELTA5",
+      "to": "OUTBOX.DRAFT.CODE.TEST-DELTA5",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.DELTA5",
+      "to": "OUTBOX.DRAFT.PROP.UNKNOWN-KIND",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.DRAFT.REQ.DELTA5",
+      "to": "OUTBOX.DRAFT.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.DRAFT.SPEC",
+      "to": "OUTBOX.DRAFT.DELTA3",
+      "relation": "records"
+    },
+    {
+      "from": "OUTBOX.DRAFT.SPEC.DRAFT-REVIEW",
+      "to": "OUTBOX.DRAFT.SPEC.DRAFT-FEEDBACK",
+      "relation": "rechecks"
+    },
+    {
+      "from": "OUTBOX.DRAFT.SPEC.DRAFT-REVIEW",
+      "to": "OUTBOX.DRAFT.SPEC.DRAFT-PRIOR-REVIEW",
+      "relation": "rechecks"
+    },
+    {
+      "from": "OUTBOX.DRAFT.STATE.ROW",
+      "to": "OUTBOX.DRAFT.MAP.ROW",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.CODE.CLASSIFY",
+      "relation": "executed-against"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.CODE.PG-MANIFEST",
+      "relation": "source-inputs"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.CODE.ROW",
+      "relation": "executed-against"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.CODE.TEST-UNKNOWN-CAP",
+      "relation": "executed-against"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.MODEL",
+      "relation": "model-binding-missing"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TEST.PG",
+      "to": "OUTBOX.DRAFT.TRACE.PG-LOG",
+      "relation": "raw-output"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.CLAIM",
+      "to": "OUTBOX.DRAFT.MAP.CLAIM",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.ORDINARY-CAP",
+      "to": "OUTBOX.DRAFT.MAP.ORDINARY-CAP",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.DRAFT.MAP.PERMANENT-DEAD-LETTER",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.RETRY",
+      "to": "OUTBOX.DRAFT.MAP.RETRY",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.SETTLE",
+      "to": "OUTBOX.DRAFT.MAP.SETTLE",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-CAP",
+      "to": "OUTBOX.DRAFT.MAP.UNKNOWN-CAP",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.DRAFT.TRANSITION.UNKNOWN-RETRY",
+      "to": "OUTBOX.DRAFT.MAP.UNKNOWN-RETRY",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.ASM.PG-LOCKS",
+      "to": "OUTBOX.MAIN.PROBE.PG-LOCKS",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.ASM.REMOTE-IDEMPOTENCE",
+      "to": "OUTBOX.MAIN.PROBE.REMOTE-IDEMPOTENCE",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.ASM.SERVICE-FAIRNESS",
+      "to": "OUTBOX.MAIN.PROBE.SERVICE-FAIRNESS",
+      "relation": "verified-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.DELTA3",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.CLAIM",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.DISABLED",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.KEY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.KICK-ONLY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-CAP",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-NOT-DELIVERED",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.LEAN.AUDIT",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-RETRY",
+      "relation": "audits"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.CLAIM",
+      "to": "OUTBOX.MAIN.CODE.CLAIM",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.MAIN.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.MAIN.CODE.DEAD-LETTER",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.RETRY",
+      "to": "OUTBOX.MAIN.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.ROW",
+      "to": "OUTBOX.MAIN.CODE.ROW",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.SETTLE",
+      "to": "OUTBOX.MAIN.CODE.SETTLE",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.UNKNOWN-CAP",
+      "to": "OUTBOX.MAIN.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.UNKNOWN-CAP",
+      "to": "OUTBOX.MAIN.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.UNKNOWN-RETRY",
+      "to": "OUTBOX.MAIN.CODE.CLASSIFY",
+      "relation": "implemented-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.MAP.UNKNOWN-RETRY",
+      "to": "OUTBOX.MAIN.CODE.RETRY",
+      "relation": "points-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.ASM.PG-LOCKS",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.ASM.REMOTE-IDEMPOTENCE",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.ASM.SERVICE-FAIRNESS",
+      "relation": "assumes"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.CLAIM",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.DISABLED",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.KEY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.KICK-ONLY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.ORDINARY-CAP",
+      "relation": "has-gap"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-CAP",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-NOT-DELIVERED",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-RETRY",
+      "relation": "states"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.STATE.ROW",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.CLAIM",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.PERMANENT-DEAD-LETTER",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.RETRY",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.SETTLE",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.UNKNOWN-CAP",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.MODEL",
+      "to": "OUTBOX.MAIN.TRANSITION.UNKNOWN-RETRY",
+      "relation": "defines"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.CLAIM",
+      "to": "OUTBOX.MAIN.THM.CLAIM",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.DISABLED",
+      "to": "OUTBOX.MAIN.THM.DISABLED",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.KEY",
+      "to": "OUTBOX.MAIN.THM.KEY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.KICK-ONLY",
+      "to": "OUTBOX.MAIN.THM.KICK-ONLY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.UNKNOWN-CAP",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-CAP",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.UNKNOWN-NOT-DELIVERED",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-NOT-DELIVERED",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.PROP.UNKNOWN-RETRY",
+      "to": "OUTBOX.MAIN.THM.UNKNOWN-RETRY",
+      "relation": "proved-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REFINEMENT.SQL",
+      "to": "OUTBOX.MAIN.CODE.CLAIM",
+      "relation": "refines-code"
+    },
+    {
+      "from": "OUTBOX.MAIN.REFINEMENT.SQL",
+      "to": "OUTBOX.MAIN.CODE.ROW",
+      "relation": "refines-code"
+    },
+    {
+      "from": "OUTBOX.MAIN.REFINEMENT.SQL",
+      "to": "OUTBOX.MAIN.MAP.CLAIM",
+      "relation": "links-refinement-mapping"
+    },
+    {
+      "from": "OUTBOX.MAIN.REFINEMENT.SQL",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "refines-model"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.001",
+      "to": "OUTBOX.MAIN.AC.001",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.001",
+      "to": "OUTBOX.MAIN.CODE.TEST-001",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.001",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.001",
+      "to": "OUTBOX.MAIN.PROP.DISABLED",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.001",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.AC.002",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.CODE.TEST-002",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.PROP.CLAIM",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.PROP.EXTERNAL-DELIVERY",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.002",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.003",
+      "to": "OUTBOX.MAIN.AC.003",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.003",
+      "to": "OUTBOX.MAIN.CODE.TEST-003",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.003",
+      "to": "OUTBOX.MAIN.PROP.AUTH-CLASS",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.003",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.AC.004",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.CODE.TEST-004",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.PROP.KICK-ONLY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.PROP.ORDINARY-CAP",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.PROP.REQUEUE",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.004",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.AC.005",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.CODE.TEST-005",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.PROP.KICK-ONLY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.PROP.PAYLOAD",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.005",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.006",
+      "to": "OUTBOX.MAIN.AC.006",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.006",
+      "to": "OUTBOX.MAIN.CODE.TEST-006",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.006",
+      "to": "OUTBOX.MAIN.PROP.ISOLATION",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.006",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.007",
+      "to": "OUTBOX.MAIN.AC.007",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.007",
+      "to": "OUTBOX.MAIN.CODE.TEST-007",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.007",
+      "to": "OUTBOX.MAIN.PROP.ENV",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.007",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.AC.008",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.CODE.TEST-008",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.PROP.KEY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-CAP",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-NOT-DELIVERED",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-RETRY",
+      "relation": "constrains"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.008",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.009",
+      "to": "OUTBOX.MAIN.AC.009",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.009",
+      "to": "OUTBOX.MAIN.CODE.TEST-009",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.009",
+      "to": "OUTBOX.MAIN.PROP.POOL",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.009",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.010",
+      "to": "OUTBOX.MAIN.AC.010",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.010",
+      "to": "OUTBOX.MAIN.CODE.TEST-010",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.010",
+      "to": "OUTBOX.MAIN.PROP.FORUM-ORDER",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.010",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.DELTA5",
+      "to": "OUTBOX.MAIN.AC.DELTA5",
+      "relation": "acceptance"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.DELTA5",
+      "to": "OUTBOX.MAIN.CODE.TEST-DELTA5",
+      "relation": "checked-by-definition"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.DELTA5",
+      "to": "OUTBOX.MAIN.PROP.UNKNOWN-KIND",
+      "relation": "needs-property"
+    },
+    {
+      "from": "OUTBOX.MAIN.REQ.DELTA5",
+      "to": "OUTBOX.MAIN.SPEC",
+      "relation": "governed-by"
+    },
+    {
+      "from": "OUTBOX.MAIN.SPEC",
+      "to": "OUTBOX.MAIN.DELTA3",
+      "relation": "records"
+    },
+    {
+      "from": "OUTBOX.MAIN.STATE.ROW",
+      "to": "OUTBOX.MAIN.MAP.ROW",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TEST.PG",
+      "to": "OUTBOX.MAIN.MODEL",
+      "relation": "execution-needed"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.CLAIM",
+      "to": "OUTBOX.MAIN.MAP.CLAIM",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.PERMANENT-DEAD-LETTER",
+      "to": "OUTBOX.MAIN.MAP.PERMANENT-DEAD-LETTER",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.RETRY",
+      "to": "OUTBOX.MAIN.MAP.RETRY",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.SETTLE",
+      "to": "OUTBOX.MAIN.MAP.SETTLE",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.UNKNOWN-CAP",
+      "to": "OUTBOX.MAIN.MAP.UNKNOWN-CAP",
+      "relation": "maps-to"
+    },
+    {
+      "from": "OUTBOX.MAIN.TRANSITION.UNKNOWN-RETRY",
+      "to": "OUTBOX.MAIN.MAP.UNKNOWN-RETRY",
+      "relation": "maps-to"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Evidence Graph Compiler v1 — Batch 1 implementation plan
 
-Status: implementation plan. This plan does not claim the compiler is implemented or validated.
+Status: initial plan for PR #20. See [the implemented Batch 1 protocol and Workflow fixtures](EVIDENCE_GRAPH_COMPILER_V1.md) for the current surfaces and evidence.
 
 ## 1. Goal and boundary
 
@@ -100,6 +100,6 @@ Use temporary project fixtures and unittest:
 
 Batch 1 is complete only when the CLI runs against at least one real consumer project without changing its source authorities, all unit tests and negative controls pass, the four output files are inspectable, and an independent reviewer can reproduce the result.
 
-The first real consumer fixture will be `mayf3/personal-agent` R06/R07, using its existing requirements, Lean declarations, Python/TypeScript mappings and locally reported test receipts. A fixture run must clearly distinguish what is actually machine-checked from evidence merely declared by the project.
+The Workflow acceptance uses Svc Wake, Svc Outbox and Core Recovery. The earlier personal-agent idea remains outside this change. A fixture run must clearly distinguish what is actually machine-checked from evidence merely declared by the project.
 
 No Batch 2 work starts until this gate is met.

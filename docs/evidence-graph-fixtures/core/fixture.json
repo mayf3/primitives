@@ -1,0 +1,1620 @@
+{
+  "schema_version": "evidence-receipt/v1",
+  "fixture_scope": "Core main Recovery pilot, five affected obligations, not whole PPR V2/WEC V5",
+  "materials": [
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+      "target": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md",
+      "target": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md"
+    },
+    {
+      "repo": "primitives",
+      "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+      "path": "domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+      "target": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/ledger.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/ledger.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/ledger-events.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-events.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/ledger-admission.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-admission.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/engine.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/engine.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/recovery/automatic.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/recovery/automatic-ledger.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic-ledger.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/src/projection.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/src/projection.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+      "target": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/test/recovery.test.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/test/recovery.test.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/test/observation-cas/blocked-recovery.test.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery.test.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/test/observation-cas/ledger-identity.test.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/ledger-identity.test.js"
+    },
+    {
+      "repo": "dsh-agent-core",
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "path": "packages/workflow-execution/test/observation-cas/blocked-recovery-process.js",
+      "target": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery-process.js"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "CORE.SPEC.PPR-V2",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      }
+    },
+    {
+      "id": "CORE.SPEC.WEC-V5",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72"
+      }
+    },
+    {
+      "id": "CORE.DEC.PPR-002",
+      "kind": "DEC",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#DEC-PPR-002"
+    },
+    {
+      "id": "CORE.MODEL.EXECUTION-RECOVERY",
+      "kind": "MODEL",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+      },
+      "description": "Shared one-attempt transition semantics; no claim about physical implementation"
+    },
+    {
+      "id": "CORE.STATE.WAL",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "deliveryStarted"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.STATE.UNKNOWN",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "outcomeUnknown"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.REQ.PPR-003",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "critical": true,
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#CTR-PPR-003",
+      "authority_anchor": "CTR-PPR-003"
+    },
+    {
+      "id": "CORE.AC.PPR-003",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#ACC-PPR-004",
+      "authority_anchor": "ACC-PPR-004",
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.REQ.PPR-003": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+        }
+      },
+      "reason": "Original governed acceptance has more obligations than these selected loopback and JS test cases.",
+      "requirement_ids": [
+        "CORE.REQ.PPR-003"
+      ]
+    },
+    {
+      "id": "CORE.REQ.WAE-012",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "critical": true,
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#CTR-WAE-012",
+      "authority_anchor": "CTR-WAE-012"
+    },
+    {
+      "id": "CORE.AC.WAE-012",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#ACC-PPR-002",
+      "authority_anchor": "ACC-PPR-002",
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.REQ.WAE-012": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+        }
+      },
+      "reason": "Original governed acceptance has more obligations than these selected loopback and JS test cases.",
+      "requirement_ids": [
+        "CORE.REQ.WAE-012"
+      ]
+    },
+    {
+      "id": "CORE.REQ.EKRWAE-005",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "critical": true,
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#CTR-EKRWAE-005",
+      "authority_anchor": "CTR-EKRWAE-005"
+    },
+    {
+      "id": "CORE.AC.EKRWAE-005",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#ACC-PPR-002",
+      "authority_anchor": "ACC-PPR-002",
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.REQ.EKRWAE-005": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+        }
+      },
+      "reason": "Original governed acceptance has more obligations than these selected loopback and JS test cases.",
+      "requirement_ids": [
+        "CORE.REQ.EKRWAE-005"
+      ]
+    },
+    {
+      "id": "CORE.REQ.RTH-003",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "critical": true,
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#CTR-RTH-003",
+      "authority_anchor": "CTR-RTH-003"
+    },
+    {
+      "id": "CORE.AC.RTH-003",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2#ACC-RTH-004",
+      "authority_anchor": "ACC-RTH-004",
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.REQ.RTH-003": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc"
+        }
+      },
+      "reason": "Original governed acceptance has more obligations than these selected loopback and JS test cases.",
+      "requirement_ids": [
+        "CORE.REQ.RTH-003"
+      ]
+    },
+    {
+      "id": "CORE.REQ.WEC1-002",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72"
+      },
+      "critical": true,
+      "authority_id": "AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5#CTR-WEC1-002",
+      "authority_anchor": "CTR-WEC1-002"
+    },
+    {
+      "id": "CORE.AC.WEC1-002",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72"
+      },
+      "authority_id": "AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5#ACC-WEC5-002",
+      "authority_anchor": "ACC-WEC5-002",
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.REQ.WEC1-002": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72"
+        }
+      },
+      "reason": "Original governed acceptance has more obligations than these selected loopback and JS test cases.",
+      "requirement_ids": [
+        "CORE.REQ.WEC1-002"
+      ]
+    },
+    {
+      "id": "CORE.CODE.LEDGER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2",
+        "symbol": "ExecutionLedger"
+      }
+    },
+    {
+      "id": "CORE.CODE.EVENTS",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-events.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e",
+        "symbol": "applyLedgerEvent"
+      }
+    },
+    {
+      "id": "CORE.CODE.ADMISSION",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-admission.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043",
+        "symbol": "beginAttemptIfAbsent"
+      }
+    },
+    {
+      "id": "CORE.CODE.ENGINE",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/engine.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4",
+        "symbol": "createWorkflowExecutionEngine"
+      }
+    },
+    {
+      "id": "CORE.CODE.AUTO",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef",
+        "symbol": "createAutomaticRecovery"
+      }
+    },
+    {
+      "id": "CORE.CODE.AUTO-LEDGER",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic-ledger.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592",
+        "symbol": "matchesRecoveryTrigger"
+      }
+    },
+    {
+      "id": "CORE.CODE.PROJECTION",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/projection.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8",
+        "symbol": "reconcileDeliveryEvidence"
+      }
+    },
+    {
+      "id": "CORE.TRANS.BLOCKED-RECOVERY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "blockedRecoveryBeginDelivery"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.MAP.BLOCKED-RECOVERY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef",
+        "symbol": "createAutomaticRecovery"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.TRANS.WAL-START",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "plannedBeginDelivery"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.MAP.WAL-START",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2",
+        "symbol": "recordDeliveryStarted"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.TRANS.UNKNOWN-RECHECK",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "readOnlyRecheck"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.MAP.UNKNOWN-RECHECK",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/projection.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8",
+        "symbol": "reconcileDeliveryEvidence"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.TRANS.TERMINAL-HANDOFF",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "recordHandoffMetadata"
+      },
+      "critical": true
+    },
+    {
+      "id": "CORE.MAP.TERMINAL-HANDOFF",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-events.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e",
+        "symbol": "terminalRefusal"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.PROP.SAME-IDENTITY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "description": "The same visit, attempt and generation are preserved across allowed blocked recovery."
+    },
+    {
+      "id": "CORE.THM.SAME-IDENTITY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "AgentWorkflow.ExecutionRecovery.blocked_recovery_is_same_attempt"
+      },
+      "declaration": "AgentWorkflow.ExecutionRecovery.blocked_recovery_is_same_attempt"
+    },
+    {
+      "id": "CORE.PROP.WAL-GUARD",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "description": "A modeled begin-delivery edge requires the original delivery latch clear."
+    },
+    {
+      "id": "CORE.THM.WAL-GUARD",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "AgentWorkflow.ExecutionRecovery.begin_delivery_requires_clear_fence"
+      },
+      "declaration": "AgentWorkflow.ExecutionRecovery.begin_delivery_requires_clear_fence"
+    },
+    {
+      "id": "CORE.PROP.UNKNOWN-CLOSED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "description": "Outcome UNKNOWN cannot enter another modeled begin-delivery."
+    },
+    {
+      "id": "CORE.THM.UNKNOWN-CLOSED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "AgentWorkflow.ExecutionRecovery.unknown_cannot_begin_delivery"
+      },
+      "declaration": "AgentWorkflow.ExecutionRecovery.unknown_cannot_begin_delivery"
+    },
+    {
+      "id": "CORE.PROP.UNKNOWN-STUTTER",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "description": "The modeled read-only recheck preserves identity and outcome."
+    },
+    {
+      "id": "CORE.THM.UNKNOWN-STUTTER",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "AgentWorkflow.ExecutionRecovery.unknown_readback_preserves_state"
+      },
+      "declaration": "AgentWorkflow.ExecutionRecovery.unknown_readback_preserves_state"
+    },
+    {
+      "id": "CORE.PROP.TERMINAL-CLOSED",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "description": "Settled or needs-review cannot start a modeled delivery."
+    },
+    {
+      "id": "CORE.THM.TERMINAL-CLOSED",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "AgentWorkflow.ExecutionRecovery.terminal_cannot_begin_delivery"
+      },
+      "declaration": "AgentWorkflow.ExecutionRecovery.terminal_cannot_begin_delivery"
+    },
+    {
+      "id": "CORE.LEAN.KERNEL-CI",
+      "kind": "LEAN",
+      "coordinate": {
+        "path": "lean-ci-all.json",
+        "sha256": "ee5122591d2e8cf2a4c27071c0420ae32fdc9ff66388f672b7a16bf4c2c9f69d",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e"
+      },
+      "evidence_state": "PASS",
+      "bindings": {
+        "CORE.MODEL.EXECUTION-RECOVERY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.THM.SAME-IDENTITY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.THM.WAL-GUARD": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.THM.UNKNOWN-CLOSED": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.THM.UNKNOWN-STUTTER": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.THM.TERMINAL-CLOSED": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        }
+      },
+      "origin": "https://github.com/mayf3/primitives/actions/runs/46080833058",
+      "receipt_checks": {
+        "status": "PASS_CONDITIONAL_MODEL_PROOFS"
+      }
+    },
+    {
+      "id": "CORE.TEST.RECOVERY",
+      "kind": "TEST",
+      "coordinate": {
+        "path": "core-test-execution.json",
+        "sha256": "f025965bd34d3ed3c2dff20a3d5ac3d287f055945426cb52b5722f439c70cb00",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+      },
+      "evidence_state": "PASS",
+      "bindings": {
+        "CORE.MODEL.EXECUTION-RECOVERY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.CODE.LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2"
+        },
+        "CORE.CODE.EVENTS": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+        },
+        "CORE.CODE.ADMISSION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043"
+        },
+        "CORE.CODE.ENGINE": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4"
+        },
+        "CORE.CODE.AUTO": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef"
+        },
+        "CORE.CODE.AUTO-LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592"
+        },
+        "CORE.CODE.PROJECTION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8"
+        },
+        "CORE.CODE.TEST-RECOVERY": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "0725435828a2a20d9fd7617170884980c67246a55ab14d0dde720bb8f5f48e0e"
+        },
+        "CORE.CODE.TEST-BLOCKED": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "f3fdcb96eaac0038c913848fa4e1f50fd7c27882d5e529e063beddd9fb316aec"
+        },
+        "CORE.CODE.TEST-RESTART": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "a23a55dd0be9d635c8bafc2d2668dc8ba94b15161be45e9abc9ccb0e6a64f06c"
+        },
+        "CORE.CODE.TEST-IDENTITY": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "5ffb483cb97d1be16aa2df447a9dc59bf4047a4ad550d2be6332905cafd9e89f"
+        },
+        "CORE.CODE.TEST-CHILD": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "0ff45ccb129ee9503092e5d7a4b48cda27a4ef6250c98e24d541518b43629b9a"
+        },
+        "CORE.TRACE.NATIVE-TAP": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "9efb81c3563caa3b27284460265c1cf5f3890403b898cc84426d97be7e092159"
+        },
+        "CORE.TRACE.RESTART": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "4927cf36f44dad8ad639ac4e3914ce23738ba1118f355fa83b6cc0916ca8311a"
+        }
+      },
+      "evidence_scope": "57 bounded tests on the exact implementation; no Lean oracle or whole-contract acceptance",
+      "receipt_checks": {
+        "status": "PASS",
+        "exit_code": 0,
+        "summary.tests": 57,
+        "summary.fail": 0
+      }
+    },
+    {
+      "id": "CORE.TRACE.RESTART",
+      "kind": "TRACE",
+      "coordinate": {
+        "path": "core-restart-observations.jsonl",
+        "sha256": "4927cf36f44dad8ad639ac4e3914ce23738ba1118f355fa83b6cc0916ca8311a",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+      },
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.MODEL.EXECUTION-RECOVERY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.CODE.LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2"
+        },
+        "CORE.CODE.EVENTS": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+        },
+        "CORE.CODE.ADMISSION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043"
+        },
+        "CORE.CODE.ENGINE": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4"
+        },
+        "CORE.CODE.AUTO": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef"
+        },
+        "CORE.CODE.AUTO-LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592"
+        },
+        "CORE.CODE.PROJECTION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8"
+        }
+      },
+      "reason": "Original structured SIGKILL/ACK observations are present. There is no complete normalized model trace validation."
+    },
+    {
+      "id": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "kind": "REFINEMENT",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.MODEL.EXECUTION-RECOVERY": {
+          "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+          "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+        },
+        "CORE.CODE.LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2"
+        },
+        "CORE.CODE.EVENTS": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+        },
+        "CORE.CODE.ADMISSION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043"
+        },
+        "CORE.CODE.ENGINE": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4"
+        },
+        "CORE.CODE.AUTO": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef"
+        },
+        "CORE.CODE.AUTO-LEDGER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592"
+        },
+        "CORE.CODE.PROJECTION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8"
+        },
+        "CORE.MAP.BLOCKED-RECOVERY": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef"
+        },
+        "CORE.MAP.WAL-START": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2"
+        },
+        "CORE.MAP.UNKNOWN-RECHECK": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8"
+        },
+        "CORE.MAP.TERMINAL-HANDOFF": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+        },
+        "CORE.MAP.WAL-CALL-ORDER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4"
+        },
+        "CORE.MAP.WAL-REDUCER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+        },
+        "CORE.MAP.ATTEMPT-IDENTITY": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043"
+        },
+        "CORE.MAP.RECOVERY-AUTHORIZATION": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592"
+        }
+      },
+      "reason": "Existing manual code map and bounded tests do not give an initial correspondence and step simulation."
+    },
+    {
+      "id": "CORE.ASM.POWER-LOSS",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "reason": "Process SIGKILL is exercised. Filesystem/device power-loss durability has no fresh probe."
+    },
+    {
+      "id": "CORE.PROBE.POWER-LOSS",
+      "kind": "PROBE",
+      "coordinate": {
+        "path": "core-test-execution.json",
+        "sha256": "f025965bd34d3ed3c2dff20a3d5ac3d287f055945426cb52b5722f439c70cb00",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+      },
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.ASM.POWER-LOSS": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+        }
+      },
+      "reason": "Process SIGKILL is exercised. Filesystem/device power-loss durability has no fresh probe."
+    },
+    {
+      "id": "CORE.ASM.SVC-AUTHORITY",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "reason": "Local HTTP and Router process fixtures do not verify live Svc state, authority or Original AC."
+    },
+    {
+      "id": "CORE.PROBE.SVC-AUTHORITY",
+      "kind": "PROBE",
+      "coordinate": {
+        "path": "core-test-execution.json",
+        "sha256": "f025965bd34d3ed3c2dff20a3d5ac3d287f055945426cb52b5722f439c70cb00",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+      },
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.ASM.SVC-AUTHORITY": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+        }
+      },
+      "reason": "Local HTTP and Router process fixtures do not verify live Svc state, authority or Original AC."
+    },
+    {
+      "id": "CORE.ASM.SCHEDULER",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+      },
+      "critical": true,
+      "reason": "Focused process runs do not establish fair production scheduling or continuous consumer availability."
+    },
+    {
+      "id": "CORE.PROBE.SCHEDULER",
+      "kind": "PROBE",
+      "coordinate": {
+        "path": "core-test-execution.json",
+        "sha256": "f025965bd34d3ed3c2dff20a3d5ac3d287f055945426cb52b5722f439c70cb00",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+      },
+      "evidence_state": "UNKNOWN",
+      "bindings": {
+        "CORE.ASM.SCHEDULER": {
+          "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+          "sha256": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d"
+        }
+      },
+      "reason": "Focused process runs do not establish fair production scheduling or continuous consumer availability."
+    },
+    {
+      "id": "CORE.CODE.TEST-RECOVERY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/recovery.test.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "0725435828a2a20d9fd7617170884980c67246a55ab14d0dde720bb8f5f48e0e"
+      }
+    },
+    {
+      "id": "CORE.CODE.TEST-BLOCKED",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery.test.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "f3fdcb96eaac0038c913848fa4e1f50fd7c27882d5e529e063beddd9fb316aec"
+      }
+    },
+    {
+      "id": "CORE.CODE.TEST-RESTART",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "a23a55dd0be9d635c8bafc2d2668dc8ba94b15161be45e9abc9ccb0e6a64f06c"
+      }
+    },
+    {
+      "id": "CORE.CODE.TEST-IDENTITY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/ledger-identity.test.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "5ffb483cb97d1be16aa2df447a9dc59bf4047a4ad550d2be6332905cafd9e89f"
+      }
+    },
+    {
+      "id": "CORE.CODE.TEST-CHILD",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery-process.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "0ff45ccb129ee9503092e5d7a4b48cda27a4ef6250c98e24d541518b43629b9a"
+      }
+    },
+    {
+      "id": "CORE.TRACE.NATIVE-TAP",
+      "kind": "TRACE",
+      "coordinate": {
+        "path": "core-recovery.tap",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "9efb81c3563caa3b27284460265c1cf5f3890403b898cc84426d97be7e092159"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "Original test execution output, not a normalized correctness trace."
+    },
+    {
+      "id": "CORE.MAP.WAL-CALL-ORDER",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/engine.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4",
+        "symbol": "createWorkflowExecutionEngine"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.MAP.WAL-REDUCER",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-events.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e",
+        "symbol": "applyLedgerEvent"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.MAP.ATTEMPT-IDENTITY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-admission.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043",
+        "symbol": "beginAttemptIfAbsent"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.MAP.RECOVERY-AUTHORIZATION",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/recovery/automatic-ledger.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592",
+        "symbol": "matchesRecoveryTrigger"
+      },
+      "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    }
+  ],
+  "links": [
+    {
+      "from": "CORE.SPEC.PPR-V2",
+      "to": "CORE.DEC.PPR-002",
+      "relation": "records"
+    },
+    {
+      "from": "CORE.DEC.PPR-002",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "represented_by"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.STATE.WAL",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.STATE.UNKNOWN",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.SPEC.PPR-V2",
+      "relation": "governed_by"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "mapped_to"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.AC.PPR-003",
+      "relation": "acceptance"
+    },
+    {
+      "from": "CORE.REQ.WAE-012",
+      "to": "CORE.SPEC.PPR-V2",
+      "relation": "governed_by"
+    },
+    {
+      "from": "CORE.REQ.WAE-012",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "mapped_to"
+    },
+    {
+      "from": "CORE.REQ.WAE-012",
+      "to": "CORE.AC.WAE-012",
+      "relation": "acceptance"
+    },
+    {
+      "from": "CORE.REQ.EKRWAE-005",
+      "to": "CORE.SPEC.PPR-V2",
+      "relation": "governed_by"
+    },
+    {
+      "from": "CORE.REQ.EKRWAE-005",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "mapped_to"
+    },
+    {
+      "from": "CORE.REQ.EKRWAE-005",
+      "to": "CORE.AC.EKRWAE-005",
+      "relation": "acceptance"
+    },
+    {
+      "from": "CORE.REQ.RTH-003",
+      "to": "CORE.SPEC.PPR-V2",
+      "relation": "governed_by"
+    },
+    {
+      "from": "CORE.REQ.RTH-003",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "mapped_to"
+    },
+    {
+      "from": "CORE.REQ.RTH-003",
+      "to": "CORE.AC.RTH-003",
+      "relation": "acceptance"
+    },
+    {
+      "from": "CORE.REQ.WEC1-002",
+      "to": "CORE.SPEC.WEC-V5",
+      "relation": "governed_by"
+    },
+    {
+      "from": "CORE.REQ.WEC1-002",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "mapped_to"
+    },
+    {
+      "from": "CORE.REQ.WEC1-002",
+      "to": "CORE.AC.WEC1-002",
+      "relation": "acceptance"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.BLOCKED-RECOVERY",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.BLOCKED-RECOVERY",
+      "to": "CORE.MAP.BLOCKED-RECOVERY",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.BLOCKED-RECOVERY",
+      "to": "CORE.CODE.AUTO",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.WAL-START",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.WAL-START",
+      "to": "CORE.MAP.WAL-START",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.WAL-START",
+      "to": "CORE.CODE.LEDGER",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.UNKNOWN-RECHECK",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.UNKNOWN-RECHECK",
+      "to": "CORE.MAP.UNKNOWN-RECHECK",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.UNKNOWN-RECHECK",
+      "to": "CORE.CODE.PROJECTION",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.TERMINAL-HANDOFF",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.TERMINAL-HANDOFF",
+      "to": "CORE.MAP.TERMINAL-HANDOFF",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.TERMINAL-HANDOFF",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.PROP.SAME-IDENTITY",
+      "relation": "states"
+    },
+    {
+      "from": "CORE.PROP.SAME-IDENTITY",
+      "to": "CORE.THM.SAME-IDENTITY",
+      "relation": "proved_by"
+    },
+    {
+      "from": "CORE.THM.SAME-IDENTITY",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.PROP.WAL-GUARD",
+      "relation": "states"
+    },
+    {
+      "from": "CORE.PROP.WAL-GUARD",
+      "to": "CORE.THM.WAL-GUARD",
+      "relation": "proved_by"
+    },
+    {
+      "from": "CORE.THM.WAL-GUARD",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.PROP.UNKNOWN-CLOSED",
+      "relation": "states"
+    },
+    {
+      "from": "CORE.PROP.UNKNOWN-CLOSED",
+      "to": "CORE.THM.UNKNOWN-CLOSED",
+      "relation": "proved_by"
+    },
+    {
+      "from": "CORE.THM.UNKNOWN-CLOSED",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.PROP.UNKNOWN-STUTTER",
+      "relation": "states"
+    },
+    {
+      "from": "CORE.PROP.UNKNOWN-STUTTER",
+      "to": "CORE.THM.UNKNOWN-STUTTER",
+      "relation": "proved_by"
+    },
+    {
+      "from": "CORE.THM.UNKNOWN-STUTTER",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.PROP.TERMINAL-CLOSED",
+      "relation": "states"
+    },
+    {
+      "from": "CORE.PROP.TERMINAL-CLOSED",
+      "to": "CORE.THM.TERMINAL-CLOSED",
+      "relation": "proved_by"
+    },
+    {
+      "from": "CORE.THM.TERMINAL-CLOSED",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.THM.SAME-IDENTITY",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.THM.WAL-GUARD",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.THM.UNKNOWN-CLOSED",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.THM.UNKNOWN-STUTTER",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.LEAN.KERNEL-CI",
+      "to": "CORE.THM.TERMINAL-CLOSED",
+      "relation": "verifies"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.LEDGER",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.ADMISSION",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.ENGINE",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.AUTO",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.AUTO-LEDGER",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.PROJECTION",
+      "relation": "tests_at_scope"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.LEDGER",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.ADMISSION",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.ENGINE",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.AUTO",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.AUTO-LEDGER",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.TRACE.RESTART",
+      "to": "CORE.CODE.PROJECTION",
+      "relation": "observes"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.MODEL.EXECUTION-RECOVERY",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.LEDGER",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.ADMISSION",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.ENGINE",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.AUTO",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.AUTO-LEDGER",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "to": "CORE.CODE.PROJECTION",
+      "relation": "about"
+    },
+    {
+      "from": "CORE.MAP.BLOCKED-RECOVERY",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.MAP.WAL-START",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.MAP.UNKNOWN-RECHECK",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.MAP.TERMINAL-HANDOFF",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.ASM.POWER-LOSS",
+      "relation": "assumes"
+    },
+    {
+      "from": "CORE.PROBE.POWER-LOSS",
+      "to": "CORE.ASM.POWER-LOSS",
+      "relation": "probes"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.ASM.SVC-AUTHORITY",
+      "relation": "assumes"
+    },
+    {
+      "from": "CORE.PROBE.SVC-AUTHORITY",
+      "to": "CORE.ASM.SVC-AUTHORITY",
+      "relation": "probes"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.ASM.SCHEDULER",
+      "relation": "assumes"
+    },
+    {
+      "from": "CORE.PROBE.SCHEDULER",
+      "to": "CORE.ASM.SCHEDULER",
+      "relation": "probes"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.PROP.WAL-GUARD",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.PROP.UNKNOWN-CLOSED",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.PPR-003",
+      "to": "CORE.PROP.UNKNOWN-STUTTER",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.WAE-012",
+      "to": "CORE.PROP.WAL-GUARD",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.WAE-012",
+      "to": "CORE.PROP.SAME-IDENTITY",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.EKRWAE-005",
+      "to": "CORE.PROP.SAME-IDENTITY",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.EKRWAE-005",
+      "to": "CORE.PROP.WAL-GUARD",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.RTH-003",
+      "to": "CORE.PROP.TERMINAL-CLOSED",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.WEC1-002",
+      "to": "CORE.PROP.UNKNOWN-STUTTER",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.REQ.WEC1-002",
+      "to": "CORE.PROP.TERMINAL-CLOSED",
+      "relation": "has_property"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.TEST-RECOVERY",
+      "relation": "executes"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.TEST-BLOCKED",
+      "relation": "executes"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.TEST-RESTART",
+      "relation": "executes"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.TEST-IDENTITY",
+      "relation": "executes"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.CODE.TEST-CHILD",
+      "relation": "executes"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.TRACE.NATIVE-TAP",
+      "relation": "records"
+    },
+    {
+      "from": "CORE.TEST.RECOVERY",
+      "to": "CORE.TRACE.RESTART",
+      "relation": "records"
+    },
+    {
+      "from": "CORE.TRANS.WAL-START",
+      "to": "CORE.MAP.WAL-CALL-ORDER",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.WAL-CALL-ORDER",
+      "to": "CORE.CODE.ENGINE",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MAP.WAL-CALL-ORDER",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.TRANS.WAL-START",
+      "to": "CORE.MAP.WAL-REDUCER",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.WAL-REDUCER",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MAP.WAL-REDUCER",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.TRANS.BLOCKED-RECOVERY",
+      "to": "CORE.MAP.ATTEMPT-IDENTITY",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.ATTEMPT-IDENTITY",
+      "to": "CORE.CODE.ADMISSION",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MAP.ATTEMPT-IDENTITY",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.TRANS.BLOCKED-RECOVERY",
+      "to": "CORE.MAP.RECOVERY-AUTHORIZATION",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.RECOVERY-AUTHORIZATION",
+      "to": "CORE.CODE.AUTO-LEDGER",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MAP.RECOVERY-AUTHORIZATION",
+      "to": "CORE.REFINEMENT.WORKFLOW-EXECUTION",
+      "relation": "refinement"
+    },
+    {
+      "from": "CORE.STATE.WAL",
+      "to": "CORE.MAP.WAL-REDUCER",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.STATE.UNKNOWN",
+      "to": "CORE.MAP.UNKNOWN-RECHECK",
+      "relation": "implemented_by"
+    }
+  ],
+  "files": [
+    "lean-ci-all.json",
+    "core-recovery.tap",
+    "core-test-execution.json",
+    "core-restart-observations.jsonl"
+  ]
+}

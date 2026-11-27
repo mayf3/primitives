@@ -1,0 +1,138 @@
+{
+  "schema": "core-model-pilot-test-run/v1",
+  "code_revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+  "model_revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+  "model_path": "domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+  "model_file_sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+  "spec_inputs": {
+    "docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc",
+    "docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72"
+  },
+  "source_files_sha256": {
+    "docs/specs/AGENT_CORE_WORKFLOW_PRE_ADMISSION_RECOVERY_V2.md": "46f1b56c0ca016ef5db4661ba1239c976d3b222741b04d4b17bd52859e05addc",
+    "docs/specs/AGENT_CORE_WORKFLOW_EXECUTION_CONTROL_V5.md": "ea33a7d1c702caf3aea8f16b67e1bf41d54e4000669186bf9690a50d07641b72",
+    "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md": "d10da6ce94b9e41c3cb306474b6e6b7404755c41905ede232e9c45d05bc4701d",
+    ".agents/governance.lock.json": "0cb6acb6e7839ee2b6d0312653e6c5efc680512a36bf44a842db3aa79dc5a8b5",
+    ".agents/templates/CONFORMANCE_RECORD_TEMPLATE.md": "bfc491210cf0754b818a48290a3ce07639ac0f301e3c891c3eea4fc0a4b0dbdd",
+    "packages/workflow-execution/src/ledger.js": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2",
+    "packages/workflow-execution/src/ledger-events.js": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e",
+    "packages/workflow-execution/src/ledger-admission.js": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043",
+    "packages/workflow-execution/src/engine.js": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4",
+    "packages/workflow-execution/src/recovery/automatic.js": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef",
+    "packages/workflow-execution/src/recovery/automatic-ledger.js": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592",
+    "packages/workflow-execution/src/projection.js": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8",
+    "packages/workflow-execution/test/recovery.test.js": "0725435828a2a20d9fd7617170884980c67246a55ab14d0dde720bb8f5f48e0e",
+    "packages/workflow-execution/test/observation-cas/blocked-recovery.test.js": "f3fdcb96eaac0038c913848fa4e1f50fd7c27882d5e529e063beddd9fb316aec",
+    "packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js": "a23a55dd0be9d635c8bafc2d2668dc8ba94b15161be45e9abc9ccb0e6a64f06c",
+    "packages/workflow-execution/test/observation-cas/ledger-identity.test.js": "5ffb483cb97d1be16aa2df447a9dc59bf4047a4ad550d2be6332905cafd9e89f",
+    "packages/workflow-execution/test/observation-cas/blocked-recovery-process.js": "0ff45ccb129ee9503092e5d7a4b48cda27a4ef6250c98e24d541518b43629b9a"
+  },
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "packages/workflow-execution/test/recovery.test.js",
+    "packages/workflow-execution/test/observation-cas/blocked-recovery.test.js",
+    "packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js",
+    "packages/workflow-execution/test/observation-cas/ledger-identity.test.js"
+  ],
+  "environment": {
+    "scope": "isolated checkout; temporary files, real child processes and loopback service fixture",
+    "platform": "Darwin",
+    "machine": "arm64",
+    "declared_source_env": {
+      "EKR_SOURCE_SHA": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e"
+    }
+  },
+  "seed": null,
+  "seed_scope": "fixed test fixture input; no generated property sequence",
+  "coverage_limitations": [
+    "Finite JS test execution, not a correspondence or trace-normalization check against Lean.",
+    "No original Svc business acceptance, production authentication, live observer or runtime adoption."
+  ],
+  "node_version": "v26.7.0",
+  "started_at": "2026-11-27T23:34:13.528516Z",
+  "finished_at": "2026-11-27T23:34:24.550379Z",
+  "status": "PASS",
+  "exit_code": 0,
+  "summary": {
+    "tests": 57,
+    "pass": 57,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "raw_tap_sha256": "9efb81c3563caa3b27284460265c1cf5f3890403b898cc84426d97be7e092159",
+  "structured_observations_sha256": "4927cf36f44dad8ad639ac4e3914ce23738ba1118f355fa83b6cc0916ca8311a",
+  "process_cases": [
+    "B2-503-restart-automatic-first-admission",
+    "B2-SIGKILL-before-wal",
+    "B2-SIGKILL-after-wal",
+    "B2-accepted-ACK-lost-SIGKILL",
+    "B2-automatic-manual-real-process-race",
+    "B2-world-drift-refusal-SIGKILL-read-only-duty-restarts"
+  ],
+  "evidence_bindings": {
+    "CORE.MODEL.EXECUTION-RECOVERY": {
+      "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+      "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc"
+    },
+    "CORE.CODE.LEDGER": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "7999048f35828027660b580763dd8b42a48b644dc01366f9fe6cfb0e903ed2a2"
+    },
+    "CORE.CODE.EVENTS": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e"
+    },
+    "CORE.CODE.ADMISSION": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "f05a5a3836b7584fa3475c582606e845d72b966dee021e9fd2d5bf8e74cec043"
+    },
+    "CORE.CODE.ENGINE": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "d9dfaf86dd5b52d351f4bdf44b971f68a89be8f86c5586c71fbd59dda63a7dd4"
+    },
+    "CORE.CODE.AUTO": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "1a27ac6e1f6172bdd1cd4a0ce42800c5a592b863dbbcbeabaafa7962c6cacdef"
+    },
+    "CORE.CODE.AUTO-LEDGER": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "37872d963f53e9744833a2e882479ea400ef24859b87535c3fc07a4354faf592"
+    },
+    "CORE.CODE.PROJECTION": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "c1a2507cc209a6271645f4c69a4dbea91716f796034db612e5180612ea9131e8"
+    },
+    "CORE.CODE.TEST-RECOVERY": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "0725435828a2a20d9fd7617170884980c67246a55ab14d0dde720bb8f5f48e0e"
+    },
+    "CORE.CODE.TEST-BLOCKED": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "f3fdcb96eaac0038c913848fa4e1f50fd7c27882d5e529e063beddd9fb316aec"
+    },
+    "CORE.CODE.TEST-RESTART": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "a23a55dd0be9d635c8bafc2d2668dc8ba94b15161be45e9abc9ccb0e6a64f06c"
+    },
+    "CORE.CODE.TEST-IDENTITY": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "5ffb483cb97d1be16aa2df447a9dc59bf4047a4ad550d2be6332905cafd9e89f"
+    },
+    "CORE.CODE.TEST-CHILD": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "0ff45ccb129ee9503092e5d7a4b48cda27a4ef6250c98e24d541518b43629b9a"
+    },
+    "CORE.TRACE.NATIVE-TAP": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "9efb81c3563caa3b27284460265c1cf5f3890403b898cc84426d97be7e092159"
+    },
+    "CORE.TRACE.RESTART": {
+      "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+      "sha256": "4927cf36f44dad8ad639ac4e3914ce23738ba1118f355fa83b6cc0916ca8311a"
+    }
+  }
+}
