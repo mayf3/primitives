@@ -93,8 +93,10 @@ def build(root):
 def reports(root,g):
     by={}; out={}
     for n in g["nodes"]: by.setdefault(n["id"],n)
-    edges={}
-    for e in g["links"]: edges.setdefault(e["from"],set()).add(e["to"])
+    edges={}; incoming={}
+    for e in g["links"]:
+        edges.setdefault(e["from"],set()).add(e["to"])
+        incoming.setdefault(e["to"],set()).add(e["from"])
     cov={"schema_version":SCHEMA,"requirements":[],"properties":[],"transitions":[],"mappings":[]}
     stale=[]
     for n in g["nodes"]:
@@ -140,7 +142,9 @@ def reports(root,g):
             if n.get("expected_environment_scope_hash") and n.get("environment_scope_hash")!=n["expected_environment_scope_hash"]:
                 stale.append({"code":"PROBE_SCOPE_MISMATCH","id":i})
         if k=="ACCEPTANCE":
-            reqs=[x for x in targets if by.get(x,{}).get("kind")=="REQ"]
+            # Accept either REQ -> ACCEPTANCE coverage links or
+            # ACCEPTANCE -> REQ provenance links; both retain one authority.
+            reqs=sorted({x for x in (targets | incoming.get(i,set())) if by.get(x,{}).get("kind")=="REQ"})
             if not reqs: stale.append({"code":"ACCEPTANCE_WITHOUT_REQUIREMENT","id":i})
             for req in reqs:
                 rev=by[req].get("revision") or by[req]["source_sha256"]
