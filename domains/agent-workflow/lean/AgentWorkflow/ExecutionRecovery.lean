@@ -40,11 +40,13 @@ inductive Event where
   | rejectAfterStart
   | reconcileSettled
   | reconcileNeedsReview
+  | readOnlyRecheck
+  | recordHandoffMetadata
   deriving DecidableEq, Repr
 
 /-- All allowed transitions for one attempt. Recovery preserves identity and
 can cross the delivery fence only from a blocked, not-yet-started state.
-There is intentionally no transition out of UNKNOWN or terminal states. -/
+UNKNOWN permits read-only rechecks, and reviewed terminal attempts may retain handoff metadata. Neither path reopens delivery. -/
 inductive Step : Attempt → Event → Attempt → Prop where
   | blockResolution {a : Attempt}
       (phase : a.phase = .planned) :
@@ -77,6 +79,12 @@ inductive Step : Attempt → Event → Attempt → Prop where
   | reconcileNeedsReview {a : Attempt}
       (phase : a.phase = .runDelivered) :
       Step a .reconcileNeedsReview { a with phase := .needsReview }
+  | readOnlyRecheck {a : Attempt}
+      (phase : a.phase = .outcomeUnknown) :
+      Step a .readOnlyRecheck a
+  | recordHandoffMetadata {a : Attempt}
+      (phase : a.phase = .needsReview) :
+      Step a .recordHandoffMetadata a
 
 /-- A modeled transition never changes NodeVisit/attempt/generation identity. -/
 theorem step_preserves_identity {before after : Attempt} {event : Event}
@@ -90,16 +98,23 @@ theorem begin_delivery_requires_clear_fence {before after : Attempt}
     before.deliveryStarted = false := by
   cases step <;> simp_all
 
-/-- UNKNOWN is not an automatic-recovery source: no transition leaves it. -/
-theorem unknown_has_no_automatic_successor {before after : Attempt} {event : Event}
+/-- UNKNOWN may be re-observed, but cannot automatically re-enter delivery. -/
+theorem unknown_cannot_begin_delivery {before after : Attempt}
     (unknown : before.phase = .outcomeUnknown)
-    (step : Step before event after) : False := by
+    (step : Step before .beginDelivery after) : False := by
   cases step <;> simp_all
 
-/-- Settled and reviewed attempts are terminal in this model. -/
-theorem terminal_has_no_successor {before after : Attempt} {event : Event}
+/-- A read-only UNKNOWN check preserves phase and attempt identity. -/
+theorem unknown_readback_preserves_state {attempt : Attempt}
+    (unknown : attempt.phase = .outcomeUnknown) :
+    Step attempt .readOnlyRecheck attempt := by
+  exact Step.readOnlyRecheck unknown
+
+/-- Terminal business outcomes cannot start another delivery. Metadata-only
+handoff recording is represented separately and does not change the phase. -/
+theorem terminal_cannot_begin_delivery {before after : Attempt}
     (terminal : before.phase = .settled ∨ before.phase = .needsReview)
-    (step : Step before event after) : False := by
+    (step : Step before .beginDelivery after) : False := by
   cases step <;> simp_all
 
 /-- Blocked recovery is same-attempt and crosses the fence exactly once. -/
