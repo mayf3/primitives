@@ -24,7 +24,8 @@
         "AgentWorkflow.Outbox",
         "AgentWorkflow.DueFeedHandoff",
         "AgentWorkflow.OriginalObligation",
-        "AgentWorkflow.GovernanceRecovery"
+        "AgentWorkflow.GovernanceRecovery",
+        "AgentWorkflow.GovernanceTakeover"
       ]
     },
     {

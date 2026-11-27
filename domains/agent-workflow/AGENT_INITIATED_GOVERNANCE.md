@@ -40,3 +40,5 @@
 ```sh
 python3 tools/verify_lean.py
 ```
+
+治理执行中断的新增租约模型、隔离进程实跑与可复现的实现缺口见 [治理接管可行性](GOVERNANCE_RECOVERY_FEASIBILITY.md)。
