@@ -162,4 +162,4 @@ Lean 检查的是这些定义与前提下的推导。把未验证的环境条件
 - [dsh-agent-core #710](https://github.com/mayf3/dsh-agent-core/issues/710)
 - [svc-workflow #140](https://github.com/mayf3/svc-workflow/issues/140)
 
-复现：`python3 tools/verify_lean.py --domain agent-workflow`。在该命令本轮实际运行并产生回执前，新增证明状态标记为 PENDING_KERNEL_VERIFICATION。
+复现：`python3 tools/verify_lean.py --domain agent-workflow`。本轮 pinned Lean 4.19.0 CI 已于 2026-11-27 运行通过：workflow run `45917271049`，状态 `PASS_CONDITIONAL_MODEL_PROOFS`；Agent Workflow 共审计 56 个定理声明（原有 43 个 + 本轮新增 13 个）。回执 artifact 随该 workflow 上传。该结果仅证明模型中的条件命题，不证明消费项目代码精化。
