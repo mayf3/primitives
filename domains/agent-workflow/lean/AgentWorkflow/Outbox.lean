@@ -32,6 +32,8 @@ structure Row where
   attempts : Nat
   deriving DecidableEq, Repr
 
+def executionKickMaxAttempts : Nat := 12
+
 inductive Command where
   | claim (worker : Nat)
   | settle (worker : Nat)
@@ -60,12 +62,21 @@ inductive Step (enabled : Channel → Bool) : Row → Command → Row → Prop w
       (owner : row.claimant = some worker) :
       Step enabled row (.retry worker)
         { row with status := .pending, claimant := none, attempts := row.attempts + 1 }
-  | unknown {row : Row} {worker : Nat}
+  | unknownRetry {row : Row} {worker : Nat}
       (channelEnabled : enabled row.channel = true)
       (claimed : row.status = .claimed)
-      (owner : row.claimant = some worker) :
+      (owner : row.claimant = some worker)
+      (belowKickCap : row.channel = .executionKick → row.attempts + 1 < executionKickMaxAttempts) :
       Step enabled row (.unknown worker)
         { row with status := .pending, claimant := none, attempts := row.attempts + 1 }
+  | unknownKickDeadLetter {row : Row} {worker : Nat}
+      (channelEnabled : enabled row.channel = true)
+      (channel : row.channel = .executionKick)
+      (claimed : row.status = .claimed)
+      (owner : row.claimant = some worker)
+      (atCap : executionKickMaxAttempts ≤ row.attempts + 1) :
+      Step enabled row (.unknown worker)
+        { row with status := .deadLetter, claimant := none, attempts := row.attempts + 1 }
   | deadLetter {row : Row} {worker : Nat}
       (channelEnabled : enabled row.channel = true)
       (channel : row.channel = .executionKick)
@@ -99,16 +110,45 @@ theorem dead_letter_is_kick_only {enabled : Channel → Bool}
   | claim _ _ _ => cases dead
   | settle _ _ _ => cases dead
   | retry _ _ _ => cases dead
-  | unknown _ _ _ => cases dead
+  | unknownRetry _ _ _ _ => cases dead
+  | unknownKickDeadLetter _ channel _ _ _ => exact channel
   | deadLetter _ channel _ _ => exact channel
 
-/-- UNKNOWN returns to pending retry responsibility, never delivered. -/
-theorem unknown_returns_to_pending {enabled : Channel → Bool}
+/-- UNKNOWN is never treated as a successful delivery. Below the kick cap
+it returns to pending; at the kick cap it is durably dead-lettered. -/
+theorem unknown_not_delivered {enabled : Channel → Bool}
     {before after : Row} {worker : Nat}
     (step : Step enabled before (.unknown worker) after) :
+    after.status ≠ .delivered := by
+  cases step <;> simp_all
+
+/-- A Forum / Owner-Wake UNKNOWN, or a kick UNKNOWN below its cap, returns
+to pending retry responsibility. -/
+theorem unknown_below_cap_returns_to_pending {enabled : Channel → Bool}
+    {before after : Row} {worker : Nat}
+    (step : Step enabled before (.unknown worker) after)
+    (belowKickCap : before.channel = .executionKick →
+      before.attempts + 1 < executionKickMaxAttempts) :
     after.status = .pending ∧ after.claimant = none := by
   cases step with
-  | unknown _ _ _ => exact ⟨rfl, rfl⟩
+  | unknownRetry _ _ _ _ => exact ⟨rfl, rfl⟩
+  | unknownKickDeadLetter _ _ _ _ atCap =>
+      exact False.elim (Nat.not_lt_of_ge atCap (belowKickCap rfl))
+  | _ => contradiction
+
+/-- At the retry cap, a kick UNKNOWN becomes dead-lettered rather than
+remaining in the due queue. -/
+theorem kick_unknown_at_cap_dead_letters {enabled : Channel → Bool}
+    {before after : Row} {worker : Nat}
+    (step : Step enabled before (.unknown worker) after)
+    (isKick : before.channel = .executionKick)
+    (atCap : executionKickMaxAttempts ≤ before.attempts + 1) :
+    after.status = .deadLetter := by
+  cases step with
+  | unknownRetry _ _ _ below =>
+      exact False.elim (Nat.not_lt_of_ge atCap (below isKick))
+  | unknownKickDeadLetter _ _ _ _ _ => rfl
+  | _ => contradiction
 
 /-- A claimed row cannot be claimed by a second worker before release. -/
 theorem claimed_row_cannot_be_claimed_again {enabled : Channel → Bool}
