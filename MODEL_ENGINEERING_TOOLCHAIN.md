@@ -45,10 +45,13 @@ quint typecheck path/to/model.qnt
 
 ```bash
 # 随机模拟并检查不变量
-quint run path/to/model.qnt --invariant SafetyInvariant --max-steps 100
+quint run path/to/model.qnt --invariant SafetyInvariant --max-steps 100 --seed 42
 
 # 符号/模型检查（后端按安装版本与 CLI help 选择 Apalache/TLC）
-quint verify path/to/model.qnt --invariant SafetyInvariant
+quint verify path/to/model.qnt --invariant SafetyInvariant --max-steps 10
+
+# 选择 TLC：有限状态空间显式穷举
+quint verify path/to/model.qnt --backend tlc --invariant SafetyInvariant
 
 # 查看本机支持的准确选项，避免复制过时 CLI 参数
 quint verify --help
@@ -82,7 +85,7 @@ Quint 的 MBT 文档有旧版 ITF trace generation 教程；官方文档已提�
 |---|---|---|
 | Python | Hypothesis RuleBasedStateMachine | 命令序列、状态化操作、自动缩减反例 |
 | Kotlin | Kotest property testing；必要时自建 command model runner | 属性生成；异步/并发需额外 scheduler/fault harness |
-| Rust | proptest；与 Quint Connect 组合 | 状态化生成、shrinking、模型轨迹回放 |
+| Rust | proptest；必要时评估 proptest-stateful；与 Quint Connect 组合 | 属性生成、shrinking、模型轨迹回放；stateful 扩展先核验维护状态 |
 | TypeScript | fast-check model-based testing，必要时 asyncModelRun / scheduledModelRun | 同时运行 model 与 real system，重放 seed/path |
 | Dart/Flutter | 先用 package:test 实现确定性 command runner；再评估 property_testing 或 kiri_check | 适配当前应用状态核；第三方库先做小型 API/维护活跃度验证 |
 
@@ -280,6 +283,9 @@ Compiler 只检查声明关系和确定性规则，不判断 Spec 是否符合�
 ## 10. 官方工具入口
 
 - Quint CLI / MBT: https://quint.sh/docs/quint
+- Quint CLI options and TLC backend: https://quint.sh/docs/quint
+- proptest: https://proptest-rs.github.io/proptest/
+- Kotest shrinking: https://kotest.io/docs/proptest/property-test-shrinking.html
 - Quint Connect: https://github.com/quint-co/quint-connect
 - Apalache: https://apalache-mc.org/docs/apalache/index.html
 - Alloy 6: https://alloytools.org/documentation.html
