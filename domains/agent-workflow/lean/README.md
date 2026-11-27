@@ -1,6 +1,6 @@
 # Lean 形式化切片
 
-**Lean 4.19.0 · Agent Workflow 0.3.2-pilot · 2026-11-27**
+**Lean 4.19.0 · Agent Workflow 0.3.3-pilot · 2026-11-27**
 
 本工程将 [后续评审说明](../FORMALIZATION.md) 中的三组命题交给 Lean 内核检查：固定策略的条件进展、历史压缩与不确定性、任意不可信报告与验收门。它不导入私有运行数据，也没有对接生产系统。
 
@@ -27,9 +27,13 @@ lake build AgentWorkflow
 
 统一验证会核对编译器版本、编译证明并审计所有本地 `theorem` 的传递公理。只使用此工具链随附的 `Init` / `Std`，没有 Mathlib 或其他外部包。缺工具、编译错误、警告、未审计声明或不允许的公理都不能登记为通过。为防止静默漏审，声明使用单一显式命名空间与受限格式；新增模块或改变声明形式时，必须同步检查统一审计的覆盖。
 
-当前本域原有 43 个定理声明保留用途。本轮试点新增两个独立 Lean 模块，覆盖同一 attempt 的恢复/写前 fence，以及三通道 outbox 的逐行状态转换。UNKNOWN 允许只读复查但不能自动重新投递；terminal 责任元数据不能重开业务投递。本轮 Agent Workflow 定理声明总数为 **56**（原有 43 个 + 本轮新增 13 个），均由 2026-11-27 workflow run `45917271049` 的 Lean 4.19.0 验证入口审计通过。数量包含辅助引理与负向性质，不等于生产保障。以统一脚本产生的当前回执为实际核验依据；回执需绑定工具链、命令、退出码、输入文件 SHA-256 及各定理依赖。审计脚本不会把跳过检查登记为 PASS。
+原有 43 个定理声明保留用途。0.3.2 试点增加执行恢复和三通道 outbox 两个独立切片，总计 56 条，其历史 CI 是 workflow run `45917271049`。0.3.3 修正 Outbox 普通 retry 漏掉 kick 上限的抽象缺口，增加 19 条定理，本域现有 **75** 条显式定理。2026-11-27 本地统一单域入口已通过并审计 75 条本域定理及 6 条公共核心定理；这次变更的哈希与依赖以本次 `.lake/verification/agent-workflow.json` 为准，旧 CI 不代表新版本验证。数量包含辅助引理、正例和负向性质，不等于生产保障。
+
+两个 UNKNOWN 语义分别使用：`ExecutionRecovery` 的未知业务效果只允许复查，不自动重新投递；`Outbox` 的幂等投递按专属合同重试，kick 到上限后保留为死信。前者的 terminal 责任元数据和后者的自动转换都不能自行重新打开终态；人工修复后逐行 requeue 是模型之外的操作边界。
 
 单域命令把回执写入根目录下的 `.lake/verification/agent-workflow.json`；全仓命令产生根目录的 `lean-verification.json`。单域结果不会覆盖全仓回执，也不能代表其他领域已核验。
+
+本次在单域通过后也实际运行了全仓门禁，134 条显式定理、1196 个编译声明和 460 个编译定理全部通过；根回执已刷新为这个输入版本。全仓检查不改变上述条件模型证明边界。
 
 每次使用都以本次进程退出码与当前输入哈希为准；失败运行不覆盖以前的成功回执，旧文件不能充当本次通过的证据。
 
@@ -51,8 +55,20 @@ lake build AgentWorkflow
 | 不可信报告不能绕过可靠门 | `reports_cannot_bypass_sound_gate` | 可信绑定、sound verifier、定义中的所有关闭路径；局部世界固定 |
 | 多人共同错误的反模型 | `consensus_does_not_imply_truth`、`unsound_gate_can_close_false_goal` | 一致 PASS 不推出事实；丢失 soundness 后可假关闭 |
 | 验收门正控 | `equality_evidence_is_sound`、`sound_gate_can_close_true_goal` | 合成的真值绑定门可以接受真成功，不是永远拒绝 |
+| 普通 retry 与 UNKNOWN 的 kick 上限 | `kick_retry_at_cap_dead_letters`、`kick_unknown_at_cap_dead_letters` | 失败计数加一达到 12 时死信；适用于任意满足转换前提的输入行，不仅初始行 |
+| 可重试与不可误记成功 | `retry_has_successor`、`retry_below_cap_returns_to_pending`、`retry_not_delivered`、`unknown_not_delivered` | enabled channel + 实际 claim owner；普通失败/UNKNOWN 都不能成为 delivered |
+| 耐久通道保留责任 | `durable_channel_never_dead_letters`、`forum_retry_above_kick_cap_positive_control` | Forum/Owner Wake 不采用 kick 的死信上限；未证明最终送达 |
+| 逐步与任意有限轨迹预算 | `step_preserves_kick_bound`、`trace_preserves_kick_bound`、`reachable_kick_respects_cap` | 从计数为零的 fresh kick 出发，任意长度自动轨迹 attempts ≤ 12；pending/claimed 时严格小于 12 |
+| 身份与终态 | `trace_preserves_event_key`、`trace_preserves_channel`、`terminal_has_no_automatic_transition` | 同一行的自动转换；操作员 requeue、事务回滚及真实锁实现不在本关系中 |
+| 正例与旧缺口阻断 | `fresh_kick_can_deliver`、`eleventh_retry_pending_positive_control`、`twelfth_retry_dead_letter_positive_control`、`kick_retry_at_cap_cannot_remain_pending` | 正常送达和边界失败均有非空实例；旧模型的 pending-at-12 不再被允许 |
 
 源文件：[Progress.lean](AgentWorkflow/Progress.lean)、[Evidence.lean](AgentWorkflow/Evidence.lean)、[ExecutionRecovery.lean](AgentWorkflow/ExecutionRecovery.lean)、[Outbox.lean](AgentWorkflow/Outbox.lean)。本轮两个新模型是有意缩小的状态转换切片；它们尚未证明真实 Node.js / PostgreSQL 实现满足模型，也不覆盖生产环境。
+
+## 0.3.3 普通重试上限反馈
+
+旧模型 `9500d8e24730fdbce334b8fdcde71830838c21f4` 已约束 UNKNOWN，却允许 ordinary retry 从 claimed/11 变为 pending/12。当前 `Step.retry` 增加 below-cap 条件，并以 `Step.retryKickDeadLetter` 表达 at-cap 的实际分支；原有 UNKNOWN 性质保持。新 `Trace` 及其归纳证明从初态推出预算不变量，没有把全程预算成立直接作为前提。
+
+这修复抽象覆盖缺口：指定 SVC 版本的普通重试代码原本已经执行上限。旧反例、确切合同和实现映射、三层证据及剩余义务见 [Outbox 普通重试上限反馈](../OUTBOX_RETRY_CAP_FEEDBACK.md)。本轮不修改消费项目代码、不扩展运维权限，也不把有限轨迹安全性解释为无限调度下的活性或外部效果 exactly-once。
 
 ## 0.3.0 消除的前提
 
