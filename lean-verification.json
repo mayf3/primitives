@@ -8,10 +8,11 @@
     "domains/agent-workflow/lean/AgentWorkflow/DueFeedHandoff.lean": "2ffb13be7cf376639f7582032bd6f650f61619bcd4d66d9310731e9616a07205",
     "domains/agent-workflow/lean/AgentWorkflow/Evidence.lean": "b924b4921ea8ae9171dacdc675920d600bc371a99720ba1b05b4208f89e30759",
     "domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+    "domains/agent-workflow/lean/AgentWorkflow/GovernanceRecovery.lean": "71434a6539bd609e0ae5632ca13ab461a1485a6ed8ad53a0f7d30e51ebfaf922",
     "domains/agent-workflow/lean/AgentWorkflow/OriginalObligation.lean": "4cbe038da8dfb1200fc622af01bc646c7aac43652662869153a132e2ce9d6c90",
     "domains/agent-workflow/lean/AgentWorkflow/Outbox.lean": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
     "domains/agent-workflow/lean/AgentWorkflow/Progress.lean": "09305a88c52b27ce311701a5896307be9b43808ecab8e4dfab1fd69bb857ed7a",
-    "domains/agent-workflow/lean/AgentWorkflow.lean": "cc623cc337defb4e04c2a72d09f59cf2a50a34bfe0e1a1231ebf68a284a166b7",
+    "domains/agent-workflow/lean/AgentWorkflow.lean": "0b17ddd2ba59082e8ce9225fd6f38ce492ced51278bf8195c695bf99aa748fc8",
     "domains/design/lean/Design/Disclosure.lean": "25f99287edc8d86d97d30203befad89d2c37899f1af6487bcbae7d1e62ee9789",
     "domains/design/lean/Design.lean": "bacecb862dc737183f95af70ceedf5ece903194c5ff0b2ed42ac9c4bac812a3f",
     "domains/learning/lean/Learning/Identifiability.lean": "5d3473611828d4128d1cd376b904ff8cd4a42708e3c379362974fdb8e6428c10",
@@ -26,7 +27,7 @@
     "domains/writing/lean/Writing.lean": "30daeb6c10ee864ac70cf9243ab5994ebe641be115adadf5d370ee4bb366f705",
     "lake-manifest.json": "00d6cf90b0de4a988e7c2ebc39e675fa69aa73c11553a343ef483cbe6a2edab8",
     "lakefile.toml": "a7cbf5000b3be45bb67abc88865e7d819932eee7200e63b1e2bf9582d49ef873",
-    "lean-projects.json": "32507612c4de766d36698b1c6a8fc0d9c7dd90f50b5b7cb33504ce5524f4112f",
+    "lean-projects.json": "f991a9e3fd76779a180e2a5d578b2317e18403824189e208c35c9c5542dc3114",
     "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
     "meta/lean/PrimitiveCore/Abstraction.lean": "e9dd5a196a2f7c1749aa1f5e251639ed9fa199cfd6fdbb5cfe1970fd7f02c12a",
     "meta/lean/PrimitiveCore/Contracts.lean": "28a30d31f90e4e3642e8c06ff156ceddf031f84011680ed2ebe21e7a41a28945",
@@ -35,7 +36,7 @@
     "tools/verify_lean.py": "d89e8bf67143f091c7a24fd03fb2359c6c7858b6aaeff3b4cc1d823ae8fc0e11"
   },
   "input_hashes_match_before_after": true,
-  "generated_axiom_audit_sha256": "8b676348c534619c62d72345824804cd48082e3e93a647c354799dbc5f2de827",
+  "generated_axiom_audit_sha256": "565f0c28258e0b9b1fe03d9ec6f3251b4d818c16f4d8f3d43bfcf3a9714273bf",
   "commands": [
     {
       "command": [
@@ -78,9 +79,9 @@
       "exit_code": 0
     }
   ],
-  "theorems_audited": 134,
-  "compiled_declarations_audited": 1682,
-  "compiled_theorems_audited": 612,
+  "theorems_audited": 144,
+  "compiled_declarations_audited": 2019,
+  "compiled_theorems_audited": 778,
   "compiled_audit_scope": "Every safe logical declaration in the registered modules",
   "unsafe_compiler_declarations_excluded": [
     "AgentWorkflow.DueFeedHandoff.FailureReport.noConfusion._cstage1",
@@ -263,6 +264,49 @@
     "AgentWorkflow.ExecutionRecovery.instReprPhase._closed_1._cstage2",
     "AgentWorkflow.ExecutionRecovery.instReprPhase._cstage1",
     "AgentWorkflow.ExecutionRecovery.instReprPhase._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion._cstage1",
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion._rarg._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion._rarg._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion._rarg._lambda_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.ofNat._cstage1",
+    "AgentWorkflow.GovernanceRecovery.Blocker.ofNat._cstage2",
+    "AgentWorkflow.GovernanceRecovery.Blocker.toCtorIdx._cstage1",
+    "AgentWorkflow.GovernanceRecovery.Blocker.toCtorIdx._cstage2",
+    "AgentWorkflow.GovernanceRecovery.evidence.match_1._cstage1",
+    "AgentWorkflow.GovernanceRecovery.evidence.match_2._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBinding._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBinding._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBlocker._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBlocker._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqPhase._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqPhase._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRecovery._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRecovery._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRepair._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRepair._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqReview._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqReview._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprBinding._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprBinding._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprBinding._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprBlocker._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprBlocker._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprBlocker._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprPhase._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprPhase._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprPhase._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprRecovery._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprRecovery._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprRecovery._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprRepair._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprRepair._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprRepair._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprReview._closed_1._cstage2",
+    "AgentWorkflow.GovernanceRecovery.instReprReview._cstage1",
+    "AgentWorkflow.GovernanceRecovery.instReprReview._cstage2",
+    "AgentWorkflow.GovernanceRecovery.parentWhileHeld._cstage1",
+    "AgentWorkflow.GovernanceRecovery.parentWhileHeld._cstage2",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._cstage1",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._cstage2",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._rarg._closed_1._cstage2",
@@ -1039,6 +1083,153 @@
     "_private.AgentWorkflow.ExecutionRecovery.0.AgentWorkflow.ExecutionRecovery.reprPhase.«_@».AgentWorkflow.ExecutionRecovery._hyg.109._closed_9._cstage2",
     "_private.AgentWorkflow.ExecutionRecovery.0.AgentWorkflow.ExecutionRecovery.reprPhase.«_@».AgentWorkflow.ExecutionRecovery._hyg.109._cstage1",
     "_private.AgentWorkflow.ExecutionRecovery.0.AgentWorkflow.ExecutionRecovery.reprPhase.«_@».AgentWorkflow.ExecutionRecovery._hyg.109._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.246._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.246._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.246._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.2313._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.2313._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.2313._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.1430._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1430._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1430._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.797._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.797._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.797._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.1105._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1105._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1105._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.fixture._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.fixture._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.noEffectEvidence._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.noEffectEvidence._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_16._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_17._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_18._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_19._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_20._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_21._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_22._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_23._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_24._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_25._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_26._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_27._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_28._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_29._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_30._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding.«_@».AgentWorkflow.GovernanceRecovery._hyg.631._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.«_@».AgentWorkflow.GovernanceRecovery._hyg.110._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_16._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_17._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_18._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_19._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_20._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_21._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_22._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_23._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_24._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_25._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_26._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_27._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_28._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_29._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_30._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_31._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_32._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_33._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.«_@».AgentWorkflow.GovernanceRecovery._hyg.4515._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.match_1.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.«_@».AgentWorkflow.GovernanceRecovery._hyg.1819._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair.«_@».AgentWorkflow.GovernanceRecovery._hyg.999._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview.«_@».AgentWorkflow.GovernanceRecovery._hyg.1307._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.retryFixture._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.retryFixture._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.review._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.review._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.review._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.review._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._cstage1",
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._cstage2",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._closed_1._cstage2",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._cstage1",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._cstage2",
@@ -1523,7 +1714,7 @@
     "agent-workflow": {
       "library": "AgentWorkflow",
       "directory": "domains/agent-workflow/lean",
-      "theorems_audited": 75
+      "theorems_audited": 85
     },
     "design": {
       "library": "Design",
@@ -1613,6 +1804,16 @@
       "propext"
     ],
     "AgentWorkflow.ExecutionRecovery.unknown_readback_preserves_state": [],
+    "AgentWorkflow.GovernanceRecovery.append_step": [],
+    "AgentWorkflow.GovernanceRecovery.committed_receipt_blocks_new_attempt": [],
+    "AgentWorkflow.GovernanceRecovery.original_key_and_duty_preserved_on_retry": [],
+    "AgentWorkflow.GovernanceRecovery.parent_held_is_open": [],
+    "AgentWorkflow.GovernanceRecovery.queued_debug_has_durable_registration": [],
+    "AgentWorkflow.GovernanceRecovery.returning_requires_independent_review_and_authoritative_recovery": [],
+    "AgentWorkflow.GovernanceRecovery.step_preserves_evidence": [],
+    "AgentWorkflow.GovernanceRecovery.trace_preserves_evidence": [],
+    "AgentWorkflow.GovernanceRecovery.true_human_decision_cannot_enter_technical_queue": [],
+    "AgentWorkflow.GovernanceRecovery.unresolved_effect_cannot_return": [],
     "AgentWorkflow.OriginalObligation.acceptance_from_working_has_original_ac_and_commit": [],
     "AgentWorkflow.OriginalObligation.accepted_is_stable": [],
     "AgentWorkflow.OriginalObligation.changed_visit_has_durable_successor": [],
@@ -4624,6 +4825,1037 @@
     },
     "AgentWorkflow.ExecutionRecovery.unknown_readback_preserves_state": {
       "module": "AgentWorkflow.ExecutionRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.adopted": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.authorityReadback": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.consumedHandoff": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.debugAdmitted": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.debugRegistered": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.diagnosisVerified": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.mk": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.mk.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.repairAdmitted": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.repairProduced": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.repairRegistered": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.repairVerified": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.resolvedWithDurableHandoff": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Authority.safeOriginalRetry": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.blocker": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.caseId": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.effectKey": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.generation": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.mk": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.mk.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.original": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Binding.visit": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.humanDecision": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.humanDecision.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.ofNat": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.ofNat_toCtorIdx": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.technical": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.technical.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Blocker.toCtorIdx": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingRecovery": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingRecovery.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingRecovery.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingRecovery.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingReview": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingReview.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingReview.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.awaitingReview.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.beforeRequest": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.beforeRequest.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugQueued": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugQueued.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugging": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugging.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugging.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.debugging.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairQueued": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairQueued.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairQueued.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairQueued.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairing": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairing.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairing.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.repairing.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.returned": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.returned.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.returned.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.returned.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.verified": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.verified.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.verified.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Phase.verified.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.readCommitted": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.readCommitted.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.readCommitted.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.readCommitted.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.retryOriginalKey": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.retryOriginalKey.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.retryOriginalKey.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Recovery.retryOriginalKey.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.artifact": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.author": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.diagnosis": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.mk": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.mk.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Repair.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.evidence": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.mk": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.mk.inj": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.noConfusion": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.repair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Review.reviewer": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.below": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.below.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.below.next": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.below.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.below.refl": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.next": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Runs.refl": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.admitDebug": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.admitRepair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.casesOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.deliverRepair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.diagnose": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.rec": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.recOn": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.register": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.resolve": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.returnToOriginal": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.verifyRepair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.Step.wait": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.append_step": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.committed_receipt_blocks_new_attempt": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.evidence": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.evidence.match_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.evidence.match_2": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBinding": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBlocker": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBlocker._proof_1": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqBlocker._proof_2": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqPhase": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRecovery": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqRepair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instDecidableEqReview": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprBinding": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprBlocker": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprPhase": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprRecovery": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprRepair": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.instReprReview": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.original_key_and_duty_preserved_on_retry": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.parentWhileHeld": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.parent_held_is_open": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.queued_debug_has_durable_registration": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.recoverySupported": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.returning_requires_independent_review_and_authoritative_recovery": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.sameCurrentDuty": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.step_preserves_evidence": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.trace_preserves_evidence": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.true_human_decision_cannot_enter_technical_queue": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceRecovery.unresolved_effect_cannot_return": {
+      "module": "AgentWorkflow.GovernanceRecovery",
       "kind": "theorem",
       "axioms": []
     },
@@ -9631,6 +10863,686 @@
     },
     "_private.AgentWorkflow.ExecutionRecovery.0.AgentWorkflow.ExecutionRecovery.reprPhase.match_1._@.AgentWorkflow.ExecutionRecovery._hyg.109": {
       "module": "AgentWorkflow.ExecutionRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.binding": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_3._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_4._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_5._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_6._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_7._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_8._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding._proof_9._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqBinding.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.246": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_100._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_101._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_102._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_103._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_104._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_105._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_106._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_107._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_108._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_109._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_110._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_111._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_112._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_27._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_28._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_29._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_30._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_31._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_32._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_33._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_34._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_35._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_36._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_37._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_38._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_39._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_40._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_41._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_42._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_43._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_44._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_45._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_46._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_47._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_48._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_49._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_50._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_51._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_52._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_53._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_54._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_55._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_56._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_57._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_58._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_59._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_60._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_61._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_62._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_63._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_64._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_65._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_66._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_67._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_68._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_69._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_70._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_71._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_72._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_73._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_74._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_75._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_76._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_77._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_78._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_79._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_80._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_81._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_82._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_83._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_84._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_85._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_86._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_87._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_88._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_89._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_90._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_91._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_92._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_93._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_94._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_95._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_96._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_97._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_98._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase._proof_99._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqPhase.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.2313": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_18._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_19._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_20._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_21._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_22._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_23._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_24._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_25._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery._proof_26._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRecovery.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.1430": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair._proof_10._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair._proof_11._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair._proof_12._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair._proof_13._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqRepair.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.797": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview._proof_14._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview._proof_15._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview._proof_16._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview._proof_17._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.decEqReview.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.1105": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.fixture": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.noEffectEvidence": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.readyInFixture": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBinding._@.AgentWorkflow.GovernanceRecovery._hyg.631": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker._@.AgentWorkflow.GovernanceRecovery._hyg.110": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprBlocker.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.110": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase._@.AgentWorkflow.GovernanceRecovery._hyg.4515": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprPhase.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.4515": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery._@.AgentWorkflow.GovernanceRecovery._hyg.1819": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRecovery.match_1._@.AgentWorkflow.GovernanceRecovery._hyg.1819": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprRepair._@.AgentWorkflow.GovernanceRecovery._hyg.999": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.reprReview._@.AgentWorkflow.GovernanceRecovery._hyg.1307": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.retryFixture": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.review": {
+      "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target": {
+      "module": "AgentWorkflow.GovernanceRecovery",
       "kind": "definition",
       "axioms": []
     },
