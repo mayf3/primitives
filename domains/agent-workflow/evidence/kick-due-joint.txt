@@ -1,0 +1,25 @@
+Svc 787278729486381afb8e5976db912fbc190b875c
+Core edd359fb4583d91c1832ae0d89244e53224e8fa7
+Raw SHA-256: a08d1720433788cde08ecb229e2c1c150fc8a38cc7e74f2beab6c062d9f7b9ad
+
+Verified scratch PostgreSQL identity: kick_due_fixture|kick_due_fixture|<scratch>/data|54401|127.0.0.1
+   Compiling svc-workflow v0.1.0 (<isolated-svc-checkout>)
+    Finished `test` profile [unoptimized] target(s) in 5.03s
+     Running tests/48_outbox_three_channels.rs (<scratch>/cargo-target/debug/deps/48_outbox_three_channels-f16ea478024ff4aa)
+
+running 1 test
+test kick_due_continuation::dead_letter_leaves_original_due_for_periodic_core ... CORE_CONSUMER mode=disabled status=exit status: 0
+{"mode":"disabled","workflowInstanceId":"ce6f87b1-1b7f-4c90-8984-6cbfbe869199","nodeVisitId":"ae672b98-8aa4-40c3-b384-1c3f162e00bd","dispatchIntentId":"9e165f6d-cfdd-43cc-8dd3-36dcba339879","ownerPrincipalId":"8c3a4c36-892d-40d6-8621-e303d801cdac","dueReads":0,"detailReads":0,"posts":0,"childPrompts":0,"attempts":0}
+
+NEGATIVE_CONTROL consumer=disabled original=9e165f6d-cfdd-43cc-8dd3-36dcba339879 visit=ae672b98-8aa4-40c3-b384-1c3f162e00bd instance=ce6f87b1-1b7f-4c90-8984-6cbfbe869199 kick=8364e0ac-6c22-4380-9b7c-0023c91574a5 attempts=12 dead_letter=true ready=true state_version=1 consumer_ready_reads=0 transition_posts=0 own_transitions=0 submissions=0
+CORE_CONSUMER mode=enabled status=exit status: 0
+{"mode":"enabled","workflowInstanceId":"ce6f87b1-1b7f-4c90-8984-6cbfbe869199","nodeVisitId":"ae672b98-8aa4-40c3-b384-1c3f162e00bd","dispatchIntentId":"9e165f6d-cfdd-43cc-8dd3-36dcba339879","ownerPrincipalId":"8c3a4c36-892d-40d6-8621-e303d801cdac","dueReads":4,"detailReads":5,"posts":1,"childPrompts":1,"attempts":1,"attemptId":"wfeat-9a4f659d048d172a874cb44d","judgment":"business_commitment_observed","submissionId":"21b960f7-4af1-4095-9be2-0b67e1394873","durableStartBeforePrompt":true,"closedDueObserved":true}
+
+ORIGINAL_AC source=periodic-ready-feed dispatch_intent=9e165f6d-cfdd-43cc-8dd3-36dcba339879 original_visit=ae672b98-8aa4-40c3-b384-1c3f162e00bd instance=ce6f87b1-1b7f-4c90-8984-6cbfbe869199 actor=8c3a4c36-892d-40d6-8621-e303d801cdac event=dc5dd954-1efe-49d3-8a06-078471948d09 submission=21b960f7-4af1-4095-9be2-0b67e1394873 state_version=2 artifact_sha256=126b8e934635b092cf1cf132e658d19e766404aba7b9f0df9e6f70f94b8296f4 consumer_ready_reads=4 transition_posts=1 additional_kick_post=0
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 23 filtered out; finished in 4.54s
+
+Owned PostgreSQL process 52219 stopped (status 0).
+
+Owned test database directory absent and its loopback listener closed on independent readback.
