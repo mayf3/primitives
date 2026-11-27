@@ -53,7 +53,6 @@
 
 模型检查、Lean 证明、模型驱动测试、真实 Trace、环境探针和产品验收属于不同证据类型。工具选型与命令按 [Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md) 执行；不要将有限测试、bounded model checking 或 Trace Validation 描述为完整代码证明。
 
-
 收到现实失败、模型反例或实现不符时，按 [MODEL_FEEDBACK.md](MODEL_FEEDBACK.md) 处理。报告者只需提供现象、期待和材料；Agent 负责补版本、最小反例、出错层、实现对应与验收证据。固定原验收，不在模型中无依据排除现实仍允许的失败路径，不加入未落实前提让证明通过；通过代码消除失败路径须保留反例和实际阻断证据。分别记录模型与证明、实现对齐、原任务验收；部分 PR 用 `Refs` 关联，未现实验收的任务不按 completed 关闭。纯模型子项从建立时明确范围，不代表现实任务已完成。
 
 运行 `python3 tools/primitives.py validate`。修改检索或校验工具时，再运行 `python3 -m unittest discover -s tests -v`。检查失败应修具体问题；检查通过不宣称创作或用户效果得到验证。
