@@ -299,3 +299,40 @@ Compiler 只检查声明关系和确定性规则，不判断 Spec 是否符合�
 - Lean axiom dependencies: https://lean-lang.org/doc/reference/latest/Axioms/
 
 在项目真正采用前固定 tool versions、容器/安装来源、CLI 输出和官方 API；工具链接不等于已通过本项目的技术评估。
+
+
+## 11. 工具成熟度与按语言选型（2026-11-27）
+
+| 语言/目标 | 可直接试用的工具 | P0 建议 | 采用前检查 |
+|---|---|---|---|
+| Rust | Quint Connect、proptest | Quint 模型优先试 Quint Connect；一般属性测试用 proptest | 确认模型/实现状态比较、重放和 shrink 覆盖真实 adapter |
+| TypeScript | fast-check | 使用 commands + asyncModelRun；并发竞态再试 scheduledModelRun | 固定 seed/path/replayPath；模型独立于 SUT |
+| Python | Hypothesis RuleBasedStateMachine | 快速搭建 command state machine 和自动缩减反例 | 保存可复现 seed/replay 与依赖版本 |
+| Kotlin | Kotest property testing | 先写确定性 command runner，再接 property generators | async scheduling/fault injection 需额外 harness |
+| Dart/Flutter | package:test；候选 kiri_check、property_testing | 先以 package:test 做可控 adapter；用小型 spike 比较两候选的 stateful runner、shrinking、seed replay 和维护活跃度 | 不以发布/下载量单项决定采用；锁定版本并跑真实 reducer |
+| 跨进程观测 | OpenTelemetry Trace/Span/Links + 自有 correctness JSONL | OTel 负责 context propagation 和 causal correlation；自有 ledger 负责 completeness/watermark/revision | sampling、drop、export/query partial 不能当成完整 correctness trace |
+
+官方资料：
+- Quint Connect: https://github.com/quint-co/quint-connect ; https://docs.rs/quint-connect/latest/quint_connect/
+- Quint MBT: https://quint.sh/docs/model-based-testing
+- fast-check: https://fast-check.dev/docs/advanced/model-based-testing/
+- Hypothesis: https://hypothesis.readthedocs.io/en/latest/stateful.html
+- Dart kiri_check: https://pub.dev/packages/kiri_check
+- Dart property_testing: https://pub.dev/packages/property_testing
+- proptest: https://docs.rs/proptest/latest/proptest/
+- OpenTelemetry: https://opentelemetry.io/docs/specs/otel/trace/data-model/
+
+## 12. 可复制的 P0 实施顺序
+
+更具体的目录、命令、adapter、Trace completeness、Assumption Probe、负控和验收条件见 [P0 实施手册](MODEL_ENGINEERING_P0_IMPLEMENTATION.md)。示例命令必须先用项目锁定的工具版本执行 help/version 检查，不复制过时 CLI 参数。
+
+## 13. 当前没有现成通用工具的部分
+
+截至本研究日期，没有找到一个通用工具可以直接完成跨任意项目的 REQ → MODEL → THM → MAP → CODE → TRACE → PROBE → ACC 语义追溯、证据 freshness 和自动失效计算。建议自研范围保持很小：
+
+1. **Evidence Graph Compiler**：读取各权威源中的 ID/引用，输出只读 graph、dangling links、coverage 和 stale report。
+2. **Project Adapter Contract**：把项目真实状态/命令/观察暴露给 MBT runner；不让 adapter 从模型中复制预期结果。
+3. **Correctness Trace Validator**：验证 schema、producer sequence、causal references、segment close 和 exact revisions，再检查模型允许的转移。
+4. **Assumption Freshness Checker**：检查 probe receipt 的时间、TTL、scope hash 和失效行为。
+
+这些是我们要补齐的工程连接器，不应假称现成产品已经全部提供。首版优先 Python 标准库和项目现有 CI，不先造服务端、数据库或图形平台。

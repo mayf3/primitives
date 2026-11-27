@@ -12,6 +12,7 @@
 | 开发新机制时，怎样让需求、数学模型、Lean 和代码保持一致？ | [以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md) | 以模型为共同语义中心，建立需求追溯、形式化证明、实现映射和真实验收 |
 | 怎样机械检查模型与代码是否一致、环境是否满足证明前提？ | [模型—实现精化与环境前提验证](MODEL_IMPLEMENTATION_CONFORMANCE.md) | 从精化关系、结构化轨迹、模型驱动测试和公理探针建立可执行证据 |
 | 怎样把 Spec、模型、Lean、代码、Trace 和 CI 真正接成工具链？ | [Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md) | 选择 Quint/TLA+/Alloy/Lean/PBT/Trace/Evidence Graph 工具并按阶段落地 |
+| 怎样把一个真实状态机接成可执行的 Spec → Model → Proof → Code 闭环？ | [P0 实施手册](MODEL_ENGINEERING_P0_IMPLEMENTATION.md) | 冻结需求与故障、模型 sanity、Lean、语言 adapter、Trace completeness、Assumption Probe、负控和原始验收 |
 | 这套体系有哪些国际研究与工业实践依据？ | [研究沉淀](RESEARCH_SPEC_MODEL_PROOF_CODE_2026-11.md) | 区分成熟案例、证据强度、未解决问题和本仓库的架构判断 |
 | 怎样按风险和复杂度选择建模与证明投入？ | [建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md) | 主动识别关键性质，复用或补足模型、积累证明，并绑定实现与真实验收 |
 | 现实任务出问题，怎样反过来挑战模型并修正代码？ | [模型反馈闭环](MODEL_FEEDBACK.md) | 保留原验收，用 Issue 连接反例、模型、证明、实现和任务结果 |
