@@ -52,6 +52,7 @@ theorem finite_trace_refinement
     ∃ abstractEnd,
       Trace abstractStep abstractStart abstractEnd ∧
       relates concreteEnd abstractEnd := by
+  revert abstractStart
   induction concreteTrace with
   | nil state =>
       exact ⟨abstractStart, Trace.nil abstractStart, initialCorrespondence⟩
