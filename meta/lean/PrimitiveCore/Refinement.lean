@@ -1,4 +1,5 @@
 import Std
+import PrimitiveCore.Contracts
 
 namespace PrimitiveCore.Refinement
 
