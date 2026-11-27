@@ -33,6 +33,8 @@ lake build AgentWorkflow
 
 新增 `GovernanceRecovery` 的 10 条定理，本域共 **85** 条。用固定治理身份连接 Agent 发起、合法接纳、独立核验、采用、解案与原义务恢复。模型对原键恢复和权威回执路径分别给出正控，验证技术治理的权限与证据边界。[需求、证明与代码落点](../AGENT_INITIATED_GOVERNANCE.md)
 
+新增 `GovernanceTakeover`，检查故障后的可认领租约、精确绑定、UNKNOWN 与旧 epoch 写门。[隔离可行性回执及代码对账](../GOVERNANCE_RECOVERY_FEASIBILITY.md)
+
 单域命令把回执写入根目录下的 `.lake/verification/agent-workflow.json`；全仓命令产生根目录的 `lean-verification.json`。单域结果不会覆盖全仓回执，也不能代表其他领域已核验。
 
 每次使用都以本次进程退出码与当前输入哈希为准；失败运行不覆盖以前的成功回执，旧文件不能充当本次通过的证据。

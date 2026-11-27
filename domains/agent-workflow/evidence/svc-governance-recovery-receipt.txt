@@ -1,0 +1,39 @@
+Svc isolated governance feasibility
+
+Integration suite
+SVC_HEAD=787278729486381afb8e5976db912fbc190b875c
+Scratch identity verified for socket and TCP: svc_obl_20261029_impl|svc_governance_trial|<new data directory>|55432|127.0.0.1
+Command: cargo test --locked --offline --test 46_owner_obligations -- --test-threads=1 --nocapture
+test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 37.42s
+Owned scratch postgres exited status=0
+Scratch data directory removed
+PASS intents::intents_request_has_atomic_unique_intake_without_naked_chat
+PASS intents::intents_auto_intake_is_one_exact_pair_under_concurrency_and_restart
+PASS intents::intents_storage_fault_after_pair_rolls_back_all_birth_binding_and_receipt_then_reconciles
+PASS review::review_real_terminal_singleton_without_wake_resolve_and_own_cleanup
+PASS review::review_not_accepted_has_no_resolve_admission_and_escalates_then_finishes
+PASS stops::stops_dependency_leaf_has_no_recursive_effect_and_nested_cap_uses_actual_leaf_visit
+
+Actual periodic producer, fresh independent scratch PostgreSQL
+SVC_HEAD=787278729486381afb8e5976db912fbc190b875c
+Scratch identity verified for socket and TCP: svc_obl_20261029_impl|svc_governance_trial|<new data directory>|55432|127.0.0.1
+BEFORE requester_exited=0 intent=649e6482-77db-44fd-bbbc-d2fd19211679 source=b92f1902-7419-4287-8d57-90571d344234 visit=d2fdce25-5547-4688-9d09-dac430a2342c case=366efb59-9bb5-44a0-b7ee-b6c371b792dd state=PENDING children=0
+FROZEN_SVC_BINARY_SHA256=b8de2914ba7c72f59bdf26ac1731e264fdfb9af0428b0d8682d2dfd2f0c76100
+AFTER_SIGKILL same_intent=PENDING children=0 committed_birth_receipts=0
+AFTER_SUCCESSOR same_intent=MATERIALIZED child=85ab706d-0bc4-4f7c-8e11-a512f117b184 command=041563e7-18c7-42dc-8567-139303b1345a children=1 bindings=1 committed_birth_receipts=1 events=2 original_case=OWNER_PENDING owner_wakes=0
+PASS actual periodic Svc producer recovered original durable INTAKE after SIGKILL before admission response/commit; no refresh, replay, or manual reconciliation. No Core or parent AC execution.
+Owned scratch postgres exited status=0
+Scratch data directory removed
+
+Nested STOP, fresh independent scratch PostgreSQL
+counts = PENDING intents | managed instances | effects | Owner Wake | OWNER_PENDING cases | events
+SVC_HEAD=787278729486381afb8e5976db912fbc190b875c
+Scratch identity verified for socket and TCP: svc_obl_20261029_impl|svc_governance_trial|<new data directory>|55432|127.0.0.1
+STOP_BEFORE intent=a5f613ae-1ca7-4abb-aaab-f6ecfcd35efd status=STOPPED reason=NESTED_ASSISTANCE_UNSUPPORTED leaf_visit=dbc6056f-5354-4325-bc28-5098f01249fe counts=0|1|1|0|2|6
+STOP_AFTER real_svc_alive=true elapsed_after_ready=6.3s same_terminal_stop=true counts=0|1|1|0|2|6
+PASS isolation negative: enabled real Svc periodic producer leaves nested STOP and original business obligation unchanged; no new work or effects. Agent execution/other consumers are out of fixture.
+Owned scratch postgres exited status=0
+Scratch data directory removed
+
+Scope: fixed Svc binary, trusted test fixtures and loopback canonical admission mock.
+These runs did not exercise Core-managed Agent acceptance or original business AC.

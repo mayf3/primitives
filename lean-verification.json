@@ -9,10 +9,11 @@
     "domains/agent-workflow/lean/AgentWorkflow/Evidence.lean": "b924b4921ea8ae9171dacdc675920d600bc371a99720ba1b05b4208f89e30759",
     "domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
     "domains/agent-workflow/lean/AgentWorkflow/GovernanceRecovery.lean": "71434a6539bd609e0ae5632ca13ab461a1485a6ed8ad53a0f7d30e51ebfaf922",
+    "domains/agent-workflow/lean/AgentWorkflow/GovernanceTakeover.lean": "af653b819602de312665d2cc5ec0be693769ee7b61ce29e41f158794d53f27a6",
     "domains/agent-workflow/lean/AgentWorkflow/OriginalObligation.lean": "4cbe038da8dfb1200fc622af01bc646c7aac43652662869153a132e2ce9d6c90",
     "domains/agent-workflow/lean/AgentWorkflow/Outbox.lean": "39e58ab895c95b4e6d3299a38ccc09b21787b1b4b9d528a3c6340f41a83e0698",
     "domains/agent-workflow/lean/AgentWorkflow/Progress.lean": "09305a88c52b27ce311701a5896307be9b43808ecab8e4dfab1fd69bb857ed7a",
-    "domains/agent-workflow/lean/AgentWorkflow.lean": "0b17ddd2ba59082e8ce9225fd6f38ce492ced51278bf8195c695bf99aa748fc8",
+    "domains/agent-workflow/lean/AgentWorkflow.lean": "699251b001ddb3f8490bb120d703dccf91ed94359b38cf96ed7e703c4fe55f39",
     "domains/design/lean/Design/Disclosure.lean": "25f99287edc8d86d97d30203befad89d2c37899f1af6487bcbae7d1e62ee9789",
     "domains/design/lean/Design.lean": "bacecb862dc737183f95af70ceedf5ece903194c5ff0b2ed42ac9c4bac812a3f",
     "domains/learning/lean/Learning/Identifiability.lean": "5d3473611828d4128d1cd376b904ff8cd4a42708e3c379362974fdb8e6428c10",
@@ -27,7 +28,7 @@
     "domains/writing/lean/Writing.lean": "30daeb6c10ee864ac70cf9243ab5994ebe641be115adadf5d370ee4bb366f705",
     "lake-manifest.json": "00d6cf90b0de4a988e7c2ebc39e675fa69aa73c11553a343ef483cbe6a2edab8",
     "lakefile.toml": "a7cbf5000b3be45bb67abc88865e7d819932eee7200e63b1e2bf9582d49ef873",
-    "lean-projects.json": "f991a9e3fd76779a180e2a5d578b2317e18403824189e208c35c9c5542dc3114",
+    "lean-projects.json": "90b8579275e20f46808267df9964e1d55f991627a7b68f7e869faa831d942622",
     "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
     "meta/lean/PrimitiveCore/Abstraction.lean": "e9dd5a196a2f7c1749aa1f5e251639ed9fa199cfd6fdbb5cfe1970fd7f02c12a",
     "meta/lean/PrimitiveCore/Contracts.lean": "28a30d31f90e4e3642e8c06ff156ceddf031f84011680ed2ebe21e7a41a28945",
@@ -36,7 +37,7 @@
     "tools/verify_lean.py": "d89e8bf67143f091c7a24fd03fb2359c6c7858b6aaeff3b4cc1d823ae8fc0e11"
   },
   "input_hashes_match_before_after": true,
-  "generated_axiom_audit_sha256": "565f0c28258e0b9b1fe03d9ec6f3251b4d818c16f4d8f3d43bfcf3a9714273bf",
+  "generated_axiom_audit_sha256": "91a5c082c65125bb21942c28cf23fd6f84d4268dc084b41cce0158263a31fecc",
   "commands": [
     {
       "command": [
@@ -79,9 +80,9 @@
       "exit_code": 0
     }
   ],
-  "theorems_audited": 144,
-  "compiled_declarations_audited": 2019,
-  "compiled_theorems_audited": 778,
+  "theorems_audited": 156,
+  "compiled_declarations_audited": 2188,
+  "compiled_theorems_audited": 840,
   "compiled_audit_scope": "Every safe logical declaration in the registered modules",
   "unsafe_compiler_declarations_excluded": [
     "AgentWorkflow.DueFeedHandoff.FailureReport.noConfusion._cstage1",
@@ -307,6 +308,52 @@
     "AgentWorkflow.GovernanceRecovery.instReprReview._cstage2",
     "AgentWorkflow.GovernanceRecovery.parentWhileHeld._cstage1",
     "AgentWorkflow.GovernanceRecovery.parentWhileHeld._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion._cstage1",
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion._rarg._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion._rarg._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion._rarg._lambda_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.ofNat._cstage1",
+    "AgentWorkflow.GovernanceTakeover.Phase.ofNat._cstage2",
+    "AgentWorkflow.GovernanceTakeover.Phase.toCtorIdx._cstage1",
+    "AgentWorkflow.GovernanceTakeover.Phase.toCtorIdx._cstage2",
+    "AgentWorkflow.GovernanceTakeover.acceptsLease._cstage1",
+    "AgentWorkflow.GovernanceTakeover.acceptsLease._cstage2",
+    "AgentWorkflow.GovernanceTakeover.claim._cstage1",
+    "AgentWorkflow.GovernanceTakeover.claim._cstage2",
+    "AgentWorkflow.GovernanceTakeover.eligible._cstage1",
+    "AgentWorkflow.GovernanceTakeover.eligible._cstage2",
+    "AgentWorkflow.GovernanceTakeover.hold._cstage1",
+    "AgentWorkflow.GovernanceTakeover.hold._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqClaim._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqClaim._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqEffect._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqEffect._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqLease._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqLease._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqPhase._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqPhase._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqState._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqState._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprClaim._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprClaim._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instReprClaim._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprEffect._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprEffect._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instReprEffect._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprLease._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprLease._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instReprLease._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprPhase._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprPhase._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instReprPhase._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprState._closed_1._cstage2",
+    "AgentWorkflow.GovernanceTakeover.instReprState._cstage1",
+    "AgentWorkflow.GovernanceTakeover.instReprState._cstage2",
+    "AgentWorkflow.GovernanceTakeover.scan._cstage1",
+    "AgentWorkflow.GovernanceTakeover.scan._cstage2",
+    "AgentWorkflow.GovernanceTakeover.writeGate._cstage1",
+    "AgentWorkflow.GovernanceTakeover.writeGate._cstage2",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._cstage1",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._cstage2",
     "AgentWorkflow.OriginalObligation.Visibility.noConfusion._rarg._closed_1._cstage2",
@@ -544,6 +591,8 @@
     "Life.Commitments.step._closed_2._cstage2",
     "Life.Commitments.step._cstage1",
     "Life.Commitments.step._cstage2",
+    "List.foldl._at.AgentWorkflow.GovernanceTakeover.scan._spec_1",
+    "List.foldl._at.AgentWorkflow.GovernanceTakeover.scan._spec_1._cstage2",
     "List.foldl._at._private.Life.Commitments.0.Life.Commitments.reprState.«_@».Life.Commitments._hyg.460._spec_4",
     "List.foldl._at._private.Life.Commitments.0.Life.Commitments.reprState.«_@».Life.Commitments._hyg.460._spec_4._cstage2",
     "List.hasDecEq._at._private.Life.Commitments.0.Life.Commitments.decEqState.«_@».Life.Commitments._hyg.258._spec_1",
@@ -1230,6 +1279,147 @@
     "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._closed_1._cstage2",
     "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._cstage1",
     "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.1248._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1248._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1248._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.238._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.238._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.238._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.598._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.598._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.598._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.837._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState.«_@».AgentWorkflow.GovernanceTakeover._hyg.837._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState.«_@».AgentWorkflow.GovernanceTakeover._hyg.837._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.failed._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.failed._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.failed._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.failed._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanBinding._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanBinding._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanBinding._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanHeld._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanHeld._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanHeld._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.isolated._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.isolated._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.isolated._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.nextClaim._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.nextClaim._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.nextClaim._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recovered._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recovered._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recovered._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recoveredAgain._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recoveredAgain._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recoveredAgain._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recoveredAgain._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_16._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_17._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_18._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_19._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim.«_@».AgentWorkflow.GovernanceTakeover._hyg.1633._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.splitter.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.splitter.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.splitter.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._rarg._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.«_@».AgentWorkflow.GovernanceTakeover._hyg.452._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_16._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_17._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_18._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease.«_@».AgentWorkflow.GovernanceTakeover._hyg.743._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.match_1.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_12._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_13._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_14._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_15._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_16._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_17._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_18._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_19._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_20._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.«_@».AgentWorkflow.GovernanceTakeover._hyg.110._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_10._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_11._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_2._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_3._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_4._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_5._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_6._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_7._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_8._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._closed_9._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState.«_@».AgentWorkflow.GovernanceTakeover._hyg.1098._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.secondClaim._closed_1._cstage2",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.secondClaim._cstage1",
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.secondClaim._cstage2",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._closed_1._cstage2",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._cstage1",
     "_private.AgentWorkflow.OriginalObligation.0.AgentWorkflow.OriginalObligation.actualAc._cstage2",
@@ -1714,7 +1904,7 @@
     "agent-workflow": {
       "library": "AgentWorkflow",
       "directory": "domains/agent-workflow/lean",
-      "theorems_audited": 85
+      "theorems_audited": 97
     },
     "design": {
       "library": "Design",
@@ -1814,6 +2004,41 @@
     "AgentWorkflow.GovernanceRecovery.trace_preserves_evidence": [],
     "AgentWorkflow.GovernanceRecovery.true_human_decision_cannot_enter_technical_queue": [],
     "AgentWorkflow.GovernanceRecovery.unresolved_effect_cannot_return": [],
+    "AgentWorkflow.GovernanceTakeover.eligible_takeover_rotates_lease": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.first_eligible_scan_recovers_original": [
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.hold_preserves_binding_and_effect": [],
+    "AgentWorkflow.GovernanceTakeover.human_decision_is_not_a_technical_claim": [
+      "Quot.sound",
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.ineligible_scans_preserve": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.known_commit_never_writes_again": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.older_epoch_cannot_mutate": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.stale_lease_cannot_authorize_new_write": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.stale_lease_cannot_write_after_takeover": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.takeover_preserves_binding_and_effect": [],
+    "AgentWorkflow.GovernanceTakeover.unknown_without_proof_cannot_write": [
+      "propext"
+    ],
+    "AgentWorkflow.GovernanceTakeover.write_requires_original_key": [
+      "Quot.sound",
+      "propext"
+    ],
     "AgentWorkflow.OriginalObligation.acceptance_from_working_has_original_ac_and_commit": [],
     "AgentWorkflow.OriginalObligation.accepted_is_stable": [],
     "AgentWorkflow.OriginalObligation.changed_visit_has_durable_successor": [],
@@ -5858,6 +6083,639 @@
       "module": "AgentWorkflow.GovernanceRecovery",
       "kind": "theorem",
       "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.authorized": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.binding": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.casesOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.expectedEpoch": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.independent": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.mk": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.mk.inj": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.noConfusion": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.online": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.rec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.recOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Claim.worker": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.casesOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.committed": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.committed.inj": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.committed.injEq": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.committed.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.noConfusion": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.rec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.recOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.unknown": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.unknown.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.verifiedAbsent": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Effect.verifiedAbsent.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.casesOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.epoch": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.mk": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.mk.inj": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.noConfusion": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.rec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.recOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Lease.worker": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.active": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.active.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.casesOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.held": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.held.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusion": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.ofNat": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.ofNat_toCtorIdx": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.rec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.recOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.reconciling": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.reconciling.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.Phase.toCtorIdx": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "inductive",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State._sizeOf_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State._sizeOf_inst": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.binding": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.casesOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.effect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.lease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.mk": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "constructor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.mk._flat_ctor": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.mk.inj": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.mk.injEq": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.State.mk.sizeOf_spec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.noConfusion": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.noConfusionType": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.phase": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.rec": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "recursor",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.State.recOn": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.acceptsLease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.acceptsLease.eq_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.claim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.claim.eq_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.eligible": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.eligible.eq_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.eligible_takeover_rotates_lease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.first_eligible_scan_recovers_original": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.hold": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.hold_preserves_binding_and_effect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.human_decision_is_not_a_technical_claim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.ineligible_scans_preserve": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqClaim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqEffect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqLease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqPhase": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqPhase._proof_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqPhase._proof_2": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instDecidableEqState": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instReprClaim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instReprEffect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instReprLease": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instReprPhase": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.instReprState": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.known_commit_never_writes_again": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.older_epoch_cannot_mutate": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.scan": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.scan.eq_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.stale_lease_cannot_authorize_new_write": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.stale_lease_cannot_write_after_takeover": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.takeover_preserves_binding_and_effect": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.unknown_without_proof_cannot_write": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.writeGate": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.writeGate.eq_1": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "AgentWorkflow.GovernanceTakeover.write_requires_original_key": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "AgentWorkflow.GovernanceTakeover.write_requires_original_key._proof_24": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": [
+        "propext"
+      ]
     },
     "AgentWorkflow.OriginalObligation.AcceptanceReceipt": {
       "module": "AgentWorkflow.OriginalObligation",
@@ -11543,6 +12401,251 @@
     },
     "_private.AgentWorkflow.GovernanceRecovery.0.AgentWorkflow.GovernanceRecovery.target": {
       "module": "AgentWorkflow.GovernanceRecovery",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.binding": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_17._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_18._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_19._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_20._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_21._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_22._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim._proof_23._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqClaim.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.1248": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_3._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_4._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_5._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_6._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_7._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect._proof_8._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqEffect.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.238": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease._@.AgentWorkflow.GovernanceTakeover._hyg.598": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease._proof_10._@.AgentWorkflow.GovernanceTakeover._hyg.598": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease._proof_11._@.AgentWorkflow.GovernanceTakeover._hyg.598": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease._proof_9._@.AgentWorkflow.GovernanceTakeover._hyg.598": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqLease.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.598": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._proof_12._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._proof_13._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._proof_14._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._proof_15._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState._proof_16._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.decEqState.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.837": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.failed": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanBinding": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.humanHeld": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.isolated": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.nextClaim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recovered": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.recoveredAgain": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprClaim._@.AgentWorkflow.GovernanceTakeover._hyg.1633": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.eq_1._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.eq_2._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.eq_3._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "theorem",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprEffect.match_1.splitter._@.AgentWorkflow.GovernanceTakeover._hyg.452": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprLease._@.AgentWorkflow.GovernanceTakeover._hyg.743": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase._@.AgentWorkflow.GovernanceTakeover._hyg.110": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprPhase.match_1._@.AgentWorkflow.GovernanceTakeover._hyg.110": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.reprState._@.AgentWorkflow.GovernanceTakeover._hyg.1098": {
+      "module": "AgentWorkflow.GovernanceTakeover",
+      "kind": "definition",
+      "axioms": []
+    },
+    "_private.AgentWorkflow.GovernanceTakeover.0.AgentWorkflow.GovernanceTakeover.secondClaim": {
+      "module": "AgentWorkflow.GovernanceTakeover",
       "kind": "definition",
       "axioms": []
     },
