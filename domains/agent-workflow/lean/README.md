@@ -1,6 +1,6 @@
 # Lean 形式化切片
 
-**Lean 4.19.0 · Agent Workflow 0.3.1 · 2026-11-20**
+**Lean 4.19.0 · Agent Workflow 0.3.2-pilot · 2026-11-27**
 
 本工程将 [后续评审说明](../FORMALIZATION.md) 中的三组命题交给 Lean 内核检查：固定策略的条件进展、历史压缩与不确定性、任意不可信报告与验收门。它不导入私有运行数据，也没有对接生产系统。
 
@@ -27,7 +27,7 @@ lake build AgentWorkflow
 
 统一验证会核对编译器版本、编译证明并审计所有本地 `theorem` 的传递公理。只使用此工具链随附的 `Init` / `Std`，没有 Mathlib 或其他外部包。缺工具、编译错误、警告、未审计声明或不允许的公理都不能登记为通过。为防止静默漏审，声明使用单一显式命名空间与受限格式；新增模块或改变声明形式时，必须同步检查统一审计的覆盖。
 
-当前本域有 **43 个定理声明**：原有 37 个声明保留用途，0.3.0 新增更新等价、边界真值归纳和三个错误报告检查，0.3.1 新增早期非法返回的反例。数量包含辅助引理、正控与反例，不等于 43 项生产保障。以统一脚本产生的当前回执为实际核验依据；回执需绑定工具链、命令、退出码、输入文件 SHA-256 及各定理依赖。审计脚本不会把跳过检查登记为 PASS。
+当前本域原有 43 个定理声明保留用途。本轮试点新增两个独立 Lean 模块，覆盖同一 attempt 的恢复/写前 fence，以及三通道 outbox 的逐行状态转换。UNKNOWN 允许只读复查但不能自动重新投递；terminal 责任元数据不能重开业务投递。本轮 Agent Workflow 定理声明总数为 **56**（原有 43 个 + 本轮新增 13 个），均由 2026-11-27 workflow run `45917271049` 的 Lean 4.19.0 验证入口审计通过。数量包含辅助引理与负向性质，不等于生产保障。以统一脚本产生的当前回执为实际核验依据；回执需绑定工具链、命令、退出码、输入文件 SHA-256 及各定理依赖。审计脚本不会把跳过检查登记为 PASS。
 
 单域命令把回执写入根目录下的 `.lake/verification/agent-workflow.json`；全仓命令产生根目录的 `lean-verification.json`。单域结果不会覆盖全仓回执，也不能代表其他领域已核验。
 
@@ -52,7 +52,7 @@ lake build AgentWorkflow
 | 多人共同错误的反模型 | `consensus_does_not_imply_truth`、`unsound_gate_can_close_false_goal` | 一致 PASS 不推出事实；丢失 soundness 后可假关闭 |
 | 验收门正控 | `equality_evidence_is_sound`、`sound_gate_can_close_true_goal` | 合成的真值绑定门可以接受真成功，不是永远拒绝 |
 
-源文件：[Progress.lean](AgentWorkflow/Progress.lean)、[Evidence.lean](AgentWorkflow/Evidence.lean)。两片段的关系观察更新现已连接；验收门仍是独立的局部切片。本工程尚未证明这些模型与真实服务组成完整的端到端精化关系。
+源文件：[Progress.lean](AgentWorkflow/Progress.lean)、[Evidence.lean](AgentWorkflow/Evidence.lean)、[ExecutionRecovery.lean](AgentWorkflow/ExecutionRecovery.lean)、[Outbox.lean](AgentWorkflow/Outbox.lean)。本轮两个新模型是有意缩小的状态转换切片；它们尚未证明真实 Node.js / PostgreSQL 实现满足模型，也不覆盖生产环境。
 
 ## 0.3.0 消除的前提
 
