@@ -11,6 +11,8 @@
 | 怎样设计一套领域原语，判断是否基础、可组合、足够简洁？ | [原语的原语](meta/README.md) | 从任务和必要区别出发构造方法，用反例检查删并；[完整稿](meta/FRAMEWORK.md) |
 | 开发新机制时，怎样让需求、数学模型、Lean 和代码保持一致？ | [以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md) | 以模型为共同语义中心，建立需求追溯、形式化证明、实现映射和真实验收 |
 | 怎样机械检查模型与代码是否一致、环境是否满足证明前提？ | [模型—实现精化与环境前提验证](MODEL_IMPLEMENTATION_CONFORMANCE.md) | 从精化关系、结构化轨迹、模型驱动测试和公理探针建立可执行证据 |
+| 怎样把 Spec、模型、Lean、代码、Trace 和 CI 真正接成工具链？ | [Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md) | 选择 Quint/TLA+/Alloy/Lean/PBT/Trace/Evidence Graph 工具并按阶段落地 |
+| 这套体系有哪些国际研究与工业实践依据？ | [研究沉淀](RESEARCH_SPEC_MODEL_PROOF_CODE_2026-11.md) | 区分成熟案例、证据强度、未解决问题和本仓库的架构判断 |
 | 怎样按风险和复杂度选择建模与证明投入？ | [建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md) | 主动识别关键性质，复用或补足模型、积累证明，并绑定实现与真实验收 |
 | 现实任务出问题，怎样反过来挑战模型并修正代码？ | [模型反馈闭环](MODEL_FEEDBACK.md) | 保留原验收，用 Issue 连接反例、模型、证明、实现和任务结果 |
 | 我面对的是事实、判断、取舍，还是该执行的行动？ | [人生使用指南](domains/life/GUIDE.md) | 分清概念、找证据、形成待确认的取舍和下一步 |
@@ -92,7 +94,7 @@ python3 tools/verify_lean.py
 
 ## 后续维护
 
-软件与运行机制开发遵循[以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md)（v0.1.0，2026-11-27）及[建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md)、[模型—实现精化与环境前提验证](MODEL_IMPLEMENTATION_CONFORMANCE.md)：数学模型是需求与实现之间的共同语义中心；Lean 检查模型性质，项目通过实现映射说明代码如何落实模型，并以原任务验收确认现实结果。两份方法共同规定适量建模、证明选择、前提落实和三层证据边界；各域语义、原语 ID、证明状态及注册表版本保持各自记录，外部项目通过自己的治理流程采用。
+软件与运行机制开发遵循[以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md)、[建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md)、[模型—实现精化与环境前提验证](MODEL_IMPLEMENTATION_CONFORMANCE.md)及[Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md)：数学模型是需求与实现之间的共同语义中心；Lean 检查模型性质，项目通过实现映射说明代码如何落实模型，并以原任务验收确认现实结果。这些方法共同规定需求忠实性、模型可行性、证明范围、实现精化、环境前提和原始验收；研究依据见[研究沉淀](RESEARCH_SPEC_MODEL_PROOF_CODE_2026-11.md)；各域语义、原语 ID、证明状态及注册表版本保持各自记录，外部项目通过自己的治理流程采用。
 
 本仓库是这六个领域**整合版方法**的后续维护入口。原仓库保留原历史和原运行职责；本次没有归档、重命名或改写它们，也没有建立双向自动同步。
 

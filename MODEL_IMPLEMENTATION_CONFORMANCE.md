@@ -2,7 +2,7 @@
 
 **工程方法 v0.1.0 · 2026-11-27**
 
-本文把 [以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md) 中的“实现映射/精化关系”进一步落实为可执行的工程协议。它不要求每个项目采用相同测试工具，也不声称有限测试等于全程序证明。
+本文把 [以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md) 中的“实现映射/精化关系”进一步落实为可执行的工程协议。工具选型、adapter contract、Trace 完整性和 CI 阶段见 [Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md)。它不要求每个项目采用相同测试工具，也不声称有限测试等于全程序证明。
 
 ## 1. 要建立的关系
 

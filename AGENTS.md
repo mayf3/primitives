@@ -4,7 +4,7 @@
 
 ## 开发原则：以数学模型为中心
 
-所有重要行为变更按[以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md)建立需求—模型—Lean—实现—验收追溯；按[建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md)选择适量投入。数学模型是共同语义中心，Lean 证明绑定模型性质，消费项目必须说明代码映射和前提落实，真实任务验收独立记录。小型非关键变更复用现有记录，不制造空模板或强制新增定理。
+所有重要行为变更按[以数学模型为中心的开发规范](MODEL_CENTERED_DEVELOPMENT.md)建立需求—模型—Lean—实现—验收追溯；按[建模与证明驱动的开发原则](MODEL_GUIDED_DEVELOPMENT.md)选择适量投入；关键状态机需要具体工具选型时，参考[Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md)，研究依据见[研究沉淀](RESEARCH_SPEC_MODEL_PROOF_CODE_2026-11.md)。数学模型是共同语义中心，Lean 证明绑定模型性质，消费项目必须说明代码映射和前提落实，真实任务验收独立记录。小型非关键变更复用现有记录，不制造空模板或强制新增定理。
 
 ## 开发原则：主动建模、积累证明、对齐实现
 
@@ -50,6 +50,8 @@
 - 不增设任务调度、数据库、服务和跨仓自动同步，除非当前任务明确需要。
 
 ## 检查
+
+模型检查、Lean 证明、模型驱动测试、真实 Trace、环境探针和产品验收属于不同证据类型。工具选型与命令按 [Model Engineering Toolchain](MODEL_ENGINEERING_TOOLCHAIN.md) 执行；不要将有限测试、bounded model checking 或 Trace Validation 描述为完整代码证明。
 
 收到现实失败、模型反例或实现不符时，按 [MODEL_FEEDBACK.md](MODEL_FEEDBACK.md) 处理。报告者只需提供现象、期待和材料；Agent 负责补版本、最小反例、出错层、实现对应与验收证据。固定原验收，不在模型中无依据排除现实仍允许的失败路径，不加入未落实前提让证明通过；通过代码消除失败路径须保留反例和实际阻断证据。分别记录模型与证明、实现对齐、原任务验收；部分 PR 用 `Refs` 关联，未现实验收的任务不按 completed 关闭。纯模型子项从建立时明确范围，不代表现实任务已完成。
 
