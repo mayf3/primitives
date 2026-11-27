@@ -91,7 +91,12 @@ theorem dead_letter_is_kick_only {enabled : Channel → Bool}
     (step : Step enabled before command after)
     (dead : after.status = .deadLetter) :
     before.channel = .executionKick := by
-  cases step <;> simp_all
+  cases step with
+  | claim _ _ _ => cases dead
+  | settle _ _ => cases dead
+  | retry _ _ => cases dead
+  | unknown _ _ => cases dead
+  | deadLetter channel _ _ => exact channel
 
 /-- UNKNOWN returns to pending retry responsibility, never delivered. -/
 theorem unknown_returns_to_pending {enabled : Channel → Bool}
@@ -99,11 +104,7 @@ theorem unknown_returns_to_pending {enabled : Channel → Bool}
     (step : Step enabled before (.unknown worker) after) :
     after.status = .pending ∧ after.claimant = none := by
   cases step with
-  | claim _ _ _ => cases dead
-  | settle _ _ => cases dead
-  | retry _ _ => cases dead
-  | unknown _ _ => cases dead
-  | deadLetter channel _ _ => exact channel
+  | unknown _ _ => exact ⟨rfl, rfl⟩
 
 /-- A claimed row cannot be claimed by a second worker before release. -/
 theorem claimed_row_cannot_be_claimed_again {enabled : Channel → Bool}
