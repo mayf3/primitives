@@ -149,3 +149,17 @@ $$
 | 生产无人值守 | 本轮未验证 | 同一原任务、原版本、合法角色和原 AC 的自然全链回执 |
 
 Lean 检查的是这些定义与前提下的推导。把未验证的环境条件当作前提，并不会使它们变成现实事实。后续应优先处理会改变以上前提真假的实现断点，而非增加无关的正常路径 PASS 数量。
+
+
+## 8. 2026-11-27：消费项目模型试点（0.3.2-pilot）
+
+本轮将 Agent Workflow 中可复用的身份、持久责任、UNKNOWN 与验收边界，落实为两个更窄的转换模型：
+
+- [ExecutionRecovery.lean](lean/AgentWorkflow/ExecutionRecovery.lean)：NodeVisit / attempt / generation 身份不变；planned 与 resolution-blocked 仅在 delivery-start fence 未设置时进入首次投递；UNKNOWN 与 terminal 无自动后继。
+- [Outbox.lean](lean/AgentWorkflow/lean/AgentWorkflow/Outbox.lean)：按 channel gate 约束逐行 claim；event key 不变；UNKNOWN 回到 pending；只有 EXECUTION_KICK 可以 dead-letter；已 claim 行不能被第二 worker 再 claim。
+
+这两个模型是可复用的抽象性质，不声称覆盖具体 JS 文件系统持久化、Node.js 多进程锁、PostgreSQL MVCC / `FOR UPDATE SKIP LOCKED`、HTTP 客户端、事务提交或 forum per-instance anti-overtake SQL。消费项目必须提供独立实现映射和运行证据。对应试点：
+- [dsh-agent-core #710](https://github.com/mayf3/dsh-agent-core/issues/710)
+- [svc-workflow #140](https://github.com/mayf3/svc-workflow/issues/140)
+
+复现：`python3 tools/verify_lean.py --domain agent-workflow`。在该命令本轮实际运行并产生回执前，新增证明状态标记为 PENDING_KERNEL_VERIFICATION。
