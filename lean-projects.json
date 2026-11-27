@@ -9,7 +9,7 @@
       "modules": [
         "PrimitiveCore",
         "PrimitiveCore.Abstraction",
-        "PrimitiveCore.Contracts"
+        "PrimitiveCore.Contracts",\n        "PrimitiveCore.Refinement"
       ]
     },
     {
