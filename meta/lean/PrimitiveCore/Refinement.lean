@@ -20,9 +20,9 @@ inductive Trace (step : Abstract → Abstract → Prop) :
 /-- Concatenate two adjacent finite traces. -/
 def Trace.append {step : Abstract → Abstract → Prop}
     {first middle last : Abstract}
-    (prefix : Trace step first middle)
+    (firstTrace : Trace step first middle)
     (suffix : Trace step middle last) : Trace step first last := by
-  induction prefix with
+  induction firstTrace with
   | nil => exact suffix
   | cons transition _ inductionHypothesis =>
       exact Trace.cons transition (inductionHypothesis suffix)
@@ -55,8 +55,10 @@ theorem finite_trace_refinement
   revert abstractStart
   induction concreteTrace with
   | nil state =>
+      intro abstractStart initialCorrespondence
       exact ⟨abstractStart, Trace.nil abstractStart, initialCorrespondence⟩
   | cons concreteTransition _ inductionHypothesis =>
+      intro abstractStart initialCorrespondence
       obtain ⟨abstractMiddle, abstractPrefix, middleCorrespondence⟩ :=
         simulation initialCorrespondence concreteTransition
       obtain ⟨abstractEnd, abstractSuffix, finalCorrespondence⟩ :=
