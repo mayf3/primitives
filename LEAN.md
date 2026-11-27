@@ -31,7 +31,7 @@
 
 | 范围 | 说明 | 证明入口 |
 |---|---|---|
-| 元层 | 查询保真、不可辨识、契约串联与有限轨迹不变量 | [元层](meta/lean/README.md) |
+| 元层 | 查询保真、不可辨识、契约串联、有限轨迹不变量、实现精化与快照级探针 soundness | [元层](meta/lean/README.md) |
 | Agent Workflow | 关系观察与证据更新接缝、初态到逐边界真值包含、条件进展、验收门及反模型 | [工作流](domains/agent-workflow/lean/README.md) |
 | 设计 | 展开/隐藏保留正确后继；错误压缩混同授权与验收 | [设计](domains/design/lean/README.md) |
 | 学习 | 指定理解模型的回答签名、可辨识性及变式正反例 | [学习](domains/learning/lean/README.md) |
