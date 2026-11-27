@@ -90,6 +90,16 @@ def SnapshotEvidence {Environment : Type}
     (assumption : Environment → Prop)
     (probe : ProbeResult Environment)
     (environment : Environment) : Prop :=
-  probe environment = some true → assumption environment
+  probe environment = some true ∧
+    (probe environment = some true → assumption environment)
+
+/-- Snapshot evidence records a positive observation and its sound implication. -/
+theorem snapshot_evidence_establishes_assumption {Environment : Type}
+    (assumption : Environment → Prop)
+    (probe : ProbeResult Environment)
+    (environment : Environment)
+    (evidence : SnapshotEvidence assumption probe environment) :
+    assumption environment :=
+  evidence.2 evidence.1
 
 end PrimitiveCore.Refinement
