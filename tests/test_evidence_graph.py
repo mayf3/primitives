@@ -55,12 +55,16 @@ class EvidenceGraphCompilerTests(unittest.TestCase):
         code = self.coordinate("src/service.py", "def apply_transition(state, event):\n    return state\n",
                                "code-r1")
         audit = {"schema": "primitives-lean-verification/v1", "status": "PASS_CONDITIONAL_MODEL_PROOFS",
+                 "lean_version": "Lean 4.19.0",
                  "commands": [{"exit_code": 0}], "theorem_axioms": {"Model.t": []},
                  "compiled_declarations": {"Model.t": {"kind": "theorem", "axioms": []}},
                  "source_sha256": {"Model.lean": model["sha256"]}}
         lean = self.coordinate("lean-receipt.json", json.dumps(audit), "model-r1")
         inputs = {"MODEL-001": self.binding(model), "CODE-001": self.binding(code)}
-        executed = {"status": "PASS", "exit_code": 0, "summary": {"tests": 1, "pass": 1, "fail": 0},
+        executed = {"status": "PASS", "exit_code": 0,
+                    "toolchain": "pytest-8",
+                    "executed_at": "2026-11-28T00:00:00Z",
+                    "summary": {"tests": 1, "pass": 1, "fail": 0},
                     "evidence_bindings": inputs}
         tested = self.coordinate("test-run.json", json.dumps(executed), "code-r1")
         acceptance = {"status": "PASS", "exit_code": 0, "requirement_ids": ["REQ-001"],
