@@ -43,6 +43,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26.7.0'
       - name: Fetch read-only consumer source at the fixture pins
         run: |
           python3 - <<'PY'
@@ -71,11 +74,26 @@ jobs:
           python3 tools/evidence_graph_fixture_check.py \
             --repositories "$RUNNER_TEMP/fixture-repositories" \
             --output "$RUNNER_TEMP/evidence-graph-results"
-      - name: Upload complete graph, coverage, stale and negative-control receipts
+      - name: Capture Core recovery and stale-attempt checks from the pinned implementation
+        run: |
+          python3 tools/capture_core_recovery_trace.py \
+            --core-repo "$RUNNER_TEMP/fixture-repositories/dsh-agent-core" \
+            --output "$RUNNER_TEMP/core-recovery-capture"
+      - name: Validate the Core JSONL against the compiled Evidence Graph
+        run: |
+          python3 tools/trace_validate_core_check.py \
+            --graph "$RUNNER_TEMP/evidence-graph-results/core/evidence-graph.json" \
+            --capture "$RUNNER_TEMP/core-recovery-capture/core-recovery-capture.json" \
+            --output "$RUNNER_TEMP/core-recovery-validation.json"
+      - name: Upload graphs, trace captures and validation receipts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: evidence-graph-fixtures
-          path: ${{ runner.temp }}/evidence-graph-results
+          path: |
+            ${{ runner.temp }}/evidence-graph-results
+            ${{ runner.temp }}/core-recovery-capture
+            ${{ runner.temp }}/core-recovery-validation.json
+            ${{ runner.temp }}/core-recovery-validation.segments
           include-hidden-files: true
           if-no-files-found: error

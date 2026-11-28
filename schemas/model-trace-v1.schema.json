@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalized model trace event",
+  "description": "One JSONL event. Segment closure, causal order and provenance are verified outside this row schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "trace_id", "event_id", "producer_id", "producer_epoch", "seq",
+    "causal_parent_ids", "subject_id", "identity", "transition_id", "from_observed", "event",
+    "to_observed", "code_revision", "model_revision", "mapping_revision", "verifier_revision",
+    "normalizer_revision", "environment_profile", "segment_complete", "raw_line", "payload_hash"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "model-trace/v1"},
+    "trace_id": {"type": "string", "pattern": "\\S"},
+    "event_id": {"type": "string", "pattern": "\\S"},
+    "producer_id": {"type": "string", "pattern": "\\S"},
+    "producer_epoch": {"type": "integer", "minimum": 0},
+    "seq": {"type": "integer", "minimum": 1},
+    "span_id": {"type": "string", "pattern": "\\S"},
+    "sequence_source": {"type": "string", "pattern": "\\S"},
+    "causal_parent_ids": {
+      "type": "array", "items": {"type": "string", "pattern": "\\S"}, "uniqueItems": true
+    },
+    "subject_id": {"type": "string", "pattern": "\\S"},
+    "identity": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "\\S"},
+      "additionalProperties": {
+        "oneOf": [{"type": "string", "pattern": "\\S"}, {"type": "integer", "minimum": 0}]
+      }
+    },
+    "transition_id": {"type": ["string", "null"], "pattern": "\\S"},
+    "stutter_mapping_id": {"type": "string", "pattern": "\\S"},
+    "from_observed": {"type": ["string", "null"], "pattern": "\\S"},
+    "event": {"type": "string", "pattern": "\\S"},
+    "to_observed": {"type": ["string", "null"], "pattern": "\\S"},
+    "code_revision": {"type": "string", "pattern": "\\S"},
+    "model_revision": {"type": "string", "pattern": "\\S"},
+    "mapping_revision": {"type": "string", "pattern": "\\S"},
+    "verifier_revision": {"type": "string", "pattern": "\\S"},
+    "normalizer_revision": {"type": "string", "pattern": "\\S"},
+    "environment_profile": {"type": "string", "pattern": "\\S"},
+    "segment_complete": {"type": "boolean"},
+    "raw_line": {"type": "integer", "minimum": 1},
+    "payload_hash": {"type": "string", "minLength": 64, "maxLength": 64, "pattern": "^[a-f0-9]{64}$"}
+  },
+  "if": {"required": ["stutter_mapping_id"]},
+  "then": {"properties": {"transition_id": {"const": null}}}
+}

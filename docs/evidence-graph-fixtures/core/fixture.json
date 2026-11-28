@@ -1022,6 +1022,47 @@
         "symbol": "matchesRecoveryTrigger"
       },
       "mapping_authority": "docs/reports/MODEL_CENTERED_PILOT_WORKFLOW_RECOVERY_V1.md"
+    },
+    {
+      "id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/src/ledger-events.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "7f56582cd1ed9d36eda7b3648f7e92de347ae39c9616d60a8548692b18aa983e",
+        "symbol": "applyLedgerEvent"
+      },
+      "description": "Project native single-attempt event facts for bounded trace validation."
+    },
+    {
+      "id": "CORE.TRANS.BLOCK-RESOLUTION",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "blockResolution"
+      }
+    },
+    {
+      "id": "CORE.TRANS.CONFIRM-DELIVERY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "confirmDelivery"
+      }
+    },
+    {
+      "id": "CORE.TRANS.REJECT-AFTER-START",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/primitives/domains/agent-workflow/lean/AgentWorkflow/ExecutionRecovery.lean",
+        "revision": "1456f5b39fe6f39d106d90504a75adab5422b45e",
+        "sha256": "35163771f51801a15ed4d9aaf441b52c427be98a4d6e57fcd7d566a039b8f1dc",
+        "symbol": "rejectAfterStart"
+      }
     }
   ],
   "links": [
@@ -1608,6 +1649,41 @@
     {
       "from": "CORE.STATE.UNKNOWN",
       "to": "CORE.MAP.UNKNOWN-RECHECK",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "to": "CORE.CODE.EVENTS",
+      "relation": "points_to"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.BLOCK-RESOLUTION",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.BLOCK-RESOLUTION",
+      "to": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.CONFIRM-DELIVERY",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.CONFIRM-DELIVERY",
+      "to": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "CORE.MODEL.EXECUTION-RECOVERY",
+      "to": "CORE.TRANS.REJECT-AFTER-START",
+      "relation": "defines"
+    },
+    {
+      "from": "CORE.TRANS.REJECT-AFTER-START",
+      "to": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
       "relation": "implemented_by"
     }
   ],

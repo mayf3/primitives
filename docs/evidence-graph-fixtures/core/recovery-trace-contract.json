@@ -1,0 +1,86 @@
+{
+  "schema_version": "core-recovery-trace-profile/v1",
+  "environment_profile": "isolated-core-loopback",
+  "scope": "The captured native ledger of a single attempt. Router observations are separate witnesses. Original business acceptance requires a Svc receipt.",
+  "model_node": "CORE.MODEL.EXECUTION-RECOVERY",
+  "trace_node": "CORE.TRACE.RESTART",
+  "binding_ids": [
+    "CORE.MODEL.EXECUTION-RECOVERY",
+    "CORE.LEAN.KERNEL-CI",
+    "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+    "CORE.MAP.BLOCKED-RECOVERY",
+    "CORE.MAP.WAL-START",
+    "CORE.TRANS.BLOCK-RESOLUTION",
+    "CORE.TRANS.WAL-START",
+    "CORE.TRANS.BLOCKED-RECOVERY",
+    "CORE.TRANS.CONFIRM-DELIVERY",
+    "CORE.TRANS.REJECT-AFTER-START",
+    "CORE.CODE.EVENTS",
+    "CORE.CODE.AUTO",
+    "CORE.CODE.LEDGER",
+    "CORE.CODE.TEST-RESTART",
+    "CORE.CODE.TEST-BLOCKED",
+    "CORE.CODE.TEST-CHILD",
+    "CORE.TRACE.RESTART"
+  ],
+  "transitions": [
+    {
+      "transition_id": "CORE.TRANS.BLOCK-RESOLUTION",
+      "from_observed": "planned",
+      "event": "resolution_blocked",
+      "to_observed": "resolutionBlocked"
+    },
+    {
+      "transition_id": "CORE.TRANS.WAL-START",
+      "from_observed": "planned",
+      "event": "delivery_started",
+      "to_observed": "deliveryStarted"
+    },
+    {
+      "transition_id": "CORE.TRANS.BLOCKED-RECOVERY",
+      "from_observed": "resolutionBlocked",
+      "event": "delivery_started",
+      "to_observed": "deliveryStarted"
+    },
+    {
+      "transition_id": "CORE.TRANS.CONFIRM-DELIVERY",
+      "from_observed": "deliveryStarted",
+      "event": "run_delivered",
+      "to_observed": "runDelivered"
+    },
+    {
+      "transition_id": "CORE.TRANS.REJECT-AFTER-START",
+      "from_observed": "deliveryStarted",
+      "event": "reconciled",
+      "to_observed": "needsReview"
+    }
+  ],
+  "stutters": [
+    {
+      "mapping_id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "event": "attempt_planned",
+      "states": ["planned"],
+      "initial_only": true
+    },
+    {
+      "mapping_id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "event": "resolution_blocked",
+      "states": ["resolutionBlocked"]
+    },
+    {
+      "mapping_id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "event": "recovery_authorized",
+      "states": ["resolutionBlocked"]
+    },
+    {
+      "mapping_id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "event": "recovery_checked",
+      "states": ["resolutionBlocked"]
+    },
+    {
+      "mapping_id": "CORE.MAP.SAME-ATTEMPT-PROJECTION",
+      "event": "readback_checked",
+      "states": ["runDelivered"]
+    }
+  ]
+}
