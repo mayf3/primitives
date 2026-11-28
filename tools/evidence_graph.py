@@ -25,7 +25,8 @@ KINDS = EVIDENCE | {"REQ", "SPEC", "DEC", "MODEL", "STATE", "TRANSITION", "PROP"
 SKIP = {".git", ".hg", ".svn", ".worktree", ".worktrees", ".venv", "venv", "node_modules",
         "__pycache__", ".mypy_cache", ".pytest_cache", ".lake", "build", "dist", "target",
         ".evidence-graph"}
-SUFFIXES = {".md", ".lean", ".rs", ".js", ".mjs", ".ts", ".py", ".sql", ".json", ".txt"}
+SUFFIXES = {".md", ".lean", ".rs", ".js", ".mjs", ".ts", ".py", ".sql", ".json", ".txt",
+            ".kt", ".dart", ".swift", ".java", ".go"}
 DIRECTIVE = re.compile(r"^\s*(?:<!--\s*|(?://|#|--)\s*)?@evidence-(node|link)\s+(.+?)\s*(?:-->)?\s*$")
 ID = re.compile(r"[A-Z][A-Z0-9_.:-]{1,127}\Z")
 REPORTS = ("evidence-graph.json", "coverage-report.json", "dangling-links.json", "stale-evidence.json")
@@ -159,6 +160,8 @@ def find_symbol(text, name, suffix):
         text = lean_code_only(text)
     else:
         text = re.sub(r"/\*[\s\S]*?\*/", "", text)
+        # 行注释剥离（注释掉的声明不得充当符号证据）
+        text = re.sub(r"(?m)^\s*(?://|#|--).*$", "", text)
     token = re.escape(name.split()[-1].rsplit(".", 1)[-1].split("::")[-1])
     if suffix == ".lean":
         names = name.split(".")
@@ -167,7 +170,7 @@ def find_symbol(text, name, suffix):
             if ".".join(names[:-1]) not in namespaces and ".".join(names[:-1]) != ".".join(namespaces):
                 return False
     declaration = (r"(?m)^\s*(?:(?:pub(?:\([^)]*\))?|export|default|private|public|async|static|"
-                   r"noncomputable|unsafe|const)\s+)*(?:def|fn|function\*?|class|struct|enum|"
+                   r"noncomputable|unsafe|const)\s+)*(?:def|fn|fun|function\*?|class|struct|enum|"
                    r"inductive|structure|theorem|abbrev|const|let|var|trait|interface|type)\s+"
                    + token + r"(?![\w$])")
     if re.search(declaration, text):
@@ -177,7 +180,19 @@ def find_symbol(text, name, suffix):
     if suffix in {".js", ".mjs", ".ts"}:
         method = (r"(?m)^\s*(?:(?:async|static|public|private)\s+)*" + token
                   + r"\s*\([^;]*?\)\s*\{")
-        return re.search(method, text) is not None
+        if re.search(method, text):
+            return True
+    if suffix in {".kt", ".dart"}:
+        # Kotlin: fun name(...)（含修饰符）
+        if re.search(r"(?m)^\s*(?:(?:private|public|internal|protected|open|override|"
+                     r"suspend|static|final|abstract)\s+)*fun\s+" + token + r"(?![\w$])",
+                     text):
+            return True
+        # Dart: 顶层函数/方法（返回类型可小写），排除语句关键字
+        dart_decl = (r"(?m)^\s*(?!(?:return|await|throw|new|else|case)\b)"
+                     r"[A-Za-z_][\w<>,\s?]*?\s+" + token + r"\s*\(")
+        if re.search(dart_decl, text):
+            return True
     return False
 
 
@@ -306,6 +321,8 @@ def audit_result(data, actual, targets, coords):
     hashes = data.get("source_sha256")
     commands = data.get("commands")
     declarations = [n for n in targets if n["kind"] == "THM"]
+    if not data.get("lean_version"):
+        return "receipt missing lean toolchain binding"
     if (data.get("status") != "PASS_CONDITIONAL_MODEL_PROOFS"
             or not isinstance(axioms, dict) or not isinstance(hashes, dict) or not declarations
             or not isinstance(commands, list) or not commands
@@ -339,6 +356,21 @@ def audit_result(data, actual, targets, coords):
                 return "named theorem is absent from the compiled audit"
     return None
 
+def adapted_field(data, canonical, natives):
+    """schema 适配：从原生回执的已固化字段映射规范字段（不猜测不回填）。"""
+    if data.get(canonical):
+        return data[canonical]
+    # 原生回执的 schema 键可能是 "schema" 或 "schema_version"
+    # （core-model-pilot-test-run/v1 用 "schema"；统一格式用 "schema_version"）
+    schema_id = data.get("schema_version") or data.get("schema")
+    for native_schema, native_field in natives:
+        if schema_id == native_schema and data.get(native_field):
+            return data[native_field]
+    return None
+
+TOOLCHAIN_NATIVES = (("core-model-pilot-test-run/v1", "node_version"),)
+EXECUTED_AT_NATIVES = (("core-model-pilot-test-run/v1", "started_at"),)
+
 
 def execution_result(data, node, targets):
     if node["kind"] == "PROBE" and data.get("schema_version") == PROBE_RECEIPT:
@@ -370,6 +402,16 @@ def execution_result(data, node, targets):
             return "execution receipt omitted observed binding " + target["id"]
         if any(bound.get(key) != actual_target[key] for key in ("revision", "sha256")):
             return "receipt input binding mismatch: " + target["id"]
+    # Task 3 必填绑定（TEST/TRACE）：toolchain + executed_at
+    # 原生 schema 适配：core-model-pilot-test-run/v1 的
+    # node_version / started_at 是已固化的真实执行事实
+    if node["kind"] in ("TEST", "TRACE"):
+        tc = adapted_field(data, "toolchain", TOOLCHAIN_NATIVES)
+        if not tc:
+            return "receipt missing toolchain binding"
+        ts = adapted_field(data, "executed_at", EXECUTED_AT_NATIVES)
+        if not ts or not stamp(ts):
+            return "receipt missing valid executed_at"
     return None
 
 
@@ -621,13 +663,35 @@ def assess(root, excluded=None, now=None):
             edge["evidence_revision"] = content_coordinate(evidence)["revision"] if evidence else None
             edge["evidence_status"] = evidence["evidence_status"] if evidence else "DECLARED"
             edge["unverified_reasons"] = evidence["unverified_reasons"] if evidence else []
-    meta = {"schema_version": SCHEMA, "generated_at": generated.isoformat(), "project_revision": revision}
+    meta = {"schema_version": SCHEMA, "generated_at": generated.isoformat(),
+            "project_revision": revision,
+            "compiler_revision": digest(Path(__file__).read_bytes())[:32]}
     g = {**meta, "nodes": sorted(nodes, key=lambda n: (n["id"], n["source"])),
          "links": sorted(links, key=lambda e: (e["from"], e["to"], e["relation"])), "diagnostics": errors}
+    g["build_id"] = digest(json.dumps(
+        {k: v for k, v in g.items() if k != "generated_at"},
+        ensure_ascii=False, sort_keys=True).encode())[:32]
     cov = coverage(nodes, by_id, out, incoming)
-    return {"evidence-graph.json": g, "coverage-report.json": {**meta, **cov},
-            "dangling-links.json": {**meta, "items": [d for d in errors if d["code"] == "DANGLING_LINK"]},
-            "stale-evidence.json": {**meta, "items": stale}}
+    stale_codes = sorted({d["code"] for d in stale})
+    failure_codes = {
+        "parse": sorted({d["code"] for d in errors
+                         if d["code"].startswith("INVALID_") or d["code"] in ("EMPTY_GRAPH", "SOURCE_UNREADABLE", "MALFORMED_DIRECTIVE")}),
+        "coordinate": sorted({d["code"] for d in errors
+                              if d["code"] in ("DANGLING_LINK", "SYMBOL_NOT_FOUND",
+                                               "SYMBOL_OR_LINE_REQUIRED", "COORDINATE_FILE_MISSING",
+                                               "SOURCE_HASH_MISMATCH", "COORDINATE_REVISION_MISMATCH",
+                                               "INVALID_SOURCE_LOCATION", "SOURCE_MATERIAL_UNBOUND",
+                                               "TEST_SOURCE_HASH_MISMATCH")}),
+        "stale": stale_codes,
+        "critical_uncovered": sorted(rid for group in cov["summary"].values()
+                                     for rid in group["critical_uncovered"]),
+    }
+    return {"evidence-graph.json": g, "coverage-report.json": {**meta, **cov, "failure_codes": failure_codes},
+            "dangling-links.json": {**meta, "build_id": g["build_id"], "items": [d for d in errors if d["code"] == "DANGLING_LINK"]},
+            "stale-evidence.json": {**meta, "build_id": g["build_id"], "items": stale, "failure_codes": failure_codes}}
+
+def _unused_failure_codes():
+    pass
 
 
 def coverage(nodes, by_id, out, incoming):
