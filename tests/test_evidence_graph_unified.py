@@ -185,6 +185,56 @@ class UnifiedReceiptBindingTest(Base):
         self.assertEqual(self._status_of(), "UNKNOWN",
                          "缺 toolchain/executed_at → UNKNOWN（PASS 不自动升 CURRENT）")
 
+    def test_missing_test_source_yields_unknown(self):
+        """缺 test_source 绑定 → UNKNOWN（如实报告，不阻断 CI 不伪装 PASS）"""
+        code = self.coordinate(
+            "src/service.py", "def apply_transition(state, event):\n    return state\n",
+            "code-r1")
+        model = self.coordinate("Model.lean",
+                                "namespace Model\nend Model", "model-r1")
+        tested = self.coordinate("test-run.json", json.dumps({
+            "status": "PASS", "exit_code": 0,
+            "toolchain": "gradle-8.14/jdk21",
+            "executed_at": "2026-11-28T00:00:00Z",
+            "summary": {"tests": 1, "pass": 1, "fail": 0},
+            "evidence_bindings": {"CODE-001": {"revision": "code-r1",
+                                               "sha256": code["sha256"]},
+                                  "MODEL-001": {"revision": "model-r1",
+                                                "sha256": model["sha256"]}},
+        }), "code-r1")
+        payload = {
+            "schema_version": "evidence-receipt/v1",
+            "nodes": [
+                {"id": "MODEL-001", "kind": "MODEL", "source": "receipt",
+                 "coordinate": model},
+                {"id": "CODE-001", "kind": "CODE", "source": "receipt",
+                 "coordinate": code},
+                {"id": "TEST-001", "kind": "TEST", "source": "receipt",
+                 "coordinate": tested, "evidence_state": "PASS",
+                 "bindings": {"CODE-001": {"revision": "code-r1",
+                                           "sha256": code["sha256"]},
+                              "MODEL-001": {"revision": "model-r1",
+                                            "sha256": model["sha256"]}}},
+            ],
+            "links": [
+                {"from": "TEST-001", "to": "CODE-001", "relation": "verifies"},
+                {"from": "TEST-001", "to": "MODEL-001", "relation": "verifies"},
+            ],
+        }
+        (self.root / "evidence").mkdir(exist_ok=True)
+        (self.root / "evidence" / "pilot.evidence.json").write_text(
+            json.dumps(payload), encoding="utf-8")
+        result = self.run_cli("validate")
+        # 走 v1 语义：缺 test_source → gap → UNKNOWN → rc 0（不阻断 CI）
+        # 但 coverage 如实报告 TEST 未覆盖
+        self.assertEqual(result.returncode, 0, result.stdout)
+        graph = json.loads((self.root / ".evidence-graph" / "evidence-graph.json")
+                           .read_text())
+        test_node = [n for n in graph["nodes"] if n["id"] == "TEST-001"][0]
+        self.assertEqual(test_node["evidence_status"], "UNKNOWN")
+        self.assertTrue(any("test_source" in r
+                            for r in test_node.get("unverified_reasons", [])))
+
     def test_full_bindings_yield_verified(self):
         self._test_node_receipt({"toolchain": "gradle-8.14/jdk21",
                                  "executed_at": "2026-11-28T00:00:00Z"})

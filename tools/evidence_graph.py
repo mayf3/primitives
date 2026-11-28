@@ -320,10 +320,9 @@ def index_graph(root, excluded):
                         path=test_source["path"],
                         expected=test_source.get("sha256"),
                         observed=ts_actual.get("sha256")))
-            else:
-                errors.append(diagnostic(
-                    "TEST_SOURCE_MISSING", id=node["id"],
-                    note="TEST 证据必须声明 test_source {path, sha256}"))
+            # 缺失 test_source 不作为 coordinate error（不阻断 CI）——
+            # 进入 verify_evidence 作为 gap → evidence UNKNOWN
+            pass
     for edge in links:
         a, b = edge["from"], edge["to"]
         if a not in by_id or b not in by_id:
@@ -527,6 +526,8 @@ def verify_evidence(node, neighbors, coords, now, issues):
         if node.get(field) and expected and expected != [node[field]]:
             stale.append(diagnostic(field.upper() + "_MISMATCH", id=identifier,
                                     expected=expected, observed=node[field]))
+    if kind == "TEST" and not node.get("test_source"):
+        gaps.append("missing test_source binding (path+sha256)")
     if kind == "PROBE":
         executed = stamp(node.get("executed_at"))
         expires = stamp(node.get("expires_at"))
