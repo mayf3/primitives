@@ -35,6 +35,18 @@ lake build AgentWorkflow
 
 新增 `GovernanceTakeover`，检查故障后的可认领租约、精确绑定、UNKNOWN 与旧 epoch 写门。[隔离可行性回执及代码对账](../GOVERNANCE_RECOVERY_FEASIBILITY.md)
 
+Batch 4 的 `ExecutionRecoveryDecision` 新增一条内核检查定理
+`step_result_exact`。可执行 `stepResult` 接受当且仅当既有 `ExecutionRecovery.Step` 成立。
+原模型文件保持原字节。编译后导出的有限表覆盖 7 个阶段、2 个围栏值和 9 个事件：
+
+```bash
+lake build AgentWorkflow.ExecutionRecovery
+lake env lean --run domains/agent-workflow/lean/AgentWorkflow/ExecutionRecoveryDecision.lean
+```
+
+进程退出、重启、并发及新 generation 的操作由独立试点编排取证。
+它们只在观测到具体对应关系时用于检查，保持原模型没有定义的调度与外部效果未知。
+
 单域命令把回执写入根目录下的 `.lake/verification/agent-workflow.json`；全仓命令产生根目录的 `lean-verification.json`。单域结果不会覆盖全仓回执，也不能代表其他领域已核验。
 
 每次使用都以本次进程退出码与当前输入哈希为准；失败运行不覆盖以前的成功回执，旧文件不能充当本次通过的证据。

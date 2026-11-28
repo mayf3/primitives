@@ -1,0 +1,9 @@
+# Workflow P0 Batch 4 plan
+
+The pilot starts from primitives `7c589936f7932402e0f55c669e3ff68fb6327323`. Core Recovery production-module bytes come from `ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e`. Batch 3 probes come from `d9be9b62ab2580e9f9677ad6636a31588efcd724`. All runs use scratch state. Existing Batch 1–3 evidence and production adoption remain separate.
+
+1. Define a JSON process protocol for `reset`, `snapshot`, `execute`, `abstract_state`, `normalize` and `observe`. Record the seed, exact commands, input/output messages, segment completeness, environment receipts, code and tool digests. Require explicit mapping for each model transition and each stutter.
+2. Run Core and the pinned ExecutionRecovery relation through independent processes. Project ledger state and observed Router receipts, preserving UNKNOWN. Check one attempt per model sequence. Record cross-generation and concurrent stop/revive as operational checks where the same-attempt Lean relation supplies no transition.
+3. Reuse the existing native restart and CAS harnesses. Run fixed, seeded legal and seeded illegal sequences against the real source, plus SIGKILL, ACK loss, stale generation, concurrent stop/revive and failed or incomplete evidence controls. Save all raw receipts and independently replayable failure coordinates.
+4. Freeze the adapter, model, mapping and verifier. In disposable copies change only Core source to replay a fenced request, accept stale generation, or lose a mandatory ledger event. Compare each result with a clean control and re-run on restored source. Carry the current result into Evidence Graph while preserving historical receipts and the Batch 3 dependency gate.
+5. Open a PR with a runnable command, fixed coordinates, CI artifacts and independent review. Report any unresolved execution or modeling gap explicitly. Batch 5 and production changes require their own work.

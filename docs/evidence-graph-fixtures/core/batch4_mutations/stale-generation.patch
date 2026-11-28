@@ -1,0 +1,10 @@
+--- a/packages/workflow-execution/src/attempt-identity.js
++++ b/packages/workflow-execution/src/attempt-identity.js
+@@ -17,5 +17,7 @@
+ /** Called only after fresh replay inside the existing atomic mutation. No append. */
+ export function staleObservation(current, observation) {
++  // Isolated semantic mutant: wrongly allow settlement by visit alone.
++  if (observation.kind === 'reconciled' && current.nodeVisitId === observation.nodeVisitId) return undefined
+   if (current.attemptId === observation.expectedAttemptId
+     && (current.generation ?? 1) === observation.expectedGeneration) return undefined
+   return {

@@ -1,0 +1,15 @@
+--- a/packages/workflow-execution/src/recovery/operation.js
++++ b/packages/workflow-execution/src/recovery/operation.js
+@@ -78,6 +78,12 @@
+           return { outcome: 'RECOVERY_REFUSED', refused, nodeVisitId, attemptId: attempt.attemptId }
+         }
+         async function dispatch() {
++          // Isolated semantic mutant: wrongly issue a second POST for a fenced attempt.
++          if (attempt.phase === 'delivery_started') {
++            const { agentId } = await resolvePrincipalToAgent(attempt.ownerPrincipalId)
++            await deliverRun({ requestId: attempt.attemptId, agentId,
++              message: buildInstruction(attempt), messageOrigin: provenanceFor(attempt) })
++          }
+           // E4 — ledger-side shape + delivery-domain evidence.
+           if (attempt.phase !== 'resolution_blocked' || attempt.deliveryStartedAtMs !== undefined || attempt.delivered !== undefined) {
+             const evidenceClass = attempt.phase === 'planned'
