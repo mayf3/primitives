@@ -97,7 +97,8 @@ class Oracle:
         elif kind == "staleGeneration" and self.state["identity"]["generation"] == 2:
             return {**result, "stutter": "stale_identity_refused"}
         elif kind == "recoverAfterStart" and started:
-            return {**result, "stutter": "post_wal_recovery_refused", "observation": "UNKNOWN"}
+            observation = "PASS" if self.delivery_confirmed else "UNKNOWN"
+            return {**result, "stutter": "post_wal_recovery_refused", "observation": observation}
         else:
             return {**result, "supported": False, "observation": "UNKNOWN"}
         state = self.state

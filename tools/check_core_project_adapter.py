@@ -32,13 +32,13 @@ DECISION = MODEL.with_name("ExecutionRecoveryDecision.lean")
 CLAIM = "CORE.TRACE.PROJECT-ADAPTER"
 VERIFIER = "CORE.VERIFIER.PROJECT-ADAPTER"
 SCENARIOS = {
-    "fixed": ["blockResolution", "recoverBlocked", "queryOriginal", "reconcileSettled", "restart"],
+    "fixed": ["blockResolution", "recoverBlocked", "recoverAfterStart", "queryOriginal", "reconcileSettled", "restart"],
     "before-wal": ["blockResolution", "sigkillBeforeWal", "restart", "recoverBlocked"],
     "after-wal": ["blockResolution", "sigkillAfterWal", "restart", "recoverAfterStart", "queryOriginal",
                   "reconcileAfterStart"],
     "lost-ack": ["blockResolution", "sigkillAckLost", "restart", "recoverAfterStart", "queryOriginal",
                  "reconcileAfterStart"],
-    "stale-generation": ["staleGeneration"],
+    "stale-generation": ["staleGeneration", "recoverAfterStart"],
 }
 MUTATION_CASES = {"post-wal-router": "lost-ack", "stale-generation": "stale-generation", "dropped-wal": "fixed"}
 STUTTERS = {
@@ -47,7 +47,7 @@ STUTTERS = {
     "refused_invalid_event": "A forbidden native command changed neither the projected attempt nor external effects.",
     "pre_wal_process_exit": "The process exited before the durable fence, leaving the same blocked attempt.",
     "stale_identity_refused": "The displaced identity failed the CAS and retained the current generation.",
-    "post_wal_recovery_refused": "The durable fence prevents re-entering delivery while the effect is uncertain.",
+    "post_wal_recovery_refused": "The durable fence prevents reopening delivery, including after a confirmed admission.",
     "recovery_observation_metadata": "Recovery audit and readback metadata preserve identity, phase and fence.",
     "router_transport_observation": "First original-key loopback POST observes the fence recorded by a separate ledger event.",
 }
