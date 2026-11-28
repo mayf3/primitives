@@ -5,9 +5,13 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "tools" / "evidence_graph.py"
+sys.path.insert(0, str(SCRIPT.parent))
+import assumption_freshness as freshness
+from evidence_graph import assess
 
 
 def node(**value):
@@ -271,6 +275,134 @@ class EvidenceGraphCompilerTests(unittest.TestCase):
         self.assertEqual(nodes["LEAN-001"]["evidence_status"], "STALE")
         coverage = json.loads((self.root / ".evidence-graph/coverage-report.json").read_text())
         self.assertFalse(coverage["properties"][0]["covered"])
+
+    def probe_fixture(self, current="PROBE-NOW", include_current_context=True, latest="PASS",
+                      execution_missing=False, graph_revision_change=False, scope_change=False,
+                      requires=True, pointer=True):
+        self.valid_fixture()
+        now = datetime(2025, 9, 2, 12, 0, tzinfo=timezone.utc)
+        authority = self.root / "spec/requirements.md"
+        existing = self.graph_fixture_nodes()
+        sources = {item["id"]: item["coordinate"] for item in existing
+                   if item["id"] in {"REQ-001", "MODEL-001", "MAP-001", "CODE-001"}}
+        runner = Path(freshness.__file__)
+        runner_hash = freshness.digest(runner.read_bytes())
+        sources["VERIFIER-001"] = self.coordinate("src/review.py", runner.read_text(), runner_hash)
+        sources["ASM-001"] = self.coordinate("assumptions.md", "# Scoped ledger restart", "asm-v1")
+        scope = {"runtime": "isolated-r1"}
+        context = {
+            "schema_version": freshness.CONTEXT, "assumption_id": "ASM-001",
+            "proposition": "The original ledger is readable during this scoped restart",
+            "owner": "workflow-review", "probe_id": "ledger-restart",
+            "versions": {**{key: sources[identifier]["revision"] for key, identifier in {
+                "spec": "REQ-001", "model": "MODEL-001", "code": "CODE-001",
+                "mapping": "MAP-001", "verifier": "VERIFIER-001",
+            }.items()}, "probe": "a" * 64},
+            "ttl_seconds": 30, "environment_scope_hash": freshness.scope_hash(scope),
+            "failure_behavior": {"condition_false": "FAIL", "timeout": "UNKNOWN"},
+            "blind_spots": ["power loss"], "evidence_bindings": {
+                key: self.binding(coord) for key, coord in sources.items()},
+        }
+        test_prefix = "@evidence-node "
+        baseline = authority.read_text().splitlines()
+        for i, row in enumerate(baseline):
+            if row.startswith(test_prefix):
+                item = json.loads(row[len(test_prefix):])
+                if item["id"] == "TEST-001":
+                    baseline[i] = node(**item, required_assumption_ids=["ASM-001"])
+        probe_nodes = []
+        for identifier, status, at in [
+            ("PROBE-OLD", "PASS", now - timedelta(seconds=1)), ("PROBE-NOW", latest, now),
+        ]:
+            probe = {"id": identifier, "kind": "PROBE"}
+            receipt = {
+                **context, "schema_version": freshness.RECEIPT, "status": status,
+                "execution_kind": "observed", "observed_result": status, "exit_code": freshness.RESULT_CODES[status],
+                "evidence": {"restart_readable": status == "PASS"}, "executed_at": at.isoformat(),
+                "expires_at": (at + timedelta(seconds=30)).isoformat(),
+                "command": ["/isolated/runtime", "/isolated/probe"],
+                "input_hashes": {"probe": context["versions"]["probe"], "runner": runner_hash},
+                "environment_snapshot": scope,
+            }
+            if identifier != "PROBE-NOW" or not execution_missing:
+                probe["coordinate"] = self.coordinate(f"{identifier}.json", json.dumps(receipt), "probe-run")
+            if identifier != "PROBE-NOW" or include_current_context:
+                probe["probe_context"] = context
+                if identifier == "PROBE-NOW" and scope_change:
+                    probe["probe_context"] = {**context, "environment_scope_hash": "f" * 64}
+            else:
+                probe.update({"evidence_state": "PASS", "executed_at": receipt["executed_at"],
+                              "expires_at": receipt["expires_at"], "ttl_seconds": 30,
+                              "environment_scope_hash": context["environment_scope_hash"],
+                              "expected_environment_scope_hash": context["environment_scope_hash"],
+                              "bindings": context["evidence_bindings"]})
+            probe_nodes.append(node(**probe))
+            probe_nodes.extend(link(identifier, key, "probes" if key == "ASM-001" else "measures")
+                               for key in sources)
+        verifier = sources["VERIFIER-001"]
+        if graph_revision_change:
+            verifier = {**verifier, "revision": "v2"}
+        entries = baseline + [
+            node(id="VERIFIER-001", kind="VERIFIER", coordinate=verifier),
+            node(id="ASM-001", kind="ASSUMPTION", coordinate=sources["ASM-001"],
+                 **({"current_probe_id": current} if pointer else {})),
+        ] + probe_nodes
+        if requires:
+            entries.append(link("TEST-001", "ASM-001", "requires"))
+        authority.write_text("\n".join(entries))
+        return now
+
+    def probe_report(self, now):
+        reports = assess(self.root, now=now)
+        graph = {n["id"]: n for n in reports["evidence-graph.json"]["nodes"]}
+        coverage = reports["coverage-report.json"]
+        return graph, coverage["assumptions"][0], coverage["tests"][0]
+
+    def test_probe_coverage_and_expiry_are_independent_of_original_test_and_lean(self):
+        now = self.probe_fixture()
+        graph, assumption, claim = self.probe_report(now)
+        self.assertTrue(assumption["covered"])
+        self.assertTrue(claim["covered"])
+        self.assertEqual(graph["PROBE-NOW"]["probe_assessment"]["raw_status"], "PASS")
+        graph, assumption, claim = self.probe_report(now + timedelta(seconds=30))
+        self.assertEqual(assumption["status"], "STALE")
+        self.assertEqual(claim["status"], "STALE")
+        self.assertFalse(assumption["covered"] or claim["covered"])
+        self.assertEqual(graph["PROBE-NOW"]["probe_assessment"]["raw_status"], "PASS")
+        self.assertEqual(graph["TEST-001"]["execution_evidence_status"], "VERIFIED")
+        self.assertEqual(graph["LEAN-001"]["evidence_status"], "VERIFIED")
+
+    def test_current_fail_cannot_be_hidden_by_previous_unexpired_pass(self):
+        now = self.probe_fixture(latest="FAIL")
+        graph, assumption, claim = self.probe_report(now)
+        self.assertEqual(assumption["status"], "FAIL")
+        self.assertEqual(graph["PROBE-OLD"]["evidence_status"], "UNKNOWN")
+        self.assertEqual(graph["PROBE-OLD"]["probe_assessment"]["raw_status"], "PASS")
+        self.assertEqual(claim["status"], "UNKNOWN")
+        self.assertFalse(claim["covered"])
+
+    def test_probe_context_or_current_receipt_missing_leaves_assumption_unknown(self):
+        for condition in ({"include_current_context": False}, {"execution_missing": True}, {"pointer": False}):
+            with self.subTest(condition=condition):
+                now = self.probe_fixture(**condition)
+                graph, assumption, claim = self.probe_report(now)
+                self.assertEqual(graph["PROBE-NOW"]["evidence_status"], "UNKNOWN")
+                self.assertFalse(assumption["covered"] or claim["covered"])
+
+    def test_environment_or_verifier_drift_withdraws_coverage(self):
+        for condition in ({"graph_revision_change": True}, {"scope_change": True}):
+            with self.subTest(condition=condition):
+                now = self.probe_fixture(**condition)
+                graph, assumption, claim = self.probe_report(now)
+                self.assertEqual(graph["PROBE-NOW"]["probe_assessment"]["raw_status"], "PASS")
+                self.assertEqual(assumption["status"], "STALE")
+                self.assertEqual(claim["status"], "STALE")
+
+    def test_probe_dependency_without_requires_edge_withdraws_claim_only(self):
+        now = self.probe_fixture(requires=False)
+        _, assumption, claim = self.probe_report(now)
+        self.assertTrue(assumption["covered"])
+        self.assertFalse(claim["covered"])
 
 
 if __name__=="__main__":
