@@ -360,8 +360,11 @@ def adapted_field(data, canonical, natives):
     """schema 适配：从原生回执的已固化字段映射规范字段（不猜测不回填）。"""
     if data.get(canonical):
         return data[canonical]
+    # 原生回执的 schema 键可能是 "schema" 或 "schema_version"
+    # （core-model-pilot-test-run/v1 用 "schema"；统一格式用 "schema_version"）
+    schema_id = data.get("schema_version") or data.get("schema")
     for native_schema, native_field in natives:
-        if data.get("schema_version") == native_schema and data.get(native_field):
+        if schema_id == native_schema and data.get(native_field):
             return data[native_field]
     return None
 
