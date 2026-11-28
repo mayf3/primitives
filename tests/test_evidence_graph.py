@@ -66,6 +66,10 @@ class EvidenceGraphCompilerTests(unittest.TestCase):
                     "executed_at": "2026-11-28T00:00:00Z",
                     "summary": {"tests": 1, "pass": 1, "fail": 0},
                     "evidence_bindings": inputs}
+        test_src = self.coordinate(
+            "test/test_service.py",
+            'def test_apply_transition():\n    assert True\n',
+            "code-r1")
         tested = self.coordinate("test-run.json", json.dumps(executed), "code-r1")
         acceptance = {"status": "PASS", "exit_code": 0, "requirement_ids": ["REQ-001"],
                       "evidence_bindings": {"REQ-001": self.binding(req)}}
@@ -81,7 +85,9 @@ class EvidenceGraphCompilerTests(unittest.TestCase):
             node(id="CODE-001", kind="CODE", coordinate=code),
             node(id="MAP-001", kind="MAP", coordinate={**code, "symbol": "apply_transition"}),
             node(id="TEST-001", kind="TEST", critical=True, coordinate=tested, evidence_state="PASS",
-                 bindings=inputs),
+                 bindings=inputs,
+                 test_source={"path": test_src["path"], "sha256": test_src["sha256"],
+                              "revision": test_src["revision"]}),
             node(id="ACC-001", kind="ACCEPTANCE", critical=True, coordinate=accepted,
                  requirement_ids=["REQ-001"], evidence_state="PASS",
                  bindings={"REQ-001": self.binding(req)}),

@@ -137,6 +137,8 @@ class UnifiedReceiptBindingTest(Base):
             "code-r1")
         model = self.coordinate("Model.lean",
                                 "namespace Model\nend Model", "model-r1")
+        test_src = self.coordinate("test/test_x.py", "def test_x():\n    pass\n",
+                                   "test-r1")
         executed = {
             "status": "PASS", "exit_code": 0,
             "summary": {"tests": 1, "pass": 1, "fail": 0},
@@ -156,6 +158,8 @@ class UnifiedReceiptBindingTest(Base):
                  "coordinate": code},
                 {"id": "TEST-001", "kind": "TEST", "source": "receipt",
                  "coordinate": tested, "evidence_state": "PASS",
+                 "test_source": {"path": test_src["path"],
+                                 "sha256": test_src["sha256"]},
                  "bindings": {"CODE-001": {"revision": "code-r1",
                                            "sha256": code["sha256"]},
                               "MODEL-001": {"revision": "model-r1",

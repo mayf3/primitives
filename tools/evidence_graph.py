@@ -196,7 +196,12 @@ def find_symbol(text, name, suffix):
                      text):
             return True
         # Dart 顶层函数/方法（返回类型可小写）：String name(...) / void name(...)
-        if re.search(r"(?m)^\s*[A-Za-z][\w<>,\s?]*\s+" + token + r"\s*\(", text):
+        # 排除语句关键字开头的行（return/await/throw/new 是调用语句，
+        # 不是声明——差分实测：`return compactedContinuation(...)` 会被
+        # 误判为声明存在）
+        dart_decl = (r"(?m)^\s*(?!(?:return|await|throw|new|else|case)\b)"
+                     r"[A-Za-z_][\w<>,\s?]*?\s+" + token + r"\s*\(")
+        if re.search(dart_decl, text):
             return True
     return False
 
@@ -293,6 +298,32 @@ def index_graph(root, excluded):
         node["resolved_coordinate"] = actual
         node["coordinate_valid"] = not issues and actual is not None
         errors.extend(issues)
+        # Task 3（收敛审查）：TEST 证据必须绑定测试源文件本身——
+        # 声明文件出处的 source 字段不参与失效判断，故用独立 test_source
+        # 坐标（path+sha256）并纳入失效体系。
+        if node["kind"] == "TEST":
+            test_source = node.get("test_source")
+            if isinstance(test_source, dict) and test_source.get("path"):
+                ts_actual, ts_issues = coords.inspect(
+                    {**node, "coordinate": test_source})
+                if ts_actual is None or ts_issues:
+                    errors.extend(
+                        {**i, "id": node["id"], "code": i.get(
+                            "code", "TEST_SOURCE_INVALID")}
+                        if i.get("code") != "COORDINATE_FILE_MISSING"
+                        else {"code": "TEST_SOURCE_MISSING", "id": node["id"],
+                              "path": test_source["path"]}
+                        for i in ts_issues)
+                elif ts_actual.get("sha256") != test_source.get("sha256"):
+                    errors.append(diagnostic(
+                        "TEST_SOURCE_HASH_MISMATCH", id=node["id"],
+                        path=test_source["path"],
+                        expected=test_source.get("sha256"),
+                        observed=ts_actual.get("sha256")))
+            else:
+                errors.append(diagnostic(
+                    "TEST_SOURCE_MISSING", id=node["id"],
+                    note="TEST 证据必须声明 test_source {path, sha256}"))
     for edge in links:
         a, b = edge["from"], edge["to"]
         if a not in by_id or b not in by_id:
@@ -362,6 +393,26 @@ def audit_result(data, actual, targets, coords):
     return None
 
 
+def adapted_field(data, canonical, natives):
+    """schema 适配：从原生回执的已固化字段映射规范字段。
+
+    只读取原生记录中已存在的事实（如 node_version/started_at），
+    不猜测、不回填当前环境值。返回 (value, source_field)。
+    """
+    if data.get(canonical):
+        return data.get(canonical), canonical
+    for native_key, native_field in natives:
+        if data.get("schema_version") == native_key:
+            value = data.get(native_field)
+            if value:
+                return value, native_field
+    return None, None
+
+
+TOOLCHAIN_NATIVES = (("core-model-pilot-test-run/v1", "node_version"),)
+EXECUTED_AT_NATIVES = (("core-model-pilot-test-run/v1", "started_at"),)
+
+
 def execution_result(data, node, targets):
     if node["kind"] == "PROBE" and data.get("schema_version") == PROBE_RECEIPT:
         return "freshness receipt requires a current probe context"
@@ -369,11 +420,14 @@ def execution_result(data, node, targets):
     if (not isinstance(status, str) or re.fullmatch(r"PASS(?:_[A-Z0-9]+)*|VERIFIED", status) is None
             or type(data.get("exit_code")) is not int or data["exit_code"] != 0):
         return "no successful execution in receipt"
-    # Task 3 必填绑定作用域：TEST/TRACE（ACCEPTANCE 的独立判断制度不在此列）
+    # Task 3 必填绑定作用域：TEST/TRACE（ACCEPTANCE 的独立判断制度不在此列）。
+    # 原生 schema 适配：core-model-pilot-test-run/v1 的 node_version /
+    # started_at 是该次执行固化的真实工具链与时间——按已记录事实采信。
     if node["kind"] in {"TEST", "TRACE"}:
-        if not data.get("toolchain"):
+        toolchain, _ = adapted_field(data, "toolchain", TOOLCHAIN_NATIVES)
+        if not toolchain:
             return "receipt missing toolchain binding"
-        executed = data.get("executed_at")
+        executed, _ = adapted_field(data, "executed_at", EXECUTED_AT_NATIVES)
         if not isinstance(executed, str) or stamp(executed) is None:
             return "receipt missing valid executed_at"
     if node["kind"] == "TEST":
