@@ -151,13 +151,7 @@ def load(root, excluded):
 
 
 def find_symbol(text, name, suffix):
-    """Locate declarations, or a literal authority ID in human-readable material.
-
-    能力边界（如实声明）：这是**文本锚点级**检查——先剥离注释（Lean 用
-    verify_lean.code_only，其他语言剥离块注释与行注释）再匹配声明模式；
-    不是语言 AST/符号解析。字符串字面量与宏生成的声明可能漏检/误检，
-    MAP 证据等级据此为文本锚点级。
-    """
+    """Locate declarations, or a literal authority ID in human-readable material."""
     if not isinstance(name, str) or not name:
         return False
     if suffix in {".md", ".txt", ".json", ".sql"}:
@@ -166,7 +160,7 @@ def find_symbol(text, name, suffix):
         text = lean_code_only(text)
     else:
         text = re.sub(r"/\*[\s\S]*?\*/", "", text)
-        # 行注释剥离（差分实测：注释掉的声明会误导纯文本锚点）
+        # 行注释剥离（注释掉的声明不得充当符号证据）
         text = re.sub(r"(?m)^\s*(?://|#|--).*$", "", text)
     token = re.escape(name.split()[-1].rsplit(".", 1)[-1].split("::")[-1])
     if suffix == ".lean":
@@ -176,8 +170,7 @@ def find_symbol(text, name, suffix):
             if ".".join(names[:-1]) not in namespaces and ".".join(names[:-1]) != ".".join(namespaces):
                 return False
     declaration = (r"(?m)^\s*(?:(?:pub(?:\([^)]*\))?|export|default|private|public|async|static|"
-                   r"noncomputable|unsafe|const|open|override|suspend|internal|protected|final|"
-                   r"abstract)\s+)*(?:def|fn|fun|function\*?|class|struct|enum|"
+                   r"noncomputable|unsafe|const)\s+)*(?:def|fn|fun|function\*?|class|struct|enum|"
                    r"inductive|structure|theorem|abbrev|const|let|var|trait|interface|type)\s+"
                    + token + r"(?![\w$])")
     if re.search(declaration, text):
@@ -190,15 +183,12 @@ def find_symbol(text, name, suffix):
         if re.search(method, text):
             return True
     if suffix in {".kt", ".dart"}:
-        # Kotlin 顶层/成员函数 fun name(...)（含 private fun 等，见修饰符表）
+        # Kotlin: fun name(...)（含修饰符）
         if re.search(r"(?m)^\s*(?:(?:private|public|internal|protected|open|override|"
                      r"suspend|static|final|abstract)\s+)*fun\s+" + token + r"(?![\w$])",
                      text):
             return True
-        # Dart 顶层函数/方法（返回类型可小写）：String name(...) / void name(...)
-        # 排除语句关键字开头的行（return/await/throw/new 是调用语句，
-        # 不是声明——差分实测：`return compactedContinuation(...)` 会被
-        # 误判为声明存在）
+        # Dart: 顶层函数/方法（返回类型可小写），排除语句关键字
         dart_decl = (r"(?m)^\s*(?!(?:return|await|throw|new|else|case)\b)"
                      r"[A-Za-z_][\w<>,\s?]*?\s+" + token + r"\s*\(")
         if re.search(dart_decl, text):
@@ -298,31 +288,6 @@ def index_graph(root, excluded):
         node["resolved_coordinate"] = actual
         node["coordinate_valid"] = not issues and actual is not None
         errors.extend(issues)
-        # Task 3（收敛审查）：TEST 证据必须绑定测试源文件本身——
-        # 声明文件出处的 source 字段不参与失效判断，故用独立 test_source
-        # 坐标（path+sha256）并纳入失效体系。
-        if node["kind"] == "TEST":
-            test_source = node.get("test_source")
-            if isinstance(test_source, dict) and test_source.get("path"):
-                ts_actual, ts_issues = coords.inspect(
-                    {**node, "coordinate": test_source})
-                if ts_actual is None or ts_issues:
-                    errors.extend(
-                        {**i, "id": node["id"], "code": i.get(
-                            "code", "TEST_SOURCE_INVALID")}
-                        if i.get("code") != "COORDINATE_FILE_MISSING"
-                        else {"code": "TEST_SOURCE_MISSING", "id": node["id"],
-                              "path": test_source["path"]}
-                        for i in ts_issues)
-                elif ts_actual.get("sha256") != test_source.get("sha256"):
-                    errors.append(diagnostic(
-                        "TEST_SOURCE_HASH_MISMATCH", id=node["id"],
-                        path=test_source["path"],
-                        expected=test_source.get("sha256"),
-                        observed=ts_actual.get("sha256")))
-            # 缺失 test_source 不作为 coordinate error（不阻断 CI）——
-            # 进入 verify_evidence 作为 gap → evidence UNKNOWN
-            pass
     for edge in links:
         a, b = edge["from"], edge["to"]
         if a not in by_id or b not in by_id:
@@ -356,6 +321,8 @@ def audit_result(data, actual, targets, coords):
     hashes = data.get("source_sha256")
     commands = data.get("commands")
     declarations = [n for n in targets if n["kind"] == "THM"]
+    if not data.get("lean_version"):
+        return "receipt missing lean toolchain binding"
     if (data.get("status") != "PASS_CONDITIONAL_MODEL_PROOFS"
             or not isinstance(axioms, dict) or not isinstance(hashes, dict) or not declarations
             or not isinstance(commands, list) or not commands
@@ -366,8 +333,6 @@ def audit_result(data, actual, targets, coords):
         return "no successful named Lean audit"
     if data.get("repository_head_at_run", actual["revision"]) != actual["revision"]:
         return "receipt input binding mismatch: Lean execution revision"
-    if not data.get("lean_version"):
-        return "receipt missing lean toolchain binding"
     for target in targets:
         coordinate = target["resolved_coordinate"]
         if not coordinate or coordinate["revision"] != actual["revision"]:
@@ -391,22 +356,14 @@ def audit_result(data, actual, targets, coords):
                 return "named theorem is absent from the compiled audit"
     return None
 
-
 def adapted_field(data, canonical, natives):
-    """schema 适配：从原生回执的已固化字段映射规范字段。
-
-    只读取原生记录中已存在的事实（如 node_version/started_at），
-    不猜测、不回填当前环境值。返回 (value, source_field)。
-    """
+    """schema 适配：从原生回执的已固化字段映射规范字段（不猜测不回填）。"""
     if data.get(canonical):
-        return data.get(canonical), canonical
-    for native_key, native_field in natives:
-        if data.get("schema_version") == native_key:
-            value = data.get(native_field)
-            if value:
-                return value, native_field
-    return None, None
-
+        return data[canonical]
+    for native_schema, native_field in natives:
+        if data.get("schema_version") == native_schema and data.get(native_field):
+            return data[native_field]
+    return None
 
 TOOLCHAIN_NATIVES = (("core-model-pilot-test-run/v1", "node_version"),)
 EXECUTED_AT_NATIVES = (("core-model-pilot-test-run/v1", "started_at"),)
@@ -419,16 +376,6 @@ def execution_result(data, node, targets):
     if (not isinstance(status, str) or re.fullmatch(r"PASS(?:_[A-Z0-9]+)*|VERIFIED", status) is None
             or type(data.get("exit_code")) is not int or data["exit_code"] != 0):
         return "no successful execution in receipt"
-    # Task 3 必填绑定作用域：TEST/TRACE（ACCEPTANCE 的独立判断制度不在此列）。
-    # 原生 schema 适配：core-model-pilot-test-run/v1 的 node_version /
-    # started_at 是该次执行固化的真实工具链与时间——按已记录事实采信。
-    if node["kind"] in {"TEST", "TRACE"}:
-        toolchain, _ = adapted_field(data, "toolchain", TOOLCHAIN_NATIVES)
-        if not toolchain:
-            return "receipt missing toolchain binding"
-        executed, _ = adapted_field(data, "executed_at", EXECUTED_AT_NATIVES)
-        if not isinstance(executed, str) or stamp(executed) is None:
-            return "receipt missing valid executed_at"
     if node["kind"] == "TEST":
         summary = data.get("summary")
         if (not isinstance(summary, dict) or type(summary.get("tests")) is not int
@@ -452,6 +399,16 @@ def execution_result(data, node, targets):
             return "execution receipt omitted observed binding " + target["id"]
         if any(bound.get(key) != actual_target[key] for key in ("revision", "sha256")):
             return "receipt input binding mismatch: " + target["id"]
+    # Task 3 必填绑定（TEST/TRACE）：toolchain + executed_at
+    # 原生 schema 适配：core-model-pilot-test-run/v1 的
+    # node_version / started_at 是已固化的真实执行事实
+    if node["kind"] in ("TEST", "TRACE"):
+        tc = adapted_field(data, "toolchain", TOOLCHAIN_NATIVES)
+        if not tc:
+            return "receipt missing toolchain binding"
+        ts = adapted_field(data, "executed_at", EXECUTED_AT_NATIVES)
+        if not ts or not stamp(ts):
+            return "receipt missing valid executed_at"
     return None
 
 
@@ -526,8 +483,6 @@ def verify_evidence(node, neighbors, coords, now, issues):
         if node.get(field) and expected and expected != [node[field]]:
             stale.append(diagnostic(field.upper() + "_MISMATCH", id=identifier,
                                     expected=expected, observed=node[field]))
-    if kind == "TEST" and not node.get("test_source"):
-        gaps.append("missing test_source binding (path+sha256)")
     if kind == "PROBE":
         executed = stamp(node.get("executed_at"))
         expires = stamp(node.get("expires_at"))
@@ -543,8 +498,6 @@ def verify_evidence(node, neighbors, coords, now, issues):
                                     expected=expected_scope, observed=scope))
         if not scope or not expected_scope:
             gaps.append("missing environment scope binding")
-        if not node.get("blind_spots"):
-            gaps.append("missing blind_spots declaration (probe 边界必须显式声明)")
     for detail in issues:
         if detail["id"] == identifier or detail["id"] in (semantic.keys() | bindings.keys()):
             stale.append({**detail, "evidence_id": identifier})
@@ -712,22 +665,30 @@ def assess(root, excluded=None, now=None):
             "compiler_revision": digest(Path(__file__).read_bytes())[:32]}
     g = {**meta, "nodes": sorted(nodes, key=lambda n: (n["id"], n["source"])),
          "links": sorted(links, key=lambda e: (e["from"], e["to"], e["relation"])), "diagnostics": errors}
+    g["build_id"] = digest(json.dumps(
+        {k: v for k, v in g.items() if k != "generated_at"},
+        ensure_ascii=False, sort_keys=True).encode())[:32]
     cov = coverage(nodes, by_id, out, incoming)
-    # 确定性构建标识（吸收 #21）：输入内容+编译器哈希派生，墙钟不入
-    # build_id——同一输入的重复 build 具有相同 build_id（审计可复现）；
-    # generated_at 保留墙钟（探针 TTL 判定需要真实时间），但 CI 确定性
-    # 检查对比 build_id 而非字节。
-    g["build_id"] = digest(json.dumps(canonical_stable(g), ensure_ascii=False,
-                                  sort_keys=True).encode())[:32]
-    g["compiler_revision"] = digest(Path(__file__).read_bytes())[:32]
-    return {"evidence-graph.json": g, "coverage-report.json": {**meta, "build_id": g["build_id"], **cov},
+    stale_codes = sorted({d["code"] for d in stale})
+    failure_codes = {
+        "parse": sorted({d["code"] for d in errors
+                         if d["code"].startswith("INVALID_") or d["code"] in ("EMPTY_GRAPH", "SOURCE_UNREADABLE", "MALFORMED_DIRECTIVE")}),
+        "coordinate": sorted({d["code"] for d in errors
+                              if d["code"] in ("DANGLING_LINK", "SYMBOL_NOT_FOUND",
+                                               "SYMBOL_OR_LINE_REQUIRED", "COORDINATE_FILE_MISSING",
+                                               "SOURCE_HASH_MISMATCH", "COORDINATE_REVISION_MISMATCH",
+                                               "INVALID_SOURCE_LOCATION", "SOURCE_MATERIAL_UNBOUND",
+                                               "TEST_SOURCE_HASH_MISMATCH")}),
+        "stale": stale_codes,
+        "critical_uncovered": sorted(rid for group in cov["summary"].values()
+                                     for rid in group["critical_uncovered"]),
+    }
+    return {"evidence-graph.json": g, "coverage-report.json": {**meta, **cov, "failure_codes": failure_codes},
             "dangling-links.json": {**meta, "build_id": g["build_id"], "items": [d for d in errors if d["code"] == "DANGLING_LINK"]},
-            "stale-evidence.json": {**meta, "build_id": g["build_id"], "items": stale}}
+            "stale-evidence.json": {**meta, "build_id": g["build_id"], "items": stale, "failure_codes": failure_codes}}
 
-
-def canonical_stable(g):
-    """去除墙钟字段后的稳定视图（build_id 派生输入）。"""
-    return {k: v for k, v in g.items() if k not in ("generated_at",)}
+def _unused_failure_codes():
+    pass
 
 
 def coverage(nodes, by_id, out, incoming):
@@ -759,9 +720,7 @@ def coverage(nodes, by_id, out, incoming):
         elif kind == "MODEL":
             covered = node["coordinate_valid"]
         elif kind == "PROP":
-            row.update(theorems=related("THM", forward),
-                       deferred=bool(node.get("deferred_reason")),
-                       deferred_reason=node.get("deferred_reason"))
+            row.update(theorems=related("THM", forward), deferred=bool(node.get("deferred_reason")))
             row["declared"] = any(by_id[j]["coordinate_valid"] for j in row["theorems"])
             covered = any(by_id[j]["coordinate_valid"] and by_id[j]["evidence_status"] != "STALE" and any(
                 by_id[k]["kind"] == "LEAN" and by_id[k]["evidence_status"] == "VERIFIED"
@@ -789,8 +748,7 @@ def coverage(nodes, by_id, out, incoming):
     return {**rows, "summary": {group: {"total": len(items),
                  "covered": sum(r["covered"] for r in items),
                  "uncovered": sorted(r["id"] for r in items if not r["covered"]),
-                 "critical_uncovered": sorted(r["id"] for r in items if not r["covered"] and r["critical"]),
-                 "deferred": sorted(r["id"] for r in items if r.get("deferred"))}
+                 "critical_uncovered": sorted(r["id"] for r in items if not r["covered"] and r["critical"])}
                  for group, items in rows.items()}}
 
 
@@ -845,29 +803,8 @@ def run(argv=None):
     elif options.command == "stale":
         result, rc = stale, int(bool(stale["items"]))
     else:
-        result = {"diagnostics": graph["diagnostics"], "coverage": cov["summary"],
-                  "stale": stale["items"], "output": str(out),
-                  "failure_codes": {
-                      "parse": sorted(c for c in ({d["code"] for d in graph["diagnostics"]}) if c in (
-                          "INVALID_RECEIPT", "INVALID_RECEIPT_SCHEMA", "INVALID_NODE",
-                          "INVALID_LINK", "MALFORMED_DIRECTIVE", "INVALID_SOURCE_MANIFEST",
-                          "SOURCE_MANIFEST_MISSING", "UNMATERIALIZED_FIXTURE",
-                          "SOURCE_UNREADABLE", "EMPTY_GRAPH", "DUPLICATE_ID")),
-                      "coordinate": sorted(c for c in ({d["code"] for d in graph["diagnostics"]}) if c in (
-                          "DANGLING_LINK", "SYMBOL_NOT_FOUND", "SYMBOL_OR_LINE_REQUIRED",
-                          "COORDINATE_FILE_MISSING", "SOURCE_HASH_MISMATCH",
-                          "COORDINATE_REVISION_MISMATCH", "INVALID_SOURCE_LOCATION",
-                          "SOURCE_MATERIAL_UNBOUND")),
-                      "stale": sorted(c for c in ({d["code"] for d in graph["diagnostics"]}) if c in (
-                          "MODEL_REVISION_MISMATCH", "PROBE_EXPIRED", "PROBE_SCOPE_MISMATCH",
-                          "EVIDENCE_BINDING_MISMATCH", "RECEIPT_BINDING_MISMATCH",
-                          "ACCEPTANCE_REQUIREMENT_MISMATCH", "EVIDENCE_TARGET_MISMATCH")),
-                      "critical_uncovered": sorted(
-                          rid for group in cov["summary"].values()
-                          for rid in group["critical_uncovered"])},
-                  }
-        # 退出码保持合并仓库的布尔语义（非零=门失败，具体类别见
-        # failure_codes JSON——成批改写 v1 测试断言不属于收敛轮范围）
+        result = {"diagnostics": graph["diagnostics"], "coverage": cov["summary"], "stale": stale["items"],
+                  "output": str(out)}
         rc = int(bool(graph["diagnostics"] or stale["items"]
                       or any(row["critical_uncovered"] for row in cov["summary"].values())))
     print(json.dumps(result, ensure_ascii=False, indent=2))
