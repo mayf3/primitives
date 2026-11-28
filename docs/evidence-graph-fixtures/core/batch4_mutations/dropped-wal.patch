@@ -1,0 +1,9 @@
+--- a/packages/workflow-execution/src/ledger.js
++++ b/packages/workflow-execution/src/ledger.js
+@@ -246,4 +246,6 @@
+   #appendEvent(event) {
++    // Isolated semantic mutant: omit the durable fence while still updating memory.
++    if (event.kind === 'delivery_started') return
+     // WORKFLOW_EXECUTION_CONTROL_V1: every durable line carries its
+     // workflowInstanceId when the attempt context knows it — outbound
+     // projections (forum thread resolution, traces) key on the line alone
