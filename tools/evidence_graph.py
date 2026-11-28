@@ -199,9 +199,9 @@ def find_symbol(text, name, suffix):
         # 排除语句关键字开头的行（return/await/throw/new 是调用语句，
         # 不是声明——差分实测：`return compactedContinuation(...)` 会被
         # 误判为声明存在）
-        dart_decl = (r"(?m)^\s*(?!(?:return|await|throw|new|else|case)\b)"
-                     r"[A-Za-z_][\w<>,\s?]*?\s+" + token + r"\s*\(")
-        if re.search(dart_decl, text):
+        dart_decl = (r"(?m)^[\t ]*(?!(?:return|await|throw|new|else|case|yield)\b)"
+                     r"[A-Za-z_][\w<>,\t ?]*?[\t ]+" + token + r"[\t ]*\(")
+        if suffix == ".dart" and re.search(dart_decl, text):
             return True
     return False
 
@@ -401,7 +401,7 @@ def adapted_field(data, canonical, natives):
     if data.get(canonical):
         return data.get(canonical), canonical
     for native_key, native_field in natives:
-        if data.get("schema_version") == native_key:
+        if data.get("schema_version", data.get("schema")) == native_key:
             value = data.get(native_field)
             if value:
                 return value, native_field
@@ -553,7 +553,7 @@ def verify_evidence(node, neighbors, coords, now, issues):
         # test can record the raw trace as well as its required code/model pair.
         relevant = semantic if kind == "LEAN" else {i: neighbors[i]
                    for i in semantic.keys() | bindings.keys() if i in neighbors}
-        problem = receipt_result(node, list(relevant.values()), coords)
+        problem = receipt_result(node, [relevant[i] for i in sorted(relevant)], coords)
         if problem:
             gaps.append(problem)
             if problem.startswith("receipt input binding mismatch"):
@@ -858,10 +858,7 @@ def run(argv=None):
                           "COORDINATE_FILE_MISSING", "SOURCE_HASH_MISMATCH",
                           "COORDINATE_REVISION_MISMATCH", "INVALID_SOURCE_LOCATION",
                           "SOURCE_MATERIAL_UNBOUND")),
-                      "stale": sorted(c for c in ({d["code"] for d in graph["diagnostics"]}) if c in (
-                          "MODEL_REVISION_MISMATCH", "PROBE_EXPIRED", "PROBE_SCOPE_MISMATCH",
-                          "EVIDENCE_BINDING_MISMATCH", "RECEIPT_BINDING_MISMATCH",
-                          "ACCEPTANCE_REQUIREMENT_MISMATCH", "EVIDENCE_TARGET_MISMATCH")),
+                      "stale": sorted({d["code"] for d in stale["items"]}),
                       "critical_uncovered": sorted(
                           rid for group in cov["summary"].values()
                           for rid in group["critical_uncovered"])},
