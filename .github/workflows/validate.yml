@@ -52,6 +52,10 @@ jobs:
           from collections import defaultdict
           import json, os, re, subprocess
           from pathlib import Path
+          import sys
+
+          sys.path.insert(0, "tools")
+          from check_core_assumption_freshness import PROBE_REVISION
 
           root = Path(os.environ["RUNNER_TEMP"]) / "fixture-repositories"
           pins = defaultdict(set)
@@ -61,6 +65,9 @@ jobs:
                   if repo not in {"primitives", "svc-workflow", "dsh-agent-core"} or not re.fullmatch("[0-9a-f]{40}", revision):
                       raise SystemExit("unexpected fixture source")
                   pins[repo].add(revision)
+          if not re.fullmatch("[0-9a-f]{40}", PROBE_REVISION):
+              raise SystemExit("invalid Core probe revision")
+          pins["dsh-agent-core"].add(PROBE_REVISION)
           for repo, revisions in pins.items():
               local = root / repo
               local.mkdir(parents=True)
@@ -85,6 +92,12 @@ jobs:
             --graph "$RUNNER_TEMP/evidence-graph-results/core/evidence-graph.json" \
             --capture "$RUNNER_TEMP/core-recovery-capture/core-recovery-capture.json" \
             --output "$RUNNER_TEMP/core-recovery-validation.json"
+      - name: Observe Core assumptions, lose and recover the same Router route, and recompile coverage
+        run: |
+          python3 tools/check_core_assumption_freshness.py \
+            --repositories "$RUNNER_TEMP/fixture-repositories" \
+            --core-repo "$RUNNER_TEMP/fixture-repositories/dsh-agent-core" \
+            --output "$RUNNER_TEMP/core-assumption-freshness"
       - name: Upload graphs, trace captures and validation receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -95,5 +108,6 @@ jobs:
             ${{ runner.temp }}/core-recovery-capture
             ${{ runner.temp }}/core-recovery-validation.json
             ${{ runner.temp }}/core-recovery-validation.segments
+            ${{ runner.temp }}/core-assumption-freshness
           include-hidden-files: true
           if-no-files-found: error

@@ -13,6 +13,7 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+from assumption_freshness import RECEIPT as PROBE_RECEIPT, assess_receipt, context_valid
 from verify_lean import code_only as lean_code_only
 
 SCHEMA = "evidence-graph/v1"
@@ -32,6 +33,10 @@ REQUIRED_TARGETS = {
     "LEAN": {"THM", "MODEL"}, "TEST": {"CODE", "MODEL"}, "TRACE": {"CODE", "MODEL", "MAP", "VERIFIER"},
     "PROBE": {"ASSUMPTION"}, "ACCEPTANCE": {"REQ"}, "REFINEMENT": {"CODE", "MODEL", "MAP"},
 }
+PROBE_SOURCE_KINDS = {"spec": {"REQ", "SPEC"}, "model": {"MODEL"}, "code": {"CODE"},
+                      "mapping": {"MAP"}, "verifier": {"VERIFIER"}}
+PROBE_BOUND_KINDS = {"ASSUMPTION"}.union(*PROBE_SOURCE_KINDS.values())
+RUNTIME_CLAIMS = {"TEST", "TRACE", "REFINEMENT"}
 
 
 def digest(data):
@@ -336,6 +341,8 @@ def audit_result(data, actual, targets, coords):
 
 
 def execution_result(data, node, targets):
+    if node["kind"] == "PROBE" and data.get("schema_version") == PROBE_RECEIPT:
+        return "freshness receipt requires a current probe context"
     status = data.get("status")
     if (not isinstance(status, str) or re.fullmatch(r"PASS(?:_[A-Z0-9]+)*|VERIFIED", status) is None
             or type(data.get("exit_code")) is not int or data["exit_code"] != 0):
@@ -471,6 +478,93 @@ def verify_evidence(node, neighbors, coords, now, issues):
             "UNKNOWN" if gaps else "VERIFIED"), gaps, stale
 
 
+def verify_current_probe(node, neighbors, probe_targets, coords, now, input_issues):
+    context = node["probe_context"]
+    identifier = node["id"]
+    if not context_valid(context):
+        return {"status": "UNKNOWN", "reason": "missing or invalid current probe context", "raw_status": None}
+    try:
+        actual = node["resolved_coordinate"]
+        data = json.loads(coords.read(actual["path"])[0]) if actual else None
+    except (ValueError, OSError, RecursionError):
+        data = None
+    result = assess_receipt(data, context, now)
+    assumption = neighbors.get(context["assumption_id"], {})
+    if (probe_targets != {context["assumption_id"]} or assumption.get("kind") != "ASSUMPTION"
+            or assumption.get("current_probe_id") != identifier):
+        return {**result, "status": "UNKNOWN", "reason": "probe is not the current directed assumption evidence"}
+    sources = {i: target for i, target in neighbors.items() if target["kind"] in PROBE_BOUND_KINDS}
+    input_ids = sources.keys() | {identifier}
+    if any(issue["id"] in input_ids for issue in input_issues):
+        return {**result, "status": "STALE", "reason": "probe or linked source coordinate is stale"}
+    if (not node["coordinate_valid"] or coords.errors
+            or any(not target["coordinate_valid"] for target in sources.values())):
+        return {**result, "status": "UNKNOWN", "reason": "missing or invalid probe or source coordinate"}
+    if sources.keys() != context["evidence_bindings"].keys():
+        return {**result, "status": "STALE", "reason": "probe linked source set changed"}
+    if any(any(content_coordinate(sources[key])[field] != binding[field]
+               for field in ("revision", "sha256"))
+           for key, binding in context["evidence_bindings"].items()):
+        return {**result, "status": "STALE", "reason": "probe linked source revision or digest changed"}
+    for version, kinds in PROBE_SOURCE_KINDS.items():
+        revisions = {content_coordinate(source)["revision"]
+                     for source in sources.values() if source["kind"] in kinds}
+        if not revisions:
+            return {**result, "status": "UNKNOWN", "reason": f"missing probe {version} source"}
+        if context["versions"][version] not in revisions:
+            return {**result, "status": "STALE", "reason": f"probe {version} version changed"}
+    return result
+
+
+def apply_assumption_dependencies(nodes, by_id, relations, stale):
+    def current_probe(assumption_id):
+        assumption = by_id.get(assumption_id, {})
+        current = assumption.get("current_probe_id")
+        if (assumption.get("kind") != "ASSUMPTION" or not isinstance(current, str)
+                or assumption_id not in relations.get((current, "probes"), set())):
+            return None
+        probe = by_id.get(current, {})
+        return probe if probe.get("kind") == "PROBE" and "probe_context" in probe else None
+
+    for node in nodes:
+        i = node["id"]
+        if node["kind"] == "ASSUMPTION" and "current_probe_id" in node:
+            probe = current_probe(i)
+            if probe:
+                node["assumption_coverage_status"] = probe["evidence_status"]
+                node["unverified_reasons"] = probe["unverified_reasons"]
+            else:
+                node["assumption_coverage_status"] = "UNKNOWN"
+                node["unverified_reasons"] = ["missing designated current probe"]
+        if node["kind"] not in RUNTIME_CLAIMS:
+            continue
+        required = relations.get((i, "requires"), set())
+        if "required_assumption_ids" not in node and not required:
+            continue
+        node["execution_evidence_status"] = node["evidence_status"]
+        declared = node.get("required_assumption_ids")
+        if (not isinstance(declared, list) or not declared or not all(isinstance(v, str) for v in declared)
+                or len(declared) != len(set(declared)) or set(declared) != required):
+            if node["evidence_status"] == "VERIFIED":
+                node["evidence_status"] = "UNKNOWN"
+            node["unverified_reasons"].append("runtime assumption declarations and requires links differ")
+            continue
+        statuses = {}
+        for assumption_id in sorted(required):
+            probe = current_probe(assumption_id)
+            statuses[assumption_id] = probe["evidence_status"] if probe else "UNKNOWN"
+        node["assumption_dependencies"] = statuses
+        if node["evidence_status"] != "VERIFIED":
+            continue
+        unavailable = {key: status for key, status in statuses.items() if status != "VERIFIED"}
+        if unavailable:
+            node["evidence_status"] = "STALE" if "STALE" in unavailable.values() else "UNKNOWN"
+        for assumption_id, status in unavailable.items():
+            node["unverified_reasons"].append(f"required assumption {assumption_id} is {status}")
+            if status == "STALE":
+                stale.append(diagnostic("REQUIRED_ASSUMPTION_STALE", id=i, assumption_id=assumption_id))
+
+
 def assess(root, excluded=None, now=None):
     revision, coords, nodes, links, by_id, out, incoming, errors = index_graph(root, excluded)
     generated = now or datetime.now(timezone.utc)
@@ -480,6 +574,10 @@ def assess(root, excluded=None, now=None):
     }]
     # Resolve input invalidations before any evidence consumes them. Source
     # declaration order cannot make a stale theorem count as a valid proof.
+    relations = {}
+    for edge in links:
+        if edge["from"] in by_id and edge["to"] in by_id:
+            relations.setdefault((edge["from"], edge["relation"]), set()).add(edge["to"])
     for node in nodes:
         if node["kind"] != "THM" or not node.get("model_revision"):
             continue
@@ -502,9 +600,19 @@ def assess(root, excluded=None, now=None):
             node["unverified_reasons"] = reasons.get(identifier, [])
             continue
         neighbors = {i: by_id[i] for i in out.get(identifier, set()) | incoming.get(identifier, set())}
+        if node["kind"] == "PROBE" and "probe_context" in node:
+            result = verify_current_probe(node, neighbors, relations.get((identifier, "probes"), set()),
+                                          coords, generated, input_issues)
+            node["probe_assessment"] = result
+            node["evidence_status"] = "VERIFIED" if result["status"] == "PASS" else result["status"]
+            node["unverified_reasons"] = [] if result["status"] == "PASS" else [result["reason"]]
+            if result["status"] == "STALE":
+                stale.append(diagnostic("PROBE_STALE", id=identifier, reason=result["reason"]))
+            continue
         status, gaps, invalidations = verify_evidence(node, neighbors, coords, generated, input_issues)
         node["evidence_status"], node["unverified_reasons"] = status, gaps
         stale.extend(invalidations)
+    apply_assumption_dependencies(nodes, by_id, relations, stale)
     for edge in links:
         if edge["to"] in by_id:
             origin, target = by_id.get(edge["from"]), by_id[edge["to"]]
@@ -540,6 +648,9 @@ def coverage(nodes, by_id, out, incoming):
             return any(by_id[j]["evidence_status"] == "VERIFIED" for j in related(kind))
         row = {"id": i, "critical": node.get("critical") is True,
                "status": node["evidence_status"], "unverified_reasons": node["unverified_reasons"]}
+        if "execution_evidence_status" in node:
+            row["execution_evidence_status"] = node["execution_evidence_status"]
+            row["assumption_dependencies"] = node.get("assumption_dependencies", {})
         if kind == "REQ":
             row.update(models=related("MODEL", forward), acceptances=related("ACCEPTANCE"))
             covered = bool(row["acceptances"] and
@@ -563,7 +674,11 @@ def coverage(nodes, by_id, out, incoming):
             row["declared"] = node["coordinate_valid"]
             covered = row["declared"] and row["status"] != "STALE" and observed("LEAN")
         elif kind == "ASSUMPTION":
-            covered = observed("PROBE")
+            if "current_probe_id" in node:
+                row["status"] = node["assumption_coverage_status"]
+                covered = row["status"] == "VERIFIED"
+            else:
+                covered = observed("PROBE")
             row["probes"] = related("PROBE")
         else:
             covered = row["status"] == "VERIFIED"
