@@ -137,7 +137,7 @@ class PilotGraph:
     def compile(self, contexts, active, history, now):
         watched = [ctx["assumption_id"] for ctx in contexts.values()]
         original = self.baseline_nodes["CORE.TEST.RECOVERY"]
-        alias = {key: original[key] for key in ("kind", "coordinate", "evidence_state", "bindings", "receipt_checks")}
+        alias = {key: original[key] for key in ("kind", "coordinate", "evidence_state", "bindings", "receipt_checks", "test_source")}
         nodes = [{"id": VERIFIER, "kind": "VERIFIER", "coordinate": self.verifier},
                  {"id": ROUTER_STORE, "kind": "CODE", "coordinate": self.router},
                  {**alias, "id": CLAIM, "required_assumption_ids": watched}]

@@ -15,6 +15,8 @@
      critical_uncovered 分类（退出码保持 v1 布尔语义）。
 """
 import json
+import os
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -90,6 +92,12 @@ class UnifiedSymbolTest(Base):
         codes = {d["code"] for d in graph["diagnostics"]}
         self.assertIn("SYMBOL_NOT_FOUND", codes,
                       "行注释内的声明不得充当符号证据")
+
+    def test_call_without_declaration_does_not_count(self):
+        for suffix in (".dart", ".kt"):
+            for statement in ("return missing()", "yield missing()", "throw missing()"):
+                with self.subTest(suffix=suffix, statement=statement):
+                    self.assertFalse(eg.find_symbol(f"  {statement};\n", "missing", suffix))
 
 
 class UnifiedDeterminismTest(Base):
@@ -240,6 +248,26 @@ class UnifiedReceiptBindingTest(Base):
                                  "executed_at": "2026-11-28T00:00:00Z"})
         self.assertEqual(self._status_of(), "VERIFIED")
 
+    def test_core_native_schema_field_binds_toolchain_and_execution_time(self):
+        self._test_node_receipt({"schema": "core-model-pilot-test-run/v1", "node_version": "v26.7.0",
+                                 "started_at": "2026-11-27T23:34:13Z"})
+        self.assertEqual(self._status_of(), "VERIFIED")
+
+    def test_missing_observed_targets_produce_stable_build_id_across_hash_seeds(self):
+        self._test_node_receipt({"toolchain": "gradle-8.14/jdk21", "executed_at": "2026-11-28T00:00:00Z",
+                                 "evidence_bindings": {}})
+        outcomes = []
+        for seed in ("1", "3", "7", "12", "82"):
+            result = subprocess.run([sys.executable, eg.__file__, "validate", "--project", str(self.root)],
+                                    env={**os.environ, "PYTHONHASHSEED": seed}, text=True,
+                                    capture_output=True, timeout=10)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            graph = json.loads((self.root / ".evidence-graph" / "evidence-graph.json").read_bytes())
+            reasons = next(n["unverified_reasons"] for n in graph["nodes"] if n["id"] == "TEST-001")
+            outcomes.append((graph["build_id"], reasons))
+        self.assertTrue(all(item == outcomes[0] for item in outcomes))
+        self.assertIn("execution receipt omitted observed binding CODE-001", outcomes[0][1])
+
 
 class ProbeBlindSpotsTest(Base):
     """PROBE 必填 blind_spots：缺失 → UNKNOWN。"""
@@ -294,6 +322,16 @@ class ProbeBlindSpotsTest(Base):
         self._probe({"blind_spots": "仅覆盖 proot 内 userns 可用性，不含 SELinux"})
         node = self._probe_status()
         self.assertEqual(node["evidence_status"], "VERIFIED")
+
+    def test_scope_drift_appears_in_cli_failure_codes(self):
+        self._probe({"blind_spots": "fixture only"})
+        declaration = self.root / "spec/pilot.md"
+        declaration.write_text(declaration.read_text().replace(
+            '"expected_environment_scope_hash":"scope-1"', '"expected_environment_scope_hash":"scope-2"'
+        ))
+        result = self.run_cli("validate")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("PROBE_SCOPE_MISMATCH", json.loads(result.stdout)["failure_codes"]["stale"])
 
 
 class FailureCodesTest(Base):

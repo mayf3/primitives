@@ -641,6 +641,11 @@
     {
       "id": "CORE.TEST.RECOVERY",
       "kind": "TEST",
+      "test_source": {
+        "path": "materials/dsh-agent-core/packages/workflow-execution/test/observation-cas/blocked-recovery-restart.test.js",
+        "revision": "ee4dbefb7f6a8d4726392ed5fa9590fb345b2c1e",
+        "sha256": "a23a55dd0be9d635c8bafc2d2668dc8ba94b15161be45e9abc9ccb0e6a64f06c"
+      },
       "coordinate": {
         "path": "core-test-execution.json",
         "sha256": "f025965bd34d3ed3c2dff20a3d5ac3d287f055945426cb52b5722f439c70cb00",
