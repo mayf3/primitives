@@ -254,6 +254,24 @@ class EvidenceGraphCompilerTests(unittest.TestCase):
                 (self.root / "spec/requirements.md").read_text().splitlines()
                 if line.startswith(prefix)]
 
+    def test_stale_theorem_model_revision_withdraws_dependent_audit(self):
+        self.valid_fixture()
+        authority = self.root / "spec/requirements.md"
+        entries = authority.read_text().splitlines()
+        index = next(i for i, value in enumerate(entries) if '"id":"THM-001"' in value)
+        prefix = "@evidence-node "
+        theorem = json.loads(entries.pop(index)[len(prefix):])
+        theorem["model_revision"] = "older-model"
+        # A proof may have been indexed before its theorem.
+        entries.extend([node(**theorem), link("THM-001", "MODEL-001")])
+        authority.write_text("\n".join(entries))
+        self.assertEqual(self.run_cli().returncode, 1)
+        nodes = self.graph_nodes()
+        self.assertEqual(nodes["THM-001"]["evidence_status"], "STALE")
+        self.assertEqual(nodes["LEAN-001"]["evidence_status"], "STALE")
+        coverage = json.loads((self.root / ".evidence-graph/coverage-report.json").read_text())
+        self.assertFalse(coverage["properties"][0]["covered"])
+
 
 if __name__=="__main__":
     unittest.main()

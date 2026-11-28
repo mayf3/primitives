@@ -474,29 +474,35 @@ def verify_evidence(node, neighbors, coords, now, issues):
 def assess(root, excluded=None, now=None):
     revision, coords, nodes, links, by_id, out, incoming, errors = index_graph(root, excluded)
     generated = now or datetime.now(timezone.utc)
-    coordinate_issues = [d for d in errors if d.get("code") in {
+    input_issues = [d for d in errors if d.get("code") in {
         "SOURCE_HASH_MISMATCH", "COORDINATE_REVISION_MISMATCH", "COORDINATE_FILE_MISSING",
         "SYMBOL_NOT_FOUND", "INVALID_SOURCE_LOCATION", "SOURCE_MATERIAL_UNBOUND",
     }]
-    stale = coordinate_issues.copy()
-    invalid_ids = {d["id"] for d in coordinate_issues}
+    # Resolve input invalidations before any evidence consumes them. Source
+    # declaration order cannot make a stale theorem count as a valid proof.
     for node in nodes:
-        if node["kind"] not in EVIDENCE:
-            node["evidence_status"] = "STALE" if node["id"] in invalid_ids else "DECLARED"
-            node["unverified_reasons"] = [d["code"] for d in coordinate_issues if d["id"] == node["id"]]
-            if node["kind"] == "THM" and node.get("model_revision"):
-                models = out.get(node["id"], set()) | incoming.get(node["id"], set())
-                expected = sorted({content_coordinate(by_id[i])["revision"]
-                                   for i in models if by_id[i]["kind"] == "MODEL"})
-                if expected and expected != [node["model_revision"]]:
-                    stale.append(diagnostic("MODEL_REVISION_MISMATCH", id=node["id"],
-                                            expected=expected, observed=node["model_revision"]))
-                    node["evidence_status"] = "STALE"
-                    node["unverified_reasons"].append("MODEL_REVISION_MISMATCH")
+        if node["kind"] != "THM" or not node.get("model_revision"):
             continue
         identifier = node["id"]
+        neighbors = out.get(identifier, set()) | incoming.get(identifier, set())
+        expected = {content_coordinate(by_id[i])["revision"]
+                    for i in neighbors if by_id[i]["kind"] == "MODEL"}
+        expected.discard(None)
+        if expected and sorted(expected) != [node["model_revision"]]:
+            input_issues.append(diagnostic("MODEL_REVISION_MISMATCH", id=identifier,
+                                           expected=sorted(expected), observed=node["model_revision"]))
+    stale = input_issues.copy()
+    reasons = {}
+    for issue in input_issues:
+        reasons.setdefault(issue["id"], []).append(issue["code"])
+    for node in nodes:
+        identifier = node["id"]
+        if node["kind"] not in EVIDENCE:
+            node["evidence_status"] = "STALE" if identifier in reasons else "DECLARED"
+            node["unverified_reasons"] = reasons.get(identifier, [])
+            continue
         neighbors = {i: by_id[i] for i in out.get(identifier, set()) | incoming.get(identifier, set())}
-        status, gaps, invalidations = verify_evidence(node, neighbors, coords, generated, coordinate_issues)
+        status, gaps, invalidations = verify_evidence(node, neighbors, coords, generated, input_issues)
         node["evidence_status"], node["unverified_reasons"] = status, gaps
         stale.extend(invalidations)
     for edge in links:
@@ -544,7 +550,7 @@ def coverage(nodes, by_id, out, incoming):
         elif kind == "PROP":
             row.update(theorems=related("THM", forward), deferred=bool(node.get("deferred_reason")))
             row["declared"] = any(by_id[j]["coordinate_valid"] for j in row["theorems"])
-            covered = any(by_id[j]["coordinate_valid"] and any(
+            covered = any(by_id[j]["coordinate_valid"] and by_id[j]["evidence_status"] != "STALE" and any(
                 by_id[k]["kind"] == "LEAN" and by_id[k]["evidence_status"] == "VERIFIED"
                 for k in out.get(j, set()) | incoming.get(j, set())) for j in row["theorems"])
         elif kind in {"STATE", "TRANSITION"}:
@@ -555,7 +561,7 @@ def coverage(nodes, by_id, out, incoming):
             row.update(valid=covered)
         elif kind == "THM":
             row["declared"] = node["coordinate_valid"]
-            covered = row["declared"] and observed("LEAN")
+            covered = row["declared"] and row["status"] != "STALE" and observed("LEAN")
         elif kind == "ASSUMPTION":
             covered = observed("PROBE")
             row["probes"] = related("PROBE")
