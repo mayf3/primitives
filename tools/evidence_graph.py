@@ -195,8 +195,8 @@ def find_symbol(text, name, suffix):
                      r"suspend|static|final|abstract)\s+)*fun\s+" + token + r"(?![\w$])",
                      text):
             return True
-        # Dart 顶层函数（返回类型开头）：String name(...) / List<X> name(...)
-        if re.search(r"(?m)^\s*[A-Z][\w<>,\s?]*\s+" + token + r"\s*\(", text):
+        # Dart 顶层函数/方法（返回类型可小写）：String name(...) / void name(...)
+        if re.search(r"(?m)^\s*[A-Za-z][\w<>,\s?]*\s+" + token + r"\s*\(", text):
             return True
     return False
 
