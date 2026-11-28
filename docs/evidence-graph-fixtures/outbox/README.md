@@ -1,0 +1,7 @@
+# SVC Outbox fixture
+
+The two tracks have separate requirement, model, code and evidence node IDs. The main coordinate is SVC c50ab2ac98decceaa26138a282c34dd92ede0ddc and primitives 1456f5b39fe6f39d106d90504a75adab5422b45e. The candidate coordinates are SVC PR #141 at 6c19d318b7aa6f03ed7bbe8cfcc2b768f8c67da6 and primitives PR #13, still draft, at 6a0386588c767aaa998ff7552ee7364451c73da0. The SVC PR #142 head a22a0180ebf0775d42f9e54f09eed33a2de9ed25 is the storage location of the PostgreSQL run and the exact-head proof review. Its Wake changes are outside this fixture.
+
+All ten accepted ACC-P0B criteria and unknown-kind retention (Delta 5) remain visible. Model edges record a partial mapping where a per-row theorem covers only a portion of a requirement. Neither the proof of exclusive abstract claims nor a finite concurrent test covers the receiver-side lost-ACK effect. The ordinary retry at attempt 12 is an explicit model gap on main. The draft has separate compiled cap proofs and review evidence.
+
+The archived PostgreSQL run records 23 passing tests and the source manifest hashes back to the exact #141 head. It did not bind a model revision. The graph keeps the measured counts and marks model-bound test evidence UNKNOWN. The older mapping report said its own testing was still pending. Its status and the later separate execution receipt refer to different observations. No #141 run is assigned to main even though the two runtime files match. SQL refinement, scope-matched environmental probes and independent original acceptance remain UNKNOWN.

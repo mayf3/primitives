@@ -1,0 +1,1294 @@
+{
+  "schema_version": "evidence-receipt/v1",
+  "fixture": "svc-wake",
+  "scope": {
+    "main": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+    "candidate": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+    "candidate_status": "OPEN_DRAFT_PR_142",
+    "primary_authority": "SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3 / CTR-VAI-008, CTR-VAI-014",
+    "source_note": "Alias IDs scope accepted requirements to baseline or candidate evaluation. The same accepted authority bytes stay in svc-workflow."
+  },
+  "materials": [
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+      "target": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "docs/specs/SVC_WORKFLOW_EXECUTION_CONTROL_V3.md",
+      "target": "materials/main/docs/specs/SVC_WORKFLOW_EXECUTION_CONTROL_V3.md"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "docs/contracts/POSTGRES_STORAGE_CONTRACT_V0_3.md",
+      "target": "materials/main/docs/contracts/POSTGRES_STORAGE_CONTRACT_V0_3.md"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/WakeReceipt.lean",
+      "target": "materials/pr142/formal/wake/WakeReceipt.lean"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/WakeDurability.lean",
+      "target": "materials/pr142/formal/wake/WakeDurability.lean"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+      "target": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/evidence/verification.json",
+      "target": "materials/pr142/formal/wake/evidence/verification.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "tests/visit_activation_v1/wake_receipts.rs",
+      "target": "materials/pr142/tests/visit_activation_v1/wake_receipts.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/candidate/regression-receipt.json",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/candidate/regression-receipt.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "path": "src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+      "target": "materials/main/src/store/postgres/workflow_instance_repository/wake_transaction.rs"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/baseline-negative/regression-receipt.json",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/baseline-negative/regression-receipt.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/README.md",
+      "target": "materials/pr142/formal/wake/README.md"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/reports/WAKE_RECEIPT_FORMAL_REPAIR_20261127.md",
+      "target": "materials/pr142/docs/reports/WAKE_RECEIPT_FORMAL_REPAIR_20261127.md"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/model-manifest.json",
+      "target": "materials/pr142/formal/wake/model-manifest.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/lean-toolchain",
+      "target": "materials/pr142/formal/wake/lean-toolchain"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "formal/wake/evidence/axioms.txt",
+      "target": "materials/pr142/formal/wake/evidence/axioms.txt"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/independent-lean-build.json",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/independent-lean-build.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/candidate/source-manifest.json",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/candidate/source-manifest.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/candidate/visit-activation.log",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/candidate/visit-activation.log"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/candidate/wake-codec.log",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/candidate/wake-codec.log"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/baseline-negative/source-manifest.json",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/baseline-negative/source-manifest.json"
+    },
+    {
+      "repo": "svc-workflow",
+      "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+      "path": "docs/evidence/wake-formal-20261127/baseline-negative/visit-activation.log",
+      "target": "materials/pr142/docs/evidence/wake-formal-20261127/baseline-negative/visit-activation.log"
+    }
+  ],
+  "files": [
+    "wake-lean-verification.json"
+  ],
+  "nodes": [
+    {
+      "id": "WAKE-SPEC-VISIT-V3",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "authority_id": "SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3",
+      "authority_state": "accepted"
+    },
+    {
+      "id": "WAKE-SPEC-EXECUTION-CONTROL-V3",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_EXECUTION_CONTROL_V3.md",
+        "sha256": "7c605ac8658c09b72e792f268ff163f2d4c2cf69162bf4e5870c3fdf00700201",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "authority_id": "SVC_WORKFLOW_EXECUTION_CONTROL_V3",
+      "authority_state": "accepted",
+      "scope": "Related execution-control authority"
+    },
+    {
+      "id": "WAKE-SPEC-POSTGRES-STORAGE-V03",
+      "kind": "SPEC",
+      "coordinate": {
+        "path": "materials/main/docs/contracts/POSTGRES_STORAGE_CONTRACT_V0_3.md",
+        "sha256": "631ffa9fe71283e07b54b275129a5f172e29530cb57e0fd5fd625677813c1b53",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "authority_id": "POSTGRES_STORAGE_CONTRACT_V0_3"
+    },
+    {
+      "id": "WAKE-DEC-VISIT-V3-ACCEPTANCE",
+      "kind": "DEC",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "scope": "Accepted authority frontmatter, not candidate or production approval"
+    },
+    {
+      "id": "WAKE-MAIN-CTR-VAI-008",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "critical": true,
+      "authority_id": "CTR-VAI-008",
+      "scope": "Implementation track MAIN"
+    },
+    {
+      "id": "WAKE-MAIN-ACC-VAI-005",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "No original acceptance receipt bound to the reviewed main snapshot.",
+      "authority_id": "ACC-VAI-005",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "WAKE-MAIN-CTR-VAI-008"
+      ],
+      "bindings": {
+        "WAKE-MAIN-CTR-VAI-008": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-CTR-VAI-008",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "critical": true,
+      "authority_id": "CTR-VAI-008",
+      "scope": "Implementation track PR142"
+    },
+    {
+      "id": "WAKE-PR142-ACC-VAI-005",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "Isolated candidate tests cover parts of this acceptance. No scoped original acceptance verdict identifies this candidate and all required checks.",
+      "authority_id": "ACC-VAI-005",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "WAKE-PR142-CTR-VAI-008"
+      ],
+      "bindings": {
+        "WAKE-PR142-CTR-VAI-008": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159"
+        }
+      }
+    },
+    {
+      "id": "WAKE-MAIN-CTR-VAI-014",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "critical": true,
+      "authority_id": "CTR-VAI-014",
+      "scope": "Implementation track MAIN"
+    },
+    {
+      "id": "WAKE-MAIN-ACC-VAI-009",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "No original acceptance receipt bound to the reviewed main snapshot.",
+      "authority_id": "ACC-VAI-009",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "WAKE-MAIN-CTR-VAI-014"
+      ],
+      "bindings": {
+        "WAKE-MAIN-CTR-VAI-014": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-CTR-VAI-014",
+      "kind": "REQ",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "critical": true,
+      "authority_id": "CTR-VAI-014",
+      "scope": "Implementation track PR142"
+    },
+    {
+      "id": "WAKE-PR142-ACC-VAI-009",
+      "kind": "ACCEPTANCE",
+      "coordinate": {
+        "path": "materials/main/docs/specs/SVC_WORKFLOW_VISIT_ACTIVATION_IMPL_V3.md",
+        "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "Isolated candidate tests cover parts of this acceptance. No scoped original acceptance verdict identifies this candidate and all required checks.",
+      "authority_id": "ACC-VAI-009",
+      "spec_revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+      "requirement_ids": [
+        "WAKE-PR142-CTR-VAI-014"
+      ],
+      "bindings": {
+        "WAKE-PR142-CTR-VAI-014": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "7a25792a463f34c43b8a9190c80473d7b226e7a3eb4c987570edbccdfcc99159"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-MODEL-RECEIPT",
+      "kind": "MODEL",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "model_id": "SvcWorkflow.WakeReceipt",
+      "scope": "Unmerged #142"
+    },
+    {
+      "id": "WAKE-PR142-MODEL-DURABILITY",
+      "kind": "MODEL",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "model_id": "SvcWorkflow.WakeDurability",
+      "scope": "Unmerged #142"
+    },
+    {
+      "id": "WAKE-PR142-STATE-REPLAY",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "State"
+      }
+    },
+    {
+      "id": "WAKE-PR142-TRANS-REPLAY",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "run"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-PROP-REPLAY",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "apply_then_arbitrary_replays_never_duplicate_business_effects"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-THM-REPLAY",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "SvcWorkflow.WakeReceipt.apply_then_arbitrary_replays_never_duplicate_business_effects"
+      },
+      "model_revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+    },
+    {
+      "id": "WAKE-PR142-MAP-REPLAY",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "wake_dispatch_intent_atomically"
+      }
+    },
+    {
+      "id": "WAKE-PR142-CODE-REPLAY",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "wake_dispatch_intent_atomically"
+      }
+    },
+    {
+      "id": "WAKE-PR142-STATE-OUTCOME",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "Outcome"
+      }
+    },
+    {
+      "id": "WAKE-PR142-TRANS-OUTCOME",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "decodeTyped"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-PROP-OUTCOME",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "typed_roundtrip"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-THM-OUTCOME",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeReceipt.lean",
+        "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "SvcWorkflow.WakeReceipt.typed_roundtrip"
+      },
+      "model_revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+    },
+    {
+      "id": "WAKE-PR142-MAP-OUTCOME",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "decode_replay"
+      }
+    },
+    {
+      "id": "WAKE-PR142-CODE-OUTCOME",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "decode_replay"
+      }
+    },
+    {
+      "id": "WAKE-PR142-STATE-DURABLE-REJECTION",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "Database"
+      }
+    },
+    {
+      "id": "WAKE-PR142-TRANS-DURABLE-REJECTION",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "stageRejection"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-PROP-DURABLE-REJECTION",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "acknowledged_rejection_is_durable"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-THM-DURABLE-REJECTION",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "SvcWorkflow.WakeDurability.acknowledged_rejection_is_durable"
+      },
+      "model_revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+    },
+    {
+      "id": "WAKE-PR142-MAP-DURABLE-REJECTION",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "deterministic_failure"
+      }
+    },
+    {
+      "id": "WAKE-PR142-CODE-DURABLE-REJECTION",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "deterministic_failure"
+      }
+    },
+    {
+      "id": "WAKE-PR142-STATE-UNKNOWN",
+      "kind": "STATE",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "Resolution"
+      }
+    },
+    {
+      "id": "WAKE-PR142-TRANS-UNKNOWN",
+      "kind": "TRANSITION",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "settle"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-PROP-UNKNOWN",
+      "kind": "PROP",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "unknown_commit_does_not_reveal_durability"
+      },
+      "critical": true
+    },
+    {
+      "id": "WAKE-PR142-THM-UNKNOWN",
+      "kind": "THM",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/WakeDurability.lean",
+        "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "SvcWorkflow.WakeDurability.unknown_commit_does_not_reveal_durability"
+      },
+      "model_revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+    },
+    {
+      "id": "WAKE-PR142-MAP-UNKNOWN",
+      "kind": "MAP",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "wake_dispatch_intent_atomically"
+      }
+    },
+    {
+      "id": "WAKE-PR142-CODE-UNKNOWN",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr142/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "wake_dispatch_intent_atomically"
+      }
+    },
+    {
+      "id": "WAKE-PR142-LEAN-AUDIT",
+      "kind": "LEAN",
+      "coordinate": {
+        "path": "wake-lean-verification.json",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "sha256": "a3b3d4658132737da1ffd994e0a2454687c4f33c01ff8798e068092204dc8c78"
+      },
+      "evidence_state": "PASS",
+      "reason": "Lean 4.19.0 executed all proof and axiom-audit commands successfully. Source hashes bind these exact candidate model bytes. Conditional model proof only.",
+      "receipt_checks": {
+        "status": "PASS_CONDITIONAL_MODEL_PROOFS",
+        "theorem_count": 44,
+        "clean_build": true,
+        "source_hashes_frozen_before_and_after": true,
+        "repository_head_at_run": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "working_tree_dirty_at_run": false,
+        "source_sha256.WakeReceipt.lean": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5",
+        "source_sha256.WakeDurability.lean": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd",
+        "/axioms/SvcWorkflow.WakeReceipt.apply_then_arbitrary_replays_never_duplicate_business_effects": [
+          "propext"
+        ],
+        "/axioms/SvcWorkflow.WakeReceipt.typed_roundtrip": [],
+        "/axioms/SvcWorkflow.WakeDurability.acknowledged_rejection_is_durable": [
+          "propext"
+        ],
+        "/axioms/SvcWorkflow.WakeDurability.unknown_commit_does_not_reveal_durability": []
+      },
+      "bindings": {
+        "WAKE-PR142-MODEL-RECEIPT": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5"
+        },
+        "WAKE-PR142-MODEL-DURABILITY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd"
+        },
+        "WAKE-PR142-THM-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5"
+        },
+        "WAKE-PR142-THM-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5"
+        },
+        "WAKE-PR142-THM-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd"
+        },
+        "WAKE-PR142-THM-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-PG-TEST-SOURCE",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/pr142/tests/visit_activation_v1/wake_receipts.rs",
+        "sha256": "8b85844ea802b4cd7741d095803ef39f326b9ac23fbe8325ebed7a4f006c463a",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+        "symbol": "wake_commit_rejection_rolls_back_receipt_and_audit"
+      }
+    },
+    {
+      "id": "WAKE-PR142-TEST-PG",
+      "kind": "TEST",
+      "coordinate": {
+        "path": "materials/pr142/docs/evidence/wake-formal-20261127/candidate/regression-receipt.json",
+        "sha256": "e239b75eb4a0ce42f9eadaed743a5fb7236a68ff5f9984c971a9bc7601a5b130",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "2 codec and 17 Visit/Activation regressions passed on disposable PostgreSQL 16.13. The runner recorded base HEAD with a dirty overlay. All 470 source-manifest inputs match exact #142 blobs. This is code/regression evidence, with no model oracle or production acceptance.",
+      "receipt_checks": {
+        "status": "PASS_LOCAL_PG_REGRESSIONS",
+        "source_head": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "source_manifest_sha256": "8d9b091703e4157dcc6c408e5e2e1588bb2e2cbcdd7146bfc618cab6cd329452",
+        "sources_unchanged": true,
+        "/commands/0/exit_code": 0,
+        "/commands/1/exit_code": 0,
+        "/commands/0/test_counts/0/passed": 2,
+        "/commands/1/test_counts/0/passed": 17
+      },
+      "bindings": {
+        "WAKE-PR142-CODE-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-PG-TEST-SOURCE": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "8b85844ea802b4cd7741d095803ef39f326b9ac23fbe8325ebed7a4f006c463a"
+        }
+      }
+    },
+    {
+      "id": "WAKE-MAIN-CODE-WAKE-TRANSACTION",
+      "kind": "CODE",
+      "coordinate": {
+        "path": "materials/main/src/store/postgres/workflow_instance_repository/wake_transaction.rs",
+        "sha256": "96da7ca85b921233ec42620c0c13b64b0d8fd50aee44e0cde5fcc23cf3ac827c",
+        "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "symbol": "wake_dispatch_intent_atomically"
+      }
+    },
+    {
+      "id": "WAKE-MAIN-TEST-NEGATIVE-OVERLAY",
+      "kind": "TEST",
+      "coordinate": {
+        "path": "materials/pr142/docs/evidence/wake-formal-20261127/baseline-negative/regression-receipt.json",
+        "sha256": "2383f4a50af183b60b59a6c497e64aa240fca49e20f3e6772584195e77e6694a",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "evidence_state": "FAIL",
+      "reason": "10 passed and 7 failed using old main Wake implementation and the exact candidate regression suite. A bounded negative overlay, rather than a clean main test run.",
+      "receipt_checks": {
+        "status": "FAIL_LOCAL_PG_REGRESSIONS",
+        "source_head": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+        "/commands/0/exit_code": 101,
+        "/commands/0/test_counts/0/failed": 7
+      },
+      "bindings": {
+        "WAKE-MAIN-CODE-WAKE-TRANSACTION": {
+          "revision": "c50ab2ac98decceaa26138a282c34dd92ede0ddc",
+          "sha256": "96da7ca85b921233ec42620c0c13b64b0d8fd50aee44e0cde5fcc23cf3ac827c"
+        },
+        "WAKE-PR142-PG-TEST-SOURCE": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "8b85844ea802b4cd7741d095803ef39f326b9ac23fbe8325ebed7a4f006c463a"
+        }
+      }
+    },
+    {
+      "id": "WAKE-ASM-PG-DURABILITY",
+      "kind": "ASSUMPTION",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/README.md",
+        "sha256": "48d12c7f02b95d7514be364882b96e4142cb183beafd5dd954e482eafdf0e803",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "critical": true,
+      "proposition": "One atomic serialized transaction with original receipt key, preserved scope and hash-bound cause. Crash and commit acknowledgements must reflect actual effects."
+    },
+    {
+      "id": "WAKE-PROBE-LIVE-PG-DURABILITY",
+      "kind": "PROBE",
+      "coordinate": {
+        "path": "materials/pr142/docs/reports/WAKE_RECEIPT_FORMAL_REPAIR_20261127.md",
+        "sha256": "3007bcbca76bfbc267d9f02fd8158f67cbde1768bbcebcffa09cefd7fabc860e",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "No freshness-scoped runtime probe or real network lost-commit-ack experiment. Isolated deferred constraint tests verify known rollback only.",
+      "bindings": {
+        "WAKE-ASM-PG-DURABILITY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "48d12c7f02b95d7514be364882b96e4142cb183beafd5dd954e482eafdf0e803"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "kind": "REFINEMENT",
+      "coordinate": {
+        "path": "materials/pr142/formal/wake/README.md",
+        "sha256": "48d12c7f02b95d7514be364882b96e4142cb183beafd5dd954e482eafdf0e803",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "The mapping and isolated regressions exist, but no concrete-state correspondence, Rust/SQL step simulation or observation mapping has been established.",
+      "bindings": {
+        "WAKE-PR142-MODEL-RECEIPT": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5"
+        },
+        "WAKE-PR142-MODEL-DURABILITY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd"
+        },
+        "WAKE-PR142-MAP-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        }
+      }
+    },
+    {
+      "id": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "kind": "TRACE",
+      "coordinate": {
+        "path": "materials/pr142/docs/reports/WAKE_RECEIPT_FORMAL_REPAIR_20261127.md",
+        "sha256": "3007bcbca76bfbc267d9f02fd8158f67cbde1768bbcebcffa09cefd7fabc860e",
+        "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25"
+      },
+      "evidence_state": "UNKNOWN",
+      "reason": "Historical Cargo output and archived assertions are neither a model-bound trace nor a differential model-oracle execution.",
+      "bindings": {
+        "WAKE-PR142-MODEL-RECEIPT": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "1883864d698439b1335660c456b0d4ec4ed74a69c4ce5faeb2f5443b0e31a1c5"
+        },
+        "WAKE-PR142-MODEL-DURABILITY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "3123cc0163f1c74b8dfe8e9995166e6c60f4486a4c0589487e5cdd9eac9b27dd"
+        },
+        "WAKE-PR142-MAP-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-MAP-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-DURABLE-REJECTION": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-OUTCOME": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-REPLAY": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        },
+        "WAKE-PR142-CODE-UNKNOWN": {
+          "revision": "a22a0180ebf0775d42f9e54f09eed33a2de9ed25",
+          "sha256": "26dcec8770d6522b50a83ec8c7abbaa56b70b8ff5e766d66477d58c7fef1be5d"
+        }
+      }
+    }
+  ],
+  "links": [
+    {
+      "from": "WAKE-SPEC-VISIT-V3",
+      "to": "WAKE-DEC-VISIT-V3-ACCEPTANCE",
+      "relation": "records-decision"
+    },
+    {
+      "from": "WAKE-SPEC-VISIT-V3",
+      "to": "WAKE-SPEC-EXECUTION-CONTROL-V3",
+      "relation": "related-authority"
+    },
+    {
+      "from": "WAKE-SPEC-VISIT-V3",
+      "to": "WAKE-SPEC-POSTGRES-STORAGE-V03",
+      "relation": "constrained-by"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-008",
+      "to": "WAKE-SPEC-VISIT-V3",
+      "relation": "specified-by"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-008",
+      "to": "WAKE-MAIN-ACC-VAI-005",
+      "relation": "requires-acceptance"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-008",
+      "to": "WAKE-SPEC-VISIT-V3",
+      "relation": "specified-by"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-008",
+      "to": "WAKE-PR142-ACC-VAI-005",
+      "relation": "requires-acceptance"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-014",
+      "to": "WAKE-SPEC-VISIT-V3",
+      "relation": "specified-by"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-014",
+      "to": "WAKE-MAIN-ACC-VAI-009",
+      "relation": "requires-acceptance"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-014",
+      "to": "WAKE-SPEC-VISIT-V3",
+      "relation": "specified-by"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-014",
+      "to": "WAKE-PR142-ACC-VAI-009",
+      "relation": "requires-acceptance"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-008",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-014",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-008",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "WAKE-PR142-CTR-VAI-014",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "modeled-by"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-STATE-REPLAY",
+      "relation": "defines-state"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-TRANS-REPLAY",
+      "relation": "defines-transition"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-PROP-REPLAY",
+      "relation": "asserts"
+    },
+    {
+      "from": "WAKE-PR142-PROP-REPLAY",
+      "to": "WAKE-PR142-THM-REPLAY",
+      "relation": "formalized-by"
+    },
+    {
+      "from": "WAKE-PR142-THM-REPLAY",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "proves-model"
+    },
+    {
+      "from": "WAKE-PR142-TRANS-REPLAY",
+      "to": "WAKE-PR142-MAP-REPLAY",
+      "relation": "mapped-by"
+    },
+    {
+      "from": "WAKE-PR142-MAP-REPLAY",
+      "to": "WAKE-PR142-CODE-REPLAY",
+      "relation": "locates"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-STATE-OUTCOME",
+      "relation": "defines-state"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-TRANS-OUTCOME",
+      "relation": "defines-transition"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-PR142-PROP-OUTCOME",
+      "relation": "asserts"
+    },
+    {
+      "from": "WAKE-PR142-PROP-OUTCOME",
+      "to": "WAKE-PR142-THM-OUTCOME",
+      "relation": "formalized-by"
+    },
+    {
+      "from": "WAKE-PR142-THM-OUTCOME",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "proves-model"
+    },
+    {
+      "from": "WAKE-PR142-TRANS-OUTCOME",
+      "to": "WAKE-PR142-MAP-OUTCOME",
+      "relation": "mapped-by"
+    },
+    {
+      "from": "WAKE-PR142-MAP-OUTCOME",
+      "to": "WAKE-PR142-CODE-OUTCOME",
+      "relation": "locates"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-STATE-DURABLE-REJECTION",
+      "relation": "defines-state"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-TRANS-DURABLE-REJECTION",
+      "relation": "defines-transition"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-PROP-DURABLE-REJECTION",
+      "relation": "asserts"
+    },
+    {
+      "from": "WAKE-PR142-PROP-DURABLE-REJECTION",
+      "to": "WAKE-PR142-THM-DURABLE-REJECTION",
+      "relation": "formalized-by"
+    },
+    {
+      "from": "WAKE-PR142-THM-DURABLE-REJECTION",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "proves-model"
+    },
+    {
+      "from": "WAKE-PR142-TRANS-DURABLE-REJECTION",
+      "to": "WAKE-PR142-MAP-DURABLE-REJECTION",
+      "relation": "mapped-by"
+    },
+    {
+      "from": "WAKE-PR142-MAP-DURABLE-REJECTION",
+      "to": "WAKE-PR142-CODE-DURABLE-REJECTION",
+      "relation": "locates"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-STATE-UNKNOWN",
+      "relation": "defines-state"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-TRANS-UNKNOWN",
+      "relation": "defines-transition"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-PR142-PROP-UNKNOWN",
+      "relation": "asserts"
+    },
+    {
+      "from": "WAKE-PR142-PROP-UNKNOWN",
+      "to": "WAKE-PR142-THM-UNKNOWN",
+      "relation": "formalized-by"
+    },
+    {
+      "from": "WAKE-PR142-THM-UNKNOWN",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "proves-model"
+    },
+    {
+      "from": "WAKE-PR142-TRANS-UNKNOWN",
+      "to": "WAKE-PR142-MAP-UNKNOWN",
+      "relation": "mapped-by"
+    },
+    {
+      "from": "WAKE-PR142-MAP-UNKNOWN",
+      "to": "WAKE-PR142-CODE-UNKNOWN",
+      "relation": "locates"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-THM-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-THM-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-THM-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-LEAN-AUDIT",
+      "to": "WAKE-PR142-THM-UNKNOWN",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TEST-PG",
+      "to": "WAKE-PR142-CODE-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TEST-PG",
+      "to": "WAKE-PR142-CODE-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TEST-PG",
+      "to": "WAKE-PR142-CODE-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TEST-PG",
+      "to": "WAKE-PR142-CODE-UNKNOWN",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TEST-PG",
+      "to": "WAKE-PR142-PG-TEST-SOURCE",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-008",
+      "to": "WAKE-MAIN-CODE-WAKE-TRANSACTION",
+      "relation": "has-current-implementation"
+    },
+    {
+      "from": "WAKE-MAIN-CTR-VAI-014",
+      "to": "WAKE-MAIN-CODE-WAKE-TRANSACTION",
+      "relation": "has-current-implementation"
+    },
+    {
+      "from": "WAKE-MAIN-TEST-NEGATIVE-OVERLAY",
+      "to": "WAKE-MAIN-CODE-WAKE-TRANSACTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-MAIN-TEST-NEGATIVE-OVERLAY",
+      "to": "WAKE-PR142-PG-TEST-SOURCE",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-RECEIPT",
+      "to": "WAKE-ASM-PG-DURABILITY",
+      "relation": "assumes"
+    },
+    {
+      "from": "WAKE-PR142-MODEL-DURABILITY",
+      "to": "WAKE-ASM-PG-DURABILITY",
+      "relation": "assumes"
+    },
+    {
+      "from": "WAKE-PROBE-LIVE-PG-DURABILITY",
+      "to": "WAKE-ASM-PG-DURABILITY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-ASM-PG-DURABILITY",
+      "to": "WAKE-PROBE-LIVE-PG-DURABILITY",
+      "relation": "requires-probe"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MAP-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MAP-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MAP-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-MAP-UNKNOWN",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-CODE-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-CODE-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-CODE-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-RUST-SQL-REFINEMENT",
+      "to": "WAKE-PR142-CODE-UNKNOWN",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MODEL-RECEIPT",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MODEL-DURABILITY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MAP-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MAP-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MAP-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-MAP-UNKNOWN",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-CODE-DURABLE-REJECTION",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-CODE-OUTCOME",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-CODE-REPLAY",
+      "relation": "supports"
+    },
+    {
+      "from": "WAKE-PR142-TRACE-MODEL-RUNTIME",
+      "to": "WAKE-PR142-CODE-UNKNOWN",
+      "relation": "supports"
+    }
+  ]
+}
